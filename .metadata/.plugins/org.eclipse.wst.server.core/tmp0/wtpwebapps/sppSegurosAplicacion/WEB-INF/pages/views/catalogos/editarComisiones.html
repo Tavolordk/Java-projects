@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="comisionesEditFragment" class="main-container">
+		<!-- Modal -->
+		<div class="modal fade" id="editarComisionesModal" tabindex="-1" role="dialog" aria-labelledby="editarComisionesModalLabel"	aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+									
+					<div class="modal-header" style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+						<h5 class="modal-title titleEditComisiones" id="editarComisionesModalLabel"></h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<form id="formComisionesEditar" enctype="multipart/form-data"
+							autocomplete="off" class="needs-validation" novalidate>
+							<div class="row">
+
+									<div class="form-group col-md-6">
+										<label for="fechaInicio">Fecha de Inicio de Vigencia:</label>
+										<div class="input-group">
+										<input type="text" class="form-control date" id="ct12FechaInicioVigencia"
+												name="ct12FechaInicioVigencia"> <span class="input-group-text"><i
+												class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="fechaFin">Fecha de Fin de Vigencia:</label> 
+										<div class="input-group">
+										<input type="text" class="form-control date" id="ct12FechaFinVigencia"
+												name="ct12FechaFinVigencia"> <span class="input-group-text"><i
+												class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="sublimite">% Comisiones:</label> <input
+											class="form-control" type="text" id="ct12PorcentajeComisiones"
+											name="ct12PorcentajeComisiones" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="impuesto">% Bono:</label> <input
+											class="form-control" type="text" id="ct12PorcentajeBono"
+											name="ct12PorcentajeBono" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="ramo">Ramo:</label> <select class="form-control"
+											id="ramo" name="cveRamo">
+										</select>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="producto">Producto:</label> <select
+											class="form-control" id="producto" name="cveProducto">
+										</select>
+									</div>
+
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary text-truncate"
+							id="actualizarComisiones">
+							<span class="mr-2"> <i class="fas fa-save"></i>
+							</span>Actualizar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+</html>

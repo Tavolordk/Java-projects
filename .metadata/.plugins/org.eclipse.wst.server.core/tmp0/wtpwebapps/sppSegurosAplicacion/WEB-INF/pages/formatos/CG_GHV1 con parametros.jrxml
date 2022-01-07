@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ad72f347-209d-4931-bfc9-691689ca9443">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="pestanasazules" mode="Opaque" hTextAlign="Center" vTextAlign="Middle" markup="styled" pattern="" fontName="Arial" fontSize="10" isBold="true"/>
+	<style name="texto" mode="Opaque" hTextAlign="Justified" markup="styled" fontName="Arial" fontSize="10">
+		<paragraph leftIndent="5" rightIndent="5"/>
+	</style>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="no_Certificado" class="java.lang.String"/>
+	<parameter name="expedida_Nombre" class="java.lang.String"/>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="paramNombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Top" isLazy="true">
+				<reportElement x="0" y="0" width="210" height="50" uuid="47a25225-cc2d-4409-8de1-ec180a04603d"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="210" y="0" width="345" height="25" uuid="6178a299-e72c-47c1-ae07-5d8ed49ba83f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="16"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="210" y="25" width="345" height="25" uuid="d9b9013a-76c6-405c-94a1-98559f613144"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#856429" pdfFontName="Helvetica-Bold" isBold="True">Condiciones Generales: Garantía Hogar</style>]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="717" splitType="Stretch">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="91951973-57ea-4261-95ec-bb90a02a38aa"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="-3" y="0" width="560" height="53" uuid="c9b72409-2e33-46b6-9d44-4afd70038df5"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="109" height="26" uuid="646ec4e8-eb5f-4eeb-ac7d-c09bc713d6d1"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font fontName="Arial" size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No Póliza: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement positionType="Float" mode="Opaque" x="109" y="1" width="128" height="26" uuid="6f07129a-6aa6-4247-ab61-4be579b3abae"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{no_Poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="237" y="1" width="152" height="26" uuid="48d6d6f2-8f4d-4db2-8c24-1a31e4b1b5ad"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" markup="styled">
+						<font fontName="Arial" size="11" isBold="false"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No. de Certificado: </style>
+(En caso de colectivo)
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="389" y="1" width="170" height="26" uuid="c92d0a73-736f-4cc8-a963-fa20ceddcfca"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{no_Certificado}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="27" width="140" height="26" uuid="6c8fae30-d580-4204-ac63-33be398f5031"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font fontName="Arial" size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">Expedida a nombre de: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="140" y="27" width="420" height="25" uuid="31979268-f47f-4b52-b667-364b70fa9f96"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{expedida_Nombre}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement style="texto" mode="Transparent" x="-3" y="55" width="283" height="661" uuid="2b8d707a-3f4a-48b0-b342-3b3cf918c86b"/>
+				<staticText>
+					<reportElement style="pestanasazules" mode="Transparent" x="0" y="9" width="283" height="20" uuid="7bb3766d-3ba2-4b76-91d2-fd8b8ef8c365"/>
+					<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">OBJETO DEL SEGURO</style>]]></text>
+				</staticText>
+				<frame>
+					<reportElement mode="Opaque" x="-1" y="0" width="284" height="9" uuid="c551560a-fc7b-4830-9d4b-107d3ec814c9"/>
+				</frame>
+				<staticText>
+					<reportElement style="texto" x="-1" y="26" width="284" height="70" uuid="96e842f1-2f44-49be-9485-c1605ce0d261"/>
+					<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true" isItalic="True">SPP Institución de Seguros, S.A. de C.V., </style>denominada en adelante la Institución, proporcionar al Asegurado protección contra la pérdida derivada de daños materiales que sufran las construcciones o edificaciones aseguradas a consecuencia de los vicios ocultos amparados por la cobertura]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="pestanasazules" mode="Transparent" x="0" y="95" width="283" height="20" uuid="9b4cec43-6090-48a8-ba23-e92bd176402e"/>
+					<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">PLAN DE SEGURO</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="-1" y="114" width="284" height="50" uuid="7d57d64e-11fd-4cd7-a39a-283af4246f0a"/>
+					<text><![CDATA[El plan de seguro al que se sujetan estas condiciones generales está constituido por: la solicitud de la póliza; la carátula de la póliza; y las demás características y modalidades a que se sujetará el seguro contratado.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="pestanasazules" mode="Transparent" x="0" y="164" width="283" height="20" uuid="cf42f9fe-41f3-4131-9564-67bf3c98f697"/>
+					<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">PERIODO DE COBERTURA</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="-1" y="185" width="284" height="35" uuid="7d184071-bc79-4efd-ac47-727af4333d3b"/>
+					<text><![CDATA[El inicio y fin del período de cobertura del plan de seguro surtirán efecto a las 12 horas de los días especificados en la carátula de la póliza.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="pestanasazules" mode="Transparent" x="0" y="220" width="283" height="20" uuid="18ff3248-f193-4d6e-928b-aa67ab01444c"/>
+					<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">DEFINICIONES</style>]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement style="texto" mode="Opaque" x="280" y="55" width="280" height="660" uuid="fd111fae-7934-4db7-bdc1-699a0f9f497c"/>
+				<staticText>
+					<reportElement style="texto" x="0" y="10" width="280" height="651" uuid="028a62e7-299a-434c-a576-a2f25c6802f2"/>
+					<textElement>
+						<paragraph lineSpacing="Single" lineSpacingSize="1.0" leftIndent="10" rightIndent="5" spacingBefore="10" spacingAfter="10"/>
+					</textElement>
+					<text><![CDATA[y otros forman parte y constituyen prueba del Contrato de Seguro celebrado entre el Contratante y la Institución de Seguros.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Daño material:</style> Es el deterioro o destrucción de los bienes descritos como Asegurados en las condiciones de la póliza.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Deducible:</style> Cantidad expresamente pactada en valor absoluto o en porcentaje de la suma asegurada, que siempre quedará a cargo del Asegurado en caso de siniestro, y que aparece en las condiciones de la póliza.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Defecto de materiales de construcción: </style>Falta de las cualidades de los elementos constructivos para los cuales fueron diseñados exprofeso, utilizados en el proceso constructivo del inmueble y que dan lugar a un Daño Material al amparo de este seguro.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Empresa de Supervisión Técnica:</style> Persona moral encargada de realizar la supervisión técnica del proyecto y del proceso de construcción, designada por el Contratante, previa aceptación por escrito de la Institución de Seguros. Queda entendido que esta empresa de supervisión deberá ser independiente al Contratante, es decir, que no debe tener participación en la elaboración del proyecto, o de parte de este, ni participación en la dirección y ejecución de los trabajos, ni la intervención en cualquier otra actividad propia del proceso constructivo, distinta a la de la supervisión técnica.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Endoso:</style> Es el documento que forma parte del Contrato de Seguro, en el que se adicionan, limitan o restringen coberturas, incluyendo todos los datos concernientes a la cobertura que se afecte
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Error de construcción o de mano de obra:</style> Ejecución equivocada en el proceso constructivo del inmueble, cometida involuntariamente, que da lugar a un Daño Material cubierto por este seguro. 
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Error de diseño o cálculo:</style> Determinación equivocada o inadecuada en la definición cuantitativa y/o cualitativa de los elementos del inmueble, realizada involuntariamente, que da lugar a un Daño Material al amparo de este seguro.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Estructura:</style> Armazón o sistema constructivo que sostiene a un inmueble; en general, se compone de elementos verticales como columnas, castillos y muros de carga, y horizontales como losas, trabes y cerramientos estructurales; dicho sistema puede ser de mampostería, concreto armado o metal, o una combinación de ellos.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Impermeabilización:</style> Es el proceso por medio del cual se recubren techos y muros e impide que el agua exterior se filtre hacia el interior de la vivienda.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Inmueble:</style>Es el bien objeto de este seguro y que consta de Cimentación, estructura, instalaciones fijas y equipamiento propio, y que puede tener el uso según se especifica en la póliza.
+<style forecolor="#000000"  isBold="true">Instalaciones Fijas y equipamiento propio del inmueble:</style>Los elementos que componen las instalaciones de electricidad, plomería, gas, calefacción, aire]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="-283" y="240" width="283" height="421" uuid="5939ee18-d361-497b-957e-193e44dad628"/>
+					<textElement>
+						<paragraph lineSpacing="AtLeast" leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Acabados:</style> Son todos aquellos trabajos que se realizan en una construcción para darle terminación a las obras quedando ésta con un aspecto habitable. Para los efectos de esta póliza se consideran acabados los pisos, ventanas, puertas, pintura y enyesado de paredes. el tránsito peatonal.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Acta de Terminación de Obra:</style> Documento en el que se consigna la finalización de la obra, que deberá estar firmado por el Constructor o Desarrollador y el Director Responsable de Obra o su equivalente, en el que se hará constar por escrito la fecha de terminación de la obra total o de la fase completa, terminada de la misma y el costo final de la ejecución material de la obra.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Asegurado: </style>Persona física o moral, titular del interés objeto de este seguro, a quien corresponden, en su caso, los derechos derivados de este Contrato de Seguro.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Beneficiario preferente:</style> Titular del derecho a la indemnización hasta por el saldo insoluto del crédito otorgado. En este caso se entenderá como la institución financiera que ha otorgado un financiamiento para la adquisición del inmueble, en tanto acredite su interés sobre el mismo.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Cimentación:</style> Es la parte de la estructura a través de la cual se transmite al terreno la carga del inmueble.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Contratante:</style> Persona física o moral que celebra con la Institución de Seguros el Contrato de Seguros a título propio o por cuenta de otro, con o sin la designación de la persona del tercero Asegurado.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Contrato de Seguro:</style> Sinónimo de Póliza de Seguro. Es el acuerdo de voluntades celebrado por el Contratante y la Institución de Seguros con base a la solicitud de aseguramiento y por virtud de la cual se obliga, mediante una prima, a resarcir un Daño o a pagar una suma de dinero al verificarse la eventualidad prevista en el contrato.
+La Póliza y las versiones de la misma, la solicitud, Carátula de la Póliza, Condiciones Generales, Condiciones Particulares, el Endoso de entrada en vigor de la cobertura]]></text>
+				</staticText>
+			</frame>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="a59c9fa9-19d2-4716-a3c5-64a80c0fae13"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-4" y="-1" width="283" height="510" uuid="0189eade-0cfc-433e-8026-90f0eb53111b"/>
+				<textElement>
+					<paragraph lineSpacing="AtLeast" leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[acondicionado, audiovisuales, telefonía, seguridad, ascensores y montacargas y cualquier otra maquinaria mecánica o electrónica necesaria para el uso propio del inmueble, incluyéndose los aparatos o maquinas que intervienen en su composición, así como sus ductos, y canalizaciones necesarias, que sean propios del inmueble.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Institución de Seguros:</style> SPP Seguros Institución de Seguros, S.A. de C.V., empresa de seguros que asume el riesgo contractualmente pactado de acuerdo con lo establecido en esta póliza.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Límite por Evento:</style> Para los efectos de esta póliza se entiende como un límite de responsabilidad por evento, al conjunto de reclamaciones cubiertas por esta póliza que deriven de un mismo vicio o defecto, sin importar el número de inmuebles afectados. Póliza. Documento que contiene las características que identifican al riesgo, así como los términos y condiciones en que cada una de las partes se obliga mediante el Contrato de Seguro.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Póliza:</style> Documento emitido por la Institución de Seguros en el que constan los derechos y obligaciones de las partes.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Prima:</style> Costo del seguro, el cual incluye los recargos, derechos e impuestos.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Reportes Técnicos:</style> Documentos emitidos por la Empresa de Supervisión Técnica antes, durante, y a la terminación de la construcción del inmueble o inmuebles asegurados.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Siniestro:</style> Realización de uno o más de los riesgos cubiertos que se manifiesten durante la vigencia de la póliza. Se considerará que constituye un solo y único siniestro, el conjunto de daños materiales directos derivados de una misma causa inicial.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Supervisión técnica:</style> La revisión del proyecto y la inspección y seguimiento del proceso constructivo, desde su comienzo hasta la terminación del inmueble y, en caso necesario, con posterioridad a ésta.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Urbanización:</style> Calles, arroyos, banquetas, guarniciones, jardines, estacionamientos, instalaciones municipales, instalaciones deportivas y de recreo, y demás obras e instalaciones, en general, que no formen parte del inmueble.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Vicios ocultos:</style> Mala calidad o defecto, no visibles al momento del levantamiento del acta de terminación de la obra, que dé lugar a un Daño Material, indemnizable al amparo de este seguro, y cuya manifestación se produzca durante la vigencia de la póliza.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="-2" y="509" width="283" height="20" uuid="b861033f-722f-4a59-a45b-fe907fe7d468"/>
+				<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">COBERTURA GARNATÍA HOGAR</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="-4" y="530" width="284" height="187" uuid="0c37bfd7-1420-42c2-825b-68dcdb8c3c14"/>
+				<text><![CDATA[Este seguro cubre la indemnización o reparación de los daños materiales causados en los bienes asegurados por vicios o defectos que tengan su origen en la Cimentación o estructura del inmueble y que afecten los mismos, comprometiendo directamente su resistencia mecánica y estabilidad, hasta la suma asegurada contratada, según se especifica en la póliza y en el Endoso de entrada en vigor de la cobertura, como consecuencia exclusivamente de:
+
+A. Daños en Materiales Estructurales
+	a. Error de diseño o de cálculo
+	b. Error de construcción y/o mano de obra
+	c. Defecto de materiales de construcción
+
+B. Impermeabilización
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="160" uuid="349c3e88-6a04-445d-8c0e-e016163e38dd"/>
+				<textElement>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[C. Instalaciones Fijas y equipamiento propio del inmueble
+	a. Eléctricas
+	b. Gas
+	c. Hidráulicas y Similares                                                 
+D. Acabados
+
+Como parte de esta cobertura, se incluyen los gastos resultantes de la demolición y remoción de escombros, derivados de un Daño Material amparado según los incisos a) al c) del Apartado A. antes mencionado, hasta un sublímite del 15% de la suma asegurada contratada, según se especifica en la póliza y en el Endoso de entrada en vigor de la cobertura.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="279" y="160" width="280" height="20" uuid="f813a60c-6727-4728-a862-cde114adaefd"/>
+				<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">EXCLUSIONES GENERALES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="279" y="181" width="279" height="535" uuid="eb577f21-919c-4e54-9ddc-616692442a6a"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Este seguro en ningún caso cubre ni se refiere a los daños derivados de las causas siguientes:
+
+1. Por fallas en el suelo o subsuelo, deslizamientos, movimientos o alteraciones del terreno a consecuencia de variaciones del nivel freático, de trabajos o actividades subterráneas, hincado de pilotes, perforación de pozos y, en general, por causas ajenas al inmueble Asegurado o inducidas por terceros, que sean posteriores a la entrada en vigor de la cobertura.
+
+2. Por hinchamiento, rehidratación o expansión del terreno o por desplazamientos derivados del crecimiento de raíces de árboles.
+
+3. Por las grietas o fisuras que tengan su origen en fenómenos de dilatación, contracción o asentamientos que no comprometan la resistencia mecánica y estabilidad del inmueble.
+
+4. Por la construcción o demolición de inmueble u otras obras de ingeniería, adyacentes al inmueble Asegurado.
+
+5. Por vibraciones de cualquier tipo que afecten el inmueble Asegurado o en sus alrededores.
+
+6. Por haber sometido el inmueble a cargas superiores a aquellas para las que fue diseñado.
+
+7. Por modificación al uso para el que fue diseñado originalmente el inmueble, realizada </style>]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="42576d2a-7d79-4c9a-bfc6-1dd6f74ee81f"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Opaque" x="-4" y="0" width="280" height="716" uuid="6fa50fc5-357d-41f0-8687-14c83d6c609a"/>
+				<staticText>
+					<reportElement style="texto" x="0" y="0" width="280" height="715" uuid="4239a152-1f79-4778-92e2-9d5d91826413"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">
+					
+con posterioridad a la fecha de entrada en vigor de la cobertura.
+					
+					
+8. Por modificaciones u obras realizadas en el inmueble después de la entrada en vigor de la cobertura, salvo las de subsanación de los defectos observados en el endoso de dicha entrada en vigor. Tampoco estarán cubiertos los costos de los trabajos posteriores a la recepción de la obra, a los que están obligados los contratistas para la correcta terminación o acabado de la misma, y cuya ejecución no se hubiera realizado, así como las consecuencias resultantes de esa falta de ejecución, ni darán derecho a indemnización los daños que se produzcan durante la ejecución de las obras necesarias para la subsanación de los defectos observados en el endoso de entrada en vigor de la cobertura.
+
+9. Por el mal uso o falta de mantenimiento adecuado del inmueble. Así mismo, quedan excluidos los gastos necesarios para el mantenimiento del inmueble.
+
+10. Por deficiencias en la impermeabilización, o por la reposición o reparación de la misma, en cualquier parte del inmueble o vivienda.
+
+11.Por agrietamientos, fisuras, desportilladuras, ralladuras y raspaduras de los Acabados, a menos que sean a consecuencia de otros daños indemnizables por la póliza.
+
+12. Por vicios o defectos de las instalaciones fijas y equipamiento propio del inmueble, a menos que los daños se originen como consecuencia del daño estructural cubierto en la póliza
+
+13. Por incendio, rayo o explosión, producidos por cualquier causa.
+
+14. Por terremoto y/o erupción volcánica, huracán, granizo, nieve, ciclón, tornado, vientos tempestuosos, inundación, marejada, pérdida de playa, aludes y, en general, cualquier fenómeno de la naturaleza, aun y cuando pudiera haber existido algún vicio oculto.
+
+15. Por caída de árboles, colisión de vehículos o caída de naves aéreas.</style>]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="276" y="0" width="280" height="715" uuid="cfe45aa1-29c7-464f-baf7-747842ed714b"/>
+				<staticText>
+					<reportElement style="texto" x="0" y="0" width="280" height="715" uuid="206b595b-3fae-4c20-9caa-a2a80cddcd51"/>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font size="11"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">
+16. Por huelgas, vandalismo, disturbios políticos y actos mal intencionados de personas o grupos de personas que actúen por cuenta propia o de terceros.
+
+17. Por guerra civil o internacional.
+
+18. Esta póliza excluye todo tipo de pérdidas, daños, responsabilidades o gastos causados por:
+
+a. Terrorismo o sabotaje,
+b. Medidas tomadas para impedir, prevenir, controlar o reducir las consecuencias que se deriven de cualquier acto de Terrorismo,
+c. Cualquier daño consecuencial derivado de un acto de Terrorismo. Por Terrorismo se entenderá para efectos de esta póliza:
+
+
+a. Los actos de una persona o personas que por sí mismas, o por representación de alguien o en conexión con cualquier organización o gobierno, realicen actividades por la fuerza, violencia o por la utilización de cualquier otro medio con fines políticos, religiosos, ideológicos, étnicos o de cualquier otra naturaleza, destinados a derrocar, influenciar presionar al gobierno de hecho o de derecho para que tome una determinación, o alterar y/o influenciar y/o producir alarma, temor o zozobra en la población, en un grupo o sección de ella o de algún sector de la economía.
+
+
+b. Con base en lo anterior, quedan excluidas las pérdidas o daños materiales por dichos actos directos e indirectos que, con un origen mediato o inmediato, sean el resultante del empleo de explosivos, sustancias toxicas, armas de fuego, o por cualquier otro medio, en contra de las personas, de las cosas o de los servicios públicos y que, ante la amenaza o posibilidad de repetirse, produzcan alarma, temor o zozobra en la población o en un grupo o sector de ella. También excluye las perdidas, daños, costos o gastos de cualquier naturaleza, directa o indirectamente causados por, o resultantes de, o en conexión con cualquier acción tomada para el control, prevención o supresión de cualquier acto de terrorismo.
+</style>]]></text>
+				</staticText>
+			</frame>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="bc023597-b467-4acd-b30d-b1c855eb257f"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="277" y="39" width="280" height="20" uuid="9e487713-47d0-4984-9a26-4902d08a1a96"/>
+				<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">PAGO DE SINIESTROS E INDEMNIZACIONES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="280" height="716" uuid="f3621363-b632-4331-8289-432708becf8f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11.5"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">19. Por reacción nuclear o contaminaciones radioactivas.
+
+20. Por culpa grave, dolo o mala fe del Asegurado o de sus dependientes económicos.
+
+21. Por dolo o mala fe del Contratante, o de los contratistas y subcontratistas que hayan intervenido en la construcción del inmueble.
+
+22. Por lesiones corporales, muerte y/o responsabilidades ante terceros de cualquier tipo.
+
+23. Por hongos o moho tóxico.
+
+24. Por el valor incremental en el costo de construcción por cualquier causa.
+
+25. Por pérdidas consecuenciales de cualquier tipo.
+
+26. Por pérdidas financieras derivadas de los daños materiales.
+
+27. Por humedades, filtraciones, salitre.
+
+28. Por cualquier tipo de contaminación.
+
+29. Los costos extras por concepto de pronta ejecución de las obras.
+
+30. Cualquier tipo de multa o penalización.
+
+Tampoco estarán cubiertos los daños o pérdidas que se ocasionen a:
+
+31. Inmuebles o propiedades contiguas o adyacentes al inmueble Asegurado.
+
+32. La urbanización.
+
+33. Los bienes muebles situados en el inmueble o vivienda.
+
+Se excluye cualquier daño derivado de un riesgo no amparado expresamente en la presente póliza.
+Así mismo, se excluyen los siniestros que tengan su origen en parte de la obra sobre las que haya defectos observados en el endoso de entrada en vigor de la cobertura, mientras </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="277" y="60" width="280" height="656" uuid="a78ca4a1-3560-44d5-9560-05db7cdb3451"/>
+				<text><![CDATA[<style forecolor="#000000" >Al ocurrir un siniestro que pudiera dar lugar a indemnización conforme a este seguro, el Asegurado tendrá la obligación de:
+
+a. Medidas de salvaguarda.
+
+1. Ejecutar todos los actos que tiendan a evitar que el daño aumente o se propague, no debiendo reparar el bien dañado o alterar el aspecto del siniestro, más allá de lo que sea absolutamente necesario para garantizar la seguridad de las personas y del inmueble.
+
+2. Mantener las evidencias del siniestro y conservar las partes dañadas o defectuosas hasta que un representante de la Institución de Seguros haga la inspección ocular del siniestro y dé las instrucciones pertinentes. Si en un plazo de cinco días naturales, a partir de la fecha en la que el Asegurado dio aviso del siniestro a la Institución de Seguros, el representante de ésta no se presentará, el Asegurado quedará liberado de esta obligación.
+
+b. Cualquier ayuda que la Institución de Seguros o sus representantes presten al Asegurado, o a terceros afectados, no deberá interpretarse como aceptación de responsabilidad o de cobertura procedente.
+
+c. Aviso de Siniestro.
+
+Tan pronto haya pasado el peligro, el Asegurado deberá comunicar el siniestro a la Institución de Seguros, vía telefónica o por medios electrónicos y, posteriormente, confirmarlo por escrito al domicilio de la Institución de Seguros.
+
+d. Documentos, datos e informes que el Asegurado debe proporcionar a la Institución de Seguros.
+El Asegurado deberá entregar a la Institución de Seguros por escrito, una carta reclamación incluyendo los documentos siguientes:
+
+1. Una descripción detallada de lo sucedido y una estimación del costo de la reposición o reparación de los bienes dañados que ampara este seguro.
+2. Cuando la Institución de Seguros lo requiera para soportar la reclamación, los planos y proyectos del inmueble e instalaciones, así como copias certificadas de las actuaciones practicadas por el Ministerio Público, en su caso, o por cualquier otra autoridad que hubiera intervenido en la investigación del siniestro.
+
+
+
+e. Extinción de las obligaciones de la Institución de Seguros
+1. Las obligaciones de la Institución de Seguros quedarán extinguidas o reducidas si demuestra que el Asegurado o sus representantes, con el fin de hacerla incurrir en error, disimulan o declaran inexactamente </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="277" y="0" width="280" height="38" uuid="bd458e1b-60ff-4a14-a582-853928eb27b8"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">que tales defectos no hayan sido subsanados y las subsanaciones queden reflejadas en un nuevo endoso.</style>]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="6b67085b-0e02-4427-8016-2b801b745034"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-3" y="95" width="281" height="622" uuid="33fd7c6c-64c2-4bab-b537-5579f9dfec7c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Suma Asegurada:</style> La suma asegurada del inmueble que aparece en el endoso de entrada en vigor de la cobertura deberá corresponder a su valor de reposición sin considerar el valor del terreno, y representará la responsabilidad máxima de la Institución de Seguros, sin perjuicio de lo estipulado en la Cláusula Sexta Límite máximo de responsabilidad por evento, y en la Cláusula Séptima Actualización de suma asegurada.
+Para los efectos de este seguro se entiende como valor de reposición, el monto que exigiría la adquisición de un bien nuevo de las mismas especificaciones constructivas al momento de ocurrir el siniestro. Este comprende el costo de ejecución, honorarios del proyecto y dirección de obra, honorarios de la empresa de supervisión técnica, licencias y permisos, en general cualquier otro gasto que sea necesario para la ejecución, pero en ningún caso se incluirán los costos extras por concepto de pronta ejecución o penalizaciones o multas por retrasos.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Límite máximo de responsabilidad por evento:</style> El límite máximo de responsabilidad por evento que aparece en la carátula de la póliza y en el endoso de entrada en vigor de la cobertura, representa la responsabilidad máxima de la Institución de Seguros en un mismo evento, ya sea que se trate de uno o varios inmuebles.
+Para los efectos de esta póliza se entiende como un mismo evento el conjunto de reclamaciones cubiertas por esta póliza que deriven de un mismo vicio o defecto, sin importar el número de inmuebles afectados.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Prima</style> El Contratante de la póliza está obligado al pago de la prima, de acuerdo con las condiciones generales y específicas de esta póliza. La prima estipulada se considerará vencida al momento de la celebración del contrato.
+La prima del seguro resulta de aplicar la cuota o cuotas sobre la suma asegurada prevista en la póliza, incrementada con los recargos, derechos e impuestos correspondientes. La prima inicial resultante se considera provisional y de depósito, a reserva del ajuste posterior que se efectuará sobre la base del importe definitivo de la construcción.
+De conformidad con el artículo 34 de la Ley sobre el Contrato de Seguro, la Prima a cargo del Asegurado vence al momento de celebrarse el Contrato de Seguro. Se entenderá como Celebración del Contrato de Seguro, el momento en que la Institución de Seguros notifica al Contratante la aceptación de la propuesta de aseguramiento.
+El Contratante gozará de un periodo de gracia de treinta días naturales para el pago de la prima, contado a partir del vencimiento de la obligación de pago para su liquidación. Lo anterior con fundamento en lo previsto por el Art. 40 de la Ley Sobre el Contrato de Seguros vigente que a la letra dice:
+“Si no hubiese sido pagada la prima o la primera fracción de ella, en los casos de pagos en parcialidades, dentro del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="564" uuid="934aee7a-cf43-412b-aebe-7581885df60c"/>
+				<text><![CDATA[término convenido, el cual no podrá ser inferior a tres días ni mayor a treinta días naturales siguientes a la fecha de su vencimiento, los efectos del contrato cesarán automáticamente a las doce horas del último día de ese plazo. En caso de que no se haya convenido el término, se aplicará el mayor previsto en este artículo”. Las partes convienen que las doce horas será el horario local en la localidad en que se encuentre el inmueble Asegurado
+Si el Contratante ha optado por el pago fraccionado de la prima, las exhibiciones deberán ser por períodos de igual duración, con vencimiento al inicio de cada período establecido y se aplicará la tasa de financiamiento pactada entre el Contratante y la Institución de Seguros.
+La Prima convenida deberá ser pagada en las oficinas de la Institución de Seguros o en las instituciones bancarias señalas por ésta, contra entrega del recibo y comprobante de pago correspondiente o bien mediante transferencia electrónica de fondos a las cuentas bancarias de la Institución de Seguros. En caso de que el Asegurado o Contratante efectúe el pago total de la Prima o el total de la parte correspondiente de ella si se ha pactado su pago fraccionado, en cualquiera de las instituciones bancarias señalas por la Institución de Seguros, quedará bajo su responsabilidad hacer referencia del número de Póliza que se está pagando, para que el comprobante que para tal efecto sea expedido por dichas instituciones bancarias haga prueba plena del pago de la Prima o fracción de ella de este Contrato de Seguro, hasta el momento en que la Institución de Seguros le haga entrega al Asegurado del recibo correspondiente. El comprobante de pago de la Prima hecho mediante transferencia electrónica de fondos surtirá efectos como recibo hasta en tanto la institución emita el recibo de primas correspondiente. Será evidencia de la aceptación del pago de la Prima, la emisión del recibo correspondiente. En caso de siniestro dentro del período de gracia, la Institución de Seguros deducirá de la indemnización pagable el total de la Prima vencida pendiente de pago.
+La Prima convenida deberá ser pagada en las oficinas de la Institución de Seguros, contra entrega del recibo correspondiente, o bien mediante transferencia electrónica de fondos a las cuentas bancarias de la Institución de Seguros. El pago de la Prima hecha mediante transferencia electrónica de fondos no implica la aceptación de la Institución de Seguros del pago. Será evidencia de la aceptación del pago de la prima, la emisión del recibo correspondiente.
+En caso de siniestro dentro del período de gracia, la Institución de Seguros deducirá de la indemnización pagable el total de la Prima vencida pendiente de pago.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="-3" y="82" width="281" height="12" uuid="85da54f3-a279-45bd-8901-b023de4b9c4d"/>
+				<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">CLÁUSULAS GENERALES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="280" height="81" uuid="6ccf8d22-fa44-4670-be95-7669261d1190"/>
+				<text><![CDATA[<style forecolor="#000000" >hechos que excluirían o podrían restringir dichas obligaciones.
+2. Si el Asegurado viola la obligación de evitar o disminuir el daño o de conservar la invariabilidad de las cosas, la Institución de Seguros tendrá el derecho de reducir la indemnización hasta la cantidad a que ascendería si dicha obligación se hubiera cumplido.</style>
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="278" y="564" width="280" height="12" uuid="56ad76ab-1a38-4e0d-9758-10bbb419fcc7"/>
+				<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">CLAÚSULAS OPERATIVAS</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="577" width="280" height="139" uuid="e463e721-7f06-4589-a233-608e85109014"/>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Entrada en vigor de la cobertura:</style> La cobertura de la póliza entrará en vigor a partir de la fecha de inicio de vigencia especificada en el endoso de entrada en vigor de la cobertura.
+Para la emisión del endoso de entrada en vigor de la cobertura, será necesario que la Institución de Seguros haya recibido del Contratante o Asegurado:
+• El Reporte Técnico Final expedido por la Empresa de Supervisión Técnica,
+• El Acta de Terminación de la obra.
+• La declaración del Contratante sobre el valor definitivo del inmueble o inmuebles terminados.
+]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="96886374-1dba-4688-b993-f3e299a1eb24"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="281" height="716" uuid="669359bc-2f49-4ff9-b625-753288412834"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Queda convenido que la supervisión técnica deberá ejercerse desde el comienzo de los trabajos hasta la terminación de la obra y comprenderá, como mínimo:
+1. La revisión del proyecto, sus modificaciones y otros documentos que permitan apreciar los riesgos potenciales antes y durante los trabajos de construcción.
+2. La supervisión técnica de los trabajos objeto de la cobertura y de los ensayos de materiales realizados por un laboratorio acreditado.
+3. La presencia de la Empresa de Supervisión Técnica hasta la terminación del inmueble Asegurado y firma del reporte técnico final con el Contratante, señalando en él, en su caso, las deficiencias técnicas o variaciones de proyecto observadas en el ejercicio de su misión y que no hubieran sido subsanadas al momento de la terminación.
+La supervisión se llevará a cabo conforme a las disposiciones legales vigentes en cada momento, reglamentos, disposiciones administrativas y normas técnicas en vigor en el lugar de la obra, complementadas, si fuera necesario, con las indicaciones y recomendaciones fundamentadas de la Empresa de Supervisión Técnica.
+4. El análisis detallado de la Cimentación definida con relación a los parámetros del suelo, derivado del estudio de mecánica de suelos. La Empresa de Supervisión Técnica podrá solicitar estudios complementarios o pruebas adicionales no realizadas.
+En caso de que el reporte técnico final no comprenda los elementos mínimos mencionados y de manera satisfactoria para la Institución de Seguros, esta se reserva el derecho de no emitir el endoso de entrada en vigor de la cobertura, quedando libre de cualquier responsabilidad establecida en este Contrato de Seguro, y obligándose a devolver al Contratante la prima inicial pagada, menos los gastos administrativos y de emisión erogados por la Institución de Seguros.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Actualización de suma asegurada:</style> Durante el periodo de cobertura la suma asegurada podrá ser objeto de actualización automática anual siempre que se pacte expresamente y se haya pagado la prima correspondiente.
+La actualización de suma asegurada podrá ser convenida a solicitud del Contratante o del Asegurado en el momento de la emisión de la póliza o en el momento de emisión del endoso de entrada en vigor de la cobertura.
+Esta opción solo podrá ser convenida cuando la póliza se expida en moneda nacional, aplicándose las siguientes condiciones:
+La suma asegurada de la póliza se ajustará automáticamente en forma anual con base en el Índice Nacional de Precios al Consumidor que publica el Banco de México. En cualquier caso, el ajuste automático máximo anual por este concepto quedará limitado al 3%.
+En caso de que la póliza se expida en otras monedas, no aplicará la actualización automática de suma asegurada.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Deducible</style> En todo siniestro, cualquiera que sea su causa, quedará a cargo del Asegurado en concepto de Deducible, la cantidad y/o porcentaje detallado en las Condiciones específicas del contrato, que no podrá ser nunca objeto de seguro.
+Si se hubiese contratado la actualización de la suma asegurada en las Condiciones específicas de la póliza, el Deducible se incrementará en las mismas condiciones con que se actualice la suma asegurada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="716" uuid="c84f8b8d-48df-42b3-a252-a61e904bbbc4"/>
+				<textElement verticalAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Valuación de los Daños</style> La valuación de los daños indemnizables se efectuará con arreglo en los criterios siguientes:
+1. Con respecto a la estructura, se calculará el costo, en el día del siniestro, de las actuaciones de reparación, de reconstrucción o de refuerzo que la dejen en las condiciones exigidas de seguridad estructural, relativa a la resistencia
+Mecánica y estabilidad del inmueble.
+2. Con respecto a las restantes partes del inmueble, se calculará el costo en el día del siniestro, de la reparación de los daños por reposición de los bienes, con materiales de esta o análogas características a las previstas originalmente en el proyecto y con empleo de las técnicas constructivas usuales. Con respecto a los costos de reparación y refuerzo en que se incurra para eliminar la amenaza de hundimiento de la estructura, dictaminada por la autoridad competente y que sean necesarios para salvaguardar la construcción, se calculará el costo de las medidas inmediatas adoptadas de forma urgente, que no se encuentren ya contempladas en el punto número 1. de esta cláusula.
+El importe total de los daños indemnizables se obtendrá de la suma de las cantidades que resulten de los puntos 1, 2 y 3 de esta cláusula, todo ello sin perjuicio de la aplicación del Deducible correspondiente y demás cláusulas aplicables.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Determinación de la indemnización:</style>
+1. La suma asegurada, teniendo en cuenta lo establecido en las cláusulas Quinta, Sexta y Séptima, representa el límite máximo de la indemnización a pagar por la Institución de Seguros.
+2. Sin perjuicio de lo previsto en el punto anterior, para la determinación de la indemnización, se tendrán en cuenta las condiciones siguientes:
+• El inmueble Asegurado será valuado de acuerdo con los precios de mercado en la fecha del siniestro, siguiendo los mismos criterios de calidad establecidos en las especificaciones de construcción originales.
+i. Si la suma asegurada establecida con base en la cláusula Quinta y Séptima es inferior al valor del inmueble, calculado como se indica en el párrafo precedente, por aplicación de la regla proporcional, el monto de la indemnización será el resultado de multiplicar los daños calculados, de conformidad con la valuación definida en la cláusula Décima Primera, por el cociente de la suma asegurada entre el valor del inmueble.
+ii. Si la suma asegurada supera el valor del inmueble, la Institución de Seguros indemnizará el daño efectivamente sufrido.
+Después de una indemnización por pérdida total, el seguro sobre el bien dañado será dado por terminado, considerándose la prima del seguro totalmente devengada en beneficio de la Institución de Seguros.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Disminución y Reinstalación de la Suma Asegurada:</style>
+Toda indemnización que la Institución de Seguros pague por pérdidas o daños a consecuencia de la realización de los riesgos cubiertos por esta Póliza, reducirá en igual cantidad la suma asegurada, por lo que las indemnizaciones de siniestros subsecuentes serán pagadas hasta el límite de la suma restante; sin embargo, la suma asegurada podrá ser reinstalada a solicitud escrita ]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="ef1ba07c-370c-4749-bd18-17cda73f9a8c"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="281" height="716" uuid="237215f5-8b92-44fe-8a60-de596e0c727c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[del Asegurado y previa aceptación de la Institución de Seguros, mediante el pago de la prima que corresponda.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Inspección</style> La Institución de Seguros tendrá derecho a inspeccionar los bienes asegurados en el sitio de construcción o de prefabricación, para fines de apreciación del riesgo. Asimismo, el Contratante conviene en que la Institución de Seguros podrá efectuar la revisión de sus bitácoras o cualquier otro documento vinculado con cualquier hecho que tenga relación con esta póliza.
+Este derecho no constituirá una obligación para la Institución de Seguros de efectuar inspecciones en fechas determinadas ni a solicitud del Contratante o de sus representantes.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Transferencia de Derechos y Obligaciones:</style> Los derechos y obligaciones originados por la Póliza no pueden ser transferidos a otro sin el acuerdo escrito de la Institución de Seguros.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Entrega de la Póliza/Cambios/Modificaciones:</style> a. La Institución de Seguros entregará al Asegurado la póliza en un plazo no mayor a los treinta días siguientes a la aceptación del riesgo. La entrega de la póliza se podrá realizar de las siguientes formas:
+i. En el domicilio que al efecto señale el Asegurado; o
+ii. A través de medios electrónicos, correo electrónico o mensaje de datos.
+b. En caso de que el último día para la entrega de la documentación sea inhábil, se entenderá que la misma deberá entregarse el día hábil inmediato siguiente.
+c. El Asegurado, de manera alternativa y por escrito, podrá solicitar copia de la póliza del seguro contratado, de manera directa en cualquiera de las sucursales de la Institución de Seguros.
+Adicionalmente, el Asegurado podrá obtener información suficiente, relativa a las Condiciones Particulares, Coberturas Adicionales, Exclusiones del seguro contratado, en el portal electrónico en Internet <style forecolor="#0070C0"  isBold="true">www.sppseguros.com.mx</style>
+Esta Póliza solo podrá ser modificada por un Endoso que se vuelva parte integrante de la misma. El Endoso deberá de estar firmado por un representante autorizado de la Institución de Seguros.
+Las modificaciones que se hagan al presente contrato, con posterioridad a la fecha de inicio de su vigencia, constarán en versiones subsecuentes, conservándose el mismo número de Póliza y adicionando a ésta el número de Versión consecutivo que corresponda.
+La vigencia de este contrato es la que se indica en la Póliza, la cual, a petición del Contratante o Asegurado, y previa aceptación de la Institución de Seguros, podrá renovarse o prorrogarse mediante la expedición de la Versión subsecuente de la misma, de acuerdo con lo indicado en el párrafo anterior. En dicha Versión constarán los términos y la vigencia de la renovación o prórroga.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Comisiones:</style> Durante la vigencia de la Póliza, el Asegurado podrá solicitar por escrito a la Institución de Seguros le informe el porcentaje de la Prima que, por concepto de comisión o compensación directa, corresponda al intermediario por su intervención en la celebración de este contrato. La Institución de Seguros proporcionará dicha información, por escrito o por medios electrónicos, en un plazo que no excederá de diez días hábiles posteriores a la fecha de recepción de la solicitud.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="69" uuid="ed804adc-03ae-41e3-bb59-ecf984e078e1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Comunicaciones:</style>Cualquier declaración o comunicación del Contratante o del Asegurado, relacionada con el presente Contrato, deberá presentarse por escrito a la Institución de Seguros en su domicilio señalado en la carátula de la póliza.
+Cualquier comunicación realizada en forma diferente a la aquí señalada se entenderá por no hecha.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="278" y="69" width="281" height="12" uuid="c3465ea0-c0fd-4e94-93b9-b271d512e7e4"/>
+				<text><![CDATA[<style forecolor="#003366" pdfFontName="Helvetica-Bold" isBold="True">CLÁUSULAS CONTRACTUALES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="277" y="82" width="281" height="635" uuid="ddaf4687-7a92-4710-a07a-ae8b4d194abc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Medidas que puede tomar la Institución de Seguros en caso de siniestro</style> En caso de siniestro que afecte a los bienes asegurados y mientras no se haya fijado definitivamente el importe de la indemnización, la Institución de Seguros, por conducto de sus representantes, podrá examinar, clasificar y valorizar los bienes en el lugar donde se encuentren, para determinar la extensión del siniestro.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Beneficiario preferente</style> Cuando en el seguro se designe un Beneficiario preferente, en caso de siniestro, la Institución de Seguros indemnizará al citado Beneficiario preferente, hasta por el interés que le corresponda.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Moneda</style> Tanto el pago de la prima como las indemnizaciones a que haya lugar por esta póliza, serán liquidados en el tipo de moneda que se establezca en la carátula de la póliza, en el país, y en los términos de la Ley Monetaria vigente en la fecha de pago.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Terminación Anticipada del Contrato</style>
+Esta póliza podrá ser terminada por la Institución de Seguros, siempre y cuando dé aviso por escrito con al menos treinta días de anticipación al Contratante o Asegurado, y al Beneficiario preferente. En este caso, la Institución de Seguros devolverá al Contratante la prima no devengada calculada a prorrata, dentro de los 15 días siguientes a la fecha en que surta efecto la terminación del contrato.
+La póliza también podrá ser cancelada por el Asegurado o Contratante contando con el visto bueno del Beneficiario preferente, en cuyo caso, la Institución de Seguros tendrá derecho a la parte de la prima que corresponda al tiempo durante al cual el seguro hubiera estado en vigor de acuerdo con la siguiente Tarifa para terminación anticipada
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Fraude, dolo, mala fe o culpa grave</style> Las obligaciones de la Institución de Seguros quedarán extinguidas:
+a. Si el Contratante o sus representantes, o el Asegurado, con el fin de hacerla incurrir en error, disimulan o declaran inexactamente hechos que excluirían o podrían restringir dichas obligaciones.
+b. Si con igual propósito no entregan a tiempo a la Institución de Seguros la documentación de que trata la Cláusula Décima (Procedimiento en Caso de Siniestro).
+c. Si hubiera en el siniestro o en la reclamación, dolo o mala fe del Asegurado o de sus dependientes.
+d. Si el siniestro se debe a culpa grave e inexcusable del Asegurado o del Contratante.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Prescripción</style> Todas las acciones que se deriven de este Contrato de Seguro, prescribirán en dos años contados desde la fecha del acontecimiento que les dio origen, en los términos del artículo 81 de la Ley Sobre el Contrato de Seguro, salvo los casos de excepción consignados en el artículo 82 de la misma Ley.
+La prescripción se interrumpirá no sólo por las causas ordinarias sino también por aquéllas a que se refiere la Ley de Protección y Defensa al Usuario de Servicios Financieros.
+]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="32e77cfd-4a13-4d9a-b9f1-f6ba31593b96"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="281" height="716" uuid="4cf13fa2-0505-4d39-bcd9-5e611de44e2a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Peritaje:</style> Al existir desacuerdo entre el Asegurado y la Institución de Seguros acerca del monto de cualquier pérdida o daño, la cuestión será sometida a dictamen de un perito nombrado de común acuerdo, por escrito, por ambas partes; si no se pusieran de acuerdo en el nombramiento de un solo perito, se designarán dos, uno por cada parte, lo cual se hará en el plazo de diez días contados a partir de la fecha en que una de ellas hubiera sido requerida por la otra, por escrito, para que lo hiciera. Antes de empezar sus labores, los dos peritos nombrarán un tercero para el caso de discordia.
+Si una de las partes se negara a nombrar su perito, o simplemente no lo hiciera cuando sea requerida por la otra, o si los peritos no se pusieran de acuerdo en el nombramiento del tercero, será la Autoridad Judicial la que, a petición de cualquiera de las partes, hará el nombramiento del perito, del perito tercero o ambos, si así fuera necesario.
+El fallecimiento de una de las partes cuando fuera persona física o su disolución si fuera una sociedad, ocurridos mientras se esté realizando el peritaje, no anulará ni afectará los poderes o atribuciones del perito o de los peritos o del perito tercero, según el caso, o si alguno de los peritos de las partes o el tercero falleciera antes del dictamen será designado otro por quien corresponda (las partes, los peritos o el Poder Judicial) para que lo sustituya.
+Los gastos y honorarios que se originen con motivo del peritaje serán a cargo de la Institución de Seguros y del Asegurado, por partes iguales, pero cada una cubrirá los honorarios de su propio perito.
+El peritaje a que esta cláusula se refiere no implica aceptación de la reclamación por parte de la Institución de Seguros, simplemente determinará la pérdida que eventualmente estuviera obligada a resarcir, quedando las parte
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Lugar de pago de indemnización:</style> La Institución de Seguros hará el pago de cualquier indemnización en sus oficinas, en el curso de los treinta días naturales siguientes a la fecha en que haya recibido los documentos e información que le permitan conocer el fundamento de la reclamación, en los términos de la Cláusula 10ª. (Procedimiento en Caso de Siniestro), de esta póliza.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Interés moratorio</style> Si la Institución no cumple con las obligaciones asumidas en el Contrato de Seguro al hacerse exigibles legalmente, deberá pagar al acreedor una indemnización por mora de acuerdo al artículo 276 de la Ley de Instituciones de Seguros y de Fianzas mismo que se transcribe a continuación:
+“ARTÍCULO 276.- Si una Institución de Seguros no cumple con las obligaciones asumidas en el Contrato de Seguro dentro de los plazos con que cuente legalmente para su cumplimiento, deberá pagar al acreedor una indemnización por mora de acuerdo con lo siguiente:
+I. Las obligaciones en moneda nacional se denominarán en Unidades de Inversión, al valor de éstas en la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y su pago se hará en moneda nacional, al valor que las Unidades de Inversión tengan a la fecha en que se efectúe el mismo, de conformidad con lo dispuesto en el párrafo segundo de la fracción VIII de este artículo.
+Además, la Institución de Seguros pagará un interés moratorio sobre la obligación denominada en Unidades de Inversión conforme a lo dispuesto en el párrafo anterior, el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="716" uuid="c03a185f-ba4e-4383-846a-e0d9f247d583"/>
+				<textElement verticalAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[cual se capitalizará mensualmente y cuya tasa será igual al resultado de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en Unidades de Inversión de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora;
+II. Cuando la obligación principal se denomine en moneda extranjera, adicionalmente al pago de esa obligación, la Institución de Seguros estará obligada a pagar un interés moratorio el cual se capitalizará mensualmente y se calculará aplicando al monto de la propia obligación, el porcentaje que resulte de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en dólares de los Estados Unidos de América, de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora;
+III. En caso de que a la fecha en que se realice el cálculo no se hayan publicado las tasas de referencia para el cálculo del interés moratorio a que aluden las fracciones I y II de este artículo, se aplicará la del mes inmediato anterior y, para el caso de que no se publiquen dichas tasas, el interés moratorio se computará multiplicando por 1.25 la tasa que las sustituya, conforme a las disposiciones aplicables;
+IV. Los intereses moratorios a que se refiere este artículo se generarán por día, a partir de la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y hasta el día en que se efectúe el pago previsto en el párrafo segundo de la fracción VIII de este artículo. Para su cálculo, las tasas de referencia a que se refiere este artículo deberán dividirse entre trescientos sesenta y cinco y multiplicar el resultado por el número de días correspondientes a los meses en que persista el incumplimiento;
+V. En caso de reparación o reposición del objeto siniestrado, la indemnización por mora consistirá únicamente en el pago del interés correspondiente a la moneda en que se haya denominado la obligación principal conforme a las fracciones I y II de este artículo y se calculará sobre el importe del costo de la reparación o reposición;
+VI. Son irrenunciables los derechos del acreedor a las prestaciones indemnizatorias establecidas en este artículo. El pacto que pretenda extinguirlos o reducirlos no surtirá efecto legal alguno. Estos derechos surgirán por el solo transcurso del plazo establecido por la Ley para el pago de la obligación principal, aunque ésta no sea líquida en ese momento.
+Una vez fijado el monto de la obligación principal conforme a lo pactado por las partes o en la resolución definitiva dictada en juicio ante el juez o árbitro, las prestaciones indemnizatorias establecidas en este artículo deberán ser cubiertas por la Institución de Seguros sobre el monto de la obligación principal así determinado;
+VII. Si en el juicio respectivo resulta procedente la reclamación, aun cuando no se hubiere demandado el pago de la indemnización por mora establecida en este artículo, el juez o árbitro, además de la obligación principal, deberá condenar al deudor a que también cubra esas prestaciones conforme a las fracciones precedentes;]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="f0905c33-802b-4b1e-8346-74ffac495c35"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="281" height="716" uuid="608d030f-d3e3-48d5-8ca0-2b8594458b2b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[VIII. La indemnización por mora consistente en el sistema de actualización e intereses a que se refieren las fracciones I, II, III y IV del presente artículo será aplicable en todo tipo de seguros, salvo tratándose de seguros de caución que garanticen indemnizaciones relacionadas con el impago de créditos fiscales, en cuyo caso se estará a lo dispuesto por el Código Fiscal de la Federación.
+El pago que realice la Institución de Seguros se hará en una sola exhibición que comprenda el saldo total por los siguientes conceptos:
+a) Los intereses moratorios;
+b) La actualización a que se refiere el primer párrafo de la fracción I de este
+artículo.
+c) La obligación principal.
+En caso de que la Institución de Seguros no pague en una sola exhibición la totalidad de los importes de las obligaciones asumidas en el Contrato de Seguros y la indemnización por mora, los pagos que realice se aplicarán a los conceptos señalados en el orden establecido en el párrafo anterior, por lo que la indemnización por mora se continuará generando en términos del presente artículo, sobre el monto de la obligación principal no pagada, hasta en tanto se cubra en su totalidad.
+Cuando la Institución interponga un medio de defensa que suspenda el procedimiento de ejecución previsto en esta ley, y se dicte sentencia firme por la que queden subsistentes los actos impugnados, el pago o cobro correspondientes deberán incluir la indemnización por mora que hasta ese momento hubiere generado la obligación principal, y
+IX. Si la Institución de Seguros, dentro de los plazos y términos legales, no efectúa el pago de las indemnizaciones por mora, el juez o la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros, según corresponda, le impondrán una multa de 1000 a 15000 Días de Salario.
+En el caso del procedimiento administrativo de ejecución previsto en el artículo 278 de esta Ley, si la Institución de Seguros, dentro de los plazos o términos legales, no efectúan el pago de las indemnizaciones por mora, la Comisión le impondrá la multa señalada en esta fracción, a petición de la autoridad ejecutora que corresponda conforme a la fracción II de dicho artículo.”
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Otros seguros:</style> En el supuesto de que cualquier pérdida conforme a la Póliza estuviera también cubierta, en todo o en parte, por otro seguro contra el mismo riesgo y por el mismo interés, el Asegurado deberá declararlo por escrito a la Institución de Seguros indicando el nombre de los Aseguradores, así como las sumas aseguradas. Si el Asegurado omite intencionalmente el aviso referido anteriormente, o si contrató los diversos seguros para obtener un provecho ilícito, la Institución de Seguros quedará liberada de sus obligaciones bajo la Póliza.
+Los contratos de seguro a que se hace referencia en el párrafo anterior cuando sean celebrados de buena fe, en la misma o en diferentes fechas, por una suma total superior al valor del interés Asegurado, serán válidos y obligarán a cada uno de los Aseguradores hasta el valor íntegro de la pérdida sufrida, dentro de los límites de la suma que hubieren Asegurado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="716" uuid="17b4883a-027a-4f52-84a7-de7aaf59dd88"/>
+				<textElement verticalAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[El Asegurador que pague conforme a lo descrito en el párrafo anterior podrá repetir contra todas las demás en proporción de las sumas respectivamente aseguradas.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Subrogación de Derechos:</style> Cuando la Institución de Seguros pague una indemnización sobre esta póliza se subrogará hasta la cantidad pagada, en todos los derechos y acciones contra terceros que por causa del daño sufrido correspondan al Contratante o al Asegurado o al Beneficiario preferente. Esta acción podrá ejercerse aún en contra del Contratante, si se demuestra que éste actuó con dolo, mala fe o culpa grave.
+Si la Institución de Seguros lo solicita, a costa de ésta, el Contratante o el Asegurado harán constar la subrogación en escritura pública.
+La Institución de Seguros podrá liberarse en todo o en parte de sus obligaciones, si la subrogación es impedida por hechos u omisiones que provengan del Contratante o del Asegurado.
+Si el daño fue indemnizado sólo en parte, el Contratante o Asegurado, y la Institución de Seguros, concurrirán a hacer valer sus derechos en la proporción correspondiente.
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">Competencia:</style> En caso de controversia, el reclamante podrá hacer valer sus derechos por escrito o por cualquier otro medio, ante la Unidad Especializada de Atención de Consultas y Reclamaciones de la propia Institución de Seguros o en la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF), pudiendo a su elección, determinar la competencia por territorio, en razón del domicilio de cualquiera de sus delegaciones, en términos de los Artículos 50 Bis y 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros, y 277 de la Ley de Instituciones de Seguros y de Fianzas. Lo anterior dentro del término de dos años contados a partir de que se suscite el hecho que le dio origen, o en su caso, a partir de la negativa de la Institución a satisfacer las pretensiones del Asegurado.
+De no someterse las partes al arbitraje de la CONDUSEF, o de quien ésta proponga, se dejarán a salvo los derechos del reclamante para que los haga valer ante el juez del domicilio de dichas delegaciones. En todo caso, queda a elección del reclamante acudir ante las referidas instancias o directamente ante el citado juez. De conformidad con el Artículo 277 de la Ley de Instituciones de Seguros y de Fianzas, que a la letra dice:
+…”ARTÍCULO 277.- En materia jurisdiccional para el cumplimiento de la sentencia ejecutoriada que se dicte en el procedimiento, el Juez de los autos requerirá a la Institución de Seguros, si hubiere sido condenada, para que compruebe dentro de las setenta y dos horas siguientes, haber pagado las prestaciones a que hubiere sido condenada y en caso de omitir la comprobación, el Juez ordene al intermediario del mercado de valores o a la institución depositaria de los valores de la Institución de Seguros que, sin responsabilidad para la institución depositaria y sin requerir el consentimiento de la Institución de Seguros, efectúe el remate de valores propiedad de la Institución de Seguros, o, tratándose de instituciones para el depósito de valores a que se refiere la Ley del Mercado de Valores, transfiera los valores a un intermediario del mercado de valores para que éste efectúe dicho remate.
+En los contratos que celebren las Instituciones de Seguros para la administración, intermediación, depósito o custodia]]></text>
+			</staticText>
+		</band>
+		<band height="717">
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="-3" y="0" width="560" height="717" uuid="4edf664e-c45b-4630-8d8d-840612e718cd"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="-3" y="0" width="281" height="170" uuid="3428028b-4d75-408d-b6ad-93c1684d1aa1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[de títulos o valores que formen parte de su activo, deberá establecerse la obligación del intermediario del mercado de valores o de la institución depositaria de dar cumplimiento a lo previsto en el párrafo anterior.
+Tratándose de los contratos que celebren las Instituciones de Seguros con instituciones depositarias de valores, deberá preverse el intermediario del mercado de valores al que la institución depositaria deberá transferir los valores para dar cumplimiento a lo señalado en el párrafo anterior y con el que la Institución de Seguros deberá tener celebrado un contrato en el que se establezca la obligación de rematar valores para dar cumplimiento a lo previsto en este artículo.
+Los intermediarios del mercado de valores y las instituciones depositarias de los valores con los que las ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="278" y="0" width="280" height="170" uuid="73cc6e80-86d8-4f78-be6e-bc53243175c9"/>
+				<textElement verticalAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Instituciones de Seguros tengan celebrados contratos para la administración, intermediación, depósito o custodia de títulos o valores que formen parte de su activo, quedarán sujetos, en cuanto a lo señalado en el presente artículo, a lo dispuesto en esta Ley y a las demás disposiciones aplicables.
+La competencia por territorio para demandar en materia de seguros será determinada, a elección del reclamante, en razón del domicilio de cualquiera de las delegaciones de la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros. Asimismo, será competente el Juez del domicilio de dicha delegación; cualquier pacto que se estipule contrario a lo dispuesto en este párrafo, será nulo.”…]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="-3" y="169" width="563" height="548" uuid="c961d3ac-a227-415c-b22d-35d865c79460"/>
+				<text><![CDATA[
+
+<style forecolor="#000000"  pdfFontName="Helvetica-Bold" isBold="true">“En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, el producto de seguros denominado ___________________ quedó registrado ante la Comisión Nacional de Seguros y Fianzas, a partir del día __ de ______ de ____, con el número _____________”.
+
+“Para cualquier aclaración o duda no resueltas en relación con su seguro, contacte a la Unidad Especializada de nuestra Compañía a los teléfonos------------------, o visite www.------------------; o bien comunicarse a CONDUSEF al teléfono (55) 5448 7000 en el D.F. y del interior de la República al 01 800 999 8080 o visite la página www.condusef.gob.mx. </style>
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="3" width="180" height="30" uuid="47d83c37-689a-4732-840f-9cceeba82cec"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font fontName="Arial"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style pdfFontName="Helvetica-Bold" isBold="True">SPP-FR-FI-04 	 
+Versión/Fecha: 01/31-08-18 </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="350" y="3" width="100" height="30" uuid="d2076fc0-e9bb-4266-a4e9-1e3c20890e81"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="450" y="3" width="100" height="30" uuid="47bca7d5-c5c7-4133-9ab3-ce7a81a2ec3b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

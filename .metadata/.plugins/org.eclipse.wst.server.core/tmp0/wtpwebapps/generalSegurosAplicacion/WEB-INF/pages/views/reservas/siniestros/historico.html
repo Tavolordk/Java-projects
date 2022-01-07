@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8"/></head></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-8">HISTÓRICO</h1>
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<button class="btn btn-primary" id="btnDescargarHistorico" style="margin-top:32px"
+						type="button">Descargar Excel</button>
+				</div>
+				<!-- TABLA -->
+				<div class="form-group col-md-12">
+					<div class="card-content">
+						<div class="table-responsive main-container"
+							style="background-color: #ffff;">
+							<table id="tabalHistorico"
+								class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+								style="width: 100%">
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/reservas/historico.js"
+		th:src="@{/resources/js/pages/reservas/historico.js}"></script>
+	<script src="/resources/js/pages/reservas/historicoC.js"
+		th:src="@{/resources/js/pages/reservas/historicoC.js}"></script>
+</body>
+
+</html>

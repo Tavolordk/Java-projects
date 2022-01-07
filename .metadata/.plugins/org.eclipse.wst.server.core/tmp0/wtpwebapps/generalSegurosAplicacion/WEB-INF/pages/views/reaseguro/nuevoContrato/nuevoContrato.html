@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="content-wrap">
+		<!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+		<main id="content" class="content" role="main">
+			<ol class="breadcrumb">
+				<li>Reaseguro</li>
+				<li>Contrato de reaseguro</li>
+				<li><span class="fw-semi-bold">Nuevo contrato</span></li>
+			</ol>
+			<h1 class="page-title">
+				Reaseguro - <span class="fw-semi-bold">Nuevo contrato</span>
+			</h1>
+			<br>
+			<div class="row mb-lg">
+				<div class="col-lg-12">
+					<div class="clearfix">
+						<ul class="nav nav-tabs  pull-xs-left" id="myTab" role="tablist" >
+							<li class="nav-item"><a class="nav-link  tabActive active tema1"
+								id="home-tab" data-toggle="tab" href="#tipoContrato" role="tab"
+								aria-controls="basic" aria-expanded="true">TIPO CONTRATO</a></li>
+							<li class="nav-item" ><a class="nav-link  tabActive tema1"  id="profile-tab1"
+								data-toggle="tab" href="#contrato" role="tab"
+								aria-controls="assumtion" aria-expanded="false">CONTRATO</a></li>
+							<li class="nav-item" ><a class="nav-link  tabActive tema1"  id="profile-tab2"
+								data-toggle="tab" href="#reaseguradores" role="tab"
+								aria-controls="assumtion" aria-expanded="false">REASEGURADORES</a></li>
+							<li class="nav-item" ><a class="nav-link  tabActive tema1"  id="profile-tab3"
+								data-toggle="tab" href="#capas" role="tab"
+								aria-controls="assumtion" aria-expanded="false">CAPAS</a></li>
+						</ul>
+					</div>
+					<div class="tab-content mb-lg" id="myTabContent">
+					<!-- Sección de nuevo contrato -->
+						<div role="tabpanel" class="tab-pane active in clearfix"
+							id="tipoContrato" aria-labelledby="basic-tab" aria-expanded="true">
+							<section class="widget">
+								<div class="widget-body">
+									<form class="needs-validation" enctype="text/plain"  id="formNuevoContrato"
+										autocomplete="off">
+										<h2 style="color: #003489;" class="fw-semi-bold">Tipo contrato</h2><br>
+										<div class="from-goup row ">
+										<div class="col-md-4">
+											Tipo contrato
+											<select id="idTipoContrato" name="idTipoContrato" class="form-control text-uppercase tipoContrato">		
+											</select>
+										</div>
+										<div class="col-md-4">
+											Tipo reaseguro
+											<select id="idTipoReaseguro" name="idTipoReaseguro" class="form-control tipoReaseguro"></select>
+										</div>
+										<div class="col-md-4">
+											Tipo cobertura
+											<select id="idTipoAutomatico" name="idTipoAutomatico" class="form-control tipoCobertura">
+											</select>
+										</div>
+										<div class="col-md-4">
+											Tipo protección
+											<select id="idTipoProteccion" name="idTipoProteccion" class="form-control tipoProteccion">
+											</select>
+										</div>
+										<div class="col-md-4">
+											Nombre Contrato
+											<input type="text" id="nombreContrato" name="nombreContrato" class="form-control text-uppercase ramo">
+										</div>
+										<div class="col-md-4">
+											Cantidad Máxima
+											<input type="text" id="cantidadMaxima" name="cantidadMaxima" class="form-control text-uppercase producto">
+										</div>
+										</div>
+										<br>
+										<div align="right">
+											<button class="btn btn-primary btnSiguiente" id="btnprueba_click" type="button">Siguiente<span><i class="fa fa-arrow-right"></i></span></button>
+										</div>
+									</form>
+								</div>
+							</section>
+						</div>
+					
+										<div class ="form-group col-md-10 d-flex justify-content-start">
+											<button class="btn btn-primary btnAnterior btnAgregarReaseguradores" type="reset"><span><i class="fa fa-arrow-left"></i></span>Anterior</button>
+										</div>
+
+										<div class="form group col-md-12 justify-content-end">
+											<button class="btn btn-primary btnGuardado">Guardar<span><i class="fa fa-save"></i></span></button>
+										</div><br>
+								</div>
+						</div>
+						
+				</div>
+</main>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>AGREGAR CONTRATO</h3>
+      <form id="addUser" action="">
+        <div class="form-group">
+        Tipo Contrato
+          <input class="form-control" type="text" name="tipoContrato" placeholder="Tipo Contrato" required>
+        </div>
+        <div class="form-group">
+        Tipo Reaseguro
+          <input class="form-control" type="text" name="tipoReaseguro" placeholder="Tipo Reaseguro" required>
+        </div>
+        <div class="form-group">
+        Tipo Cobertura
+          <input class="form-control" type="number" name="tipoCobertura" min="10" max="100" placeholder="Tipo Cobertura" required>
+        </div>
+        <div class="form-group">
+        Tipo Protección
+          <input class="form-control" type="number" name="tipoProteccion" min="10" max="100" placeholder="Tipo Protección" required>
+        </div>
+        <div class="form-group">
+        Nombre Contrato
+          <input class="form-control" type="number" name="NombreContrato" min="10" max="100" placeholder="Nombre contrato" required>
+        </div>
+        <div class="form-group">
+        Cantidad Máxima
+          <input class="form-control" type="number" name="cantidadMaxima" min="10" max="100" placeholder="Cantidad Máxima" required>
+        </div>
+
+        <button class="btn btn-primary form-control" type="submit">Enviar</button>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <h3>Contrato</h3>
+      <table id="userTable" class="table table-striped">
+        <tr>
+          <th>Tipo Contrato</th>
+          <th>Tipo Reaseguro</th>
+          <th colspan="3">Tipo Cobertura</th>
+          <th>Tipo Protección</th>
+          <th>Nombre Contrato</th>
+          <th>Cantidad Máxima</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Actualizar</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<script th:src="@{/resources/js/settings.js}"></script>
+	<script th:src="@{/resources/js/app.js}"></script>
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/utils.js}"></script>
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+
+	<script th:src="@{/resources/js/fileinputConfig.js}"></script>
+	<script th:src="@{/resources/js/charts.js}"></script>
+	<!-- Tabs -->
+	<script th:src="@{/resources/js/jquery.bootstrap.js}"></script>
+	<script th:src="@{/resources/js/tab.js}"></script>
+	
+	<!-- Alert -->
+	
+	
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/resources/js/jquery-autosize/jquery.autosize.min.js}"></script>
+	<script	th:src="@{/resources/js/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js}"></script>
+	<script	th:src="@{/resources/js/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js}"></script>
+	<script th:src="@{/resources/js/select2/select2.min.js}"></script>
+	<script th:src="@{/resources/js/switchery/dist/switchery.min.js}"></script>
+	<script th:src="@{/resources/js/moment/min/moment.min.js}"></script>
+	<script	th:src="@{/resources/js/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js}"></script>
+	<script	th:src="@{/resources/js/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}"></script>
+	<script th:src="@{/resources/js/jasny-bootstrap/js/inputmask.js}"></script>
+	<script th:src="@{/resources/js/jasny-bootstrap/js/fileinput.js}"></script>
+	<script th:src="@{/resources/js/holderjs/holder.js}"></script>
+	
+	<script src="/resources/js/pages/reaseguro/contratoReaseguro/nuevoContratoC.js" th:src="@{/resources/js/pages/reaseguro/contratoReaseguro/nuevoContratoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/contratoReaseguro/nuevoContrato.js" th:src="@{/resources/js/pages/reaseguro/contratoReaseguro/nuevoContrato.js}"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>RR6 TRIME</h4>
+			</div>
+		<div class="card-content">
+		<div th:fragment="formRR6TRIME">
+			<form id="RR6TRIMEform" autocomplete="off" class="needs-validation" novalidate>
+				
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="fecha">Año:</label>
+						<div class="input-group">
+								<input type="text" class="form-control dateYear" id="fecha" name="fecha" maxlength="10"/>
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="trimestre">Trimestre:</label>
+						<select	class="form-control text-uppercase" id="trimestre" name="trimestre">
+							<option value="1">1er TRIMESTRE</option>
+							<option value="2">2do TRIMESTRE</option>
+							<option value="3">3er TRIMESTRE</option>
+							<option value="4">4to TRIMESTRE</option>
+						</select>
+					</div> 
+					
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="rr6trimeGenerar">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Generar archivo
+						</button>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/reportesC.js" th:src="@{/resources/js/pages/reaseguro/reportesC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/reportes.js" th:src="@{/resources/js/pages/reaseguro/reportes.js}"></script>
+</body>
+
+</html>

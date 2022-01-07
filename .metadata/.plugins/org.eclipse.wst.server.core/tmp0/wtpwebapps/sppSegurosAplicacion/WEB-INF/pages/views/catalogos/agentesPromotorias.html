@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Agentes/Promotorías</h4>
+			</div>
+		<div class="card-content">
+
+			
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaAgentes"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+		</div>
+			<!-- Modal -->
+			<div class="modal fade" id="agenteModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoAgenteModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header"
+							style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+							<h5 class="modal-title" id="nuevoAgenteModalLongTitle">Agente</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="formAgente" autocomplete="off">
+								<div class="row">
+									<div class="form-group col-md-4 siniestro">
+										<label for="fisicaMoral">Fisica moral:</label>
+										<select	class="form-control text-uppercase" id="fisicaMoral" name="fisicaMoral">
+											<option value="F">FISICA</option>
+											<option value="M">MORAL</option>
+										</select>
+									</div>
+									
+									<div class="form-group col-md-8">
+										<label for="nombreAgente">Nombre:</label> <input
+											class="form-control text-uppercase" type="text" id="nombreAgente"	
+											name="nombre" maxlength="30"/>
+									</div>
+
+									<div class="form-group col-md-4" id="apeP">
+										<label for="nombre">Apellido Paterno:</label> <input
+											class="form-control text-uppercase" type="text" id="apePaterno"
+											name="apePaterno" maxlength="20"/>
+									</div>
+
+									<div class="form-group col-md-4" id="apeM">
+										<label for="apeMaterno">Apellido Materno:</label> <input
+											class="form-control text-uppercase" type="text" id="apeMaterno"
+											name="apeMaterno" maxlength="20" />
+									</div>
+
+									<div class="form-group col-md-4">
+										<label for="rfc">RFC:</label> 
+										<input class="form-control text-uppercase" type="text" id="rfc" name="rfc" maxlength="13" required>
+									</div>
+									
+									<div class="form-group col-md-4">
+										<label for="calle">Calle:</label> <input class="form-control text-uppercase"
+											type="text" id="calle" name="calle" maxlength="30"/>
+									</div>
+									<div class="form-group col-md-2 md-2">
+										<label for="noExterior">No. Exterior:</label> <input
+											class="form-control text-uppercase" type="text" id="noExterior" name="numeroExterior"
+											maxlength="10"/>
+									</div>
+									<div class="form-group col-md-2 md-2">
+										<label for="noInterior">No. Interior:</label> <input
+											class="form-control text-uppercase" type="text" id="noInterior" name="numeroInterior"
+											maxlength="10"
+											/>
+									</div>
+									<div class="form-group col-md-4 md-3">
+										<label for="codigoPostal">Código Postal:</label> <input
+											class="form-control text-uppercase codigoPostal" type="text" id="codigoPostal" name="codigoPostal"
+											maxlength="5"/>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="colonia">Colonia:</label>
+										<input class="form-control colonia" type="text" id="colonia" name="colonia" disabled="disabled"/>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="estado">Estado:</label> 
+										<input class="form-control estado" type="text" id="estado" name="estado" disabled="disabled"/>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="municipio">Municipio:</label> 
+										<input class="form-control municipio" type="text" id="municipio" name="municipio" disabled="disabled"/>
+									</div>
+									<div class="form-group col-md-4 md-2">
+										<label for="telefonoCelular">Teléfono Celular:</label> <input
+											class="form-control numberClass" type="text" id="telefonoCelular"
+											name="telefonoCelular" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-4 md-2">
+										<label for="telefonoOficina">Teléfono Oficina:</label> 
+										<input class="form-control numberClass" type="text" id="telefonoOficina" name="telefonoOficina" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-4 md-2">
+										<label for="correo">Correo electrónico:</label>
+										<input class="form-control text-uppercase" type="text" id="correo" name="correoElectronico" maxlength="60"/>
+									</div>
+									
+									<div class="form-group col-md-4">
+										<label for="fechaAlta">Fecha de Alta:</label> 
+										<div class="input-group">
+											<input type="text" class="form-control date currentDate" id="fechaAlta"	name="fechaAlta"
+											/>
+											<span class="input-group-text">
+											<i class="fas fa-calendar-alt"></i>
+											</span>
+										</div>
+									</div>
+
+									<div class="form-group col-md-4">
+										<label for="numCedula">Número de Cédula:</label> 
+										<input class="form-control numberClass" id="numCedula" name="numeroCedula" maxlength="20"/>										
+									</div>
+									<div class="form-group col-md-4">
+										<label for="cp">Tipo de Cédula:</label> <input
+											class="form-control text-uppercase" type="text" id="tipoCedula" name="tipoCedula" maxlength="20"/>
+									</div>
+
+									<div class="form-group col-md-4">
+										<label for="vigenciaCedula">Vigencia de Cédula:</label> 
+										<div class="input-group">
+											<input class="form-control date" id="vigenciaCedula" name="vigenciaCedula" maxlength="10"/>
+											<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+									
+									<div class="form-group col-md-4">
+										<label for="cp">Número de Fianza:</label>
+										<input class="form-control numberClass" type="text" id="fianza" name="numFianza" maxlength="20"/>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="fechaAlta">Inicio Vigencia Fianza:</label> 
+										<div class="input-group">
+											<input class="form-control date currentDate" type="text" id="iniVigFia" name="iniVigFia" maxlength="10"/>
+											<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="fechaAlta">Término Vigencia Fianza:</label> 
+										<div class="input-group">
+										<input
+											class="form-control date" type="text" id="terVigFia"
+											name="terVigFia" maxlength="10"/>
+											<span class="input-group-text">
+													<i class="fas fa-calendar-alt"></i>
+												</span>
+											</div>
+									</div>								
+									<div class="form-group col-md-4">
+										<label for="cp">Póliza RC:</label> <input
+											class="form-control numberClass" type="text" id="poliza" name="polizaRC" maxlength="20"/>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="fechaAlta">Inicio Vigencia Póliza:</label> 
+										<div class="input-group">
+										<input
+											class="form-control date currentDate" type="text" id="iniVigPol"
+											name="iniVigPol" maxlength="10"/>
+											<span class="input-group-text">
+													<i class="fas fa-calendar-alt"></i>
+												</span>
+											</div>
+									</div>
+									<div class="form-group col-md-4">
+										<label for="fechaAlta">Término Vigencia Póliza:</label> 
+										<div class="input-group">
+										<input
+											class="form-control date" type="text" id="terVigPol"
+											name="terVigPol" maxlength="10"/>
+											<span class="input-group-text">
+													<i class="fas fa-calendar-alt"></i>
+												</span>
+											</div>
+									</div>
+									
+									<div class="form-group col-md-4 siniestro">
+										<label for="cuentaClabe">Número de cuenta o CLABE:</label>
+										<input class="form-control numberClass" id="cuentaClabe" name="cuentaClabe" maxlength="18">
+									</div>
+					
+									<div class="form-group col-md-4 siniestro">
+										<label for="transferencia">Transferencia:</label>
+										<input class="form-control numberClass" id="transferencia" name="transferencia" maxlength="20">
+									</div>
+									<div class="form-group col-md-4 siniestro">
+										<label for="fisicaMoral">Promotoria:</label>
+										<select	class="form-control text-uppercase" id="promotoria" name="promotoria">
+											<option value="A">PROMOTORIA 1</option>
+											<option value="B">PROMOTORIA 2</option>
+											<option value="C">PROMOTORIA 3</option>
+										</select>
+									</div>
+									
+								</div>
+								<h2 class="display-4">Documentos</h2>
+								<div class="row">
+									<div id="contratoBloque" class="form-group col-md-6">
+										<label for="contrato">Contrato con aseguradora:</label>
+										<input id="contrato" type="file" class="file" name="file[]">
+									</div>
+									
+									<div id="cedulaBloque" class="form-group col-md-6">
+										<label for="cedula">Cédula:</label>
+										<input id="cedula" type="file" class="file" name="file[]">
+									</div>
+									
+									<div id="domicilioBloque" class="form-group col-md-6">
+										<label for="domicilio">Comprobante Domicilio:</label>
+										<input id="domicilio" type="file" class="file" name="file[]">
+									</div>
+									
+									<div id="rfcBloque" class="form-group col-md-6">
+										<label for="rfc">RFC:</label>
+										<input type="file" class="file" id="rfc" name="file[]">
+									</div>
+									
+									<div id="polizaRCBloque" class="form-group col-md-6">
+										<label for="polizaRC">Póliza RC:</label>
+										<input id="polizaRC" type="file" class="file" name="file[]">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary" id="btnGuardarAgente">
+								<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script th:src="@{/resources/js/pages/catalogos/agentesPromotoriasC.js}"></script>
+	<script th:src="@{/resources/js/pages/catalogos/agentesPromotorias.js}"></script>
+
+</body>
+</html>

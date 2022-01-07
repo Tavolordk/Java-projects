@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+	<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Solicitud manual: Accidentes personales</h4>
+			</div>
+		<div class="card-content">
+		<div class="row">
+	    	<div class="col-md-12">
+		    	<div class="float-right">
+		    		<h2>	 
+		    			<span id="numSolicitud" class="badge"></span>
+		    		</h2>	 
+		    	</div>
+	    	</div>
+    	</div>
+    	<div class="row">
+	    	<div class="col-md-12">
+		    	<div class="float-right">
+		    		<h2>	 
+		    			<span id="numPoliza" class="badge"></span>
+		    		</h2>	 
+		    	</div>
+	    	</div>
+    	</div>
+		<div class="wizard-container">
+		    <div class="card wizard-card" data-color="blue" id="wizard">
+		        
+		            <div class="wizard-navigation">
+		                <ul>
+		                    <li><a href="#solicitudTab" data-toggle="tab" class="styleTab" id="tabSolicitud">Solicitud</a></li>
+		                    <li><a href="#grupoTab" data-toggle="tab" class="styleTab" id="tabGrupos">Grupos</a></li>
+		                    <li><a href="#coberturaTab" data-toggle="tab" class="styleTab" id="tabCoberturas">Coberturas</a></li>
+		                </ul>
+		            </div>
+		            <div class="tab-content">
+		                <div class="tab-pane" id="solicitudTab">
+		                	<div th:include="views/solicitudManualAP/capturaNuevoAP :: capturaNuevoAPFragment" id="capturaNuevo"></div>
+		                </div>
+		                <div class="tab-pane" id="grupoTab">
+		                	<div th:include="views/solicitudManualAP/capturaGrupos :: capturaGruposAPFragment" id="capturaGrupos"></div>
+		                </div>
+		                <div class="tab-pane" id="coberturaTab">
+		                	<div th:include="views/solicitudManualAP/capturaCoberturas :: capturaCoberturasAPFragment" id="capturaCoberturas"></div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</div>	
+	</div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>	
+	<!-- JS Clientes -->
+	
+	<script src="/resources/js/pages/catalogos/agentesC.js" th:src="@{/resources/js/pages/catalogos/agentesC.js}"></script>
+	<script src="/resources/js/pages/clientes/clientesC.js"	th:src="@{/resources/js/pages/clientes/clientesC.js}"></script>
+	<script src="/resources/js/pages/catalogos/sucursalesC.js" th:src="@{/resources/js/pages/catalogos/sucursalesC.js}"></script>	
+	<script src="/resources/js/pages/catalogos/ramoC.js" th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramo.js" th:src="@{/resources/js/pages/catalogos/ramo.js}"></script>
+	<script src="/resources/js/pages/catalogos/conductosCobroC.js" th:src="@{/resources/js/pages/catalogos/conductosCobroC.js}"></script>
+	<script src="/resources/js/pages/catalogos/monedaC.js" th:src="@{/resources/js/pages/catalogos/monedaC.js}"></script>	
+	<script src="/resources/js/pages/catalogos/formaPagoC.js" th:src="@{/resources/js/pages/catalogos/formaPagoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/subramoC.js" th:src="@{/resources/js/pages/catalogos/subramoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/productoC.js" th:src="@{/resources/js/pages/catalogos/productoC.js}"></script>
+	<script src="/resources/js/pages/emision/personalesC.js" th:src="@{/resources/js/pages/emision/personalesC.js}"></script>
+    <script src="/resources/js/pages/emision/personales.js"   th:src="@{/resources/js/pages/emision/personales.js}"></script>
+	<script src="/resources/js/pages/catalogos/agrupadorC.js" th:src="@{/resources/js/pages/catalogos/agrupadorC.js}"></script>
+	<script src="/resources/js/pages/catalogos/sucursales.js" th:src="@{/resources/js/pages/catalogos/sucursales.js}"></script>	
+	<script src="/resources/js/pages/catalogos/ocupacionC.js" th:src="@{/resources/js/pages/catalogos/ocupacionC.js}"></script>
+	<script src="/resources/js/pages/catalogos/ocupacion.js" th:src="@{/resources/js/pages/catalogos/ocupacion.js}"></script>	
+	<script src="/resources/js/pages/emision/gruposC.js" th:src="@{/resources/js/pages/emision/gruposC.js}"></script>
+	<script src="/resources/js/pages/emision/grupos.js" th:src="@{/resources/js/pages/emision/grupos.js}"></script>
+	<script src="/resources/js/pages/emision/coberturaC.js" th:src="@{/resources/js/pages/emision/coberturaC.js}"></script>
+	<script src="/resources/js/pages/emision/cobertura.js" th:src="@{/resources/js/pages/emision/cobertura.js}"></script>
+	
+	<script src="/resources/js/pages/solicitudCabecera/solicitudCabeceraC.js" th:src="@{/resources/js/pages/solicitudCabecera/solicitudCabeceraC.js}"></script>
+	<script src="/resources/js/pages/solicitudCabecera/solicitudCabecera.js" th:src="@{/resources/js/pages/solicitudCabecera/solicitudCabecera.js}"></script>
+	
+		
+	
+</body>
+
+</html>

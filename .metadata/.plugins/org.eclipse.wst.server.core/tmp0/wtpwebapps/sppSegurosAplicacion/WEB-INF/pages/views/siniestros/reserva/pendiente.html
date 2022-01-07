@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reserva pendiente de siniestros</h4>
+			</div>
+		<div class="card-content">
+			<form id="formReservaPendiente" autocomplete="off" class="needs-validation" novalidate>
+				<label>Tipo Busqueda</label>
+				<div class = "row">
+					<div class = "form-check form-group col-md-3">
+						<input id = "siniestroCheck" type="radio" class = "form-check-inpu" name = "tipoBusqueda" checked value="S">
+						<label class="form-check-label" for = "tipoBusqueda">Siniestro</label>
+					</div>
+					<div class = "form-check form-group col-md-3">
+						<input id = "fechasCheck" type="radio" class = "form-check-inpu" name = "tipoBusqueda" value="F">
+						<label class="form-check-label" for = "tipoBusqueda">Fechas</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-3 fechas" style ="display:none">
+						<label for="txtFechaRegistroDe">Fecha inicio</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" data-mask="0000-00-00"
+								data-date-end-date="0d" placeholder="aaaa-mm-dd" id="fechaIni"> <span
+								class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-3 fechas" style ="display:none">
+						<label for="txtFechaRegistroHasta">Fecha fin</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" data-mask="0000-00-00"
+								data-date-end-date="0d" placeholder="aaaa-mm-dd" id="fechaFin"> <span
+								class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+							 </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6 numSiniestro">
+						<label for="txtBusca">Número siniestro: </label>
+						<div class="input-group">
+							<input class="form-control text-uppercase" id="txtBusca" maxlength="15">
+						</div>
+					</div>
+				</div>
+				
+				<div class = "row">
+				<div class="form-group col-md-4">
+					<div class="input-group">
+						<button id="btnReservaPendientePorSiniestro" type="button" class="btn btn-primary">Buscar</button>
+					</div>
+				</div>
+				</div>
+				
+				<div class="table-responsive main-container background-tabla reservaTable">
+					<table id="resultadoBusqueda"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<!-- JS Siniestros -->
+	<script src="/resources/js/pages/siniestros/siniestrosC.js" th:src="@{/resources/js/pages/siniestros/siniestrosC.js}"></script>
+	<script src="/resources/js/pages/siniestros/siniestros.js" th:src="@{/resources/js/pages/siniestros/siniestros.js}"></script>
+</body>
+</html>

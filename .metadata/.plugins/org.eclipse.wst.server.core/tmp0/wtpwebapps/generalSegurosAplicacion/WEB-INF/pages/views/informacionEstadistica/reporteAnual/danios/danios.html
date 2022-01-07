@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="content-wrap">
+		<!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+		<main id="content" class="content" role="main">
+		<ol class="breadcrumb">
+			<li>Información Estadistica</li>
+			<li>Reporte Anual</li>
+			<li class="active">Daños</li>
+		</ol>
+		<h1 class="page-title">
+			Información Estadistica - <span class="fw-semi-bold">Daños</span>
+		</h1>
+		<br>
+		<div class="row mb-lg">
+			<div class="col-lg-12">
+				<div class="clearfix">
+					<ul class="nav nav-tabs pull-xs-left" id="myTab" role="tablist">
+						<li class="nav-item"><a class="nav-link active" id="home-tab"
+							data-toggle="tab" href="#basic" role="tab" aria-controls="basic"
+							aria-expanded="true">Hipótesis</a></li>
+						<li class="nav-item"><a class="nav-link" id="profile-tab1"
+							data-toggle="tab" href="#consistencia" role="tab"
+							aria-controls="consistencia" aria-expanded="false">Consistencia</a></li>
+						<li class="nav-item"><a class="nav-link" id="profile-tab2"
+							data-toggle="tab" href="#validaciones" role="tab"
+							aria-controls="validaciones" aria-expanded="false">Validaciones</a></li>
+
+						<li class="nav-item"><a class="nav-link" id="profile-tab3"
+							data-toggle="tab" href="#resultados" role="tab"
+							aria-controls="resultados" aria-expanded="false">Resultados</a></li>
+					</ul>
+				</div>
+				<div class="tab-content mb-lg" id="myTabContent">
+				<!-- SECCION Consistencia -->
+					<div role="tabpanel" class="tab-pane in clearfix" id="consistencia" 
+						aria-labelledby="consistencia-tab" aria-expanded="false">
+						
+						<section class="widget">
+							<header>
+								<h2 style="color:#2867ab">
+									Cuadre con <span class="fw-semi-bold">RR7</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tables"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>Campo</th>
+												<th>Descripción</th>
+												<th class="no-sort hidden-sm-down">Error</th>
+												<th class="hidden-sm-down">Año</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="font-w">1</td>
+												<td>Número de póliza</td>
+												<td style="color:red">Contiene campos vacios</td>
+												<td>2019</td>
+											</tr>
+											<tr>
+												<td style="font-w">2</td>
+												<td>Identificador único</td>
+												<td style="color:red">No puede estar vacio</td>
+												<td>2019</td>
+											</tr>
+											<tr>
+												<td style="font-w">3</td>
+												<td>Identificador único</td>
+												<td style="color:red">No puede ser caractes especiales</td>
+												<td>2019</td>
+											</tr>
+											<tr>
+												<td style="font-w">3</td>
+												<td>Identificador único</td>
+												<td style="color:red">No puede tener minúsculas</td>
+												<td>2018</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="form-row">
+									<div class="col-md-6">
+										<div class="form-group col-md-12">
+											<button class="btn btn-primary" id="btnCargaArchivo3"
+												type="button">Exportar Validaciones</button>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group col-md-12">
+											<button class="btn btn-primary" id="btnCargaArchivo3"
+												type="button">Calcular SESAS</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="widget">
+							<header>
+								<h2 style="color:#2867ab">
+									Historico de<span class="fw-semi-bold">Tendencias</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<p>
+									Esta tabla representa la tendencia en Ramos
+								</p>
+								<div class="mt">
+									<table id="datatable-table"
+										class="table table-striped">
+										<thead>
+											<tr>
+												<th>Ramo</th>
+												<th>Prima</th>
+												<th class="no-sort hidden-sm-down">Prima devengada</th>
+												<th class="hidden-sm-down">Ocurridos</th>
+												<th class="hidden-sm-down">Gastos de ajuste</th>
+												<th class="no-sort">No.siniestros</th>
+												<th class="hidden-sm-down">No. Certificados</th>
+												<th class="hidden-sm-down">No. Pólizas</th>
+											</tr>
+										</thead>
+										<tbody id="info">
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div role="tabpanel" class="tab-pane active in clearfix" id="basic"
+						aria-labelledby="basic-tab" aria-expanded="true">
+						<section class="widget">
+							<header style="margin-bottom: 15px;">
+								<h2 style="color:#2867ab">
+									Carga de <span class="fw-semi-bold">Validaciones</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<form class="form-horizontal" role="form"
+									enctype="multipart/form-data" id="formArchivoEmision"
+									autocomplete="off">
+									<fieldset>
+									<div class="form-group row">
+										<div class="col-md-12">
+												<label class="col-md-12 control-label" for="default-select">Ejercicio</label>
+												<select
+													data-placeholder="Selecciona tipo de inserción"
+													class="select2 form-control" id="insercionA">
+													<option value="IM">2018</option>
+													<option value="0">2019</option>
+													<!-- <option value="UM">Sobre escribir información</option> -->
+													<option value="IM">2020</option>
+													
+												</select>
+											</div>
+									</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo RCV </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo MYT </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo CER </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo CYM </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo INC </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo RHI </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo TEV </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="control-label col-md-2 text-md-right"
+												for="fileInput"> Cargar archivo RR7 </label>
+											<div class="col-md-10">
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccionar archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileInput" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar</a>
+												</div>
+												<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<button class="btn btn-primary" id="btnCargaArchivo"
+													type="button">Cargar archivos</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</section>
+						<section class="widget">
+							<header>
+								<h2 style="color:#2867ab">
+									Historico <span class="fw-semi-bold">Carga en Sistema</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<p>
+									Esta tabla representa los archivos cargados hasta el momento
+								</p>
+								<div class="mt">
+									<table id="datatable-table"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>Archivo</th>
+												<th>2017</th>
+												<th class="no-sort hidden-sm-down">2018</th>
+												<th class="hidden-sm-down">2019</th>
+												<th class="hidden-sm-down">2020</th>
+												<th class="no-sort">2021</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="font-w">RCV</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">MYT</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">CER</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">CYM</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">INC</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">RHI</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">TEV</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+											<tr>
+												<td style="font-w">RR7</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:green">OK</td>
+												<td style="color:red">NO</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						<section class="widget">
+							<header>
+								<h2 style="color:#2867ab">
+									Archivo de <span class="fw-semi-bold">Validaciones</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<p>
+									Se muestra el catálogo de validaciones
+								</p>
+								<div class="mt">
+									<table id="datatable-table"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>Campo</th>
+												<th>Descripción</th>
+												<th class="no-sort hidden-sm-down">Error</th>
+												<th class="hidden-sm-down">Año</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td style="font-w">1</td>
+												<td>Número de póliza</td>
+												<td style="color:red">Contiene campos vacios</td>
+												<td>2019</td>
+											</tr>
+											<tr>
+												<td style="font-w">2</td>
+												<td>Identificador único</td>
+												<td style="color:red">No puede estar vacio</td>
+												<td>2019</td>
+											</tr>
+											<tr>
+												<td style="font-w">3</td>
+												<td>Identificador único</td>
+												<td style="color:red">No puede ser caractes especiales</td>
+												<td>2019</td>
+											</tr>
+											<tr>
+												<td style="font-w">3</td>
+												<td>Identificador único</td>
+												<td style="color:red">No puede tener minúsculas</td>
+												<td>2018</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="form-row" style="text-align: center;">
+									<div class="col-md-6">
+										<div class="form-group col-md-12">
+											<button class="btn btn-primary" id="btnCargaArchivo3"
+												type="button">Exportar Validaciones</button>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<header style="    margin-top: 20px;text-align: left;">
+											<h2 style="color:#2867ab">
+												Calcular <span class="fw-semi-bold">SESAS</span>
+											</h2>
+										</header>
+										<div class="form-group col-md-4">
+													<label class="col-md-12 control-label" for="default-select">
+														Seleccione Tipo de Ramo
+													</label> 
+													<select data-placeholder="Selecciona Ramo" class="select2 form-control" id="tipoRamo" required="required">
+														<option value="0">Selecciona Ramo</option>
+														<option value="Incendio">Incendio</option>	
+														<option value="TEV">Terremoto</option>
+														<option value="RHI">Riesgos Hidro</option>
+														<option value="AGR">Agrícola</option>
+														<option value="CYM">diversos CYM</option>
+														<option value="CEER">diversos CEER</option>
+														<!-- <option value="Incendio">Incendio</option>	
+															
+														-->
+													</select>
+										</div>
+										<div class="form-group col-md-4">
+													<label class="col-md-12 control-label" for="default-select">
+														Seleccion Año Ejercicio
+													</label> 
+													<select data-placeholder="Selecciona Año" class="select2 form-control" id="tipoAnio" required="required">
+														<option value="0">Selecciona Año</option>
+														<option value="2019">2019</option>
+														<option value="2020">2020</option>
+													</select>
+										</div>
+										<div class="form-group col-md-4">
+													<label class="col-md-12 control-label" for="default-select">
+														Tipo de Acción 
+													</label> 
+													<select data-placeholder="Selecciona Año" class="select2 form-control" id="tipoDes" required="required" name="seleccionAccion">
+														<option value="0">Selecciona acción</option>
+														<option value="CD">Generar (proceso y descarga)</option>
+														<option value="C">Descargar(sesa generada)</option>
+													</select>
+										</div>
+										<div class="form-group col-md-12">
+											<button class="btn btn-primary" id="btnSesaInsendio" name 
+												type="button">Generar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					
+					<!-- SECCION Validaciones -->
+					<div role="tabpanel" class="tab-pane in clearfix" id="validaciones" 
+						aria-labelledby="validaciones-tab" aria-expanded="false">
+						<section class="widget">
+							<header>
+								<h2 style="color: #2867ab">
+									<span class="fw-semi-bold">Validaciones</span>
+								</h2>
+							</header>
+							<div class="widget-body">
+								<form enctype="multipart/form-data" id="formArchivoEmision2"
+									autocomplete="off">
+									<div class="from-goup row ">
+										<div class="col-md-6">
+											<label class="col-md-12 control-label" for="default-select"></label>Tipo
+											de inserción <select
+												data-placeholder="Selecciona tipo de inserción"
+												class="select2 form-control" id="insercionA">
+												<option value="0">Seleccione un tipo de inserción</option>
+												<!-- <option value="UM">Sobre escribir información</option> -->
+												<option value="IM">Agregar Información</option>
+											</select>
+										</div>
+										<br>
+										<div class="from-goup row ">
+											<!-- <div class="col-md-6">
+										<label class="col-md-12 control-label" for="default-select">Seleccione un archivo para subir</label>
+											<input type="file" class="form-control-file" id="fileInput2"> 
+										</div>	 -->
+										</div>
+									</div>
+									<br>
+									<div class="form-row">
+										<div class="form-group col-md-12 text-align: right;">
+											<button class="btn btn-primary" id="btnCargaArchivo3"
+												type="button">Cargar archivo</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</section>
+					</div>
+					<!-- SECCION Resultados -->
+					<div role="tabpanel" class="tab-pane in clearfix" id="resultados" 
+						aria-labelledby="resultados-tab" aria-expanded="false">
+						<section class="widget">
+							<header>
+								<h2 style="color: #2867ab">
+									<span class="fw-semi-bold">Resultados</span>
+								</h2>
+							</header>
+							<div class="widget-body">
+								<form enctype="multipart/form-data" id="formArchivoEmision2"
+									autocomplete="off">
+									<div class="from-goup row ">
+										<div class="col-md-6">
+											<label class="col-md-12 control-label" for="default-select"></label>Tipo
+											de inserción <select
+												data-placeholder="Selecciona tipo de inserción"
+												class="select2 form-control" id="insercionA">
+												<option value="0">Seleccione un tipo de inserción</option>
+												<!-- <option value="UM">Sobre escribir información</option> -->
+												<option value="IM">Agregar Información</option>
+											</select>
+										</div>
+										<br>
+										<div class="from-goup row ">
+											<!-- <div class="col-md-6">
+										<label class="col-md-12 control-label" for="default-select">Seleccione un archivo para subir</label>
+											<input type="file" class="form-control-file" id="fileInput2"> 
+										</div>	 -->
+										</div>
+									</div>
+									<br>
+									<div class="form-row">
+										<div class="form-group col-md-12 text-align: right;">
+											<button class="btn btn-primary" id="btnCargaArchivo3"
+												type="button">Cargar archivo</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+		</main>
+	</div>
+
+
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<script th:src="@{/resources/js/settings.js}"></script>
+	<script th:src="@{/resources/js/app.js}"></script>
+	<!-- JS graficas -->
+	<script th:src="@{/resources/js/jquery.sparkline/index.js}"></script>
+	<script th:src="@{/resources/js/d3/d3.min.js}"></script>
+	<script th:src="@{/resources/js/rickshaw/rickshaw.min.js}"></script>
+	<script th:src="@{/resources/js/raphael/raphael-min.js}"></script>
+	<script
+		th:src="@{/resources/js/flot.animator/jquery.flot.animator.min.js}"></script>
+	<script th:src="@{/resources/js/flot/jquery.flot.js}"></script>
+	<script
+		th:src="@{/resources/js/flot-orderBars/js/jquery.flot.orderBars.js}"></script>
+	<script th:src="@{/resources/js/flot/jquery.flot.selection.js}"></script>
+	<script th:src="@{/resources/js/flot/jquery.flot.time.js}"></script>
+
+	<script th:src="@{/resources/js/nvd3/build/nv.d3.min.js}"></script>
+	<script th:src="@{/resources/js/morris.js/morris.min.js}"></script>
+	<script
+		th:src="@{/resources/js/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js}"></script>
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-fix/collapse.js}"></script>
+	<script th:src="@{/resources/js/ui-tabs-accordion.js}"></script>
+	<script th:src="@{/resources/js/bootstrap/js/dist/tab.js}"></script>
+
+	<!-- page specific js graficas -->
+	
+
+	<!-- page specific libs TAblas -->
+
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script th:src="@{/resources/js/underscore/underscore-min.js}"></script>
+	<script th:src="@{/resources/js/backbone/backbone.js}"></script>
+	<script th:src="@{/resources/js/backbone.paginator/lib/backbone.paginator.min.js}"></script>
+	<script th:src="@{/resources/js/backgrid/lib/backgrid.js}"></script>
+	<script th:src="@{/resources/js/backgrid-paginator/backgrid-paginator.js}"></script>
+	<script th:src="@{/resources/js/datatables/media/js/jquery.dataTables.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	
+	<!-- page specific js -->
+	<script th:src="@{/resources/js/tables-dynamic.js}"></script>
+	<script th:src="@{/resources/js/charts.js}"></script>
+	<script src="/resources/js/utils.js" th:src="@{/resources/js/utils.js}"></script>
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+	
+	<script src="/resources/js/pages/informacionEstadistica/reporteAnual/sesaIncendio.js" th:src="@{/resources/js/pages/informacionEstadistica/reporteAnual/sesaIncendio.js}"></script>
+	<script src="/resources/js/pages/informacionEstadistica/reporteAnual/sesaIncendioC.js" th:src="@{resources/js/pages/informacionEstadistica/reporteAnual/sesaIncendioC.js}"></script>
+	
+	
+</body>
+
+</html>

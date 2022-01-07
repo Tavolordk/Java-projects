@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:richfaces="http://richfaces.ajax4jsf.org/rich"
+      xmlns:ajax="https://ajax4jsf.dev.java.net/ajax">
+
+<ui:composition template="/template/plantilla.xhtml">
+<ui:define name="barra">
+
+	<h:form>
+<center>
+       <rich:panel>
+          <f:facet name="header">
+               <h:outputText value="Formulario de datos" />
+          </f:facet>
+          <h1>Por favor rellene todos los campos del formulario</h1>
+          <br></br>
+          <b>Ingrese su nombre: </b>
+          <rich:spacer width="10" style="width: 18px; height: 6px;"></rich:spacer>
+          <h:inputText value="#{claseBean.nombre}" />
+          <br></br>
+          <h:commandButton  value="Enviar información" action="#{claseBean.enviarDato}"/>
+       </rich:panel>
+       </center>
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,6 @@
+package figura;
+
+public class Caja {
+	int ancho, alto, profundo;
+
+}

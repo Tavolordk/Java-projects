@@ -1,0 +1,10 @@
+Console.highWaterMark=88000
+StringVariablePreferencePage=125,104,103,83,
+eclipse.preferences.version=1
+org.eclipse.debug.ui.PREF_FILTER_LAUNCH_TYPES=true
+org.eclipse.debug.ui.PREF_FILTER_TYPE_LIST=org.eclipse.wildwebdeveloper.launchConfiguration.chromeRunDebug,org.eclipse.wildwebdeveloper.launchConfiguration.chromeAttachDebug,
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+org.eclipse.debug.ui.save_dirty_editors_before_launch=never
+pref_state_memento.org.eclipse.debug.ui.DebugVieworg.eclipse.debug.ui.DebugView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<DebugViewMemento org.eclipse.debug.ui.BREADCRUMB_DROPDOWN_AUTO_EXPAND\="false"/>
+preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|
+preferredTargets=com.genuitec.eclipse.code.ui.CodeToggleBreakpointsTargetFactory,default,org.eclipse.wst.jsdt.chromium.debug.ui.toggleTargetId\:com.genuitec.eclipse.code.ui.CodeToggleBreakpointsTargetFactory|default\:default|default,org.eclipse.lsp4e.debug.toggleBreakpointTarget,org.eclipse.wst.jsdt.chromium.debug.ui.toggleTargetId\:default|default,org.eclipse.lsp4e.debug.toggleBreakpointTarget\:default|default,org.eclipse.wst.jsdt.chromium.debug.ui.toggleTargetId\:default|com.genuitec.eclipse.code.ui.CodeToggleBreakpointsTargetFactory,default\:com.genuitec.eclipse.code.ui.CodeToggleBreakpointsTargetFactory|org.eclipse.lsp4e.debug.toggleBreakpointTarget\:org.eclipse.lsp4e.debug.toggleBreakpointTarget|

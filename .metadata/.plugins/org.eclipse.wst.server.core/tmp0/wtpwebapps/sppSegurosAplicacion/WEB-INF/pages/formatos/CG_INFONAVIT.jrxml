@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CG_INFONAVIT" pageWidth="595" pageHeight="842" columnWidth="573" leftMargin="11" rightMargin="11" topMargin="12" bottomMargin="12" uuid="70c75023-98a6-446e-9636-2f913d1b264f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<style name="NombreEmpresa" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="16" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="TipoDocumento" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="14" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="pestanasazules" mode="Opaque" hTextAlign="Center" vTextAlign="Middle" markup="html" pattern="" fontName="SansSerif" fontSize="10" isBold="true"/>
+	<style name="texto" mode="Opaque" hTextAlign="Justified" vTextAlign="Top" markup="html" fontName="SansSerif" fontSize="10">
+		<paragraph leftIndent="8" rightIndent="8"/>
+	</style>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="no_Certificado" class="java.lang.String"/>
+	<parameter name="expedida_Nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select Numero_Poliza,numero_certificados ,
+CASE cte.fisico
+WHEN 0 THEN ISNULL(cte.denominacion,'')
+WHEN 1 THEN ISNULL(cte.nombre_cliente + ' ' + cte.apellido_paterno + ' ' + cte.apellido_materno,'')
+END  AS Expedida
+from POLIZAS
+LEFT JOIN CLIENTES cte ON id_contratante = cte.id_cliente
+WHERE id_poliza=$P{no_Poliza}]]>
+	</queryString>
+	<field name="Numero_Poliza" class="java.lang.String"/>
+	<field name="numero_certificados" class="java.lang.String"/>
+	<field name="Expedida" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="-10" y="0" width="139" height="26" uuid="9f982b06-7d78-4512-86c2-c781f9e18dc0"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-10" y="26" width="139" height="9" uuid="9bb52336-64f7-4377-9682-298fadf24795"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="253" y="0" width="319" height="22" uuid="d4ee7425-75c2-4893-b551-091c64010c19"/>
+				<textElement markup="styled">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="253" y="22" width="319" height="14" uuid="02624a76-86b6-4e59-be5d-b17065e03f09"/>
+				<textElement textAlignment="Right" markup="styled">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#856429" pdfFontName="Helvetica-Bold">Condiciones Generales: Garantía Hogar Público </style>]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="759" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="749" uuid="1aa28295-b993-4125-ab8b-7dbddfc159ca"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="0" y="10" width="572" height="53" uuid="ea4de12e-1b60-4854-94e0-11fdd34c514d"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="109" height="26" uuid="1d3d68e1-231b-4a75-889a-867d574c8dca"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No Póliza: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement positionType="Float" mode="Opaque" x="109" y="1" width="141" height="26" uuid="7eab17b3-d0b7-41ef-8bb7-b06650e027cc"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Numero_Poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="250" y="1" width="152" height="26" uuid="6cacd64c-34a0-4992-8904-b2c30c2ac9f8"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" markup="styled">
+						<font size="11" isBold="false"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No. de Certificado: </style>
+(En caso de colectivo)
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="402" y="1" width="170" height="26" uuid="2d46b1c2-0b1d-4fea-b36d-48f9ec349a1c"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero_certificados}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="27" width="140" height="26" uuid="f675c6d3-79e7-4f21-a248-864bbac7b542"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">Expedida a nombre de: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="140" y="27" width="432" height="26" uuid="d315ff5f-bfa4-4908-8fb0-b57374dd4e45"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Expedida}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="64" width="574" height="10" uuid="a47c742f-7ef3-43ce-aaf5-af8f91ee4a40"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="74" width="286" height="15" uuid="ba40154b-83e2-4f61-8b99-d7e32be267c4"/>
+				<text><![CDATA[<b><font color="#003366">OBJETO DEL SEGURO</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="89" width="286" height="126" uuid="a3a5288b-89b2-4837-9e52-1f038d81d362"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b><i><font color="#003366">SPP Institución de Seguros, S.A. de C.V.</font></i></b>, denominada en adelante la Institución, es la responsable de pagar las indemnizaciones que ampara el siguiente Contrato, el cual tiene por objeto cubrir los daños producidos por vicios ocultos o defectos de instalación o diseño que hayan tenido su origen en la etapa de diseño desarrollo y terminación de la construcción de la vivienda, así como los daños consecuenciales relacionados directamente con los referidos vicios ocultos y defectos de la construcción, a los derechohabientes del Organismo otorgante del crédito que gocen de un crédito hipotecario para la adquisición de una vivienda nueva.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="231" width="286" height="80" uuid="e9e363dd-cf8a-4b96-8cd0-6faa8680ec82"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Esta constituido por: la solicitud, póliza, endosos y cláusulas generales. Si el contenido de la póliza o sus modificaciones no concordaren con la oferta, el asegurado podrá pedir la rectificación correspondiente dentro de los treinta días que sigan al día en que reciba la póliza. Transcurrido este plazo se considerarán aceptadas las estipulaciones de la póliza o de sus modificaciones, Artículo 25 de la Ley Sobre el Contrato de Seguro.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="327" width="286" height="58" uuid="23124c09-9b8b-4265-99fd-1d44ce518427"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Las viviendas nuevas financiadas por crédito hipotecario emitido por el Organismo otorgante del crédito, en lo que corresponde a la estructura soportante, los acabados, los elementos que constituyen la obra secundaria, las instalaciones eléctricas e hidrosanitarias, el suelo en su mecánica de adecuado funcionamiento y resistencia.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="215" width="286" height="15" uuid="ab4df785-9984-43bf-af02-6dee945f687e"/>
+				<text><![CDATA[<b><font color="#003366">CONTRATO DE SEGURO</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="312" width="286" height="15" uuid="d4b8677a-1c51-461c-900b-66bd387315d5"/>
+				<text><![CDATA[<b><font color="#003366">BIENES CUBIERTOS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="386" width="286" height="15" uuid="4e1ab05b-e8b2-4c6f-9f0e-9fb283761fcd"/>
+				<text><![CDATA[<b><font color="#003366">PERIODO DE COBERTURA</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="401" width="286" height="47" uuid="a28dadc8-841b-4dbf-8fed-3a2cb566acb9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[El inicio y fin del período de cobertura del seguro entrará en vigor a las 12 horas de la fecha de inicio de vigencia especificada en la póliza y continuará durante el plazo de seguro especificado en la misma.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="448" width="286" height="15" uuid="33761385-10a1-400a-9751-c8246b28edf9"/>
+				<text><![CDATA[<b><font color="#003366">DEFINICIONES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="463" width="286" height="296" uuid="08764980-4539-4085-8774-3aead369c31a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Acabados:</b> Son elementos o sistemas que integran la parte visible de una construcción sin considerar los elementos estructurales y cumplen una función estética, así como la de revestir los elementos que forman parte de una estructura (muros, techos, losas, etc.) para protegerlos de la intemperie o el uso final. Los acabados pueden ser al interior o al exterior de la vivienda y contar con diversas capas o niveles, desde la base adherente, hasta la final o apreciable a la vista dependiendo de los diversos sistemas constructivos y de acabados.<br>
+<b>Aseguradora:</b> Es la persona jurídica que asume el riesgo contractualmente pactado conforme a su carácter de Institución de Seguros en los términos de la Ley de Seguros y de Fianzas.<br>
+<b>Avalanchas de Lodo:</b> Deslizamiento de lodo provocado por inundaciones o lluvias.<br>
+<b>Avalúo:</b> El dictamen que elaboren los valuadores(as) profesionales sobre el valor de reposición de los bienes inmuebles y que esté certificado por la Unidad de Valuación en cuyo padrón se encuentre inscrito el valuador(a) profesional correspondiente.<br>
+<b>Beneficiario:</b> La persona, física o jurídica, que por designación del Contratante de la cobertura de Seguro denominada Calidad de la Vivienda resulta titular de derecho a la indemnización, para efectos de este Seguro siempre será el derechohabiente de Organismo otorgante del crédito.<br>
+<b>Beneficiario Preferente Irrevocable:</b> Es el Organismo otorgante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="74" width="286" height="148" uuid="e302374d-5f0d-4500-9027-8de0a1359463"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[del crédito quien tiene derecho al pago de la indemnización correspondiente, esto siempre y cuando los resultados de peritación del daño determinen un estado de pérdida total, o cuya reconstrucción ser inviable debido a la pérdida de las características mecánicas de soporte del terreno de desplante.<br>
+<b>Cimentación:</b> Conjunto de elementos estructurales cuya misión es transmitir las cargas de la edificación o sus elementos, incluido el terreno y suelo sobre el que descansa el mismo edificio o vivienda.<br>
+<b>Construcción:</b> El conjunto de la estructura soportante del inmueble, las obras secundarias, instalaciones y equipos propios del inmueble o inmuebles, descritos en las especificaciones particulares y que se hallen definidos en el proyecto ejecutivo autorizado al momento de la recepción de la vivienda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="221" width="34" height="232" uuid="1f9f9829-d115-4f08-b3c9-7541fd78a3e7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="320" y="361" width="252" height="92" uuid="264bad29-d35c-45e9-a1f5-76e241256a49"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Instalaciones y equipos propios del Inmueble:</b> para electricidad, gasfitería, gas, calefacción, aire acondicionado, audiovisuales, telefonía, seguridad, ascensores y montacargas y cualquier otra maquinaria mecánica o electrónica necesaria para el uso propio del edificio o para dar servicio al mismo, incluyendo los aparatos o máquinas que intervienen en su composición, así como sus conductos y canalizaciones necesarias.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="453" width="286" height="306" uuid="c2f6f32e-cf63-4980-9659-14afb38e4ca7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños estructurales:</b> Daños a la estructura de la construcción.<br>
+<b>Daño material:</b> el deterioro o destrucción de la construcción y/o suelo cubierta por el Seguro de Garantía Hogar.<br>
+<b>Defecto de materiales de construcción:</b> carencia o falta de cualidades de los elementos constructivos para los cuales fueron diseñados exprofeso, utilizados en el proceso constructivo del edificio y que dan lugar a un daño material.<br>
+<b>Desarrollo o Fraccionamiento:</b> Conjunto de viviendas que se encuentren en una misma ubicación.<br>
+<b>Error de diseño:</b> Determinación equivocada e inadecuada en la definición cuantitativa y/o cualitativa de los elementos del suelo y/o edificación, realizada involuntariamente, que da lugar a un daño material.<br>
+<b>Evento:</b> Suceso que origina el ejercicio del seguro. <br>
+<b>Golpe de mar o tsunami:</b> Daños por el agua ocasionados por la agitación violenta de las aguas del mar a consecuencia de una sacudida del fondo, que eleva su nivel y se propaga hasta las costas dando lugar a inundaciones.<br>
+<b>Granizo:</b> Precipitación atmosférica de agua que cae con fuerza en forma de cristales de hielo duro compacto. Bajo este concepto además se excluyen los daños causados por la obstrucción en los registros de la red hidrosanitaria y en los sistemas de drenaje localizados dentro de los predios asegurados y en las bajadas de aguas pluviales a consecuencia del granizo acumulado en las misma.]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="72d9155b-b45f-49db-89ab-f74a7bc7668a"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="320" y="221" width="252" height="140" uuid="01daf31f-a5da-41df-bed5-0d45fd5a78c0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Estructura Soportante:</b> Los elementos estructurales soportantes que contribuyen a la estabilidad de la construcción tales como cimentaciones, pilares, muros, forjados, vigas y cerchas. Las fachadas no soportantes forman parte de la estructura soportante.<br>
+<b>Obra secundaria:</b> Los elementos no definidos como estructura soportante ni como instalaciones o equipo propios del inmueble.
+<li>Cerramientos, cubierta y soleras </li>
+<li>Revestimientos, solados, alicatados y canalizaciones </li>
+<li>Tabiques fijos, falsos techos, puertas y ventanas </li>
+<li>Impermeabilización </li>]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="749" uuid="105f8796-ca14-44db-a18a-cefd5cf6ebd9"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="3d0ab040-14ac-4228-9163-99e450dbfee0"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="10" width="287" height="749" uuid="b8408b03-686b-49a6-bac0-4ab2919e16b6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Helada:</b> Fenómeno climático consistente en el descenso inesperado de la temperatura ambiente a niveles iguales o inferiores al punto de congelación del agua en el lugar de ocurrencia.<br>
+<b>Huracán:</b> Flujo de agua y aire de gran magnitud, moviéndose en trayectoria circular alrededor de un centro de baja presión, sobre la superficie marina o terrestre con velocidad periférica de vientos de impacto directo igual o mayor a 118 kilómetros por hora, que haya sido identificado como tal por el Servicio Meteorológico Nacional.<br>
+<b>Impermeabilización:</b> Sistema por el cual se impide que el agua exterior se filtre hacia el interior de la vivienda.<br>
+<b>Inundación:</b> El cubrimiento temporal del suelo por agua, a consecuencia de desviación, desbordamiento rotura de los muros de contención de ríos, canales, lagos, presas, estanques y demás depósitos o corrientes de agua, naturales o artificiales.<br>
+<b>Instalación eléctrica:</b> Conjunto de circuitos y componentes que permiten el flujo de la energía a los distintos habitáculos de la vivienda para asegurar la conexión en los puntos de consumo, así como las protecciones destinadas a equipos en condiciones de uso normal o establecidas.<br>
+Componentes:
+<li>	Cable eléctrico-fase, neutro y tierra </li>
+<li>	Tubería o canalización </li>
+<li>	Chapulas </li>
+<li>	Cajas de conexión o registros </li>
+<li>	Coples o niples </li>
+<li>	Aislamiento de conductores </li>
+<li>	Conectores </li>
+<li>	Curvas, codos </li>
+<li>	Tableros </li>
+<li>	Protecciones de diseño </li>
+<li>	Empalmes, conexión de bornes </li>
+<b>Instalación hidráulica:</b> Sistema de tuberías y sus conexiones que permiten dar cauce hermético al agua potable a diferentes puntos de la vivienda para su consumo.
+Se consideran componentes de la instalación hidráulica los siguientes:
+<li>	Tubería de cobre (M,L,K), CPVC, Polipropileno, Polietileno, PVC o material que se acepte mediante validación expresa por esta aseguradora. </li>
+<li>	Válvulas (globo, esfera, compuerta) </li>
+<li>	Conexiones: Coples, reducciones, codos, “T”, tuerca unión, conectores, tapones. </li> 
+<li>	Llaves de control angular </li>
+<b>Instalación sanitaria (y pluvial):</b> sistema de tuberías, y conexiones que permiten el desalojo de las aguas negras o residuales desde el interior de la vivienda (muebles de baño, vertederos, fregaderos, regaderas, lavabos, lavaderos, lavadoras, coladeras, etcétera) hasta los puntos de descarga como: la red pública, fosas sépticas o áreas dispuestas para descarga en el caso pluvial.
+<li>	Tubo de PVC, CPVC </li>
+<li>	Tapones PVC, CPVC </li>
+<li>	Codos en PVC </li>
+<li>	Coples en PVC, CPVC </li>
+<li>	Conectores de PVC, CPVC </li>
+<li>	Reducciones de PVC, CPVC </li>
+<li>	Yee PVC, CPVC </li>
+<li>	Coples en PVC, CPVC </li>
+<li>	Coladeras </li>
+<b>Instalación de gas:</b> sistema de tuberías y conexiones que aseguran el suministro y conducción hermética de gas de manera eficiente a los diferentes puntos de consumo en la vivienda.
+<li>	Tubería (Polietileno de alta densidad, fierro negro cédula 80, manguera especial de neopreno cobre rígido tipo “L” y tipo “K”, cobre flexible, galvanizada cédula 40). </li>
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="186" width="286" height="573" uuid="17dcedb5-99b3-4cdb-aeef-2cdb7d9d2d14"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Mano de obra defectuosa:</b> Ejecución inadecuada o de mala calidad en el proceso constructivo del edificio, cometida involuntariamente, que da lugar a un daño al amparo de esta cobertura<br>
+<b>Marejada:</b> Alteración del mar que se manifiesta con una sobre elevación de su nivel debida a una depresión o perturbación meteorológica que combina una disminución de la presión atmosférica y una fuerza cortante sobre la superficie del mar producida por los vientos. <br>
+<b>Nevada:</b> Precipitación de cristales de hielo en forma de copos. <br>
+<b>Póliza maestra:</b> Contrato en el que se convenga el aseguramiento obligatorio dentro de un determinado plazo de todas aquellas unidades de riesgo constituidas por las viviendas que en dicho plazo cumplan con los requisitos y obligaciones de aseguramiento. <br>
+<b>Siniestro:</b> Todo hecho cuyas consecuencias dañosas estén total o parcialmente amparadas por las coberturas del Seguro de Calidad de la Vivienda y se hayan manifestado durante el periodo de vigencia de la cobertura. <br>
+<b>Suelo:</b> material residual producto de la descomposición física, química o biológica de la roca madre (ígnea, sedimentaria o metamórfica) y sobre el cual se llegan a desplantar la mayor parte de las estructuras realizadas por el hombre. <br>
+<b>Terrorismo:</b> Los actos de una persona o personas que por sí mismas, o por representación de alguien  o en conexión con cualquier organización o gobierno, realicen actividades por la fuerza, violencia o por la utilización de cualquier otro medio con fines políticos, religiosos, ideológicos, étnicos, o de cualquier otra naturaleza, destinados a derrocar, influenciar presionar al gobierno de hecho o de derecho para que tome una determinación, o alterar y/o influenciar y/o producir alarma, temor o zozobra en la población, en un grupo o sección de ella o de algún sector de la economía. <br>
+<b>Urbanización y equipamientos exteriores:</b> Equipamientos viales, muros de carga, bardas perimetrales, aparcamientos exteriores, instalaciones deportivas y de recreo, jardinería, redes  de servicio y demás obras e instalaciones, en general, propias del condominio (o edificios). <br>
+<b>Valor de reposición:</b> Es la suma de dinero necesario en le momento del siniestro para costear y pagar la construcción, reconstrucción, adquisición, instalación o reparación, en su caso, de bienes muebles e inmuebles incluidos en el proyecto y a la entrega de la casa de igual clase, calidad, tamaño y capacidad que los bienes cubiertos, incluyendo el suelo, sin considerar la deducción alguna por depreciación física. <br>
+Los bienes muebles a los que se refiere este punto son aquellos adheridos al inmueble, incluyendo el costo de ejecución, honorarios de proyecto, los costos de inspección, supervisión y revisión, licencias e impuestos y, en general, cualquier otro gasto que sea necesario para la ejecución.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="10" width="286" height="104" uuid="8b7e03ca-c8d1-4df5-859f-91a785f008e8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[ • Conexiones, llaves y válvulas de seccionamiento o corte.
+Las instalaciones eléctricas, hidráulicas y de gas, se consideran desde el punto de conexión inmediato posterior al suministro (medidor de consumo si es aplicable).
+Para la sanitaria, se considera la salida al punto de conexión al colector de red dentro de los límites del predio de la vivienda. <br>
+<b>Inundación por lluvia:</b> El cubrimiento temporal del suelo por agua de lluvia a consecuencia de la inusual y rápida acumulación o desplazamiento de agua originados por lluvias.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="309" y="114" width="264" height="47" uuid="9fc51385-742a-4db1-9537-3df4628b683a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Que las lluvias alcancen por lo menos el 85% del promedio de los máximos de la zona de ocurrencia en los últimos 10 años, eliminando el máximo y el mínimo observado, medido en la estación meteorológica más cercana.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="309" y="161" width="264" height="25" uuid="c5dbbf34-468c-45bd-9611-2a6d7f45e242"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Que los bienes asegurados se encuentren dentro de una zona inundada que haya cubierto por lo menos una hectárea.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="161" width="22" height="25" uuid="37194a84-f881-4872-bad9-f91004cd5f2e"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="114" width="22" height="47" uuid="f7910396-15db-4213-8440-77e36a86cd04"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="749" uuid="42a41a66-b7c8-449c-8850-5a0f3027dbd7"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="5b4ff839-b4af-43b9-9b9b-c4a78bea37b6"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="188" width="286" height="95" uuid="58785522-d561-4ac5-811f-73f2d54c085d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Este seguro cubre la indemnización o reparación de los daños materiales causados en los bienes asegurados por vicios o defectos que tengan su origen en la cimentación o estructura del inmueble y que afecten los mismos, comprometiendo directamente su resistencia mecánica y estabilidad, hasta la suma asegurada contratada, según se especifica en la póliza y en el Endoso de entrada en vigor de la cobertura, como consecuencia exclusivamente de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="173" width="286" height="14" uuid="fe4c17e9-6657-4f1b-9ac3-b5f711d8a9b1"/>
+				<text><![CDATA[<b><font color="#003366">COBERTURA CALIDAD DE LA VIVIENDA</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="10" width="286" height="163" uuid="5b6d6d79-5e36-41b5-940b-c6be8448ff87"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Vicios ocultos:</b> Mala calidad, defecto, error o deficiencia en el diseño o construcción o materiales que dé lugar a un daño material sea o no visible a simple vista, indemnizable al amparo de esa cobertura, y cuya manifestación se produzca durante la vigencia de la cobertura.<br> 
+<b>Vientos Tempestuosos:</b> Vientos que alcanzan por lo menos la categoría de depresión tropical, tornado o grado 8 en la escala de Beaufort (62 kilómetros por hora), de acuerdo con el Servicio Meteorológico Nacional o registros reconocidos por este.<br>
+<b>Vivienda Nueva:</b> Se entiende por vivienda lo que constituye la edificación material, incluyendo las áreas comunes como son, escaleras, pasillos, indivisos en general. Incluye cimentaciones o cualquier propiedad que se encuentre debajo del nivel del suelo (plataformas de transición).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="154" width="286" height="15" uuid="568cb22e-f098-40b2-adc3-ccc7ae666878"/>
+				<text><![CDATA[<b><font color="#003366">GASTOS ADICIONALES A CUBRIR</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="240" width="286" height="70" uuid="693b946f-2004-4632-a80b-74b4a8c2e5a4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Para los gastos adicionales se establece un límite del 10% del límite máximo de responsabilidad señalado en la carátula de la póliza. <br>
+En este seguro no se aplican deducibles por lo que SPP Institución de Seguros S.A. de C.V. cubrirá en forma integral el costo de los siniestros.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="285" y="310" width="286" height="15" uuid="60336128-d4d7-436e-a843-9bb60547b426"/>
+				<text><![CDATA[<b><font color="#003366">EMISIÓN DE PÓLIZAS Y CERTIFICADOS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="325" width="286" height="150" uuid="99aa334d-72fd-4958-9582-520f403ac39e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[La póliza maestra tendrá una vigencia especifica dentro de la cual se asignarán al contratante las viviendas de las cuales deberán ser aseguradas en el marco de la póliza maestra, y con la emisión de los certificados individuales correspondientes, al término de la póliza maestra no se podrán incorporar y asegurar nuevas viviendas. <br>
+En todos los casos se deberán emitir certificados individuales por cada vivienda que sea asegurada, los cuales deberán contener el número de certificado, clave única de vivienda, el nombre del asegurado, nombre del beneficiario, el periodo de vigencia del certificado, los riesgos cubiertos, suma asegurada, la dirección del inmueble, además de los datos propios del certificado. Los certificados no podrán ser cancelables.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="490" width="286" height="81" uuid="c3922a87-b147-4b4c-9649-f69873d2bbca"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[En caso de que la reparación de la vivienda origine costos que excedan el 50% del valor de reposición de la vivienda, SPP Institución de Seguros, S.A. de C.V. pagará hasta el
+límite máximo de reposición establecido en el certificado individual. <br>
+El límite máximo de responsabilidad de la póliza se reinstalará automáticamente sin pago de prima y sin costo adicional, aplica solamente para pérdidas parciales.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="283" width="286" height="24" uuid="67b765f0-71d1-4517-8690-75b24a9becf3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[1. Daños en Materiales Estructurales (durante un periodo de 10 años)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="30" y="307" width="256" height="93" uuid="55559b12-fdb2-4b2c-934a-44928e95c0aa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los daños materiales y defectos de la estructura del inmueble, que comprometan su resistencia mecánica o estabilidad y que tengan su origen en fallas o errores de diseño, fallas o defectos de ejecución o de los materiales integrantes de la misma. 
+Los daños o defectos del suelo y/o el terreno que comprometan la resistencia o estabilidad de la vivienda deberán quedar incluidos como parte de los daños cubiertos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="307" width="30" height="93" uuid="833f56d8-47c5-447d-8364-6dfc0aa4a375"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="30" y="400" width="256" height="58" uuid="06d31281-4b70-479e-8cba-86e3c2f70d2d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los daños materiales a la obra secundaria e instalaciones y equipos propios del inmueble, urbanización, equipamientos exteriores y elementos que se encuentren presupuestados en la obra, cuando sean a consecuencia directa de un siniestro cubierto de conformidad con el párrafo precedente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="400" width="30" height="58" uuid="19853b4d-3f4c-4ed1-9073-e1eba593bd5c"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="458" width="30" height="82" uuid="4eaa3dff-283d-498a-b084-0a1178449edd"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="30" y="458" width="256" height="82" uuid="30b51978-f870-40af-9e61-346bb1476671"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación y refuerzo en que se incurra para eliminar la amenaza de hundimiento de la estructura soportante del inmueble, y que sean necesarias para salvaguardar la construcción, cuando esta circunstancia provenga del daño indemnizable, proveniente de uno de los riesgos cubiertos de vicio oculto o defecto en el diseño y construcción de la vivienda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="540" width="286" height="15" uuid="65aa5741-3fe6-4f8c-bd7a-2167b2bbc0e5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[2. Impermeabilización <i> (durante un periodo de 5 años) </i>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="30" y="555" width="256" height="70" uuid="6bd62ff8-2bba-4533-8bd1-9c91a3f47ab1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de la impermeabilización de las cubiertas de la vivienda dañadas a consecuencia de vicios ocultos, fallas en su colocación, o defectos en los materiales, cuando haya dado lugar a la manifestación de una falla en su funcionamiento evidenciada por humedad o entrada de agua desde el exterior.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="555" width="30" height="70" uuid="7055100a-6537-4a89-b595-848ccafd4a87"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="625" width="30" height="35" uuid="26a22613-8e1a-4122-8574-a71635b95ca8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="30" y="625" width="256" height="35" uuid="88fae167-ac48-40a0-82e0-1da977ae295b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la vivienda que resulten dañadas a consecuencia de siniestros amparados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="660" width="30" height="48" uuid="2fff8c41-f571-4101-9208-8cfd042d1332"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="30" y="660" width="256" height="48" uuid="94f92563-854a-40b4-ae43-1fc4d6ff7b13"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la vivienda dañadas intencionada y necesariamente con el único fin de reparar los daños cubiertos en el primer párrafo de esta sección.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="708" width="286" height="24" uuid="88b8e22f-6aed-4483-a3d3-f1548940238f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[3. Instalaciones hidrosanitarias y eléctricas <i> (durante un periodo de 2 años) </i>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="10" width="30" height="48" uuid="7539a079-e3fb-4b38-ab75-d708b9ecfef7"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="316" y="10" width="256" height="48" uuid="3ab166f8-e97b-422c-b3c8-b976af46b483"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[hidrosanitarias y eléctricas de las viviendas, que resulten con fallas o daños a consecuencia de vicios ocultos, errores de diseño, defectos en los materiales o en la instalación de los mismos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="58" width="30" height="58" uuid="e77953ee-0cad-4c2c-8b7e-681caab098f8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="316" y="58" width="256" height="58" uuid="615718be-7098-4ee8-a3e4-66d88386d417"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la vivienda, dañadas en forma intencional o no intencional a consecuencia de las reparaciones que se realicen por daños ocasionados por siniestros amparados en el párrafo anterior.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="316" y="116" width="256" height="38" uuid="c3ac2040-e7a0-4145-a86f-70f193bed9e1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la construcción dañadas con el fin de reparar los daños cubiertos en el párrafo anterior. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="116" width="30" height="38" uuid="a1f0d4b9-8807-41dd-b2c5-c3211eed4120"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="170" width="30" height="70" uuid="9b7c374b-9666-4e90-8a52-ebe838f24d2d"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="316" y="170" width="256" height="70" uuid="c2813f70-8444-48ef-95ed-410bcfffd6a1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los gastos de demolición y remoción de escombros que hayan sido necesarios a consecuencia de los daños materiales de la vivienda correspondientes a los riesgos cubiertos, incluyendo adicionalmente el costo de los permisos, licencias y demás trámites necesarios de acuerdo con la normatividad aplicable.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="475" width="286" height="15" uuid="520f67b7-5b4c-478c-8280-1686ee655158"/>
+				<text><![CDATA[<b><font color="#003366">LÍMITE MÁXIMO DE RESPONSABILIDAD</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="FixRelativeToBottom" mode="Opaque" x="30" y="732" width="256" height="27" uuid="ef34cfc2-bf6f-4f4e-a5eb-4d6ed361f799"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellos materiales y elementos que conforman las instalaciones ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="732" width="30" height="27" uuid="48d1fd3f-81de-488c-b1e0-42032a30cf63"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="572" width="286" height="15" uuid="61bbe3d1-3cac-4bf6-8b59-3edffc9a9f16"/>
+				<text><![CDATA[<b><font color="#003366">DERECHO DE INSPECCION DE LAS VIVIENDAS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="587" width="286" height="172" uuid="8cb45844-610f-4488-9221-eb4652b4ee19"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A. de C.V., tendrá derecho de inspeccionar desde el inicio los trabajos de construcción de cada Vivienda Nueva Asegurada; dicha inspección podrá ser ejecutada por el constructor o desarrollador contratante, quien a solicitud de SPP Institución de Seguros S.A. de C.V deberá entregar sin reserva, toda la información que le sea requerida con el propósito de evaluar la calidad del desarrollo de los trabajos. <br>
+En caso de que las Viviendas Nuevas no cumplan con las condiciones necesarias para que SPP Institución de Seguros S.A. de C.V. otorgue el seguro, esta informará a la empresa desarrolladora contratante sobre las condiciones que deberá cumplir para que sean sujetos de aseguramiento. SPP Institución de Seguros S.A. de C.V. le notificará por escrito los motivos por los que no se puede otorgar el seguro, así como las acciones necesarias para corregir la situación.  
+]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="739" uuid="997761bb-2456-45e2-905f-5d3acb0a2aaf"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="89134448-b27c-49e9-8afd-fdee206476a6"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="10" width="286" height="16" uuid="6e4c8524-04b2-4b79-bd4a-f271c8d0d9fe"/>
+				<text><![CDATA[<b><font color="#003366">EXCLUSIONES GENERALES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="27" width="286" height="55" uuid="6173c77f-2528-4f30-97e9-6acc26029a96"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No forma parte del riesgo cubierto y, por lo tanto, se encuentran expresamente excluido toda pérdida, daño menoscabo sufrido en los bienes materia del seguro, causados por: </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="82" width="20" height="30" uuid="d898e6b2-0b21-4d83-bb2c-ef3af9d7b78d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>1.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="82" width="266" height="30" uuid="ae227852-759f-4423-b939-69cb4f70e3f4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños ocasionados por actos intencionados, voluntarios, dolosos o fraudulentos del beneficiario. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="112" width="266" height="15" uuid="1bebde5b-780f-4bf6-bda6-f7931738f3fd"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños por incendio o explosión. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="112" width="20" height="15" uuid="1c1c5278-086c-4aab-99f8-a1f9c3dd050e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>2.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="127" width="20" height="70" uuid="105352fd-20ba-4cfa-9a07-4b60a5245e4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>3.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="127" width="266" height="70" uuid="3b776392-b7ab-48cd-af33-dc8e7cb99153"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños derivados de guerra civil o internacional, haya o no mediado declaración oficial, levantamientos populares o militares, insurrección, rebelión, revolución u operaciones bélicas de cualquier clase, aún en tiempo de paz. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="197" width="266" height="52" uuid="4576c4d5-bcee-4210-a480-67e9fc4a62b0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños ocasionados por actos políticos o sociales o sobrevenidos con ocasión de alborotos populares, motines, huelgas, cierre patronal, disturbios internos y sabotaje. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="197" width="20" height="52" uuid="0a2ac5a8-9d4c-4447-ad8d-5925d78d80d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>4.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="249" width="20" height="180" uuid="96273054-71c1-47c6-8d98-0804b7489b56"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>5.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="249" width="266" height="180" uuid="7ccfd884-5492-41e8-8c00-2e9c16cde059"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños por terrorismo o sabotaje, así como las mediadas tomadas para impedir, revenir, controlar o reducir las consecuencias que se deriven de cualquier acto de Terrorismo o cualquier daño consecuencia derivado de un acto de Terrorismo.
+Con base a lo anterior, quedan excluidos las pérdidas o daños materiales por dichos actos directos o indirectos que, con un origen mediato o inmediato, sean el resultante del empleo de explosivos, substancias tóxicas, armas de fuego, o por cualquier otro medio, en contra de las personas, de las cosas o de los servicios públicos y que, ante la amenaza o posibilidad de repetirse, produzca alarma, temor o zozobra en la población. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="429" width="266" height="65" uuid="c8f94df7-8688-4879-80eb-54c128ee2473"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños, costos o gastos de cualquier naturaleza, directamente causados por, o resultantes de, o en conexión con cualquier acción tomada para el control, prevención o supresión de cualquier acto de terrorismo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="429" width="20" height="65" uuid="82d73d6c-8c5f-4910-bec9-6395b27242e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>6.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="494" width="20" height="30" uuid="de77965d-6642-4bcb-8b73-25e1e9cb4336"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>7.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="494" width="266" height="30" uuid="d1334e45-92d7-4a0c-bcb4-c5aff43e7223"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños o responsabilidades derivadas de caso fortuito o fuerza mayor. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="524" width="20" height="15" uuid="2a34f290-880e-4af2-afae-1cd1df9ecca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>8.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="524" width="266" height="15" uuid="bb9f3d25-3b97-4b1f-a7c0-d6a708468672"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Terremoto o erupción volcánica. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="539" width="20" height="143" uuid="f5721415-d8e6-4a18-ab92-faf481c26ba4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>9.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="20" y="539" width="266" height="143" uuid="9b8e5bc4-9476-4569-9260-84c081de29db"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños a bienes cubiertos ocasionados directamente por fenómenos hidrometeorológicos; avalanchas de lodo, granizo, helada, huracán, inundación, inundación por lluvia, golpe de mar, marejada, nevada, vientos tempestuosos y flujos de agua subterráneos o superficiales. <br>
+Se excluyen los daños causados por la obstrucción en los registros de la red hidrosanitaria y en los sistemas de drenaje localizados dentro de los predios asegurados y en las bajadas de aguas pluviales a consecuencia del granizo acumulado en las mismas.
+</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="682" width="25" height="40" uuid="2fdf1eb1-4b5e-46c8-a1ce-8b7f21ac1424"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>10.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="682" width="261" height="40" uuid="0a4d0477-6596-44fa-aa02-114648fcb675"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños derivados por falta de: mantenimiento, o por uso normal, o desgaste natural de la vivienda asegurada. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="722" width="25" height="36" uuid="ed13e59d-00ab-4da0-abaf-1cb1d324ca79"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>11.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="722" width="261" height="36" uuid="efd1605f-7afb-438e-a63a-2c3d1ef942ad"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños materiales a construcciones preexistentes. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="10" width="25" height="54" uuid="b85b9a69-8381-4746-9997-8a4f796e24b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>12.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="10" width="261" height="54" uuid="786b4d81-6fba-4fae-bd85-15c1bcc34112"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños por modificaciones o alteraciones constructivas o adaptaciones al inmueble, o por modificaciones de los elementos de construcción, posteriores al origen del crédito. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="64" width="25" height="40" uuid="0481a536-1922-4ef3-b927-70daeff08b25"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>13.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="64" width="261" height="40" uuid="a2efe5f4-023c-4849-831d-bb2344d097fa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Los daños por defectos de impermeabilización en elementos móviles como domos, tragaluces, ventilas. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="104" width="25" height="30" uuid="d02ca8cf-9ed3-43df-a484-6dfbf84884bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>14.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="104" width="261" height="30" uuid="8eb5ebb9-631b-4190-8b4f-b3c9a7ec55ba"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Impermeabilización de fachadas, incluyendo filtraciones a través de puertas y ventanas. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="134" width="25" height="65" uuid="22153d8f-2c38-48d5-94ee-4b3f1a19e291"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>15.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="134" width="261" height="65" uuid="89cb576d-96e2-4dcb-a260-6368003b0ec7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Las grietas y fisuras que no comprometan la resistencia mecánica, seguridad de las personas o estabilidad del inmueble, las cuales sean consideradas como daños estéticos según la normatividad aplicable. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="199" width="25" height="54" uuid="446933a3-f978-47b3-b60b-c7e8c9baa041"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>16.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="199" width="261" height="54" uuid="260f5018-2392-4221-9bbf-48f3e6aeafec"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Los daños producidos por parte del beneficiario por haber sometido a la construcción de cargas superiores o usos distintos a aquellos para los que fue diseñada. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="252" width="25" height="90" uuid="586a1d91-03c0-4350-bfd6-5ee6c754715f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>17.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="252" width="261" height="90" uuid="37b0b1eb-873e-4ac3-a88f-c848bc627ea2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Los daños debidos a movimientos o alteraciones del terreno a consecuencia de variaciones del nivel freático no contempladas en la elaboración del proyecto, trabajos o actividades subterráneas, hincados de pilotes, perforaciones de pozos, efectuados después de la recepción de la construcción cubierta.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="342" width="25" height="90" uuid="5bc97865-953e-41de-af3a-3f89a1f12598"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>18.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="342" width="261" height="90" uuid="cc6f04ce-557f-4d23-b3ff-03ff7d9d9bb3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Vicios en acabado o terminados, por ejemplo: loseta, yeso , pintura, texturizados, carpinterías, grifería, muebles de baño, muebles de cocina, herrería, puertas y ventanas, elevadores, equipos de bombeo, equipos de incendio, cuando no sean parte del proyecto original de las obras al momento de la adquisición de la vivienda.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="432" width="25" height="104" uuid="a8152252-3ff3-4af0-aa21-00be737b9e4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>19.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="432" width="261" height="104" uuid="2f83dfe4-2eb1-4075-9f1e-fb1845706b11"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en acabados los timbres, ventanas, marcos metálicos, puertas, aire acondicionado, inodoros, toalleros, jaboneras, papeleros, ganchos, muebles cerámicos, puertas de vidrio templado corredizas, adopasto, bastidores de muros divisorios, herrerías, canceles, mallas de zona ajardinadas, closets, puertas de baños y recámaras.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="679" width="25" height="80" uuid="f424c874-3063-40f0-aedb-3866b35a40a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>22.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="536" width="261" height="28" uuid="4e883cd5-1384-4f4b-9245-73b88ae537d8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños al inmueble a consecuencia de usos distintos al habitacional.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="564" width="261" height="115" uuid="d0a941b7-df31-48c7-9a17-816582ded24b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no aplica a pérdidas o daños causados por o resultantes por incautación, confiscaciones, expropiaciones, nacionalización o destrucción de bienes por orden de autoridades gubernamentales, sin importar que otra causa o evento que directamente contribuya concurrentemente a, contribuya a cualquier secuencia de, o empeore la pérdida o daño, aun si tal otra causa o evento estuviese cubierto de otra manera.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="536" width="25" height="28" uuid="9fc59d64-c506-440b-a711-4007041b616c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>20.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="564" width="25" height="115" uuid="c6b197ec-3ba4-41eb-b31e-902f0e6904f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>21.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="679" width="261" height="80" uuid="8fb02fb1-9c5d-4831-8040-72e23896641f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Insectos o animales. La cobertura no aplica a pérdidas o daños causados por o resultantes de anidación o infestación de o descarga o liberación de desperdicio de productos o secreciones de insectos, pájaros y roedores. </b>]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="10" width="572" height="739" uuid="90d94444-3822-4fe7-a688-12de0cea7796"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="-1" width="574" height="10" uuid="9d9a7d2e-6bda-4bf3-b652-59ff6b5b1ca1"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="9" width="261" height="104" uuid="7992d80f-df85-4f08-a124-e2ca62680b87"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no aplica a pérdidas o daños causados por o resultantes de reacciones nucleares o radiaciones, o contaminación radioactiva, sin importar cualquier otra causa o evento que directamente contribuya concurrentemente a; contribuya en cualquier secuencia de; o empeore la pérdida o daño, aún si la otra causa o evento estuviese cubierta de otra manera. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="9" width="25" height="104" uuid="9e9cf38a-5dd9-4ec4-b67b-aebc48ba43db"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>23.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="113" width="261" height="52" uuid="ce638785-1a41-454b-b3c2-52e9a55a3266"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Costos de limpieza, pérdidas o costo y gastos de cualquier naturaleza que sean directamente causados por o con la contribución  de o que surjan de: </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="113" width="25" height="52" uuid="ea2fbcce-90ad-44cc-b9e7-277853bd89dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>24.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="217" width="40" height="52" uuid="d9830e31-5215-4501-abfa-426f09e56285"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="165" width="40" height="52" uuid="3e6706db-c204-4e29-aa8e-f81082089e9a"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="217" width="246" height="52" uuid="d95478f3-e5da-41ac-8387-5bc61fe0b642"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Las propiedades radioactivas, tóxica, explosivas u otras propiedades peligrosas de un ensamble nuclear explosivo o componente nuclear del mismo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="165" width="246" height="52" uuid="e097221f-0e46-44a2-a7f6-0a14678ec932"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Radiaciones ionizantes o contaminación por radioactividad de cualquier combustible nuclear o de desechos nucleares provenientes de la combustión de un combustible  nuclear. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="269" width="25" height="53" uuid="10dac730-21a9-4a25-a828-3c313db23306"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>25.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="269" width="261" height="53" uuid="42b473cd-4c09-41ea-bd61-a9d5a1d294ad"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>El seguro no cubrirá penas, castigos, multas ni similares, como los pagos por los llamados daños punitivos, daños por venganza, daños ejemplares, daños agravados.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="322" width="261" height="230" uuid="163d8ad6-a67c-4d93-a85b-19a2d2dd11d8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no cubrirá cualquier pérdida, daño, reclamo, costo, gasto u otra suma originándose directamente fuera de o relacionando a moho, hongo, esporas u otro microorganismo de cualquier tipo, naturaleza o descripción, incluyendo, pero no limitado a cualquier substancia cuya presencia plantea una amenaza real o potencial a la salud humana. Esta exclusión aplica si hay (i) cualquier pérdida física o daño a la propiedad del beneficiario; (ii) cualquier peligro o causa cubierta, ya sea contribuyendo  o no concurrentemente o en cualquier sucesión; (iii) cualquier pérdida de uso, ocupación, o  funcionalidad; o (iv) cualquier acción requerida, incluyendo pero no limitando a la reparación, reemplazo, levantamiento, limpiadura, disminución, disposición, reagrupación, o pasos tomados para dirigir las preocupaciones médicas o legales concernientes. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="322" width="25" height="230" uuid="d2669a2e-f9a1-46a4-b491-88a66a5d3f47"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>26.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="552" width="261" height="102" uuid="f0d55e4c-fd84-41ad-84e2-f4239738de44"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura excluirá pérdidas, costos o gastos de cualquier naturaleza directamente causados por que resulten o que tengan relación con un uso malicioso real o amenazante con materiales biológicos o químicos, patógenos o venenosos sin tomar en cuenta cualquier otra causa o evento que contribuya concurrentemente o en cualquier otra sucesión al respecto. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="552" width="25" height="102" uuid="a1b91c9a-ac4c-43f2-a488-1e13dba8df3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>27.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="654" width="25" height="40" uuid="5712f7f4-501c-4cd7-812c-f0f62f3c4756"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>28.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="654" width="261" height="40" uuid="6244dc0d-18b0-469c-9d98-f7230db041c9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No cubre pérdida, daño, destrucción, borrado, corrupción o alteración de información electrónica, cualquiera que fuera la causa. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="694" width="25" height="64" uuid="ec161bc7-dd4c-4c3a-b6b3-f7ad1eaa32de"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>29.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="694" width="261" height="64" uuid="6f2efbb5-6d38-4958-84be-aeb5321a018c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalaciones eléctricas Fusibles, Focos, Bombillas, Baterías, Toma corriente, Apagadores, Sockets, Lámparas, Portalámparas, Candiles, Reflectores, Sensores, Tapas y sobre tapas, Calentadores eléctricos,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="36" width="25" height="90" uuid="31e007f7-b1e3-43b6-b062-bc2c67888707"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>30.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="36" width="261" height="90" uuid="bc3c01b0-f754-4948-88d5-ac70fc554bcb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalaciones hidráulicas Llaves de paso, Muebles sanitarios, Grifos, Mezcladoras, Mangueras flexibles, Calentadores de agua, Regadera, Calentador Solar, Bombas de agua, Válvulas check, Flotadores, Pichancha, Tinacos, Fregaderos, Hidroneumáticos y/o presurizadores. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="126" width="25" height="52" uuid="f588be10-7f21-408f-b9c2-99b3854f465a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>31.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="126" width="261" height="52" uuid="45840a83-0731-4cfa-8ca3-baeb0098d5df"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalación sanitaria (y pluvial) Muebles sanitarios, Cespol, Sifones, Sellos, Rejillas, Chupón de hule negro sanitario, Silicon, Adaptadores, Empaques. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="178" width="25" height="80" uuid="557c812d-37fa-4b46-bbb8-02e97947b56d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>32.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="178" width="261" height="80" uuid="43338b68-ce1c-45ec-b74d-feec7910ab72"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalación de gas Recipientes estacionarios o móviles y sus accesorios, Reguladores, manómetros, medidores excepto cuando sean accesorios incluidos en el proyecto original de la vivienda, Línea de llenado (en caso de recipiente estacionario). </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="274" width="286" height="93" uuid="4719bb4a-89d6-49d3-8dc6-7c08e99be873"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Al ocurrir un siniestro que pudiera dar lugar a indemnización conforme a este seguro, el beneficiario tan pronto tenga conocimiento del mismo reclamará a SPP Institución de Seguros S.A. de C.V. a través de centro de atención telefónica y ratificará su reclamo posteriormente por escrito a la misma.<br>
+Tanto el beneficiario como el contratante deberán proporcionar la información y documentos necesarios para que SPP Institución de Seguros S.A. de C.V. estén en posibilidad de cuantificar el daño.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="259" width="286" height="15" uuid="f86d2dd0-ab20-4188-aafa-0874be9fa8d7"/>
+				<text><![CDATA[<b><font color="#003366">PAGO DE SINIESTROS E INDEMNIZACIONES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="367" width="25" height="15" uuid="7ba89c24-1557-4bbf-b12f-4a013f0ad583"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="367" width="261" height="15" uuid="cf73cdda-d3e7-492f-960d-36a9fec1e779"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Documentos por entregar para el formal reclamo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="382" width="40" height="13" uuid="d670a66e-a296-438a-bed7-5010ca6192dd"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="395" width="40" height="13" uuid="24d67ed3-98c2-4437-acb7-e54b2d49a1ec"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="408" width="40" height="13" uuid="222127e0-49ef-40fd-95b0-a8cf4a548b1c"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="421" width="40" height="13" uuid="804e924b-fd24-4ef7-acaa-a04d58e604e8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[d)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="326" y="421" width="246" height="13" uuid="3b200463-c8a1-40b6-8077-6d9967e60aad"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Copia de identificación oficial vigente del beneficiario.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="326" y="408" width="246" height="13" uuid="a117472f-4ca5-43ae-89d2-01700a9c6e2d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Formato de reclamación firmado por el beneficiario.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="326" y="395" width="246" height="13" uuid="041df7c7-bbd5-4d13-a16b-ec60bd684964"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Indicar la dirección precisa de la vivienda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="326" y="382" width="246" height="13" uuid="1cb29778-c5ee-4ea8-9304-30cc52fd283f"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Copia del certificado individual correspondiente.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="434" width="40" height="13" uuid="0c0ec81c-0fc7-4a2c-8e0b-ea6d9c41d2b6"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[e)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="326" y="434" width="246" height="13" uuid="7248f41b-d18f-429a-a835-d15456f97eff"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Fotografías de los daños.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="447" width="40" height="13" uuid="77d62ff0-b35d-4fd2-93f1-4551534fe702"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[f)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="326" y="447" width="246" height="13" uuid="0037ce01-edb4-4b64-8fe6-4e1918b1c426"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Comprobante de domicilio de la vivienda Asegurada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="9" width="261" height="27" uuid="f728ba6c-7df0-4a6c-a781-f8848ade24df"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Medidor y cable propiedad de CFE, Varilla de puesta a tierra. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="9" width="25" height="27" uuid="57812e9f-2888-476d-9619-5eaa532f299d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>29.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="460" width="286" height="69" uuid="db55dac8-523b-4faf-b1fc-4bfcbe83bfe5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[En casos en los cuales por su complejidad, los daños no puedan ser calculados con la documentación antes señalada, la institución podrá requerir documentación adicional precisa e indispensable para la debida apreciación o cuantificación del daño. Dicha solicitud podrá realizarla conforme lo señala el Artículo 69 de la Ley sobre el Contrato de Seguros.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="642" width="26" height="58" uuid="1a427482-7c44-418d-9338-144b2c651802"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="529" width="286" height="102" uuid="313959d5-069a-4430-8d82-bae1456dfd72"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Una vez que SPP Institución de Seguros S.A. de C.V., haya recibido los documentos e información de la reclamación, tendrá un máximo de cinco días hábiles posteriores para informar el rechazo de la misma, explicando la razón o razones en las que ésta se base o en su defecto informar de la procedencia del reclamo indicando si procederá la reparación o la indemnización, así como los términos y plazos en que se llevará a cabo. <br>
+SPP Institución de Seguros S.A. de C.V., cumplirá su obligación contractual, bajo cualquiera de las siguientes posibilidades:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="630" width="26" height="12" uuid="dd3bfe95-ed3d-47a7-8da4-020b12a4bcc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="630" width="260" height="12" uuid="788c2e47-20e8-438b-a3d8-318a723ba67f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Reparar el daño.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="642" width="260" height="58" uuid="34656a74-ec2c-4ae3-aaf3-7b456db2cb9d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Indemnizar al beneficiario exclusivamente en los casos donde no sea conveniente hacer ninguna restitución o reparación, es decir cuando el costo de restitución o reparación no lo permitan por ocasionar costos mayores al valor de reposición y por lo tanto mayores a su valor real.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="700" width="286" height="58" uuid="09486c8f-82a5-4ccc-9090-418e5fe2a50c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Las reparaciones que se deban realizar a las viviendas a consecuencia de un daño cubierto bajo el contrato de seguro serán responsabilidad de SPP Institución de Seguros S.A. de C.V. y en todo momento deberá realizar las acciones necesarias para solventarlas, para lo que deberá contratar a las empresas y/o a los
+]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="20" width="572" height="739" uuid="2ae3c8e5-b74c-4eff-bd53-b78e9529409c"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="1" width="574" height="8" uuid="b01fc44a-adf3-462b-9281-91b25d27e72b"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="10" width="286" height="68" uuid="7689ea24-e9f5-43e0-8f88-285b2f59bab1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[proveedores que determine necesarios, sin embargo, no podrá contratar a la misma empresa desarrolladora que construyó las viviendas. No obstante que las reparaciones podrán ser ejecutadas por terceros, la Institución será la única responsable ante el beneficiario de la debida reparación o indemnización conforme al presente contrato.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="195" width="286" height="17" uuid="c9fb0075-3291-4b2b-87c1-37053a287bc3"/>
+				<text><![CDATA[<b><font color="#003366">CLÁUSULAS GENERALES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="211" width="286" height="296" uuid="311fed74-bd6e-4a36-8b97-ec4df740fcce"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Primas:</b> La prima total de la póliza es la especificada en la carátula de la póliza, de acuerdo con los riesgos amparados en la fecha de emisión.
+La prima corresponderá a la valoración del riesgo asegurado de acuerdo con la naturaleza de los daños cubiertos, y conforme a la base técnica y actuarial que SPP Institución de Seguros S.A. DE C.V. registre para tales efectos ante la Comisión Nacional de Seguros y Fianzas.
+Cualquier prima no pagada será deducida de cualquier indemnización. <br>
+<b>Forma de Pago:</b> La prima especificada en la caratula de la póliza será pagada de manera completa al inicio de la vigencia de la póliza. <br>
+<b>Lugar de pago:</b> Los pagos deberán efectuarse, salvo que se establezca expresamente un lugar de pago diverso en las oficinas de la Compañía o se cargarán de forma automática en el instrumento bancario o financiero que al efecto autorice el Contratante, a cambio del Recibo de Pago correspondiente expedido por SPP Institución de Seguros S.A. de C.V. en este último caso el estado de cuenta en donde aparezca el cargo hará prueba plena del pago de las primas. <br>
+<b>Periodo de gracia:</b> SPP Institución de Seguros S.A. de C.V. otorga al Contratante un periodo de gracia de treinta días naturales siguientes a la fecha de inicio de vigencia para liquidar el monto de la Prima,dentro del cual se otorga protección por el presente Contrato de Seguro, aún cuando no se hubiere pagado la Prima correspondiente. Los efectos del contrato cesarán automáticamente a las doce horas del último día de dicho periodo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="507" width="286" height="14" uuid="e2fc2a29-4723-46cf-be7c-58e3eed7c23f"/>
+				<text><![CDATA[<b><font color="#003366">CLÁUSULAS OPERATIVAS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="521" width="286" height="238" uuid="12469598-807a-4f7b-8960-c193d54eb4cb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Cambio de riesgo:</b> Es obligación del Asegurado avisar a SPP Institución de Seguros S.A. de C.V. de los cambios de la información proporcionada en la solicitud del seguro. SPP Institución de Seguros S.A. de C.V.  evaluará si dichos cambios afectan el riesgo contratado, y si procede modificará las condiciones del contrato, lo cual se notificará por escrito al Contratante y/o Asegurado. <br>
+<b>Lugar de Residencia:</b> Para efectos de este Contrato, solo surtirá efectos por los daños y/o pérdidas ocurridos dentro de los límites territoriales de los Estados Unidos Mexicanos. <br>
+<b>Cancelación:</b> Este Contrato será cancelado cuando por causas imputables al Contratante hubieses sido pagada la prima respectiva dentro del plazo señalado en la póliza.
+En caso de que el Contratante decida dar por terminado de manera anticipada el Contrato, notificará por escrito a SPP Institución de Seguros, quien efectuará la cancelación sin devolución de primas.
+En caso de que el Contratante y/o Asegurado y/o representante de éstos,incurra en falsas e inexactas declaraciones u omisiones, la Compañía podrá rescindir el Contrato en términos de lo previsto por el artículo 47 de la Ley sobre el Contrato de Seguro, en
+relación con los Artículos 8, 9, y 10 de la citada Ley.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="78" width="286" height="15" uuid="621831ef-83b8-4960-b80b-26dd89a59505"/>
+				<text><![CDATA[<b><font color="#003366">PAGO Y DISTRIBUCIÓN DE LA INDEMNIZACIÓN</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="94" width="286" height="102" uuid="9c1cc8dd-b129-4633-9b75-7555fda10557"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[En caso de pérdida que involucre a una propiedad hipotecada o que tenga diversos porcentajes de derecho de acreedores, la pérdida será ajustada de acuerdo con las condiciones que corresponda a esos derechos. <br>
+Conforme a lo establecido por los artículos 109 y 110 de la Ley sobre el Contrato de Seguro, la indemnización correspondiente será pagada al beneficiario y/o beneficiario preferente irrevocable, conforme al saldo insoluto del crédito a la fecha del daño a la vivienda.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="10" width="286" height="536" uuid="e2d6d2f3-33e2-4f99-9e6a-1ae4ba48a262"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>“Artículo 47.-</b> Cualquier omisión o inexacta declaración de los hechos a que se refieren los artículos 8, 9 y 10 de la presente ley, facultará a la empresa aseguradora para considerar rescindido de pleno derecho el contrato, aunque no hayan influido en la realización del siniestro. <br>
+<b>Artículo 8o.-</b> El proponente estará obligado a declarar por escrito a la empresa aseguradora, de acuerdo con el cuestionario relativo, todos los hechos importantes para la apreciación del riesgo que puedan influir en las condiciones convenidas, tales como los conozca o deba conocer en el momento de la celebración del contrato. <br>
+<b>Artículo 9o.-</b> Si el contrato se celebra por un representante del asegurado, deberán declararse todos los hechos importantes que sean o deban ser conocidos del representante y del representado. <br>
+<b>Artículo 10.-</b> Cuando se proponga un seguro por cuenta de otro, el proponente deberá declarar todos los hechos importantes que sean o deban ser conocidos del tercero asegurado o de su intermediario.” <br>
+<b>Vigencia:</b> Periodo de validez del contrato se establece a partir de la fecha de inicio de vigencia que se estipula en la carátula de la póliza que es de 10 años. <br>
+<b>Terminación del Contrato:</b> Este contrato dejará de estar en vigor al ocurrir cualquiera de los siguientes eventos: <br>
+1. Mediante petición por escrito del Asegurado o Contratante a SPP Institución de Seguros S.A. de C.V. <br>
+2. Falta de pago, después de los 30 días naturales del periodo de gracia. <br>
+3. Por indemnización del bien asegurado <br>
+<b>Modificaciones:</b> El Contrato sólo podrá modificarse previo acuerdo entre el Asegurado o el Contratante y SPP Institución de Seguros S.A. de C.V. Estas modificaciones deberán constar por escrito mediante endoso registrado ante la Comisión Nacional de Seguros y Fianzas. <br>
+En consecuencia, los agentes o cualquier otra persona no autorizada por la Compañía carecen de facultades para hacer modificaciones o concesiones. <br>
+<b>Notificaciones:</b> Cualquier comunicación o notificación relacionada con el presente Contrato de Seguro deberá hacerse a SPP Institución de Seguros S.A. de C.V. por escrito, precisamente en su domicilio indicado en la carátula de la póliza, o en su caso, en el lugar que para estos efectos hubiera comunicado posteriormente SPP Institución de Seguros S.A. de C.V al Contratante o Asegurado, estando obligada SPP Institución de Seguros S.A. de C.V. a expedir constancia de la recepción. Toda
+comunicación que la Institución deba hacer al Contratante y/o Asegurado, tendrán validez si se hacen en la última dirección que conozca la Institución.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="547" width="286" height="18" uuid="ed2ff1d5-2174-45f1-9bd4-799dc2d1e95b"/>
+				<text><![CDATA[<b><font color="#003366">CLÁUSULAS CONTRACTUALES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="565" width="286" height="194" uuid="f71536e9-f43e-4b8c-b536-adf4a17472d6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Competencia:</b> En caso de controversia, la persona podrá presentar su reclamación ante la Unidad Especializada de Atención de Consultas y Reclamaciones (Centro de Atención y Servicio a Asegurados) de SPP Institución de Seguros S.A. de C.V o ante la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF), pudiendo a su elección, determinar la competencia por territorio, en razón del domicilio de cualquiera de sus delegaciones, en términos de los artículos 50 Bis y 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros y 277 de la Ley de Instituciones de Seguros y de Fianzas. Lo anterior dentro del término de dos años contados a partir de que se suscite el hecho que dio origen a la controversia de que se trate, o en su caso, a partir de la negativa de la Institución a satisfacer las pretensiones del reclamante, en términos del artículo 65 de la primera Ley citada. <br> 
+De no someterse las partes al arbitraje de la CONDUSEF, se dejarán a salvo los derechos del reclamante para que los haga]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="10" width="572" height="739" uuid="b9e2448a-0daa-4c8d-ba08-69a3f2a6828c"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="6d004346-4fe3-456f-b264-828b93999362"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="10" width="286" height="444" uuid="4e15ff1e-95d6-4045-bb12-2a74053c921d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[valer ante los tribunales competentes del domicilio de dichas delegaciones. En todo caso, queda a elección del reclamante acudir ante las referidas instancias administrativas o directamente ante los citados tribunales. <br>
+<b>Prescripción:</b> Todas las acciones que se deriven de este Contrato de Seguro, prescribirán en dos años contados desde la fecha del acontecimiento que les dio origen. Dicho plazo no correrá en caso de omisión, falsas o inexactas declaraciones sobre el riesgo corrido, sino desde el día en que la empresa haya tenido conocimiento de él; y si se trata de la realización del siniestro, desde el día en que haya llegado a conocimiento de los interesados, quienes deberán demostrar que hasta entonces ignoraban dicha realización. Tratándose de terceros beneficiarios se necesitará además que éstos tengan conocimiento del derecho constituido a su favor, en términos de lo dispuesto por los artículos 81 y 82 de la Ley sobre el Contrato de Seguro. <br>
+La prescripción se interrumpirá no sólo por las causas ordinarias, sino también por el nombramiento de peritos o por la iniciación del procedimiento conciliatorio señalado en el artículo 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros. <br>
+Asimismo la prescripción se suspenderá por la presentación de la reclamación ante la Unidad Especializada de atención de consultas y reclamaciones de esta Institución. <br>
+<b>Moneda:</b> Todas las obligaciones de pago de este Contrato serán pagaderas en Moneda Nacional. <br>
+<b>Revelación de Comisiones:</b> Durante la vigencia de la Póliza, el Contratante podrá solicitar por escrito a la institución le informe el porcentaje de la prima que, por concepto de comisión o compensación directa, corresponda al intermediario o persona moral por su intervención en la celebración de este Contrato. La institución proporcionará dicha información, por escrito o por medios electrónicos, en un plazo que no excederá de diez días hábiles posteriores a la fecha de recepción de la solicitud. <br>
+<b>Interés moratorio</b> Si SPP Institución de Seguros, S.A. de C.V. no cumple con las obligaciones asumidas en el Contrato de Seguro al hacerse exigibles legalmente, deberá pagar al acreedor una indemnización por mora de acuerdo al artículo 276 de la Ley de Instituciones de Seguros y de Fianzas mismo que se transcribe a continuación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="454" width="286" height="304" uuid="cb88c729-ad66-4759-8e08-67706fff3320"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[“ARTÍCULO 276.- Si una Institución de Seguros no cumple con las obligaciones asumidas en el Contrato de Seguro dentro de los plazos con que cuente legalmente para su cumplimiento, deberá pagar al acreedor una indemnización por mora de acuerdo con lo siguiente: <br>
+I. Las obligaciones en moneda nacional se denominarán en Unidades de Inversión, al valor de éstas en la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y su pago se hará en moneda nacional, al valor que las Unidades de Inversión tengan a la fecha en que se efectúe el mismo, de conformidad con lo dispuesto en el párrafo segundo de la fracción VIII de este artículo. <br>
+Además, la Institución de Seguros pagará un interés moratorio sobre la obligación denominada en Unidades de Inversión conforme a lo dispuesto en el párrafo anterior, el cual se capitalizará mensualmente y cuya tasa será igual al resultado de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en Unidades de Inversión de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora; <br>
+II. Cuando la obligación principal se denomine en moneda extranjera, adicionalmente al pago de esa obligación, la Institución de Seguros estará obligada a pagar un interés moratorio el cual se capitalizará mensualmente y se calculará aplicando al monto de la propia obligación, el porcentaje que resulte de multiplicar por 1.25]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="10" width="286" height="749" uuid="e83cc4d9-eda3-4d41-a880-2900789ec93e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[el costo de captación a plazo de pasivos denominados en dólares de los Estados Unidos de América, de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora; <br>
+III. En caso de que a la fecha en que se realice el cálculo no se hayan publicado las tasas de referencia para el cálculo del interés moratorio a que aluden las fracciones I y II de este artículo, se aplicará la del mes inmediato anterior y, para el caso de que no se publiquen dichas tasas, el interés moratorio se computará multiplicando por 1.25 la tasa que las sustituya, conforme a las disposiciones aplicables; <br>
+IV. Los intereses moratorios a que se refiere este artículo se generarán por día, a partir de la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y hasta el día en que se efectúe el pago previsto en el párrafo segundo de la fracción VIII de este artículo. Para su cálculo, las tasas de referencia a que se refiere este artículo deberán dividirse entre trescientos sesenta y cinco y multiplicar el resultado por el número de días correspondientes a los meses en que persista el incumplimiento; <br>
+V. En caso de reparación o reposición del objeto siniestrado, la indemnización por mora consistirá únicamente en el pago del interés correspondiente a la moneda en que se haya denominado la obligación principal conforme a las fracciones I y II de este artículo y se calculará sobre el importe del costo de la reparación o reposición; <br>
+VI. Son irrenunciables los derechos del acreedor a las prestaciones indemnizatorias establecidas en este artículo. El pacto que pretenda extinguirlos o reducirlos no surtirá efecto legal alguno. Estos derechos surgirán por el solo transcurso del plazo establecido por la Ley para el pago de la obligación principal, aunque ésta no sea líquida en ese momento. <br>
+Una vez fijado el monto de la obligación principal conforme a lo pactado por las partes o en la resolución definitiva dictada en juicio ante el juez o árbitro, las prestaciones indemnizatorias establecidas en este artículo deberán ser cubiertas por la Institución de Seguros sobre el monto de la obligación principal así determinado; <br>
+VII. Si en el juicio respectivo resulta procedente la reclamación, aun cuando no se hubiere demandado el pago de la indemnización por mora establecida en este artículo, el juez o árbitro, además de la obligación principal, deberá condenar al deudor a que también cubra esas prestaciones conforme a las fracciones precedentes; <br>
+VIII. La indemnización por mora consistente en el sistema de actualización e intereses a que se refieren las fracciones I, II, III y IV del presente artículo será aplicable en todo tipo de seguros, salvo tratándose de seguros de caución que garanticen indemnizaciones relacionadas con el impago de créditos fiscales, en cuyo caso se estará a lo dispuesto por el Código Fiscal de la Federación. <br>
+El pago que realice la Institución de Seguros se hará en una sola exhibición que comprenda el saldo total por los siguientes conceptos: <br>
+a) Los intereses moratorios; <br>
+b) La actualización a que se refiere el primer párrafo de la fracción I de este
+artículo. <br>
+c) La obligación principal. <br>
+En caso de que la Institución de Seguros no pague en una sola exhibición la totalidad de los importes de las obligaciones asumidas en el Contrato de Seguros y la indemnización por mora, los pagos que realice se aplicarán a los conceptos señalados en el orden establecido en el párrafo anterior, por lo que la indemnización por mora se continuará generando en términos del presente artículo, sobre el monto de la obligación principal no pagada, hasta en tanto se cubra en su totalidad.
+]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="388b5992-ba83-4285-b7be-c34043a47d10"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="10" width="286" height="300" uuid="bad090bd-3dc1-48b7-afa3-99c207fa707a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Cuando la Institución interponga un medio de defensa que suspenda el procedimiento de ejecución previsto en esta ley, y se dicte sentencia firme por la que queden subsistentes los actos impugnados, el pago o cobro correspondientes deberán incluir la indemnización por mora que hasta ese momento hubiere generado la obligación principal, y <br>
+IX. Si la Institución de Seguros, dentro de los plazos y términos legales, no efectúa el pago de las indemnizaciones por mora, el juez o la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros, según corresponda, le impondrán una multa de 1000 a 15000 Días de Salario. <br>
+En el caso del procedimiento administrativo de ejecución previsto en el artículo 278 de esta Ley, si la Institución de Seguros, dentro de los plazos o términos legales, no efectúan el pago de las indemnizaciones por mora, la Comisión le impondrá la multa señalada en esta fracción, a petición de la autoridad ejecutora que corresponda conforme a la fracción II de dicho artículo.” <br>
+<b>Otros seguros:</b> En el supuesto de que cualquier pérdida conforme a la Póliza estuviera también cubierta, en todo o en parte, por otro seguro contra el mismo riesgo y por el mismo interés, el Asegurado deberá declararlo por escrito a la Institución de Seguros indicando el nombre de los Aseguradores, así como las sumas aseguradas. Si el Asegurado omite intencionalmente el aviso referido anteriormente, o si contrató los diversos seguros para obtener un provecho ilícito, la Institución de Seguros quedará liberada de sus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="10" width="286" height="300" uuid="45c0b063-f5b7-4b0a-ae8d-93f9a942c5f6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[obligaciones bajo la Póliza. <br>
+Los contratos de seguro a que se hace referencia en el párrafo anterior cuando sean celebrados de buena fe, en la misma o en diferentes fechas, por una suma total superior al valor del interés Asegurado, serán válidos y obligarán a cada uno de los Aseguradores hasta el valor íntegro de la pérdida sufrida, dentro de los límites de la suma que hubieren Asegurado. <br>
+<b>Subrogación de Derechos:</b> Cuando la Institución de Seguros pague una indemnización sobre esta póliza se subrogará hasta la cantidad pagada, en todos los derechos y acciones contra terceros que por causa del daño sufrido correspondan al Contratante o al Asegurado o al Beneficiario preferente. Esta acción podrá ejercerse aún en contra del Contratante, si se demuestra que éste actuó con dolo, mala fe o culpa grave.<br>
+Si SPP Institución de Seguros S.A. de C.V lo solicita, a costa de ésta, el Contratante o el Asegurado harán constar la subrogación en escritura pública. <br>
+SPP Institución de Seguros S.A. de C.V podrá liberarse en todo o en parte de sus obligaciones, si la subrogación es impedida por hechos u omisiones que provengan del Contratante o del Asegurado. <br>
+Si el daño fue indemnizado sólo en parte, el Contratante o Asegurado, y SPP Institución de Seguros S.A. de C.V, concurrirán a hacer valer sus derechos en la proporción correspondiente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="410" width="572" height="40" uuid="e27b8d49-213c-4aed-bf33-1eb8869d8c30"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>“En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, el producto de seguros denominado ___________________ quedó registrado ante la Comisión Nacional de Seguros y Fianzas, a partir del día 28 de Mayo de 2019, con el número CNSF-S0128-0243-2019”.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="312" width="572" height="90" uuid="9025cd77-f74e-435d-8591-ed2e2ac35b18"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[
+<b>“Para cualquier aclaración o duda no resueltas en relación con su seguro, contacte a la Unidad Especializada de nuestra Compañía en la siguiente dirección Volcán 214, Lomas de Chapultepec, Primera Sección C.P. 1100, Alcaldía Miguel Hidalgo o a los teléfonos (01 800) 1010053 y (55) 3600 9600, en un horario de atención de lunes a jueves de 8 a 17 hrs. y viernes de 8 a 15 hrs., o visite www.sppseguros.com.mx; o bien comunicarse a CONDUSEF al teléfono (55) 5448 7000 en el D.F. y del interior de la República al 01 800 999 8080 o visite la página www.condusef.gob.mx con dirección en Insurgentes Sur #762, planta baja, Col. Del Valle, Del. Benito Juárez, C.P.03100, Ciudad de México". </b>]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="279" height="23" uuid="c5e0e2a5-5b2b-409d-bd83-123df488c5ea"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[<b><font color="#003366">SPP-FR-PD-23  </font></b><br>
+<b><font color="#003366">Versión/Fecha: 01/28-05-19</font></b>
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="368" y="0" width="150" height="23" uuid="dc6d89ed-f30d-4d95-96fc-f83b2ab09386"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b><font color=#003366>Página " + $V{PAGE_NUMBER}+ " </font></b>"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="520" y="0" width="50" height="22" uuid="7488c7b7-e895-4553-9edb-323c834e9483"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[" <b><font color=#003366> de " + $V{PAGE_NUMBER} +"</font></b>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

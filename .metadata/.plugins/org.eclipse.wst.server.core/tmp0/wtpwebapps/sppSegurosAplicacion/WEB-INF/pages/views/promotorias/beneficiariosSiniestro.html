@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+	  <div class="jumbotron">
+	  
+<!-- 	  th:if="${#arrays.contains(menu.acceso, 'capturaContratantes')}" -->
+		   <ul class="nav nav-tabs" id="tabClientes" role="tablist">
+				<li id="nuevoTab" class="nav-item">
+				 <a class="nav-link nav-color active" data-toggle="tab" href="#nuevoCliente" role="tab" aria-controls="nuevo" aria-selected="true">Nuevo</a>
+				</li>
+<!-- 				<li id="consultarTab" class="nav-item"> -->
+<!-- 				  <a class="nav-link nav-color" data-toggle="tab" href="#consultarCliente" role="tab" aria-controls="consultar" aria-selected="true">Consultar</a> -->
+<!-- 				</li> -->
+			</ul>
+			<form id="formBeneficiario" autocomplete="off" class="needs-validation" novalidate>
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="nuevoCliente" role="tabpanel">
+					<div class="form-group">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="radioFisicoN" name="fisicoMoral" class="custom-control-input mr3" value="1" checked="checked">
+							<label class="custom-control-label" for="radioFisicoN" style="font-size: 25px">Fisica</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="radioMoralN" name="fisicoMoral" class="custom-control-input" value="2">
+							<label class="custom-control-label" for="radioMoralN" style="font-size: 25px">Moral</label>
+						</div>
+					</div>
+
+<!-- 					<div th:if="${#arrays.contains(menu.acceso, 'capturaContratantes')}"  -->
+<!-- 					     th:include="views/clientes/clienteNuevo :: clienteNuevoFragment"	id="clienteNuevo"> -->
+<!-- 					</div> -->
+						
+<!-- 					<div -->
+<!-- 					    th:include="views/clientes/busquedaCliente :: busquedaClienteFragment" id="busquedaCliente" class="d-none"> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+			
+    	<h3>Datos Generales</h3>
+		<div class="row">
+				<div class="form-group col-md-4 clienteFisico">
+					<label for="nombre">Nombre:</label> 
+					<input class="form-control text-uppercase clean" type="text" id="nombreCliente" name="nombre" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4 clienteFisico">
+					<label for="nombre">Apellido Paterno:</label> 
+					<input class="form-control text-uppercase clean" type="text" id="apellidoPaterno" name="apellidoPaterno" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4 clienteFisico">
+					<label for="apeMaterno">Apellido Materno:</label> 
+					<input class="form-control text-uppercase clean" type="text" id="apellidoMaterno" name="apellidoMaterno" maxlength="100"/>
+				</div>
+
+				<div class="form-group col-md-8 clienteMoral">
+					<label for="denominacionRazon">Denominación o Razón Social:</label>
+					<input class="form-control text-uppercase clean" type="text" id="denominacion" name="denominacion" maxlength="100"/>
+				</div>
+
+				<div class="form-group col-md-4 clienteFisico">
+					<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date" id="fechaNacimiento" name="fechaNacimiento" 
+						 data-mask="0000-00-00" data-date-end-date="0d"	placeholder="yyyy-mm-dd" />
+						 <span class="input-group-text clean"> <i class="fas fa-calendar-alt"></i> </span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-4 clienteMoral">
+					<label for="fechaConstitucion">Fecha Constitución:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date clean" id="fechaConstitucion" name="fechaConstitucion" data-date-end-date="0d"/>
+						<span class="input-group-text"> <i class="fas fa-calendar-alt"></i>	</span>
+					</div>
+				</div>
+				<div class="form-group col-md-4 clienteMoral">
+					<label for="folio">Folio Mercantil:</label> 
+					<input class="form-control numberClass clean" type="text" id="folioMercantil"	name="folioMercantil" maxlength="18"/>
+				</div>
+				
+				<div class="form-group col-md-4 clienteMoral">
+					<label for="Actividad">Actividad economica:</label> 
+					<select	class="form-control actividadObjeto cleanSelect" id="actividadObjeto" name="actividadEconomica"></select>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="nacionalidad">Nacionalidad:</label> <select
+						class="form-control nacionalidad cleanSelect" id="nacionalidad" name="nacionalidad">
+						<option value="0">Seleccione opción...</option>
+						<option value="SE DESCONOCE">SE DESCONOCE</option>
+						<option value="MEXICANA">MEXICANA</option>
+						<option value="EXTRANJERO">EXTRANJERO</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="giroMercantil">Giro Mercantil:</label> <select
+						class="form-control giroMercantil cleanSelect" id="giroMercantil" name="giroMercantil">
+						<option value="0">Seleccione opción...</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-4 clienteFisico">
+					<label for="ocupacion">Ocupación o Profesión:</label> 
+					<select	class="form-control ocupacion cleanSelect" id="profesion" name="profesion"></select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="telefono">Teléfono 1 con lada:</label>
+					<div class="row">
+						<div class="col-4 col-sm-3">
+							<input class="form-control numberClass clean" type="text" id="ladaTel_1" name="ladaTel_1" maxlength="3"/>
+						</div>
+						<div class="col-8 col-sm-9">
+							<input class="form-control numberClass clean" type="text"	id="tel_1" maxlength="10" name="tel_1"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="telefono">Teléfono 2 con lada:</label>
+					<div class="row">
+						<div class="col-4 col-sm-3">
+							<input class="form-control numberClass clean" type="text" id="ladaTel_2" name="ladaTel_2" maxlength="3"/>
+						</div>
+						<div class="col-8 col-sm-9">
+							<input class="form-control numberClass clean" type="text"	id="tel_2" name="tel_2" maxlength="10" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="correo">Correo Electrónico 1:</label> 
+					<input class="form-control clean" type="email" id="email_1" name="email" maxlength="60"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="correo">Correo Electrónico 2:</label> 
+					<input class="form-control clean" type="text" id="email_2"	name="email_2" maxlength="60"/>
+				</div>
+				<div class="form-group col-md-4 clienteFisico">
+					<label for="curp">CURP:</label> 
+					<input class="form-control text-uppercase clean" type="text" id="curp" name="curp" maxlength="18" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="rfc">RFC:</label>
+					 <input class="form-control text-uppercase clean" type="text" id="rfc" name="rfc" maxlength="13" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="noFiel">Firma Electrónica Avanzada:</label> 
+					<input class="form-control firmaElectronicaAvanzada clean" type="text" id="firmaElectronica" name="firmaElectronica" maxlength="50"/>
+				</div>
+			</div>
+			
+			<h3>Domicilio</h3>
+			<div class="row">
+				<div class="form-group col-md-8">
+					<label for="calle">Calle:</label> 
+					<input class="form-control text-uppercase clean" type="text" id="calle" name="calle" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="noExterior">No. Exterior:</label> 
+					<input class="form-control clean" type="text" id="numExt" name="numExt" maxlength="10"/>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="noInterior">No. Interior:</label> 
+					<input class="form-control clean" type="text" id="numInt" name="numInt" maxlength="10"/>
+				</div>
+				<div class="form-group col-md-4 ui-widget">
+					<label for="cp">Código Postal:</label> 
+					<input class="form-control codigoPostal numberClass clean" id="cp" name="cp" maxlength="5"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="estado">Estado:</label>
+					<select class="form-control estado cleanSelect" id="estado" name="estado" disabled="disabled">
+						<option value="0" selected="selected">Seleccione opción...</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="municipio">Municipio:</label> 
+					<select class="form-control municipio cleanSelect" id="municipio" name="municipio" disabled="disabled">
+						<option value="0" selected="selected">Seleccione opción...</option>
+					</select>
+				</div>
+
+			<h3>Carga de Documentos</h3>
+			<div class="row">
+				<div class="form-group col-md-6 ">
+					<label for="_identificacionOficial" class="clienteFisico _identificacionOficial">Identificación Oficial: </label> 
+					<label for="_identificacionOficial"	class="clienteMoral _identificacionOficial">Identificación Oficial del	Representante: </label>
+					<input type="file" class="file clean"	id="_identificacionOficial" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_comprobanteDomicilio" class="_comprobanteDomicilio">Comprobante Domicilio:</label> 
+					<input id="_comprobanteDomicilio" type="file" class="file clean" name="file[]">
+				</div>
+
+				<div class="form-group col-md-6 clienteMoral">
+					<label for="_escrituraConstitutiva" class="_escrituraConstitutiva">Escritura Constitutiva:</label>
+					<input type="file" class="file clean" id="_escrituraConstitutiva"	name="file[]">
+				</div>
+				<div class="form-group col-md-6 clienteMoral">
+					<label for="_porderRepresentanteLegal" class="_porderRepresentanteLegal">Poder del Representante Legal:</label>
+					<input type="file" class="file clean"	id="_porderRepresentanteLegal" name="file[]">
+				</div>
+
+				<div class="form-group col-md-6 clienteFisico">
+					<label for="_curp" class="_curp">CURP:</label> 
+					<input type="file" class="file" id="_curp" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_rfc" class="_rfc">RFC:</label> 
+					<input type="file" class="file" id="_rfc" name="file[]">
+				</div>
+				<div class="form-group col-md-6 _firmaElectronicaAvanzadaDoc moral">
+					<label for="_firmaElectronicaAvanzada" class="_firmaElectronicaAvanzada">Firma Electrónica Avanzada:</label>
+					<input type="file" class="file clean" id="_firmaElectronicaAvanzada" name="file[]">
+				</div>
+				<div class="form-group col-md-6 clienteFisico">
+					<label for="_calidadMigratoria" class="_calidadMigratoria">Acreditación calidad	migratoria (solo extranjeros) :</label>
+					<input type="file" class="file clean" id="_calidadMigratoria" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_validacionListaNegra" class="_validacionListaNegra">Resultado de validación listas negras :</label>
+					<input type="file" class="file clean" id="_validacionListaNegra" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_cartaSituacFiscal" class="_validacionListaNegra">Carta Situacion Fiscal :</label>
+					<input type="file" class="file clean" id="_cartaSituacFiscal" name="file[]">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<button type="button" class="btn btn-primary text-truncate"	id="guardarBeneficiario">
+						<span class="mr-2"> <i class="fas fa-save"></i></span>Guardar
+					</button>
+				</div>
+			</div>
+		</div>
+		</form>
+	</div>
+	</div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/SPPSeguros/resources/js/pages/catalogos/giroMercantilC.js"></script>
+	<script src="/SPPSeguros/resources/js/pages/catalogos/ocupacionC.js"></script>
+	<script src="/resources/js/pages/clientes/beneficiariosC.js" th:src="@{/resources/js/pages/clientes/beneficiariosC.js}"></script>
+	<script src="/resources/js/pages/clientes/beneficiarios.js" th:src="@{/resources/js/pages/clientes/beneficiarios.js}"></script></body>
+</html>

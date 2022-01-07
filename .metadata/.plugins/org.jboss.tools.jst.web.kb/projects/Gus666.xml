@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Users/Tavol/.m2/repository/jakarta/servlet/jakarta.servlet-api/4.0.3/jakarta.servlet-api-4.0.3.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/jstl/1.2/jstl-1.2.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0-rt.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c-1_0.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/c.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0-rt.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt-1_0.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fmt.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/fn.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/permittedtaglibs.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/scriptfree.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0-rt.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql-1_0.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/sql.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0-rt.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x-1_0.tld" project="ControlClientesProject"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jstl-1.2.jar/meta-inf/x.tld" project="ControlClientesProject"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Tavol/.m2/repository/com/sun/mail/javax.mail/1.6.0/javax.mail-1.6.0.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/javaee-api/8.0/javaee-api-8.0.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/junit/junit/4.11/junit-4.11.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/taglibs/standard/1.1.2/standard-1.1.2.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/c-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/c-1_0.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/c.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fmt-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fmt-1_0.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fmt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/fn.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/permittedtaglibs.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/scriptfree.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/sql-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/sql-1_0.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/sql.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/x-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/x-1_0.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard-1.1.2.jar/meta-inf/x.tld" project="Gus666"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Tavol/.m2/repository/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/org/apache/taglibs/taglibs-standard-impl/1.2.5/taglibs-standard-impl-1.2.5.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/c-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/c-1_1.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/c.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/fmt-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/fmt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/fn.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/permittedtaglibs.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/scriptfree.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/sql-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/sql.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/x-1_0-rt.tld" project="Gus666"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-taglibs-standard-impl-1.2.5.jar/meta-inf/x.tld" project="Gus666"/>
+    </library>
+   </libraries>
+  </path>
+ </paths>
+ <validation>
+  <el>
+   <linked-el length="15" name="%0" offset="1384" path="%1"/>
+   <linked-el length="23" name="%0" offset="1007" path="%1"/>
+   <linked-el length="25" name="%0" offset="928" path="%1"/>
+   <linked-el length="23" name="%0" offset="1155" path="%1"/>
+   <linked-el length="10" name="%2" offset="1814" path="%1"/>
+   <linked-el length="15" name="%3" offset="1384" path="%1"/>
+   <linked-el length="23" name="%3" offset="1007" path="%1"/>
+   <linked-el length="25" name="%3" offset="928" path="%1"/>
+   <linked-el length="23" name="%3" offset="1155" path="%1"/>
+   <linked-el length="13" name="%4" offset="778" path="%1"/>
+   <linked-el length="11" name="%5" offset="498" path="%1"/>
+   <linked-el length="12" name="%6" offset="1780" path="%1"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="param.opcion" value="%0"/>
+  <alias path="persona" value="%2"/>
+  <alias path="param" value="%3"/>
+  <alias path="bandera" value="%4"/>
+  <alias path="nombre" value="%5"/>
+  <alias path="/Gus666/src/main/webapp/jstlCore.jsp" value="%1"/>
+  <alias path="nombres" value="%6"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsp/jstl/core">
+   <prefix>c</prefix>
+  </uri>
+ </uris>
+</kb-project>

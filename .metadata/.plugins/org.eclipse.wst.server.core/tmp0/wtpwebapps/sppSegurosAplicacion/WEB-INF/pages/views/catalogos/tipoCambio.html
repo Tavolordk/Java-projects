@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Tipo de Cambio</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="button" class="btn btn-primary col-md-2"
+				name="btnEnviarTipo" data-toggle="modal"
+				data-target="#nuevoTipoModal">
+				<span style="margin-right: 5%"><i class="fas fa-plus-square"></i></span>Nuevo
+				Tipo
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaTipoCambio"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+
+
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevoTipoModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoTipoCambioModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="formTipoCambioNuevo" autocomplete="off">
+							<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title" id="nuevoTipoCambioModalLongTitle">Nueva
+									Tarifa</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								<div class="row">
+
+									<div class="form-group col-md-6">
+										<label for="moneda">Moneda:</label> <select
+											class="form-control" id="moneda" name="cve_MonedaLocal">
+										</select>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="tipoCambio">Tipo de Cambio:</label> <input
+											class="form-control text-uppercase" type="text" id="cT4TipoCambio"
+											name="cT4TipoCambio" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="fechaInicio">Fecha:</label>
+										<div class="input-group">
+											<input type="text" class="form-control date" id="cT4Fecha"
+												name="cT4Fecha"> <span class="input-group-text"><i
+												class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-primary"
+									id="btnGuardarTipoCambio">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div th:include="views/catalogos/editarTipoCambio :: tipocambioEditFragment" id="editarTipoCambio"></div>
+		</div>
+
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/tipoCambioC.js"
+		th:src="@{/resources/js/pages/catalogos/tipoCambioC.js}"></script>
+	<script src="/resources/js/pages/catalogos/tipoCambio.js"
+		th:src="@{/resources/js/pages/catalogos/tipoCambio.js}"></script>
+		
+		<script src="/resources/js/pages/catalogos/monedaC.js"
+		th:src="@{/resources/js/pages/catalogos/monedaC.js}"></script>
+</body>
+
+</html>

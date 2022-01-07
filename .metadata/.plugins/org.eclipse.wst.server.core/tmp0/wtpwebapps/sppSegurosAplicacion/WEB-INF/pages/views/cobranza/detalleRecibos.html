@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="detalleReciboFragment" class="main-container">
+		<div class="modal fade" id="detalleReciboModal" tabindex="-1" role="dialog" aria-labelledby="detalleReciboModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header" align="center" style="background: blue">
+						<h5 class="modal-title" id="detalleReciboModalLabel" align="center" style="color: white">DETALLE DEL RECIBO</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formDetalleRecibo" enctype="multipart/form-data" autocomplete="off" class="needs-validation" novalidate>
+							  <div class="row">
+<!-- 							  		<div class="form-group col-md-4 "> -->
+<!-- 										 <label for="nombre">Cliente:</label> -->
+<!-- 										 <input class= "form-control" id= "cliente" name="cliente" style="font-size: 12px" readonly/> -->
+<!-- 									</div> -->
+							  
+<!-- 									<div class="form-group col-md-4 "> -->
+<!-- 										 <label for="nombre">Poliza:</label> -->
+<!-- 										 <input	class="form-control text-uppercase" type="text" id="poliza" name="poliza" style="font-size: 12px" readonly/> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group col-md-4 "> -->
+<!-- 										<label for="nombre">Ramo:</label> -->
+<!-- 										 <input	class="form-control text-uppercase" type="text" id="idRamo" name="ramo" style="font-size: 12px" readonly/> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group col-md-4 "> -->
+<!-- 										<label for="nombre">Endoso:</label> -->
+<!-- 										 <input	class="form-control text-uppercase" type="text" id="endoso" name="endoso" style="font-size: 12px" readonly/> -->
+<!-- 									</div> -->
+<!-- 									<div class="form-group col-md-4 "> -->
+<!-- 										<label for="nombre">Num. Recibo:</label> -->
+<!-- 										 <input	class="form-control text-uppercase" type="text" id="recibo" name="recibo" style="font-size: 12px" readonly/> -->
+<!-- 									</div> -->
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Detalle Tipo Endoso:</label>
+										 <input	class="form-control text-uppercase numberClass" type="text" id="estatus" name="estatus" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Fecha Emisión:</label>
+										 <input	class="form-control text-uppercase numberClass" type="text" id="fechaEmision" name="fechaEmison" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Fecha Estatus:</label>
+										 <input	class="form-control text-uppercase numberClass" type="text" id="fechaEstatus" name="fechaEstatus" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Fecha Vigencia:</label>
+										 <input	class="form-control text-uppercase numberClass" type="text" id="fechaVigencia" name="fechaVigencia" style="font-size: 12px" readonly/>
+									</div>
+									
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Moneda:</label>
+										 <input	class="form-control text-uppercase numberClass " type="text" id="moneda" name="moneda" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Suma Asegurada:</label>
+										<input class="form-control text-uppercase numberClass moneda" type="text" id="sumaAsegurada" name="sumaAsegurada" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Prima Neta:</label>
+										 <input	class="form-control text-uppercase numberClass moneda"   type="text" id="primaNeta" name="primaNeta" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Recargo Pago Frecc.:</label>
+										<input class="form-control text-uppercase numberClass moneda" type="text" id="recargoPago" name="recargoPago" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Derecho Póliza:</label>
+										<input class="form-control text-uppercase numberClass moneda" type="text" id="derechoPoliza" name="derechoPoliza" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Iva:</label>
+										<input class="form-control text-uppercase numberClass moneda" type="text" id="iva" name="iva" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Prima Total:</label>
+										 <input	class="form-control text-uppercase numberClass moneda" type="text" id="primaTotal" name="primaTotal" style="font-size: 12px" readonly/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Comisión Agente:</label>
+										<input class="form-control text-uppercase numberClass moneda" type="text" id="comisionPrima" name="comisionPrima" style="font-size: 12px" readonly/>
+									</div>
+							  </div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"	data-dismiss="modal">
+							<span class="mr-2"> <i class="fas fa-ban"></i></span>
+							Cerrar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

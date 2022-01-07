@@ -1,0 +1,2731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CG_NO_INFONAVIT" pageWidth="595" pageHeight="842" columnWidth="573" leftMargin="11" rightMargin="11" topMargin="12" bottomMargin="12" uuid="70c75023-98a6-446e-9636-2f913d1b264f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<style name="NombreEmpresa" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="16" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="TipoDocumento" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="14" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="pestanasazules" mode="Opaque" hTextAlign="Center" vTextAlign="Middle" markup="html" pattern="" fontName="SansSerif" fontSize="10" isBold="true"/>
+	<style name="texto" mode="Opaque" hTextAlign="Justified" vTextAlign="Top" markup="html" fontName="SansSerif" fontSize="10">
+		<paragraph leftIndent="8" rightIndent="8"/>
+	</style>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="no_Certificado" class="java.lang.String"/>
+	<parameter name="expedida_Nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT numero_poliza,numero_certificados AS id_certificado
+		,CASE CTE.fisico
+		WHEN 0 THEN UPPER(CTE.denominacion)
+		WHEN 1 THEN UPPER(CTE.nombre_cliente+' '+CTE.apellido_paterno+' '+CTE.apellido_materno)
+		END AS Asegurado
+		FROM POLIZAS
+		LEFT JOIN CERTIFICADO crt ON crt.poliza = id_poliza
+		LEFT JOIN CLIENTES CTE ON CTE.id_cliente = id_contratante
+		WHERE id_poliza =$P{no_Poliza}]]>
+	</queryString>
+	<field name="numero_poliza" class="java.lang.String"/>
+	<field name="id_certificado" class="java.lang.String"/>
+	<field name="Asegurado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="-10" y="0" width="139" height="26" uuid="9f982b06-7d78-4512-86c2-c781f9e18dc0"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-10" y="26" width="139" height="9" uuid="9bb52336-64f7-4377-9682-298fadf24795"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="253" y="0" width="319" height="22" uuid="d4ee7425-75c2-4893-b551-091c64010c19"/>
+				<textElement markup="styled">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="253" y="22" width="319" height="14" uuid="02624a76-86b6-4e59-be5d-b17065e03f09"/>
+				<textElement textAlignment="Right" markup="styled">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#856429" pdfFontName="Helvetica-Bold">Condiciones Generales: Garantía Hogar Privado</style>]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="759" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="739" uuid="1aa28295-b993-4125-ab8b-7dbddfc159ca"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="0" y="10" width="572" height="53" uuid="ea4de12e-1b60-4854-94e0-11fdd34c514d"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="109" height="26" uuid="1d3d68e1-231b-4a75-889a-867d574c8dca"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No Póliza: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement positionType="Float" mode="Opaque" x="109" y="1" width="141" height="26" uuid="7eab17b3-d0b7-41ef-8bb7-b06650e027cc"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="250" y="1" width="152" height="26" uuid="6cacd64c-34a0-4992-8904-b2c30c2ac9f8"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" markup="styled">
+						<font size="11" isBold="false"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No. de Certificados: </style>
+(En caso de colectivo)
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="402" y="1" width="170" height="26" uuid="2d46b1c2-0b1d-4fea-b36d-48f9ec349a1c"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_certificado}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="27" width="140" height="26" uuid="f675c6d3-79e7-4f21-a248-864bbac7b542"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">Expedida a nombre de: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="140" y="27" width="432" height="26" uuid="d315ff5f-bfa4-4908-8fb0-b57374dd4e45"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Asegurado}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="64" width="574" height="10" uuid="a47c742f-7ef3-43ce-aaf5-af8f91ee4a40"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="74" width="286" height="15" uuid="ba40154b-83e2-4f61-8b99-d7e32be267c4"/>
+				<text><![CDATA[<b><font color="#003366">OBJETO DEL SEGURO</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="89" width="286" height="93" uuid="a3a5288b-89b2-4837-9e52-1f038d81d362"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<i><b>SPP Institución de Seguros, S.A. de C.V.</b></i>, denominada en adelante la Institución, es la responsable de pagar las indemnizaciones que ampara el presente Contrato, el cual tiene por objeto cubrir los daños producidos por vicios ocultos que hayan tenido su origen en la etapa de diseño desarrollo y terminación de la construcción de la vivienda, relacionados directamente con los referidos vicios ocultos y defectos de la construcción de una vivienda nueva.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="197" width="286" height="83" uuid="e9e363dd-cf8a-4b96-8cd0-6faa8680ec82"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Está constituido por: la solicitud, la póliza, endosos y cláusulas generales. “Si el contenido de la póliza o sus modificaciones no concuerdan con la oferta, el asegurado podrá pedir la rectificación correspondiente dentro de los treinta días que sigan al día en que reciba la póliza. Transcurrido este plazo se considerarán aceptadas las estipulaciones de la póliza o de sus modificaciones”
+Artículo 25 de la Ley Sobre el Contrato de Seguro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="295" width="286" height="25" uuid="23124c09-9b8b-4265-99fd-1d44ce518427"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[El inmueble, objeto de este seguro y que consta de cimentación, estructura, instalaciones fijas y equipamiento propio.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="182" width="286" height="15" uuid="ab4df785-9984-43bf-af02-6dee945f687e"/>
+				<text><![CDATA[<b><font color="#003366">CONTRATO DE SEGURO</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="280" width="286" height="15" uuid="d4b8677a-1c51-461c-900b-66bd387315d5"/>
+				<text><![CDATA[<b><font color="#003366">BIENES CUBIERTOS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="320" width="286" height="15" uuid="4e1ab05b-e8b2-4c6f-9f0e-9fb283761fcd"/>
+				<text><![CDATA[<b><font color="#003366">PERIODO DE COBERTURA</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="335" width="286" height="50" uuid="a28dadc8-841b-4dbf-8fed-3a2cb566acb9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[El inicio y fin del periodo de cobertura del seguro entrará en vigor a las 12 horas de la fecha de inicio de vigencia especificada en la póliza y continuará durante el plazo de seguro especificado en la misma.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="385" width="286" height="15" uuid="33761385-10a1-400a-9751-c8246b28edf9"/>
+				<text><![CDATA[<b><font color="#003366">DEFINICIONES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="401" width="286" height="352" uuid="08764980-4539-4085-8774-3aead369c31a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Acabados:</b> son elementos o sistemas que integran la parte visible de una construcción sin considerar los elementos estructurales y cumplen una función estética, así como la de revestir los elementos que forman parte de una estructura (muros, techos, losas, etc.) para protegerlos de la intemperie o el uso final. Los acabados pueden ser al interior o al exterior de la vivienda y contar con diversas capas o niveles, desde la base adherente, hasta la final o apreciable a la vista dependiendo de los diversos sistemas constructivos y de acabados. <br>
+<b>Asegurado: </b> El solicitante nombrado en la solicitud de la póliza de seguro.<br>
+<b>Aseguradora:</b> Es la persona jurídica que asume el riesgo contractualmente pactado conforme a su carácter de Institución de Seguros en los términos de la Ley de Seguros y de Fianzas. <br>
+<b>Avalanchas de Lodo:</b> Deslizamiento de lodo provocado por inundaciones o lluvias. <br>
+<b>Avalúo:</b> El dictamen que elaboren los valuadores(as) profesionales sobre el valor de los bienes inmuebles y que esté certificado por la Unidad de Valuación en cuyo padrón se encuentre inscrito el valuador(a) profesional correspondiente.  <br>
+<b>Beneficiario:</b> La persona, física o jurídica, que por designación del Contratante resulta titular de derecho a la indemnización. <br>
+<b>Beneficiario Preferente:</b> Titular del derecho a la indemnización hasta por el saldo insoluto del crédito otorgado. En este caso se entenderá como la institución financiera que ha otorgado un financiamiento para la adquisición del inmueble, en tanto acredite su interés sobre el mismo. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="74" width="287" height="685" uuid="a1439b6b-1afb-408f-b2c2-2b993116e887"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Cimentación:</b> Conjunto de elementos estructurales cuya misión es transmitir las cargas de la edificación o sus elementos. <br>
+<b>Contratante:</b> Persona física o moral que celebra con la SPP Institución de Seguros S.A. de C.V. el Contrato de Seguros a título propio o por cuenta de otro, con o sin la designación de la persona del tercero Asegurado. <br>
+<b>Contrato de Seguro: </b> Es el acuerdo de voluntades celebrado por el Contratante y la Institución de Seguros con base a la solicitud de aseguramiento y por virtud de la cual se obliga, mediante una prima, a resarcir un daño o a pagar una suma de dinero al verificarse la eventualidad prevista en el contrato.<br>
+<b>Daños estructurales:</b> Daños a la estructura de la construcción. <br>
+<b>Daño material:</b> el deterioro o destrucción de la construcción descrito en las condiciones generales de la póliza. <br>
+<b>Defecto de materiales de construcción:</b> Falta de las cualidades de los elementos constructivos para los cuales fueron diseñados exprofeso, utilizados en el proceso constructivo del inmueble y que dan lugar a un Daño Material al amparo de este seguro. <br>
+<b>Desarrollo o Fraccionamiento:</b> Conjunto de viviendas que se encuentren en una misma ubicación. <br>
+<b>Endoso:</b> Es el documento que forma parte del Contrato de Seguro, en el que se adicionan, limitan o restringen coberturas, incluyendo todos los datos concernientes a la cobertura que se afecte. <br><br>
+<b>Estructura:</b> Conjunto de elementos interconectados que integran una armadura o sistema capaz de resistir, trasmitir y distribuir las distintas cargas de la edificación/vivienda a los puntos de apoyo cumpliendo las condiciones de estabilidad, equilibrio y seguridad. 
+Se considerarán como parte de la estructura: sistema de cimentación (superficial o profunda), castillos o columnas, muros de carga, trabes, cerramientos, losas y demás elementos considerados en el diseño estructural del inmueble, techumbres, así como los rellenos para crear formas y volúmenes, componentes, retículas, sistemas de suspensión, y cualquier tipo de soporte o base que esté unido o anclado a la estructura (por cualquier medio) y que sirva para recibir o sostener algún acabado o cubierta.
+ <br>
+<b>Error de diseño:</b> Determinación equivocada o inadecuada en la definición cuantitativa y/o cualitativa de los elementos del inmueble, realizada involuntariamente, que da lugar a un Daño Material al amparo de este seguro. <br>
+<b>Evento:</b> También identificado como Siniestro, es el suceso que origina el ejercicio del seguro. <br>
+<b>Fecha de Inicio de Vigencia: </b> Es la fecha que aparece en la carátula de la póliza, a partir de la cual comienzan los beneficios del Contrato de Seguro. <br>
+<b>Fecha de Término de Vigencia: </b> Es la fecha a partir de la cual, conforme a lo señalado en la carátula de la póliza, se extinguen los beneficios del Contrato de Seguro. <br>
+<b>Granizo:</b> Precipitación atmosférica de agua que cae con fuerza en forma de cristales de hielo duro compacto. Bajo este concepto además se excluyen los daños causados por la obstrucción en los registros de la red hidrosanitaria y en los sistemas de drenaje localizados dentro de los predios asegurados y en las bajadas de aguas pluviales a consecuencia del granizo acumulado en las mismas. <br>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="0a235d6b-8e62-4f9e-8bd8-21b7cd875f8d"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="754" width="574" height="5" uuid="20aed149-dac5-4289-adc2-320912fae5d8"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="-1" y="10" width="572" height="740" uuid="105f8796-ca14-44db-a18a-cefd5cf6ebd9"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="3d0ab040-14ac-4228-9163-99e450dbfee0"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="10" width="287" height="220" uuid="17dcedb5-99b3-4cdb-aeef-2cdb7d9d2d14"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Helada:</b> Fenómeno climático consistente en el descenso inesperado de la temperatura ambiente a niveles iguales o inferiores al punto de congelación del agua en el lugar de ocurrencia. <br>
+<b>Huracán:</b> Flujo de agua y aire de gran magnitud, moviéndose en trayectoria circular alrededor de un centro de baja presión, sobre la superficie marina o terrestre con velocidad periférica de vientos de impacto directo igual o mayor a 118 kilómetros por hora, que haya sido identificado como tal por el Servicio Meteorológico Nacional.
+<b>Impermeabilización:</b> Sistema para crear una cubierta con substancias, compuestos o elementos que tienen como objetivo detener el paso del agua/humedad del medio por filtración hacia la losa de azotea o área que debe ser mantenida seca. <br>
+<b>Instalación eléctrica: </b> Conjunto de circuitos y componentes que permiten el flujo de la energía a los distintos habitáculos de la vivienda para asegurar la conexión en los puntos de consumo, así como las protecciones destinadas a equipos en condiciones de uso normal o establecidas. <br>
+Componentes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="230" width="22" height="12" uuid="3794a5f4-0099-4a07-93b1-39c4944f0cd1"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="230" width="265" height="12" uuid="ea536285-64a9-4fb3-8b5f-cd3e406cf76a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Cable eléctrico-fase, neutro y tierra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="242" width="265" height="12" uuid="beeee285-fb99-42b5-b6f1-17d319c0c82e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tubería o canalización]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="242" width="22" height="12" uuid="ad231922-636d-452b-9984-105f9f9a637b"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="254" width="22" height="12" uuid="994aec69-63b4-457c-96c5-4fb73768f536"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="254" width="265" height="12" uuid="8e51659c-965c-4962-9601-69a03b7821c8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Chapulas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="266" width="22" height="12" uuid="61cf7bff-0ecb-47a9-a375-1baac87a51c4"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="266" width="265" height="12" uuid="0533dc97-110b-4d3c-8a33-3d2160d77e16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Cajas de conexión o registros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="278" width="22" height="12" uuid="eda73e1b-f01f-4f03-bffd-c4143e7b4018"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="278" width="265" height="12" uuid="0fc997cf-bb1c-4221-ba30-35f8e0e78f0d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Coples o niples]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="290" width="22" height="12" uuid="1738b536-4a85-4669-acb9-e21340851ea3"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="290" width="265" height="12" uuid="0d9b2b98-affb-4b9e-8104-9f36b0b6404b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Aislamiento de conductores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="302" width="22" height="12" uuid="bfe727a9-be85-46d3-83a9-8bef6e49e07f"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="302" width="265" height="12" uuid="3d619c29-d91c-4769-85d2-16ef286fcd35"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Conectores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="314" width="22" height="12" uuid="78894f78-7702-4284-9cfe-0271ba53e235"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="314" width="265" height="12" uuid="4ce9661f-cc11-4964-a404-75e0f1cf9637"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Curvas, codos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="326" width="22" height="12" uuid="628c5344-8dec-4ed7-8517-5c75ae044106"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="326" width="265" height="12" uuid="84765df6-4772-4792-8be1-e3558f197ce4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tableros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="338" width="265" height="12" uuid="11282904-175a-407d-8953-63ef80950d6c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Protecciones de diseño]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="338" width="22" height="12" uuid="a508b41a-4357-4070-b8c3-bd832f09dd50"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="350" width="265" height="12" uuid="7155a391-e08f-4b00-ba16-e592a12563dd"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Empalmes, conexión de bornes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="350" width="22" height="12" uuid="b7e05bad-b517-4d56-88ca-bc0e23263a31"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="362" width="287" height="58" uuid="2b5af9d6-9ab4-4910-9aaf-8356c9e9a99b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Instalación hidráulica:</b> Sistema de tuberías y sus conexiones que permiten dar cauce hermético al agua potable a diferentes puntos de la vivienda para su consumo. <br>
+Se consideran componentes de la instalación hidráulica los siguientes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="420" width="22" height="35" uuid="7b3806eb-3eb7-4e44-a03e-ab08705a93d7"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="420" width="265" height="35" uuid="1b366c10-9bea-4102-860b-6e0002c70607"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tubería de cobre (M,L,K), CPVC, Polipropileno, Polietileno, PVC o material que se acepte mediante validación expresa por esta aseguradora.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="454" width="22" height="12" uuid="1ed9d11c-ceea-45fe-91ff-06a886bd435e"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="454" width="265" height="12" uuid="f1bafe5c-1009-4e47-b3f5-604d8c01cf0a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Válvulas (globo, esfera, compuerta)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="466" width="22" height="25" uuid="0bcf86f7-3ec8-4dad-a110-a1c731d122e2"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="466" width="265" height="25" uuid="e24b8976-4401-4190-ab73-c87bde943dc2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Conexiones: Coples, reducciones, codos, “T”, tuerca unión, conectores, tapones.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="491" width="22" height="12" uuid="e91b9ceb-8db7-4c98-83de-6b8db57a2f6c"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="491" width="265" height="12" uuid="1862b907-f86c-4569-974b-5a86f428c975"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Llaves de control angular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="503" width="287" height="92" uuid="dcc68f5f-3f47-409b-bdd2-b385fd53dbd5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Instalación sanitaria (y pluvial): </b> sistema de tuberías, y conexiones que permiten el desalojo de las aguas negras o residuales desde el interior de la vivienda (muebles de baño, vertederos, fregaderos, regaderas, lavabos, lavaderos, lavadoras, coladeras, etcétera) hasta los puntos de descarga como: la red pública, fosas sépticas o áreas dispuestas para descarga en el caso pluvial. <br>
+Componentes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="595" width="22" height="12" uuid="99b9376d-c059-4f0b-b65e-17c378994dc0"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="595" width="265" height="12" uuid="731b5012-2068-433b-871d-41e12a416f7f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tubo de PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="607" width="22" height="12" uuid="71b5ab7e-bdc0-4e7f-9c59-e0e2d374681e"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="607" width="265" height="12" uuid="14ee3ddb-b2db-47f4-8fb3-053fc4e391fe"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tapones PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="619" width="265" height="12" uuid="a66abb60-2aaa-484e-8d70-0ca55f65771c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Codos en PVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="619" width="22" height="12" uuid="ebe487ed-50ee-458b-b145-9e072914e08e"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="631" width="22" height="12" uuid="3bb48f70-6b26-49e7-8743-44e098ddab21"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="631" width="265" height="12" uuid="1774ac09-77f2-482c-90b4-9dab1ec2bb7e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Coples en PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="643" width="265" height="12" uuid="f9193e46-93c2-4e88-9267-d33e3e401c13"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Conectores de PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="643" width="22" height="12" uuid="8bb37b80-6c9b-474f-b405-d6147303eb78"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="655" width="265" height="12" uuid="0e6ea33d-854c-4243-9004-93d2dce14240"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Reducciones de PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="655" width="22" height="12" uuid="2dd6fcb0-b873-430b-92ac-25bbfcf2f2e0"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="667" width="22" height="12" uuid="26fe1630-396d-4c0e-88c6-adee82485b19"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="667" width="265" height="12" uuid="a065711a-e0bc-4b2b-84b6-807b0bc60df6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Yee PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="679" width="265" height="12" uuid="ae0e5177-b4d0-4707-9e39-4f63c51893a7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Coples en PVC, CPVC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="679" width="22" height="12" uuid="c8c54732-a74c-417d-9e19-1807d2021c18"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="21" y="691" width="265" height="14" uuid="eeb3f0c2-8d7f-4d6e-b261-59c268d36631"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Coladeras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="691" width="22" height="14" uuid="88c6b80a-0aa9-4f4b-a4e7-b936a94567f3"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="705" width="287" height="54" uuid="6d7e7e0b-3c8b-4e03-a353-f6a63ff2848b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Instalación de gas:  </b> sistema de tuberías y conexiones que aseguran el suministro y conducción hermética de gas de manera eficiente a los diferentes puntos de consumo en la vivienda. <br>
+Componentes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="10" width="22" height="35" uuid="c4095783-7eef-4fa2-88dd-6c26a5411cf5"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="308" y="10" width="264" height="35" uuid="65f66e9a-297c-4bbb-84ae-af9acab2c763"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tubería (Polietileno de alta densidad, fierro negro cédula 80, manguera especial de neopreno cobre rígido tipo “L” y tipo “K”, cobre flexible, galvanizada cédula 40).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="45" width="22" height="12" uuid="afd54af9-ab50-4e7f-a928-0e54f0c44fd2"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="308" y="45" width="264" height="12" uuid="2da9e3a7-f2c4-4055-a8ae-a659cc17a26b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Conexiones, llaves y válvulas de seccionamiento o corte.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="57" width="286" height="702" uuid="6b4435e6-c298-44da-ba82-99de7025651c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Las instalaciones eléctricas, hidráulicas y de gas, se consideran desde el punto de conexión inmediato posterior al suministro (medidor de consumo si es aplicable).
+Para la sanitaria, se considera la salida al punto de conexión al colector de red dentro de los límites del predio de la vivienda. <br>
+<b>Inundación:</b> El cubrimiento temporal del suelo por agua, a consecuencia de desviación, desbordamiento rotura de los muros de contención de ríos, canales, lagos, presas, estanques y demás depósitos o corrientes de agua, naturales o artificiales. <br>
+<b>Inundación por lluvia: </b> El cubrimiento temporal del suelo por agua de lluvia a consecuencia de la inusual y rápida acumulación o desplazamiento de agua, naturales o artificiales. <br>
+<b>Ley:</b> Es la Legislación en materia de seguros vigente en la República Mexicana a la cual quedan sujetas el Asegurado, SPP Institución de Seguros S.A. de C.V., y cualquier otra persona que por cualquier motivo forme parte del presente Contrato de Seguro. <br>
+<b>Marejada:</b> Alteración del mar que se manifiesta con una sobre elevación de su nivel debida a una depresión o perturbación meteorológica que combina una disminución de la presión atmosférica y una fuerza cortante sobre la superficie del mar producida por los vientos. <br>
+<b>Mano de obra defectuosa: </b> Ejecución inadecuada o de mala calidad en el proceso constructivo, cometida involuntariamente, que da lugar a un daño al amparo de esta cobertura.<br>
+<b>Nevada:</b> Precipitación de cristales de hielo en forma de copos. <br>
+<b>Periodo de gracia: </b> Plazo de 30 días que SPP Institución de Seguros S.A. de C.V. otorga al Contratante para cubrir el monto de la Prima, dentro del cual se otorga protección por el presente Contrato de Seguro, aún cuando no se hubiere pagado la Prima correspondiente.<br>
+<b>Prima: </b> Es la cantidad de dinero que debe pagar el Contratante a SPP Institución de Seguros S.A. de C.V., en la forma y términos convenidos para tener derecho a las coberturas amparadas por el Contrato de Seguro durante la Vigencia del mismo. La prima total incluye el impuesto al valor agregado o cualquier impuesto aplicable. <br>
+<b>Siniestro:</b> Todo hecho cuyas consecuencias dañosas estén total o parcialmente amparadas por las coberturas del Seguro y se hayan manifestado durante el periodo de vigencia de la cobertura. <br>
+<b>Solicitud: </b> Declaración por escrito en un formulario por el contratante con información sobre sí mismo y, en su caso  sus dependientes, usada por SPP Institución de Seguros S.A. de C.V. para determinar la aceptación o denegación del riesgo. <br>
+<b>Suelo: </b> material residual producto de la descomposición física, química o biológica de la roca madre (ígnea, sedimentaria o metamórfica) y sobre el cual se llegan a desplantar la mayor parte de las estructuras realizadas por el hombre. <br>
+<b>Suma Asegurada: </b> Es la cantidad indicada en la carátula de la póliza, que SPP Institución de Seguros S.A. de C.V, en su caso, se obliga a pagar al verificarse el Evento. <br>
+<b>Recibo de Pago: </b> Documento emitido por SPP Institución de Seguros S.A. de C.V, en el cual consta la recepción del pago de la Prima que al efecto haya realizado el Contratante. <br> 
+<b>Terrorismo: </b> Los actos de una persona o personas que por sí mismas, o por representación de alguien  o en conexión con cualquier organización o gobierno, realicen actividades por la fuerza, violencia o por la utilización de cualquier otro medio con fines políticos, religiosos, ideológicos, étnicos, o de cualquier otra naturaleza, destinados a derrocar, influenciar presionar al gobierno de hecho o de derecho para que tome una determinación, o alterar]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="-1" y="10" width="572" height="739" uuid="bb35ce65-e260-4713-b6a3-48de5747067b"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="889cd5fd-1d73-46bd-814f-5f8259df1d90"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="10" width="286" height="345" uuid="df9fe8b0-05f1-4678-9ba8-7ab76aff6e35"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[ y/o influenciar y/o producir alarma, temor o zozobra en la población, en un grupo o sección de ella o de algún sector de la economía. <br>
+<b>Urbanización y equipamientos exteriores: </b> Equipamientos viales, muros de carga, bardas perimetrales, aparcamientos exteriores, instalaciones deportivas y de recreo, jardineras, redes de servicio y demás obras e instalaciones, en general, ajenas al inmueble. <br>
+<b>Valor Convenido:</b> Es la suma de dinero necesario en el momento del siniestro para costear y pagar la construcción, reconstrucción, adquisición, instalación o reparación, en su caso, de bienes muebles e inmuebles incluidos en el proyecto y a la entrega de la casa de igual clase, calidad, tamaño y capacidad que los bienes cubiertos, sin considerar la deducción alguna por depreciación física. Los bienes muebles a los que se refiere este punto son aquellos adheridos al inmueble, incluyendo el costo de ejecución, honorarios de proyecto, los costos de inspección, supervisión y revisión, licencias e impuestos y, en general, cualquier otro gasto que sea necesario para la ejecución. <br>
+<b>Vicios ocultos:</b> Mala calidad, defecto, error o deficiencia en el diseño o construcción o materiales que dé lugar a un daño material sea o no visible a simple vista, indemnizable al amparo de esa cobertura, y cuya manifestación se produzca durante la vigencia de la cobertura. <br>
+<b>Vientos Tempestuosos:</b> Vientos que alcanzan por lo menos la categoría de depresión tropical, tornado o grado 8 en la escala de Beaufort (62 kilómetros por hora), de acuerdo con el Servicio Meteorológico Nacional o registros reconocidos por este. <br>
+<b>Vivienda Nueva:</b> Se entiende por vivienda lo que constituye la edificación material, incluyendo las áreas comunes como son, escaleras, pasillos, indivisos en general y cimentaciones.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="370" width="286" height="70" uuid="73741525-d0f9-4e76-b7fb-338fe3e65c00"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Este seguro cubre la indemnización o reparación de los daños materiales causados en los bienes asegurados por vicios o defectos, hasta la suma asegurada contratada, según se especifica en la póliza y en el Endoso de entrada en vigor de la cobertura, como consecuencia exclusivamente de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="-1" y="355" width="286" height="15" uuid="b3cc5a7f-f007-49bc-9fbb-7820b20fcba0"/>
+				<text><![CDATA[<b><font color="#003366">COBERTURA GARANTÍA HOGAR</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="440" width="25" height="30" uuid="1f15bf89-aec7-4636-8dc1-9119be35e820"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="24" y="440" width="261" height="30" uuid="73cedd47-82cd-480a-80e4-3a2d4145487a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Daños en Materiales Estructurales <i>(durante un periodo de 10 años)</i>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="470" width="34" height="60" uuid="e8df31b8-f0a2-4886-b80e-92c0d7b92ea6"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="33" y="470" width="252" height="60" uuid="6bbd9bb7-dbc1-43c6-b0cd-43f7450df84c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los daños materiales y defectos de la estructura del inmueble, que comprometan su resistencia mecánica o estabilidad y que tengan su origen en fallas o errores de diseño, fallas o defectos de ejecución o de los materiales integrantes de la misma.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="530" width="34" height="60" uuid="869585a4-5305-4aad-af4d-e96e476f9404"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="33" y="530" width="252" height="60" uuid="c986c99c-e75c-4d53-9e3a-ea5a7ccee200"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los daños materiales a la obra secundaria e instalaciones y equipos propios del inmueble y elementos que se encuentren presupuestados en la obra, cuando sean a consecuencia directa de un siniestro cubierto de conformidad con el párrafo precedente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="590" width="34" height="82" uuid="b8463337-610c-4aa4-b2c1-307f01822740"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="33" y="590" width="252" height="82" uuid="3c06e915-c107-4ac3-b475-5d53458a2ac9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación y refuerzo en que se incurra para eliminar la amenaza de hundimiento de la estructura soportante del inmueble, y que sean necesarias para salvaguardar la construcción, cuando esta circunstancia provenga del daño indemnizable, proveniente de uno de los riesgos cubiertos de vicio oculto por defecto en el diseño y construcción de la vivienda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="672" width="25" height="16" uuid="7ecf6366-03ea-47c0-bf56-15da0b727ab0"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="24" y="672" width="261" height="16" uuid="56c75360-0945-40e6-8abd-f91cee481ceb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Impermeabilización <i>(durante un periodo de 5 años)</i>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="10" width="34" height="48" uuid="78174cfb-25dc-4ea5-9e1e-e99d4c1216a7"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="10" width="252" height="48" uuid="f23888e0-e627-40a8-8615-b2c4565414c0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[ colocación, o  defectos  en  los  materiales, cuando  haya dado lugar a la manifestación de una falla en su funcionamiento evidenciada por humedad o entrada de agua desde el exterior.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="58" width="34" height="40" uuid="d03f9aa1-f3f7-4b7d-9995-91eee6f715ac"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="58" width="252" height="40" uuid="d3ada25b-2570-436a-88c7-5e6e46d03d20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la vivienda que resulten dañadas a consecuencia de siniestros amparados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="98" width="34" height="50" uuid="082f210c-d0c3-443f-ad5c-2eff8dfab597"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="98" width="252" height="50" uuid="2b536cc2-1604-4f40-85e5-f12c3b95fb33"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la vivienda dañadas intencionada y necesariamente con el único fin de reparar los daños cubiertos en el primer párrafo de esta sección.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="148" width="25" height="30" uuid="190d845b-fb13-4c42-be22-6c172e6a3feb"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="310" y="148" width="261" height="30" uuid="14dfdbd2-ca0b-49f3-bc7f-e16f6a28ba36"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Instalaciones hidrosanitarias y eléctricas <i>(durante un periodo de 2 años)</i>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="178" width="34" height="70" uuid="10a44dc1-a7fe-41ce-a83f-ef77483d670f"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="178" width="252" height="70" uuid="f369336e-c763-4584-a9d3-c80763b80594"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellos materiales y elementos que conforman las instalaciones hidrosanitarias y eléctricas de las viviendas, que resulten con fallas o daños a consecuencia de vicios ocultos, errores de diseño, defectos en los materiales o en la instalación de los mismos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="248" width="34" height="60" uuid="74e0a9ef-42b0-4634-bcdd-0c74a8c79909"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="248" width="252" height="60" uuid="ecdcff92-5f93-45a4-bcac-bf5b4def5cf4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la vivienda, dañadas en forma intencional o no intencional a consecuencia de las reparaciones que se realicen por daños ocasionados por siniestros amparados en el párrafo anterior.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="308" width="34" height="40" uuid="ed15a450-4baf-4e21-a954-d0f03193e247"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="308" width="252" height="40" uuid="bb517067-9ad4-4226-9d6d-f8253e524d79"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de aquellas otras partes de la construcción dañadas con el fin de reparar los daños cubiertos en el párrafo anterior. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="285" y="348" width="286" height="15" uuid="e87f7705-d4ae-4bd0-86d8-acbf519cd3a0"/>
+				<text><![CDATA[<b><font color="#003366">COBERTURA ADICIONAL</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="363" width="25" height="15" uuid="33fc03d8-e437-4d82-a8b1-4d622a0cdafd"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="310" y="363" width="261" height="15" uuid="6b62bf52-202f-4ce6-9b87-41e30bd2ac5d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Acabados <i>(durante un periodo de 1 año)</i>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="378" width="34" height="49" uuid="183f444b-be13-42bd-86ac-569739ac7efb"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="378" width="252" height="49" uuid="5cbee3bb-a2a9-468e-9565-cd2543e59ba0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o sustitución de los acabados especificados en el proyecto original por la desarrolladora hasta la suma asegurada señalada en la caratula de la póliza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="285" y="427" width="286" height="15" uuid="f1c2e007-6b1e-47d7-aefa-9584178957c4"/>
+				<text><![CDATA[<b><font color="#003366">GASTOS ADICIONALES A CUBRIR</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="442" width="34" height="72" uuid="0d69a704-c9c6-4bcf-b7dc-62ed29fdfea3"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="319" y="442" width="252" height="72" uuid="290e18ba-5681-4306-b9aa-cefb477ded05"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los gastos de demolición y remoción de escombros que hayan sido necesarios a consecuencia de los daños materiales de la vivienda correspondientes a los riesgos cubiertos, incluyendo adicionalmente el costo de los permisos, licencias y demás trámites necesarios de acuerdo con la normatividad aplicable.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="514" width="286" height="37" uuid="3549ba73-cdd6-4032-967a-7fc5abac0d8a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Para los gastos adicionales se establece un límite del 10% del límite máximo de responsabilidad señalado en la carátula de la póliza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="285" y="551" width="286" height="15" uuid="ef1dd8f3-0925-4311-a999-ae3b3232d6c3"/>
+				<text><![CDATA[<b><font color="#003366">EMISIÓN DE PÓLIZAS Y CERTIFICADOS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="567" width="286" height="110" uuid="7e4b11c2-c789-45d2-8119-50ac0d48a5ed"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[La póliza consta de una vigencia especifica dentro de la cual se podrán efectuar emisiones adicionales, al término de la póliza no se podrán incorporar y asegurar nuevas viviendas. <br>
+Se emitirán certificados individuales por cada vivienda que sea asegurada, los cuales especificarán el número de certificado, el nombre del asegurado, nombre del beneficiario, el periodo de vigencia del certificado, los riesgos cubiertos, suma asegurada, la dirección del inmueble, además de los datos propios del certificado.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="285" y="677" width="286" height="15" uuid="882820fa-4af1-4219-be3d-e2957d68c864"/>
+				<text><![CDATA[<b><font color="#003366">LÍMITE MÁXIMO DE RESPONSABILIDAD</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="285" y="692" width="286" height="67" uuid="204e34ec-2941-44de-8120-136c6c210126"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[En caso de que la reparación de la vivienda origine costos que excedan el 80% del valor convenido, SPP Institución de Seguros S.A. de C.V. pagará hasta el límite máximo de reposición establecido en el certificado individual.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="33" y="688" width="252" height="70" uuid="ee1744de-0da5-49ad-bf28-3b791b1b4197"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los costos de reparación o restitución de la impermeabilización de las cubiertas de la vivienda dañadas a consecuencia de vicios ocultos, fallas en su]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="688" width="34" height="70" uuid="53382d36-ca71-4ac8-94d5-e547b2a7abce"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="0" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[•]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="740" uuid="997761bb-2456-45e2-905f-5d3acb0a2aaf"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="89134448-b27c-49e9-8afd-fdee206476a6"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="-1" y="10" width="288" height="15" uuid="ce5dbf88-fa8e-4205-86af-599bd7f832da"/>
+				<text><![CDATA[<b><font color="#003366">DERECHO DE INSPECCIÓN DE LAS VIVIENDAS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="25" width="288" height="170" uuid="c797af4e-5d00-4007-ba96-dcac0ac7f4b5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A. de C.V., tendrá derecho de inspeccionar desde el inicio los trabajos de construcción de cada Vivienda Nueva asegurada, dicha inspección podrá ser ejecutada por el constructor o desarrollador contratante, quien a solicitud de SPP Institución de Seguros S.A. de C.V deberá entregar sin reserva, toda la información que le sea requerida con el propósito de evaluar la calidad del desarrollo de los trabajos. <br>
+En caso de que las viviendas nuevas no cumplan con las condiciones necesarias para que SPP Institución de Seguros S.A. de C.V. otorgue el seguro, esta informará a la empresa desarrolladora contratante sobre las condiciones que deberá cumplir para que sean sujetos de aseguramiento. SPP Institución de Seguros S.A. de C.V. le notificará por escrito los motivos por los que no se puede otorgar el seguro, así como las acciones necesarias para corregir la situación.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="-1" y="195" width="288" height="15" uuid="a076d7db-9a80-49d0-8dce-567aa394db8a"/>
+				<text><![CDATA[<b><font color="#003366">EXCLUSIONES GENERALES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="210" width="288" height="54" uuid="2a98f6aa-e351-44ce-a98a-979c291ed7b8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No forma parte del riesgo cubierto y, por lo tanto, se encuentran expresamente excluido toda pérdida, daño menoscabo sufrido en los bienes materia del seguro, causadas por:</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="264" width="21" height="30" uuid="d898e6b2-0b21-4d83-bb2c-ef3af9d7b78d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>1.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="264" width="268" height="30" uuid="ae227852-759f-4423-b939-69cb4f70e3f4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños ocasionados por actos intencionados, voluntarios, dolosos o fraudulentos del beneficiario. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="294" width="21" height="15" uuid="1c1c5278-086c-4aab-99f8-a1f9c3dd050e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>2.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="294" width="268" height="15" uuid="1bebde5b-780f-4bf6-bda6-f7931738f3fd"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños por incendio o explosión. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="309" width="21" height="65" uuid="105352fd-20ba-4cfa-9a07-4b60a5245e4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>3.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="309" width="268" height="65" uuid="3b776392-b7ab-48cd-af33-dc8e7cb99153"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños derivados de guerra civil o intencional, haya o no mediada declaración oficial, levantamientos populares o militares, insurrección,rebelión, revolución u operaciones bélicas de cualquier clase, aún en tiempo de paz. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="374" width="20" height="55" uuid="0a2ac5a8-9d4c-4447-ad8d-5925d78d80d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>4.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="374" width="268" height="55" uuid="4576c4d5-bcee-4210-a480-67e9fc4a62b0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños ocasionados por actos políticos o sociales o sobrevenidos con ocasión de alborotos populares, motines, huelgas, cierre peatonal, disturbios internos y sabotaje. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="429" width="268" height="65" uuid="7ccfd884-5492-41e8-8c00-2e9c16cde059"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños por terrorismo o sabotaje, así como las medidas tomadas para impedir, revenir, controlar o reducir las consecuencias que se deriven de cualquier acto de Terrorismo o cualquier daño consecuencia derivado de un acto de Terrorismo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="558" width="20" height="51" uuid="96273054-71c1-47c6-8d98-0804b7489b56"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="609" width="20" height="67" uuid="82d73d6c-8c5f-4910-bec9-6395b27242e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>6.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="609" width="268" height="67" uuid="c8f94df7-8688-4879-80eb-54c128ee2473"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños, costos o gastos de cualquier naturaleza, directamente causados por, o resultantes de, o en conexión con cualquier acción tomada para el control, prevención o supresión de cualquier acto de terrorismo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="558" width="268" height="51" uuid="7e2f4f3e-b414-4f07-8448-9a5fdb7888d9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>otro medio, en contra de las personas, de las cosas o de los servicios públicos y que, ante la amenaza o posibilidad de repetirse, produzca alarma, terror o zozobra en la población. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="429" width="20" height="129" uuid="ee6f38b6-58ef-4a84-b2af-e6630650526b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>5.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="494" width="268" height="64" uuid="624b6ef5-cd9a-43db-9f0b-7cbbb08a4008"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Con base a lo anterior, quedan excluidos las pérdidas o daños materiales por dichos actos directos que, con un origen mediato o inmediato, sean el resultante del empleo de explosivos, substancias tóxicas, armas de fuego, o por cualquier  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="675" width="20" height="31" uuid="de77965d-6642-4bcb-8b73-25e1e9cb4336"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>7.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="675" width="268" height="31" uuid="d1334e45-92d7-4a0c-bcb4-c5aff43e7223"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños o responsabilidades derivadas de caso fortuito o fuerza mayor. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="705" width="20" height="54" uuid="2a34f290-880e-4af2-afae-1cd1df9ecca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>8.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="19" y="705" width="268" height="54" uuid="bb9f3d25-3b97-4b1f-a7c0-d6a708468672"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Terremoto o erupción volcánica. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="10" width="20" height="144" uuid="f5721415-d8e6-4a18-ab92-faf481c26ba4"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>9.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="307" y="10" width="266" height="144" uuid="9b8e5bc4-9476-4569-9260-84c081de29db"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños a bienes cubiertos ocasionados directamente por Fenómenos hidrometeorológicos; avalanchas de lodo, granizo, helada, huracán, inundación, inundación por lluvia, golpe de mar, marejada, nevada, vientos tempestuosos y flujos de agua subterráneos o superficiales. <br>
+Se excluyen los daños causados por la obstrucción en los registros de la red hidrosanitaria y en los sistemas de drenaje localizados dentro de los predios asegurados y en las bajadas de aguas pluviales a consecuencia de granizo acumulado en las mismas. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="154" width="25" height="45" uuid="2fdf1eb1-4b5e-46c8-a1ce-8b7f21ac1424"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>10.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="154" width="261" height="45" uuid="0a4d0477-6596-44fa-aa02-114648fcb675"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños derivados por falta de: mantenimiento, o por uso normal, o desgaste natural de la vivienda asegurada. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="199" width="25" height="19" uuid="ed13e59d-00ab-4da0-abaf-1cb1d324ca79"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>11.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="199" width="261" height="19" uuid="efd1605f-7afb-438e-a63a-2c3d1ef942ad"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños materiales a construcciones preexistentes. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="218" width="25" height="56" uuid="b85b9a69-8381-4746-9997-8a4f796e24b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>12.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="218" width="261" height="56" uuid="786b4d81-6fba-4fae-bd85-15c1bcc34112"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños por modificaciones o alteraciones constructivas o adaptaciones al inmueble definido en el proyecto original, o por modificaciones de los elementos de construcción. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="274" width="25" height="45" uuid="0481a536-1922-4ef3-b927-70daeff08b25"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>13.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="274" width="261" height="45" uuid="a2efe5f4-023c-4849-831d-bb2344d097fa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Los daños por defectos de impermeabilización en elementos móviles como domos, tragaluces, ventilas. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="319" width="25" height="30" uuid="d02ca8cf-9ed3-43df-a484-6dfbf84884bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>14.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="319" width="261" height="30" uuid="8eb5ebb9-631b-4190-8b4f-b3c9a7ec55ba"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Impermeabilización de fachadas, incluyendo filtraciones a través de puertas y ventanas. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="349" width="25" height="68" uuid="22153d8f-2c38-48d5-94ee-4b3f1a19e291"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>15.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="349" width="261" height="68" uuid="89cb576d-96e2-4dcb-a260-6368003b0ec7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Las grietas y fisuras que no comprometan la resistencia mecánica, seguridad de las personas o estabilidad del inmueble, las cuales sean consideradas como daños estéticos según la normatividad aplicable. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="417" width="25" height="55" uuid="446933a3-f978-47b3-b60b-c7e8c9baa041"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>16.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="417" width="261" height="55" uuid="260f5018-2392-4221-9bbf-48f3e6aeafec"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Los daños producidos por parte del beneficiario por haber sometido a la construcción de cargas superiores o usos distintos a aquellos para los que fue diseñada. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="472" width="25" height="96" uuid="586a1d91-03c0-4350-bfd6-5ee6c754715f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>17.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="472" width="261" height="96" uuid="37b0b1eb-873e-4ac3-a88f-c848bc627ea2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Los daños debidos a movimientos o alteraciones del terreno a consecuencia de variaciones del nivel freático no contempladas en la elaboración del proyecto, trabajos o actividades subterráneas, hincados de pilotes, perforaciones de pozos, efectuados después de la recepción de la construcción cubierta. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="568" width="25" height="90" uuid="5bc97865-953e-41de-af3a-3f89a1f12598"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>18.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="658" width="25" height="30" uuid="a8152252-3ff3-4af0-aa21-00be737b9e4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>19.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="658" width="261" height="30" uuid="2f83dfe4-2eb1-4075-9f1e-fb1845706b11"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Daños al inmueble a consecuencia de usos distintos al habitacional. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="568" width="261" height="90" uuid="cc6f04ce-557f-4d23-b3ff-03ff7d9d9bb3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Vicios en acabado o terminados, por ejemplo: texturizados, carpinterías, grifería, muebles de baño, muebles de cocina, herrería, puertas y ventanas, elevadores, equipos de bombeo, equipos de incendio, cuando no sean parte del proyecto original de las obras al momento de la adquisición de la vivienda.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="688" width="25" height="71" uuid="45351e93-167c-476c-be3a-5eee44b7ac82"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>20.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="312" y="688" width="261" height="71" uuid="23d3221e-a69b-4361-927b-6f6813d51ba9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no aplica a pérdidas o daños causados por o resultantes por incautación, confiscaciones, expropiaciones, nacionalización o destrucción de </b>]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="1" width="572" height="749" uuid="90d94444-3822-4fe7-a688-12de0cea7796"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="562bf90a-daf7-4fd3-90cc-4e27638fa335"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="5" width="26" height="85" uuid="9fc59d64-c506-440b-a711-4007041b616c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="24" y="5" width="262" height="85" uuid="4e883cd5-1384-4f4b-9245-73b88ae537d8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>bienes por orden de autoridades gubernamentales, sin importar que otra causa o evento que directamente contribuya concurrentemente a, contribuya a cualquier secuencia de, o empeore la pérdida o daño, aún si tal otra causa o evento estuviese cubierto de otra manera. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="90" width="26" height="75" uuid="10dac730-21a9-4a25-a828-3c313db23306"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>21.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="24" y="90" width="262" height="75" uuid="42b473cd-4c09-41ea-bd61-a9d5a1d294ad"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Insectos o animales. La cobertura no aplica a pérdidas o daños causados por o resultantes de anidación o infestación de o descarga o liberación de desperdicio de productos o secreciones de insectos, pájaros y roedores.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="24" y="165" width="262" height="105" uuid="8c4a72bb-dc5c-4f46-8ab9-2c45baeda6e5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no aplica a pérdidas o daños causados por o resultantes de reacciones nucleares o radiaciones, o contaminación radioactiva, sin importar cualquier otra causa o evento que directamente contribuya concurrentemente a; contribuya en cualquier secuencia de; o empeore la pérdida o daño, aún si la otra causa o evento estuviese cubierta de otra manera. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="165" width="25" height="105" uuid="18dc4af9-97a1-40a3-9135-a4874c0564db"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>22.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="24" y="270" width="262" height="60" uuid="417242cd-6bcb-4526-933b-182ae07ac1b6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Costos de limpieza, pérdidas o costo y gastos de cualquier naturaleza que sean directamente causados por o con la contribución de o que surjan de:  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="270" width="25" height="60" uuid="3b318f43-cf81-40ff-97de-2536f1af20e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>23.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="330" width="41" height="55" uuid="f145204a-31c0-4bce-90ff-41bada316e24"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="39" y="330" width="247" height="55" uuid="a58a3001-d106-4120-a0e2-36832b85c2e0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Radiaciones ionizantes o contaminación por radioactividad de cualquier combustible nuclear o de desechos nucleares provenientes de la combustión de un combustible  nuclear. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="385" width="41" height="55" uuid="263e7c28-7d32-41ec-b20d-8a6633be6a03"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="39" y="385" width="247" height="55" uuid="2d7bfbf8-c291-4e4e-9d9c-ee775da73bfa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Las propiedades radioactivas, tóxica, explosivas u otras propiedades peligrosas de un ensamble nuclear explosivo o componente nuclear del mismo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="440" width="26" height="55" uuid="a73b8abc-c731-4ebb-9cd3-961871f9b4c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>24.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="23" y="440" width="263" height="55" uuid="c95519e1-91a6-43be-8637-5616f37d07b7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>El seguro no cubrirá penas, castigos, multas ni similares, como los pagos por los llamados daños punitivos, daños por venganza, daños ejemplares, daños agravados. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="23" y="495" width="263" height="264" uuid="f1454aa8-eb18-40d8-8034-e955f0b1d645"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no cubrirá cualquier pérdida, daño, reclamo, costo, gasto u otra suma originándose directamente fuera de o relacionando a moho, hongo, esporas u otro microorganismo de cualquier tipo, naturaleza o descripción, incluyendo, pero no limitado a cualquier substancia cuya presencia plantea una amenaza real o potencial a la salud humana. Esta exclusión aplica si hay (i) cualquier pérdida física o daño a la propiedad del beneficiario; (ii) cualquier peligro o causa cubierta, ya sea contribuyendo  o no concurrentemente o en cualquier sucesión; (iii) cualquier pérdida de uso, ocupación, o  funcionalidad; o (iv) cualquier acción requerida, incluyendo pero no limitando a la reparación, reemplazo, levantamiento, limpiadura, disminución, disposición, reagrupación, o pasos tomados para dirigir las preocupaciones médicas o legales concernientes.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="-1" y="495" width="24" height="264" uuid="866e6f13-cc94-4acf-994b-f250e0aab119"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>25.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="5" width="25" height="105" uuid="c004c82a-3fc3-4936-926f-8bcfadd0d20e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>26.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="5" width="262" height="105" uuid="be5621c7-b6c7-4767-8d19-d862f5c09f12"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura excluirá pérdidas, costos o gastos de cualquier naturaleza directamente causados por que resulten o que tengan relación con un uso malicioso real o amenazante con materiales biológicos o químicos, patógenos o venenosos sin tomar en cuenta cualquier otra causa o evento que contribuya concurrentemente o en cualquier otra sucesión al respecto. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="110" width="25" height="45" uuid="044213e9-435a-47bf-bfd8-01843bf2b8cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>27.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="110" width="262" height="45" uuid="a6acc7d7-a40c-47a5-8f58-25ef37731720"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No cubre pérdida, daño, destrucción, borrado, corrupción o alteración de información electrónica, cualquiera que sea la causa.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="155" width="25" height="60" uuid="f9cded6b-ad1e-45c1-85ed-a8fdafae1218"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>28.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="155" width="262" height="60" uuid="9875193b-8338-481e-83be-6c7805c38074"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>El suelo en su mecánica de adecuado funcionamiento y resistencia, así como su degradación por medios naturales, físicos o químicos. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="215" width="262" height="60" uuid="6fdffe93-ba6f-4cf5-9428-391682c25dea"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>La cobertura no aplica a pérdidas o daños causados por cavernas, fallas geológicas o coqueras, flujos de agua subterránea, socavación, suelos contaminados o que experimenten degradación físico-química. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="215" width="25" height="60" uuid="7fe62cc4-e0b9-4444-a524-90ae572e8b39"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>29.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="275" width="25" height="95" uuid="ed3cb416-a069-4e70-afb0-b5385303064b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>30.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="275" width="262" height="95" uuid="d553cf99-a4a8-4e81-aaf2-2f5fbbdb12f5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en acabados los timbres, ventanas, marcos metálicos, puertas, aire acondicionado, inodoros, toalleros, jaboneras, papeleros, ganchos, muebles cerámicos, puertas de vidrio templado corredizas, adopasto, bastidores de muros divisorios, herrerías, canceles, mallas de zona ajardinadas, closets, puertas de baños y recámaras. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="370" width="25" height="95" uuid="f41b624d-0b22-4c0c-8c14-621e2212045f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>31.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="370" width="262" height="95" uuid="39eeafdb-2ab4-49d0-90fe-5c22baf4baf3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalaciones eléctricas Fusibles, Focos, Bombillas, Baterías, Toma corriente, Apagadores, Sockets, Lámparas, Portalámparas, Candiles, Reflectores, Sensores, Tapas y sobre tapas, Calentadores eléctricos, Medidor y cable propiedad de CFE, Varilla de puesta a tierra. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="465" width="25" height="95" uuid="57891930-a291-4af4-a93e-f3ebe316342e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>32.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="465" width="262" height="95" uuid="5877dfae-7113-471b-acaa-fd030a92bcae"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalaciones hidráulicas Llaves de paso, Muebles sanitarios, Grifos, Mezcladoras, Mangueras flexibles, Calentadores de agua, Regadera, Calentador Solar, Bombas de agua, Válvulas check, Flotadores, Pichancha, Tinacos, Fregaderos, Hidroneumáticos y/o presurizadores. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="560" width="25" height="60" uuid="d1721950-b819-4f5c-b1fd-f92479642dd0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>33.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="560" width="262" height="60" uuid="bc73fbfc-da95-49e9-8240-40a36d8e2e7e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalación sanitaria (y pluvial) Muebles sanitarios, Cespol, Sifones, Sellos, Rejillas, Chupón de hule negro sanitario, Silicón, Adaptadores, Empaques. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="619" width="25" height="140" uuid="7ce1115f-f152-49e7-a99e-db87805be7cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>34.</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="311" y="619" width="262" height="140" uuid="7b8e0d3f-b33b-4cb3-952d-b9018b57d3a9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>No se considera cubierto en instalación de gas Recipientes estacionarios o móviles y sus accesorios, Reguladores, manómetros, medidores excepto cuando sean accesorios incluidos en el proyecto original de la vivienda, Línea de llenado (en caso de recipiente estacionario). </b>]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="f7afa1a1-733c-419f-a1f9-cffcb379e554"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="5" width="572" height="745" uuid="2ae3c8e5-b74c-4eff-bd53-b78e9529409c"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="6" width="286" height="15" uuid="f86d2dd0-ab20-4188-aafa-0874be9fa8d7"/>
+				<text><![CDATA[<b><font color="#003366">PAGO DE SINIESTROS E INDEMNIZACIONES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="21" width="286" height="104" uuid="4719bb4a-89d6-49d3-8dc6-7c08e99be873"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Al ocurrir un siniestro que pudiera dar lugar a indemnización conforme a este seguro, el beneficiario tan pronto tenga conocimiento del mismo reclamará a SPP Institución de Seguros S.A. de C.V. a través de centro de atención telefónica y ratificará su reclamo posteriormente por escrito a la misma.<br>
+Tanto el beneficiario como el contratante deberán proporcionar la información y documentos necesarios para que SPP Institución de Seguros S.A. de C.V. estén en posibilidad de cuantificar el daño.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="125" width="25" height="20" uuid="7ba89c24-1557-4bbf-b12f-4a013f0ad583"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0"/>
+				</textElement>
+				<text><![CDATA[<b>•</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="25" y="125" width="261" height="20" uuid="cf73cdda-d3e7-492f-960d-36a9fec1e779"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Documentos por entregar para el formal reclamo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="145" width="40" height="13" uuid="d670a66e-a296-438a-bed7-5010ca6192dd"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="145" width="246" height="13" uuid="1cb29778-c5ee-4ea8-9304-30cc52fd283f"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Copia del certificado correspondiente.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="158" width="246" height="13" uuid="041df7c7-bbd5-4d13-a16b-ec60bd684964"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Indicar la dirección precisa de la vivienda.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="39" y="171" width="247" height="13" uuid="a117472f-4ca5-43ae-89d2-01700a9c6e2d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Formato de reclamación firmado por el beneficiario.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="184" width="246" height="13" uuid="3b200463-c8a1-40b6-8077-6d9967e60aad"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Copia de identificación oficial vigente del beneficiario.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="197" width="246" height="13" uuid="7248f41b-d18f-429a-a835-d15456f97eff"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Fotografías de los daños.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="40" y="210" width="246" height="13" uuid="0037ce01-edb4-4b64-8fe6-4e1918b1c426"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Comprobante de domicilio de la vivienda afectada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="158" width="40" height="13" uuid="24d67ed3-98c2-4437-acb7-e54b2d49a1ec"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="171" width="40" height="13" uuid="222127e0-49ef-40fd-95b0-a8cf4a548b1c"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="184" width="40" height="13" uuid="804e924b-fd24-4ef7-acaa-a04d58e604e8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[d)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="197" width="40" height="13" uuid="0c0ec81c-0fc7-4a2c-8e0b-ea6d9c41d2b6"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[e)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="210" width="40" height="13" uuid="77d62ff0-b35d-4fd2-93f1-4551534fe702"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[f)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="223" width="286" height="310" uuid="313959d5-069a-4430-8d82-bae1456dfd72"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[En casos en los cuales por su complejidad, los daños no puedan ser calculados con la documentación antes señalada, la institución podrá requerir documentación adicional precisa e indispensable para la debida apreciación o cuantificación del daño.Dicha solicitud podrá realizarla conforme lo señala el artículo 69 de la Ley sobre el Contrato de Seguro. <br><br>
+Una vez que SPP Institución de Seguros S.A. de C.V., haya recibido los documentos e información de la reclamación, tendrá un máximo de cinco días hábiles posteriores para informar el rechazo de la misma, explicando la razón o razones en las que ésta se base o en su defecto, informar de la procedencia del reclamo indicando si procederá la reparación o la indemnización, así como los términos y plazos en que se llevarán a cabo de reposición de construcción. <br><br>
+Las reparaciones que se deban realizar a las viviendas a consecuencia de un daño cubierto bajo el contrato de seguro serán responsabilidad de SPP Institución de Seguros S.A. de C.V. y en todo momento deberá realizar las acciones necesarias para solventarlas, para lo que deberá contratar a las empresas y/o proveedores que determine necesarios, sin embargo, no podrá contratar a la misma empresa desarrolladora que construyó las viviendas. No obstante que las reparaciones podrán ser ejecutadas por terceros, la Institución será la única responsable ante el beneficiario de la debida reparación o indemnización conforme al presente contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="5" width="287" height="320" uuid="311fed74-bd6e-4a36-8b97-ec4df740fcce"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[en donde aparezca el cargo hará prueba plena del pago de las primas. <br>
+<b>Rehabilitación:</b> En caso que el Contrato de Seguro hubiere cesado por falta de pago de Primas, el Contratante podrá proponer la rehabilitación del Contrato, siempre y cuando el periodo comprendido entre el último Recibo de Pago de Primas que haya sido pagado y la solicitud de rehabilitación, no sea mayor a 90 (noventa) días naturales. Asimismo, se deberá cumplir con los siguientes requisitos: <br>
+a. El Contratante deberá presentar firmada una solicitud de rehabilitación, en el formato en que SPP Institución de Seguros S.A. de C.V. tiene expresamente para este fin. <br>
+b. El Asegurado deberá comprobar que reúne las condiciones necesarias de asegurabilidad establecidos por la SPP Institución de Seguros S.A. de C.V., a la fecha de la solicitud de rehabilitación. <br>
+c. El Contratante deberá cubrir el importe del costo de la rehabilitación que a tal efecto le indique SPP Institución de Seguros S.A. de C.V <br> El Contrato se considerará nuevamente en vigor a partir del día en que SPP Institución de Seguros S.A. de C.V. comunique por escrito al Contratante haber aceptado la propuesta de rehabilitación correspondiente. <br>
+<b>Periodo de gracia:</b> Plazo de 30 días que SPP Institución de Seguros S.A. de C.V otorga al Contratante para cubrir el monto de Prima, dentro del cual se otorga protección por el presente Contrato de Seguro, aún cuando no se hubiere pagado la Prima correspondiente. Los efectos del contrato cesarán automáticamente a las doce horas del último día de dicho periodo. </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="325" width="287" height="15" uuid="e2fc2a29-4723-46cf-be7c-58e3eed7c23f"/>
+				<text><![CDATA[<b><font color="#003366">CLÁUSULAS OPERATIVAS</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="340" width="287" height="419" uuid="12469598-807a-4f7b-8960-c193d54eb4cb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b> Agravación del riesgo:</b> El Contratante y/o Asegurado deberá comunicar por escrito a la Institución cualquier circunstancia que durante la vigencia de este seguro provoque una agravación esencial de los riesgos cubiertos, dentro de las 24 horas siguientes al momento en que tenga conocimiento de tales circunstancias; toda vez que si se omitiere el aviso o si alguno de éstos provocare la agravación esencial de los riesgos, la Institución quedará, en lo sucesivo liberada de toda obligación derivada de este seguro. <br>
+<b>Lugar de Residencia:</b> Para efectos de este Contrato, solamente estarán protegidos por este seguro los bienes inmuebles ubicados en la República Mexicana. <br>
+<b>Actualización de Suma Asegurada: </b> Durante el periodo de cobertura la suma asegurada podrá ser objeto de actualización a solicitud expresa del asegurado.
+Se deberá presentar la siguiente información: <br>
+1.	Solicitud de aumento <br>
+2.	Avalúo catastral por lo menos de 2 meses de vigencia y que se haya practicado por peritos de instituciones de crédito o corredores públicos de forma que la Institución pueda evaluar adecuadamente el riesgo y determinar si se acepta el aumento.
+El cobro de prima que se genere por este movimiento deberá ser pagada en un periodo no mayor a 30 días, contados a partir de la fecha de inicio de vigencia de éste.
+En caso de que, a la fecha de solicitud del incremento de suma asegurada, se encuentre una indemnización en curso, ésta será pagada con la Suma Asegurada vigente, es decir, antes de que surta efecto el aumento. <br>
+<b>Cancelación:</b> Este Contrato será cancelado si el Contratante no paga la prima respectiva dentro del plazo señalado en el comprobante de pago. <br>
+En caso de que el Contratante decida dar por terminado el Contrato SPP Institución de Seguros S.A. de C.V., efectuará la cancelación y se calculará el porcentaje de devolución de prima de riesgo no devengada de acuerdo con la siguiente tabla.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="533" width="286" height="15" uuid="938ee103-1fad-475e-8d1b-90d4aee7d612"/>
+				<text><![CDATA[<b><font color="#003366">CLÁUSULAS GENERALES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="549" width="286" height="210" uuid="71c89acb-ac03-4109-a159-b76dd11d9740"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Primas:</b> La prima total de la póliza es la especificada en la carátula de la póliza, de acuerdo con los riesgos amparados en la fecha de emisión.  <br>
+La prima corresponderá a la valoración del riesgo asegurado de acuerdo con la naturaleza de los daños cubiertos, y conforme a la base técnica y actuarial que SPP Institución de Seguros S.A. de C.V., registre para tales efectos ante la Comisión Nacional de Seguros y Fianzas. 
+Cualquier prima no pagada será deducida de cualquier indemnización que proceda en caso de siniestro <br>
+<b>Forma de Pago:</b> La prima especificada en la caratula de la póliza será pagada de manera completa al inicio de la vigencia de la póliza. <br>
+<b>Lugar de pago:</b> Los pagos deberán efectuarse, salvo que se establezca expresamente un lugar de pago diverso, en las oficinas de la Compañía o se cargarán de forma automática en el instrumento bancario o financiero que al efecto autorice el Contratante, a cambio del Recibo de Pago correspondiente expedido por la Compañía, en este último caso el estado de cuenta]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="10" width="572" height="749" uuid="b9e2448a-0daa-4c8d-ba08-69a3f2a6828c"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="115" width="287" height="644" uuid="4e15ff1e-95d6-4045-bb12-2a74053c921d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Competencia:</b> En caso de controversia, la persona podrá presentar su reclamación ante la Unidad Especializada de Atención de Consultas y Reclamaciones (Centro de Atención y Servicio a Asegurados) de la Institución o ante la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF), pudiendo a su elección, determinar la competencia por territorio, en razón del domicilio de cualquiera de sus delegaciones, en términos de los artículos 50 Bis y 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros y 277 de la Ley de Instituciones de Seguros y de Fianzas. Lo anterior dentro del término de dos años contados a partir de que se suscite el hecho que dio origen a la controversia de que se trate, o en su caso, a partir de la negativa de la Institución a satisfacer las pretensiones del reclamante, en términos del artículo 65 de la primera Ley citada. <br>
+De no someterse las partes al arbitraje de la CONDUSEF, se dejarán a salvo los derechos del reclamante para que los haga valer ante los tribunales competentes del domicilio de dichas delegaciones. En todo caso, queda a elección del reclamante acudir ante las referidas instancias administrativas o directamente ante los citados tribunales. <br>
+<b>Prescripción:</b> Todas las acciones que se deriven de este Contrato de Seguro, prescribirán en dos años contados desde la fecha del acontecimiento que les dio origen. Dicho plazo no correrá en caso de omisión, falsas o inexactas declaraciones sobre el riesgo corrido, sino desde el día en que la empresa haya tenido conocimiento de él; y si se trata de la realización del siniestro, desde el día en que haya llegado a conocimiento de los interesados, quienes deberán demostrar que hasta entonces ignoraban dicha realización. Tratándose de terceros beneficiarios se necesitará además que éstos tengan conocimiento del derecho constituido a su favor, en términos de lo dispuesto por los artículos 81 y 82 de la Ley sobre el Contrato de Seguro. <br>
+La prescripción se interrumpirá no sólo por las causas ordinarias, sino también por el nombramiento de peritos o por la iniciación del procedimiento conciliatorio señalado en el artículo 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros. <br>
+Asimismo la prescripción se suspenderá por la presentación de la reclamación ante la Unidad Especializada de atención de consultas y reclamaciones de esta Institución. <br>
+<b>Moneda:</b> Todos los pagos que el Contratante y la Institución deba realizar conforme a esta póliza, se liquidará en moneda nacional, al tipo de cambio previsto en la Ley Monetaria vigente en los Estados Unidos Mexicanos a la fecha de pago. <br>
+En el caso de que la póliza esté contratada en dólares, se utilizará como tipo de cambio de venta del dólar de los E.U.A. determinado por el Banco de México en el Diario Oficial de la Federación a la fecha de pago. <br>
+En caso de que la póliza esté contratada en UDIS, se utilizará como tipo de cambio el valor de la UDI que publique el Banco de México en el Diario Oficial de la Federación a la fecha de pago. En caso de que las Unidades de Inversión (UDI) desaparezcan, la Institución se compromete a reemplazarlas por un sistema determinado por el Banco de México. <br>
+<b>Revelación de Comisiones:</b> Durante la vigencia de la Póliza, el Contratante podrá solicitar por escrito a la institución le informe el]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="100" width="287" height="15" uuid="5b023238-d474-4514-a548-4e1eab4eee96"/>
+				<text><![CDATA[<b><font color="#003366">CLÁUSULAS CONTRACTUALES</font></b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="5" width="146" height="42" uuid="3ac75f0d-3165-4dc0-8563-8a4ab66bdcc0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Tiempo Transcurrido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="47" width="146" height="15" uuid="8d792222-0fa2-4518-8147-9a9ddda130f1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[0 a 12 meses]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="62" width="146" height="15" uuid="e849a537-1639-414d-86f6-5e5404fe393e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[1 a 2 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="77" width="146" height="15" uuid="f9535bb0-3b41-470f-a4b2-39847c25c691"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 2 a 3 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="92" width="146" height="15" uuid="a7c3a5e2-68bd-440a-942a-4cca1ed1ea8f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 3 a 4 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="107" width="146" height="15" uuid="2593577b-66cc-4b49-8d6a-58196ab90d1b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 4 a 5 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="122" width="146" height="15" uuid="e2fadcaa-d6ba-477c-8c81-0033a15b8b3f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 5 a 6 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="137" width="146" height="15" uuid="83ed9061-3df8-4553-a7dd-53b016a5b0cb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 6 a 7 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="152" width="146" height="15" uuid="c5af6039-bda9-429a-9c12-5451b51f0f75"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 7 a 8 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="167" width="146" height="15" uuid="0568312f-6782-4890-a379-d3739dabedd5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 8 a 9 años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="182" width="146" height="15" uuid="effc5134-4f4c-46f3-b5a0-7dad3e3b9a1e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="12" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Más de 9 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="146" y="32" width="35" height="15" uuid="baf594fc-6408-487b-ad81-0320eaeeb9ba"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[<b>10</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="5" width="140" height="27" uuid="54044cac-4578-4cab-bbf1-2a343511d5b7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[Porcentaje de la prima no devengada, cobertura en años]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="181" y="32" width="35" height="15" uuid="3275ebb9-bc0b-470d-84df-cbb60b30a4fc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[<b>5</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="216" y="32" width="35" height="15" uuid="02796b35-b69d-4c52-9021-1c124d58efdc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[<b>2</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="251" y="32" width="35" height="15" uuid="a23bcca4-b250-4751-96ff-5851a7be74d2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[<b>1</b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="47" width="35" height="15" uuid="0017c478-647c-49e6-9768-fa5e12204f1b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[70%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="62" width="35" height="15" uuid="a9e841e8-213e-43af-92e9-ea0280083518"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[60%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="77" width="35" height="15" uuid="3b1d87b4-d11f-416c-bb64-84e8a794be72"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[50%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="92" width="35" height="15" uuid="e7d37db9-773d-47e1-ae3e-9e94f4f87105"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[40%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="107" width="35" height="15" uuid="2c77745b-a2b7-46bd-a12d-d541dcfd4d9f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[30%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="122" width="35" height="17" uuid="493ad2fd-305a-48b2-af1d-6d5abc1e9287"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[20%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="137" width="35" height="17" uuid="f3127e1f-50bb-47db-807a-c080d55fd815"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[15%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="152" width="35" height="17" uuid="2d202733-b6f6-44ba-9511-f4211642f337"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="167" width="35" height="17" uuid="48e5b18d-c5ab-4c6a-948d-191016eb13ae"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="146" y="182" width="35" height="15" uuid="893449cc-b449-4eab-b02b-379cb0de033b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[0%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="47" width="35" height="15" uuid="d2bdd369-c959-42d7-bf9f-bf018c525b8d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[60%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="62" width="35" height="15" uuid="cc6ce9e1-547a-4cd9-a55e-51e166f4456b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[40%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="77" width="35" height="15" uuid="885f2881-14fc-4596-a6c1-6b4989ae6817"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[25%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="92" width="35" height="15" uuid="2fe12c87-fecc-4257-a5ba-db856965cbcc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[15%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="107" width="35" height="15" uuid="846cd56e-84ac-409b-b207-484be2c0112e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[0%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="122" width="35" height="17" uuid="750323b7-458e-4006-a028-2fa4d36402a9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="137" width="35" height="17" uuid="f0565eb4-93c6-4d4d-9df1-ba89fdc6c6b2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="152" width="35" height="17" uuid="5172b31b-5c54-4b64-be86-9d2ff5929a31"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="167" width="35" height="17" uuid="67244f8d-621f-4a48-bf2d-a6d3aaac6e1d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="181" y="182" width="35" height="15" uuid="f580d3f7-1438-42d3-a9f7-7b2af574de2a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="47" width="35" height="15" uuid="b9feeb26-44b4-439e-bd4c-2285fa2dbe36"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[40%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="62" width="35" height="15" uuid="fc1c4220-dbc8-40f2-ae5c-3ef856884b5f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[0%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="47" width="35" height="15" uuid="a371dc6c-5c3f-4b88-9af0-0c227ee62a7a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[0%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="77" width="35" height="15" uuid="43f3056a-f105-4bb6-922e-fedc7d13d10f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="92" width="35" height="15" uuid="94404799-9080-477c-9b50-8985cd803864"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="107" width="35" height="15" uuid="36020f39-2b0f-4109-b7aa-996ce24118c2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="122" width="35" height="17" uuid="1befb019-a69e-4053-a2ac-a4636da82be1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="137" width="35" height="17" uuid="579e639a-098f-456d-aea9-107f68e9d88c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="152" width="35" height="17" uuid="2bd8dd59-a4b4-4c2f-b5cc-eb5f38fa5266"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="167" width="35" height="17" uuid="bb9cb87a-ca94-4735-812a-0e87f3f141ae"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="216" y="182" width="35" height="15" uuid="60e1aa33-8da8-420c-8f80-bf075a002f58"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="137" width="35" height="17" uuid="d98d245c-581d-42ba-bcaa-2a3b187d9288"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="152" width="35" height="17" uuid="c41cb954-99ee-42ab-a5cc-be8272e1961c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="167" width="35" height="17" uuid="f3754afd-ee73-4aad-ad3e-ec7b4f906f84"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="122" width="35" height="15" uuid="98b0ead7-05b0-4544-92ad-c5dac4905435"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="107" width="35" height="15" uuid="afc93a32-a00f-47e6-ab4a-3cb93a78523a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="92" width="35" height="15" uuid="250a5f05-5d41-4eea-bd9f-a31741c5b06c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="77" width="35" height="15" uuid="3fe9ae84-1bcc-42ea-950b-7f881a9d94b4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="62" width="35" height="15" uuid="d20053f0-4a1b-4ea7-a3cc-5a3e9b5824ce"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="251" y="182" width="35" height="15" uuid="56d62120-c69a-4eee-bbac-babfc8d1e634"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="198" width="286" height="83" uuid="fd0a2913-1397-4963-90ce-c59d0370efe9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<br>En caso de que el Contratante y/o Asegurado y/o representante de éstos, incurra en falsas e inexactas declaraciones u omisiones, la Compañía podrá rescindir el Contrato de pleno derecho en los términos de lo previsto en el artículo 47 de la Ley sobre el Contrato de Seguro, en relación con los Artículos 8, 9 y 10 de la citada Ley. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="279" width="286" height="480" uuid="a7b6251f-c11c-44c1-a6f7-df0372b93a4d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>“Artículo 47.-</b> Cualquier omisión o inexacta declaración de los hechos a que se refieren los artículos 8, 9 y 10 de la presente ley, facultará a la empresa aseguradora para considerar rescindido de pleno derecho el contrato, aunque no hayan influido en la realización del siniestro. <br>
+<b>Artículo 8o.-</b> El proponente estará obligado a declarar por escrito a la empresa aseguradora, de acuerdo con el cuestionario relativo, todos los hechos importantes para la apreciación del riesgo que puedan influir en las condiciones convenidas, tales como los conozca o deba conocer en el momento de la celebración del contrato. <br>
+<b>Artículo 9o.-</b> Si el contrato se celebra por un representante del asegurado, deberán declararse todos los hechos importantes que sean o deban ser conocidos del representante y del representado. <br>
+<b>Artículo 10.-</b> Cuando se proponga un seguro por cuenta de otro, el proponente deberá declarar todos los hechos importantes que sean o deban ser conocidos del tercero asegurado o de su intermediario.” <br>
+<b>Vigencia:</b> Periodo de validez del contrato se establece a partir de la fecha de inicio de vigencia que se estipula en la carátula de la póliza que es de 10 años. <br>
+<b>Terminación del Contrato:</b> Este contrato dejará de estar en vigor al ocurrir cualquiera de los siguientes eventos: <br>
+1. Mediante petición por escrito del Asegurado o Contratante a SPP Institución de Seguros S.A. de C.V. <br>
+2. Falta de pago, después de los 30 días naturales del periodo de gracia. <br>
+3. Por indemnización del bien asegurado. <br>
+4. Término de la vigencia. <br>
+<b>Modificaciones:</b> El Contrato sólo podrá modificarse previo acuerdo entre el Asegurado o el Contratante y la SPP Institución de Seguros S.A. de C.V. Estas modificaciones deberán constar por escrito y estar debidamente registradas ante la Comisión Nacional de Seguros y Fianzas. <br>
+En consecuencia, los agentes o cualquier otra persona no autorizada por la Compañía carecen de facultades para hacer modificaciones o concesiones. <br>
+Si el contenido de la póliza o sus modificaciones no concordaren con la oferta, el asegurado podrá pedir la rectificación correspondiente dentro de los treinta días que sigan al día en que reciba la póliza. Transcurrido este plazo se considerarán aceptadas las estipulaciones de la póliza o de sus modificaciones. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="287" y="5" width="286" height="94" uuid="e2d6d2f3-33e2-4f99-9e6a-1ae4ba48a262"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>Notificaciones:</b> Cualquier comunicación o notificación relacionada con el presente Contrato de Seguro deberá hacerse a SPP Institución de Seguros S.A. de C.V. por escrito, precisamente en su domicilio indicado en la carátula de la póliza, o en su caso, en el lugar que para estos efectos hubiera comunicado posteriormente SPP Institución de Seguros S.A. de C.V al Contratante o Asegurado, estando obligada la Compañía a expedir constancia de la recepción.]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="60f9c4bb-7d1d-4ae8-adff-df8285089562"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="10" width="572" height="749" uuid="0c6602a0-7e91-4cab-9cff-07021a741909"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="144" width="286" height="615" uuid="e83cc4d9-eda3-4d41-a880-2900789ec93e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[“ARTÍCULO 276.- Si una Institución de Seguros no cumple con las obligaciones asumidas en el Contrato de Seguro dentro de los plazos con que cuente legalmente para su cumplimiento, deberá pagar al acreedor una indemnización por mora de acuerdo con lo siguiente: <br>
+I. Las obligaciones en moneda nacional se denominarán en Unidades de Inversión, al valor de éstas en la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y su pago se hará en moneda nacional, al valor que las Unidades de Inversión tengan a la fecha en que se efectúe el mismo, de conformidad con lo dispuesto en el párrafo segundo de la fracción VIII de este artículo. <br>
+Además, la Institución de Seguros pagará un interés moratorio sobre la obligación denominada en Unidades de Inversión conforme a lo dispuesto en el párrafo anterior, el cual se capitalizará mensualmente y cuya tasa será igual al resultado de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en Unidades de Inversión de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora; <br>
+II. Cuando la obligación principal se denomine en moneda extranjera, adicionalmente al pago de esa obligación, la Institución de Seguros estará obligada a pagar un interés moratorio el cual se capitalizará mensualmente y se calculará aplicando al monto de la propia obligación, el porcentaje que resulte de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en dólares de los Estados Unidos de América, de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora; <br>
+III. En caso de que a la fecha en que se realice el cálculo no se hayan publicado las tasas de referencia para el cálculo del interés moratorio a que aluden las fracciones I y II de este artículo, se aplicará la del mes inmediato anterior y, para el caso de que no se publiquen dichas tasas, el interés moratorio se computará multiplicando por 1.25 la tasa que las sustituya, conforme a las disposiciones aplicables; <br>
+IV. Los intereses moratorios a que se refiere este artículo se generarán por día, a partir de la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y hasta el día en que se efectúe el pago previsto en el párrafo segundo de la fracción VIII de este artículo. Para su cálculo, las tasas de referencia a que se refiere este artículo deberán dividirse entre trescientos sesenta y cinco y multiplicar el resultado por el número de días correspondientes a los meses en que persista el incumplimiento; <br>
+V. En caso de reparación o reposición del objeto siniestrado, la indemnización por mora consistirá únicamente en el pago del interés correspondiente a la moneda en que se haya denominado la obligación principal conforme a las fracciones I y II de este artículo y se calculará sobre el importe del costo de la reparación o reposición;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="131" width="287" height="628" uuid="bad090bd-3dc1-48b7-afa3-99c207fa707a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[VII. Si en el juicio respectivo resulta procedente la reclamación, aún cuando no se hubiere demandado el pago de la indemnización por mora establecida en este artículo, el juez o árbitro, además de la obligación principal, deberá condenar al deudor a que también cubra esas prestaciones conforme a las fracciones precedentes; <br>
+VIII. La indemnización por mora consistente en el sistema de actualización e intereses a que se refieren las fracciones I, II, III y IV del presente artículo será aplicable en todo tipo de seguros, salvo tratándose de seguros de caución que garanticen indemnizaciones relacionadas con el impago de créditos fiscales, en cuyo caso se estará a lo dispuesto por el Código Fiscal de la Federación. <br>
+El pago que realice la Institución de Seguros se hará en una sola exhibición que comprenda el saldo total por los siguientes conceptos: <br>
+a) Los intereses moratorios; <br>
+b) La actualización a que se refiere el primer párrafo de la fracción I de este
+artículo. <br>
+c) La obligación principal. <br>
+En caso de que la Institución de Seguros no pague en una sola exhibición la totalidad de los importes de las obligaciones asumidas en el Contrato de Seguros y la indemnización por mora, los pagos que realice se aplicarán a los conceptos señalados en el orden establecido en el párrafo anterior, por lo que la indemnización por mora se continuará generando en términos del presente artículo, sobre el monto de la obligación principal no pagada, hasta en tanto se cubra en su totalidad. <br>
+Cuando la Institución interponga un medio de defensa que suspenda el procedimiento de ejecución previsto en esta ley, y se dicte sentencia firme por la que queden subsistentes los actos impugnados, el pago o cobro correspondientes deberán incluir la indemnización por mora que hasta ese momento hubiere generado la obligación principal, y <br>
+IX. Si la Institución de Seguros, dentro de los plazos y términos legales, no efectúa el pago de las indemnizaciones por mora, el juez o la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros, según corresponda, le impondrán una multa de 1000 a 15000 Días de Salario. <br>
+En el caso del procedimiento administrativo de ejecución previsto en el artículo 278 de esta Ley, si la Institución de Seguros, dentro de los plazos o términos legales, no efectúan el pago de las indemnizaciones por mora, la Comisión le impondrá la multa señalada en esta fracción, a petición de la autoridad ejecutora que corresponda conforme a la fracción II de dicho artículo.”
+<b>Otros seguros:</b> En el supuesto de que cualquier pérdida conforme a la Póliza estuviera también cubierta, en todo o en parte, por otro seguro contra el mismo riesgo y por el mismo interés, el Asegurado deberá declararlo por escrito a la Institución de Seguros indicando el nombre de los Aseguradores, así como las sumas aseguradas. Si el Asegurado omite intencionalmente el aviso referido anteriormente, o si contrató los diversos seguros para obtener un provecho ilícito, la Institución de Seguros quedará liberada de sus obligaciones bajo la Póliza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="5" width="286" height="139" uuid="19ee4a43-f2ea-415a-b8b6-117c56c9c9ac"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[ porcentaje de la prima que, por concepto de comisión o compensación directa, corresponda al intermediario o persona moral por su intervención en la celebración de este Contrato. La institución proporcionará dicha información, por escrito o por medios electrónicos, en un plazo que no excederá de diez días hábiles posteriores a la fecha de recepción de la solicitud. <br>
+<b>Interés moratorio</b> Si SPP Institución de Seguros, S.A. de C.V. no cumple con las obligaciones asumidas en el Contrato de Seguro al hacerse exigibles legalmente, deberá pagar al acreedor una indemnización por mora de acuerdo al artículo 276 de la Ley de Instituciones de Seguros y de Fianzas mismo que se transcribe a continuación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="5" width="287" height="126" uuid="b3c25176-dff5-4349-bcb0-7572f591c459"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[VI. Son irrenunciables los derechos del acreedor a las prestaciones indemnizatorias establecidas en este artículo. El pacto que pretenda extinguirlos o reducirlos no surtirá efecto legal alguno. Estos derechos surgirán por el solo transcurso del plazo establecido por la Ley para el pago de la obligación principal, aunque ésta no sea líquida en ese momento.
+Una vez fijado el monto de la obligación principal conforme a lo pactado por las partes o en la resolución definitiva dictada en juicio ante el juez o árbitro, las prestaciones indemnizatorias establecidas en este artículo deberán ser cubiertas por la Institución de Seguros sobre el monto de la obligación principal así determinado;]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="3df5b0d0-5871-43f6-a59b-014f4888e307"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="5" width="286" height="165" uuid="45c0b063-f5b7-4b0a-ae8d-93f9a942c5f6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Asegurado o al Beneficiario preferente. Esta acción podrá ejercerse aún en contra del Contratante, si se demuestra que éste actuó con dolo, mala fe o culpa grave.<br>
+Si la Institución de Seguros lo solicita, a costa de ésta, el Contratante o el Asegurado harán constar la subrogación en escritura pública.<br>
+La Institución de Seguros podrá liberarse en todo o en parte de sus obligaciones, si la subrogación es impedida por hechos u omisiones que provengan del Contratante o del Asegurado. <br>
+Si el daño fue indemnizado sólo en parte, el Contratante o Asegurado, y SPP Institución de Seguros S.A. de C.V, concurrirán a hacer valer sus derechos en la proporción correspondiente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="263" width="572" height="84" uuid="e27b8d49-213c-4aed-bf33-1eb8869d8c30"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b>En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, la documentación contractual y la nota técnica que integran este producto de seguro, quedaron registrados ante la Comisión Nacional de Seguros y Fianzas, a partir del día 12 de Junio de 2019, con el número CNSF-S0128-0264-2019/CONDUSEF-003854-01.  </b>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="5" width="286" height="165" uuid="f7c3a4f6-e322-483f-85c6-da68863799dc"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Los contratos de seguro a que se hace referencia en el párrafo anterior cuando sean celebrados de buena fe, en la misma o en diferentes fechas, por una suma total superior al valor del interés Asegurado, serán válidos y obligarán a cada uno de los Aseguradores hasta el valor íntegro de la pérdida sufrida, dentro de los límites de la suma que hubieren Asegurado. <br>
+El Asegurador que pague conforme a lo descrito en el párrafo anterior podrá repetir contra todas las demás en proporción de las sumas respectivamente aseguradas. <br>
+<b>Subrogación de Derechos:</b> Cuando la Institución de Seguros pague una indemnización sobre esta póliza se subrogará hasta la cantidad pagada, en todos los derechos y acciones contra terceros que por causa del daño sufrido correspondan al Contratante o al]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="178" width="572" height="84" uuid="4465750a-b683-476a-83e8-c9d466bc22d8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<b> Para cualquier aclaración o duda no resueltas en relación con su seguro, contacte a la Unidad Especializada de nuestra Compañía en la siguiente dirección Volcán 214, Lomas de Chapultepec, Primera Sección C.P. 11000, Alcaldía Miguel Hidalgo o a los teléfonos (01 800) 1010053 y (55) 3600 9600, en un horario de atención de lunes a jueves de 8 a 17 hrs. y viernes de 8 a 15 hrs., o visite www.sppseguros.com.mx; o bien comunicarse a CONDUSEF al teléfono (55) 5448 7000 en el D.F. y del interior de la República al 01 800 999 8080 o visite la página www.condusef.gob.mx con dirección en Insurgentes Sur #762, planta baja, Col. Del Valle, Del. Benito Juárez, C.P. 03100, Ciudad de México.  </b>]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="279" height="23" uuid="c5e0e2a5-5b2b-409d-bd83-123df488c5ea"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[<b><font color="#003366">SPP-FR-PD-16 </font></b><br>
+<b><font color="#003366">Versión/Fecha: 01/12-06-19</font></b>
+
+]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="473" y="0" width="100" height="22" uuid="a643bda3-3027-4979-acd3-1f04089fecda"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA[" <b><font color=#003366> de " + $V{PAGE_NUMBER} +"</font></b>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="0" width="100" height="22" uuid="c67cab93-dd96-4c1e-9560-e31c43beee9e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA["<b><font color=#003366> Página " + $V{PAGE_NUMBER} +" </font></b> "]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

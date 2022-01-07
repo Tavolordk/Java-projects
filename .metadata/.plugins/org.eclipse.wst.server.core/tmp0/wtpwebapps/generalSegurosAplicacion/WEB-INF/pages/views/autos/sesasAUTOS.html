@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+    <div class="container main-container">
+    	<div class="row">
+    		<div class="col-md-6">
+		    	<div class="float-center">
+		    		<h1 >SESAS(RR8) AUTOS</h1>	 
+		    	</div>
+	    	</div>
+    	</div>
+    	<div th:include="views/autos/tabsAUTOS :: tabsAUTOSFragment" id="tabsAUTOS"></div>        
+    </div>    
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+	<script src="/resources/js/pages/reportes/analisisAUTOSC.js" th:src="@{/resources/js/pages/reportes/analisisAUTOSC.js}"></script>
+	<script src="/resources/js/pages/reportes/analisisAUTOS.js"  th:src="@{/resources/js/pages/reportes/analisisAUTOS.js}"></script>
+	<script src="/resources/js/pages/reportes/reportesSesaAUTOSAnualC.js" th:src="@{/resources/js/pages/reportes/reportesSesaAUTOSAnualC.js}"></script>
+	<script src="/resources/js/pages/reportes/reportesSesaAUTOSAnual.js"  th:src="@{/resources/js/pages/reportes/reportesSesaAUTOSAnual.js}"></script>
+</body>
+
+</html>

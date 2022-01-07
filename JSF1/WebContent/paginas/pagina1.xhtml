@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:richfaces="http://richfaces.ajax4jsf.org/rich"
+      xmlns:ajax="https://ajax4jsf.dev.java.net/ajax">
+<ui:composition template="/template/plantilla.xhtml">
+<ui:define name="barra">
+
+
+	<h:form>
+       <rich:panel>
+          <f:facet name="header">
+               <h:outputText value="pagina1" />
+          </f:facet>
+          <h1>Esta es la página 1</h1>
+          <br></br>
+          <b>Presione el botón para regresar</b>
+          <br></br><br></br>
+          <b>Nombre:</b>
+          <rich:spacer style="width: 13px;"></rich:spacer>
+          <h:outputText value="#{claseBean.nombre}" />
+          <br></br><br></br>
+          
+          <h:commandButton action="regresar" value="volver" />
+       </rich:panel>
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

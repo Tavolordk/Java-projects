@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8" />
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-4">CARGA INGRESOS</h1>
+			<br>
+			<form id="formAgente" autocomplete="off">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="nombreAgente">Buscar ingreso por nombre:</label> <input
+							class="form-control text-uppercase" type="text" id="ingresoNombre"
+							name="ingresoNombre" maxlength="200" />
+					</div>
+					<div class="form-group col-md-6">
+						<button class="btn btn-primary" id="btnBuscarIngreso"
+							 type="button">BuscarIngreso</button>
+					</div>
+					<div class="form-group col-md-2 ">
+						<button class="btn btn-primary" id="btnNuevoIngreso"
+							 type="button">Nuevo Ingreso</button>
+					</div>
+				</div>
+			</form>
+							<!-- Modal -->
+			<div class="modal fade" id="nuevoIngresoModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoAgenteModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header"
+							style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+							<h5 class="modal-title" id="nuevoAgenteModalLongTitle">Agregar Ingreso</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						
+						<div class="modal-body">
+										<form id="formNuevoRegistro" autocomplete="off">
+											<div class="row">
+
+
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Nombre:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio17" name="anio17" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Dirección:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio18" name="anio18" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Monto a Pagar:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio19" name="anio19" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Rerencia:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio20" name="anio20" maxlength="200" />
+												</div>
+											</div>
+										</form>
+									</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary" id="btnGuardarPago">
+								<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<script src="/resources/js/pages/reservas/registroIngresos.js"
+		th:src="@{/resources/js/pages/reservas/registroIngresos.js}"></script>
+	<script src="/resources/js/pages/reservas/registroIngresosC.js"
+		th:src="@{/resources/js/pages/reservas/registroIngresosC.js}"></script>
+</body>
+
+</html>

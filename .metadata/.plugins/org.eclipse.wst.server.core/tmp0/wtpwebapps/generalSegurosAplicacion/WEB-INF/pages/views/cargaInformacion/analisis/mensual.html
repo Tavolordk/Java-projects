@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-4">MENSUAL</h1>
+			<br>
+			<form enctype="multipart/form-data" id="formReporteGeneral"
+				autocomplete="off">
+				<div class="form-row">
+					<div class="form-group col-md-5">
+						<label for="desde">Buscar desde:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="desde"
+								name="desde" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-5">
+						<label for="desde">Buscar hasta:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="hasta"
+								name="hasta" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-2">
+						<button class="btn btn-primary" id="btnBuscarReporteGeneral" style="margin-top:32px"
+							type="button">Buscar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- TABLA -->
+		<div class="card-content">
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaAgentes"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/reservas/analisisC.js"
+		th:src="@{/resources/js/pages/reservas/reporteGeneral.js}"></script>
+	<script src="/resources/js/pages/reservas/analisis.js"
+		th:src="@{/resources/js/pages/reservas/reporteGeneralC.js}"></script>
+</body>
+
+</html>

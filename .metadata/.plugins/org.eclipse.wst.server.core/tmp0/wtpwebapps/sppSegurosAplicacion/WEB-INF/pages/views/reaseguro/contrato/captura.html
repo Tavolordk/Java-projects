@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+    <div class="container main-container">
+    	<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reaseguro: Nuevo contrato</h4>
+			</div>
+		<div class="card-content">
+    	<div th:include="views/reaseguro/contrato/tabs :: contratoTabsFragment" id="contratoTabs"></div>        
+    </div>
+    </div>
+    </div>
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/contratosC.js" th:src="@{/resources/js/pages/reaseguro/contratosC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/contratos.js" th:src="@{/resources/js/pages/reaseguro/contratos.js}"></script>
+</body>
+
+</html>

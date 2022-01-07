@@ -1,0 +1,21 @@
+.fa-custom-user-lock {
+	margin-bottom: 20px;
+	color: rgb(134, 166, 204);
+}
+
+.fa-custom-user, .fa-custom-key {
+	color: rgb(134, 166, 204);
+}
+
+.header-card-login, .footer-card-login{
+	background-color: rgb(40, 103, 171) !important;
+}
+
+.logoLogin{
+	width: 70% !important;
+	height: 100% !important;
+}
+
+.marginInputs{
+	margin-top: -10% !important;
+}

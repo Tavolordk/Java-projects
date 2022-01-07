@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8"/>
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="wizard-container">
+			<div th:fragment="analisisFormFragment">
+				<div class="card-container">
+					<section class="columns">
+						<h1 class="display-8">PAGOS</h1>
+						<div class="form-row">
+							<div class="form-group col-md-10">
+								<button class="btn btn-primary" id="btnDescargarHistorico"
+									 type="button">Descargar Excel</button>
+							</div>
+							<div class="form-group col-md-2">
+								<button class="btn btn-primary" id="btnNuevoPago"
+									 type="button">Nuevo pago</button>
+							</div>
+							<!-- TABLA -->
+							<div class="form-group col-md-12">
+								<div class="card-content">
+									<div class="table-responsive main-container"
+										style="background-color: #ffff;">
+										<table id="tablaPagos"
+											class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+											style="width: 100%">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Modal -->
+			<div class="modal fade" id="nuevoPagoModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoAgenteModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header"
+							style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+							<h5 class="modal-title" id="nuevoAgenteModalLongTitle">Pagos</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						
+						<div class="modal-body">
+										<form id="formAgente" autocomplete="off">
+											<div class="row">
+
+
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Nombre:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio17" name="anio17" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Dirección:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio18" name="anio18" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Monto a Pagar:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio19" name="anio19" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Rerencia:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="anio20" name="anio20" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Nuermo de referencia:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="sesa" name="sesa" maxlength="200" />
+												</div>
+												<div class="form-group col-md-6">
+													<label for="nombreAgente">Tipo de pago:</label> <input
+														class="form-control text-uppercase" type="text"
+														id="sesa" name="sesa" maxlength="200" />
+												</div>
+											</div>
+										</form>
+									</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary" id="btnGuardarPago">
+								<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>

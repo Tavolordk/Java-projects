@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8"/></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+    <div class="container main-container">
+    	<div class="row">
+    		<div class="col-md-6">
+		    	<div class="float-center">
+		    		<h1 >REPORTE SINIESTROS</h1>	 
+		    	</div>
+	    	</div>
+    	</div>
+    	<div th:include="views/reservas/siniestros/tabsSiniestros :: tabsRCFragment" id="tabsRC"></div>        
+    </div>    
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+		<script src="/resources/js/pages/reservas/pagosTab.js"
+		th:src="@{/resources/js/pages/reservas/pagosTab.js}"></script>
+	<script src="/resources/js/pages/reservas/pagosTabC.js"
+		th:src="@{/resources/js/pages/reservas/pagosTabC.js}"></script>
+</body>
+
+</html>

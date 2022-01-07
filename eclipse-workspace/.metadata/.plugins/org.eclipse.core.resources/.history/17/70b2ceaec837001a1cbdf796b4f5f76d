@@ -1,0 +1,9 @@
+package figura;
+
+public class PalabraThis {
+
+	public static void main(String [] args)
+	{
+		
+	}
+}

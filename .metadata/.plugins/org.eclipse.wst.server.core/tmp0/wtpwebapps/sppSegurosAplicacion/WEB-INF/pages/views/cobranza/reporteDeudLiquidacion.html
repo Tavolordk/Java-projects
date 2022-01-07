@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+			<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reporte DEUD</h4>
+			</div>
+		<div class="card-content">
+			<form id="formReporteDeud" autocomplete="off" class="needs-validation" novalidate>
+				<div class="row">
+					<input type="hidden">
+<!-- 					<div class="form-group col-md-4 siniestro"> -->
+<!-- 						<label for="fecha">Fecha Inicio:</label> -->
+<!-- 						<div class="input-group"> -->
+<!-- 							<input type="text" class="form-control date" id="fechaDeudIni" name="fecha" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" -->
+<!-- 							 data-date-end-date="0d"/> -->
+<!-- 							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					<div class="form-group col-md-4 siniestro">
+						<label for="fecha">Fecha Fin:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaDeudFin" name="fecha" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"
+							 data-date-end-date="0d"/>
+							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="ReporteDeud">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Generar Reporte
+						</button>
+					</div>
+				</div>
+				
+					<!-- ****** TABLAS PARA CORTE DE CAJA  ***** -->
+			    <div id ="idTableReporteDeud" class="table-responsive main-container background-tabla">
+			    	<h4 align="center" id="lbReporteDeud" style="background: blue; color: white">Reporte</h4>
+			    	 <table id="tableReporteDeud" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+			    </div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/cobranza/recibosC.js" th:src="@{/resources/js/pages/cobranza/recibosC.js}"></script>
+	<script src="/resources/js/pages/cobranza/recibos.js" th:src="@{/resources/js/pages/cobranza/recibos.js}"></script>
+</body>
+</html>

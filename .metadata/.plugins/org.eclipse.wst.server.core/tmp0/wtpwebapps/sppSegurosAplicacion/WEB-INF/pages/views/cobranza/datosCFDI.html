@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+			<div class="card wizard-card">
+		<div class="card-header">
+				<h4>CFDI recibos</h4>
+			</div>
+		<div class="card-content">
+		<form id="formCfdi" autocomplete="off">
+			<div class="row">
+				<div class="form-group col-md-4 ">
+				     <label for="nombre"><b>TIPO CFDI:</b></label>
+					 <select class="form-control text-uppercase" id="reporte" name="reporte">
+					 <option value="1" >CFDI INGRESOS</option>
+					 <option value="2" >CFDI EGRESOS</option>
+					 <option value="3" >COMPLEMENTO PAGO</option>
+					 </select>
+			    </div>
+			    <div class="form-group col-md-4 siniestro">
+					<label for="fechaInicio">Fecha Inico:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date" id="fechaInicio" name="fecha" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"
+						       data-date-end-date="0d"/>
+						<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+					</div>
+				</div>
+				<div class="form-group col-md-4 siniestro">
+					<label for="fechaFin">Fecha Fin:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date" id="fechaFin" name="fecha" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"
+						       data-date-end-date="0d"/>
+						<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+					</div>
+				</div>
+			</div>
+			 <div class="form-group col-md-4">
+				<button id="btnReporteCFDI" type="button" class="btn btn btn-primary">Generar CFDI</button>
+			 </div>
+		  </form>
+		</div>
+		
+			<!-- TABLE PARA MOSTRAR DATOS CFDI -->
+		<div id ="idTableReporteCFDI" class="table-responsive main-container background-tabla">
+		   	<h4 align="center" id="lbReporteCFDI" style="background: blue; color: white">CFDI Recibos</h4>
+		    <table id="tableReporteCFDI" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/cobranza/reportesOperacionesC.js"	th:src="@{/resources/js/pages/cobranza/reportesOperacionesC.js}"></script>
+	<script src="/resources/js/pages/cobranza/reportesOperaciones.js"	th:src="@{/resources/js/pages/cobranza/reportesOperaciones.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramoC.js"  				th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+  
+  </div>
+</body>
+</html>

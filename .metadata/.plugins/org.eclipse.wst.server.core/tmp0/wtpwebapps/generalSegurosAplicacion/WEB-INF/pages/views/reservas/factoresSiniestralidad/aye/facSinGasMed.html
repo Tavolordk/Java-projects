@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="content-wrap">
+	<main id="content" class="content" role="main">
+		<ol class="breadcrumb">
+			<li>Reservas</li>
+			<li>Factores de siniestralidad</li>
+			<li>A y E</li>
+			<li class="active">Gastos médicos</li>
+		</ol>
+		<h1 class="page-title">
+			Reservas - <span class="fw-semi-bold">Gastos médicos</span>
+		</h1>
+		<br>
+		<div class="row mb-lg">
+			<div class="col-lg-12">
+				<div class="tab-content mb-lg" id="myTabContent">
+					<div role="tabpanel" class="tab-pane active in clearfix" id="basic"
+						aria-labelledby="basic-tab" aria-expanded="true">
+						<section class="widget">
+							<header style="margin-bottom: 15px;">
+								<h2 style="color: #2867ab">
+									<span class="fw-semi-bold">RRC</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+							<form class="form-horizontal" role="form" enctype="multipart/form-data" id="formArchivoEmision" autocomplete="off">
+	                            <fieldset>
+	                                <div class="form-group row">
+	                                    
+	                                    <div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-md-6">
+			                                       <h5 style="color: #2867ab">
+														<span class="fw-semi-bold">Fs</span> (Índice de siniestralidad última) = <span class="fw-semi-bold" id="fs">75.99%</span>
+													</h5>
+												 </div>
+												 <div class="col-md-6">
+			                                     	<h5 style="color: #2867ab">
+														<span class="fw-semi-bold">Alpha</span>(Gastos de administración) =  <span class="fw-semi-bold" id="alpha">6.16%</span>
+													</h5>
+												 </div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rrc">Cambiar valores</button>
+											</div>
+										</div>
+	                                </div>
+	                            </fieldset>
+	                        </form>
+							</div>
+						</section>
+						<section class="widget">
+							<header style="margin-bottom: 15px;">
+								<h2 style="color: #2867ab">
+									<span class="fw-semi-bold">IBNR</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+							<form class="form-horizontal" role="form" enctype="multipart/form-data" id="formArchivoEmision" autocomplete="off">
+	                            <fieldset>
+	                                <div class="form-group row">
+	                                    
+	                                    <div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-md-6">
+			                                       <h5 style="color: #2867ab">
+														<span class="fw-semi-bold">Fd </span>(Factores de devengamiento para el año i) <span class="fw-semi-bold">Gastos médicos </span>  
+													</h5>
+												 </div>
+												 <div class="col-md-12">
+			                                     	<table id="datatable-tablesRRC"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th colspan="5" style="text-align: center;">Factores de devengamiento</th>
+															</tr>
+														</thead>
+														<tbody style="font-weight: 600;">
+															<tr>
+																<td >1</td>
+																<td >2</td>
+																<td >3</td>
+																<td >4</td>
+																<td >5</td>
+															</tr>
+															<tr>
+																<td id="fac1">100%</td>
+																<td id="fac2">15.86%</td>
+																<td id="fac3">10.97%</td>
+																<td id="fac4">8.32%</td>
+																<td id="fac5">6.04%</td>
+															</tr>
+															
+														</tbody>
+													</table>
+												 </div>
+												 <div class="col-md-6">
+			                                       <h5 style="color: #2867ab">
+														<span class="fw-semi-bold">FS</span> (Índice de siniestralidad última) = <span class="fw-semi-bold" id="fsUl">11.36%</span>
+													</h5>
+												 </div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<div class="form-group col-md-12">
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ibnr">Cambiar valores</button>
+											</div>
+											</div>
+										</div>
+	                                </div>
+	                            </fieldset>
+	                        </form>
+							</div>
+						</section>
+					</div>
+				</div>
+				<div class="modal fade" tabindex="-1" role="dialog" id="rrc">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" style="font-weight: 600">RRC</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				       <form id="recuperarContraForm">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="fs"><span class="fw-semi-bold">Fs</span> (Índice de siniestralidad última)</label> <input
+										class="form-control" id="fsE"
+										name="fs"  type="text">
+										<div class="feed"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="fs"><span class="fw-semi-bold">Alpha</span> (Gastos de administración)</label> <input
+										class="form-control" id="alphaE"
+										name="alpha"  type="text">
+										<div class="feed"></div>
+								</div>
+							</div>
+					</form>
+				      </div>
+				      <div class="modal-footer" style="border-top: 1px solid #ffffff;">
+				        <button type="button" class="btn btn-primary" data-dismiss="modal" id="guardarRRC">Guardar</button>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!-- Modal IBNR -->
+				<div class="modal fade" tabindex="-1" role="dialog" id="ibnr">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" style="font-weight: 600">IBNR</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				       <form id="recuperarContraForm">
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label for="fs">Fac devengado <span class="fw-semi-bold">1</span></label> <input
+										class="form-control" id="fac1E"
+										name="fs"  type="text"> 
+										<div class="feed"></div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="fs">Fac devengado <span class="fw-semi-bold">2</span></label> <input
+										class="form-control" id="fac2E"
+										name="fs"  type="text">
+										<div class="feed"></div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="fs">Fac devengado <span class="fw-semi-bold">3</span></label> <input
+										class="form-control" id="fac3E"
+										name="fs"  type="text">
+										<div class="feed"></div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="fs">Fac devengado <span class="fw-semi-bold">4</span></label> <input
+										class="form-control" id="fac4E"
+										name="fs"  type="text">
+										<div class="feed"></div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="fs">Fac devengado <span class="fw-semi-bold">5</span></label> <input
+										class="form-control" id="fac5E"
+										name="fs"  type="text">
+										<div class="feed"></div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="fs"><span class="fw-semi-bold">FS</span></label> <input
+										class="form-control" id="fsUlE"
+										name="fs"  type="text">
+										<input class="form-control" id="id" name="fs"  type="hidden">
+										<div class="feed"></div>
+								</div>
+							</div>
+					</form>
+				      </div>
+				      <div class="modal-footer" style="border-top: 1px solid #ffffff;">
+				        <button type="button" class="btn btn-primary" data-dismiss="modal" id="guardarIBNR">Guardar</button>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+					
+			</div>
+		</div>
+		
+		</main>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- common app js -->
+	<script th:src="@{/resources/js/utils.js}"></script>
+	<script th:src="@{js/settings.js}"></script>
+	<script th:src="@{js/app.js}"></script>
+
+
+	<!-- page specific Tablas -->
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script th:src="@{/resources/js/underscore/underscore-min.js}"></script>
+	<script th:src="@{/resources/js/backbone/backbone.js}"></script>
+	<script
+		th:src="@{/resources/js/backbone.paginator/lib/backbone.paginator.min.js}"></script>
+	<script th:src="@{/resources/js/backgrid/lib/backgrid.js}"></script>
+	<script
+		th:src="@{/resources/js/backgrid-paginator/backgrid-paginator.js}"></script>
+	<script
+		th:src="@{/resources/js/datatables/media/js/jquery.dataTables.js}"></script>
+	<script
+		th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/resources/js/tables-dynamic.js}"></script>
+
+	<!-- Js muy particulares-->
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-fix/collapse.js}"></script>
+	<script th:src="@{/resources/js/ui-tabs-accordion.js}"></script>
+	<script th:src="@{/resources/js/bootstrap/js/dist/tab.js}"></script>
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+
+	<script
+		th:src="@{/resources/js/pages/reservas/factoresSiniestralidad/aye/gastosMedicos/gastosMedicos.js}"></script>
+	<script
+		th:src="@{/resources/js/pages/reservas/factoresSiniestralidad/aye/gastosMedicos/gastosMedicosC.js}"></script>
+</body>
+</html>

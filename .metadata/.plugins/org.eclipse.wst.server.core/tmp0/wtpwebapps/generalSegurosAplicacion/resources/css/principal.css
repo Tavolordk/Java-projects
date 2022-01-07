@@ -1,0 +1,104 @@
+.main-container {
+	margin-top: 20px;
+}
+
+.background {
+	background-image: url("../img/Isotipo.jpg");
+	background-repeat: repeat;
+	background-size: 200px;
+	z-index: -1;
+}
+
+.btn, .btn-primary {
+	background-color: rgb(39, 103, 166) !important;
+}
+
+.navbar {
+	background-color: rgb(39, 103, 166) !important;
+}
+
+.nav-link {
+	color: #ffff !important;
+}
+
+.nav-link:hover {
+	background-color: rgb(200, 180, 106) !important;
+}
+
+.dropdown-item {
+	background-color: rgb(39, 103, 166) !important;
+	color: #ffff !important;
+}
+
+.dropdown-item:hover {
+	background-color: rgb(200, 180, 106) !important;
+}
+
+.navbar-brand {
+	color: rgb(200, 180, 106) !important;
+}
+
+.btn-danger {
+	background-color: #dc3545 !important;
+}
+
+.btn-warning {
+	background-color: #fff3cd !important;
+}
+
+.btn-success {
+	background-color: #d4edda !important;
+	color: #155724 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(64, 64, 64);
+}
+.btco-menu li > a {
+    padding: 10px 15px;
+    color: #000;
+
+}
+
+.btco-menu .active a:focus,
+.btco-menu li a:focus ,
+.navbar > .show > a:focus{
+    background: transparent;
+    outline: 0;
+}
+
+.modal-bigger {
+	max-width: 1024px;
+}
+
+.fullwidth {
+	width: 100% !important;
+}
+
+
+.dropdown-menu .show > .dropdown-toggle::after{
+    transform: rotate(-90deg);
+}
+
+.navbar-brand{
+	width: 5% !important;
+}
+
+.logo-brand{
+	width: 100% !important;
+}
+
+/* .ui-autocomplete {
+    max-height: 20%;
+    max-width: 25%;
+    overflow-y: auto;   prevent horizontal scrollbar
+    overflow-x: hidden; add padding to account for vertical scrollbar
+    z-index:1000 !important;
+} */
+
+/* .autocomplete-suggestions { border: 1px solid #999; background: #FFF !important; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; background: #FFF !important;}
+.autocomplete-selected { background: #F0F0F0 !important; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; } */

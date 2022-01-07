@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8" />
+</head>
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-8">JOURNAL DE SINIESTROS</h1>
+			<form enctype="multipart/form-data" id="formDispersionSiniestros"
+				autocomplete="off">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="desde">Fecha de solicitud:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="MontoDesde"
+								name="MontoDesde" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="desde">Descripción:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="MontoHasta"
+								name="MontoHasta" />
+						</div>
+					</div>
+					
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="desde">Fecha desde:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="MontoDesde"
+								name="MontoDesde" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="desde">Fecha hasta:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="MontoHasta"
+								name="MontoHasta" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="tipoReporte">Tipo de Journal:</label> <select
+							class="form-control" id="monedaSeveridadMoneda"
+							name="monedaSeveridadMoneda">
+							<option selected="" disabled="">Seleccionar Journal</option>
+							<option clave="2018">50</option>
+							<option clave="2019">100</option>
+							<option clave="2020">150</option>
+						</select>
+					</div>
+					<div class="form-group col-md-12 text-center">
+						<button class="btn btn-primary" id="btnBuscarRamoSeveridad" style="margin-top:32px"
+							type="button">Buscar</button>
+					</div>
+				</div>
+			</form>
+			<!-- TABLA -->
+			<div class="form-group col-md-12">
+				<div class="card-content">
+					<div class="table-responsive main-container"
+						style="background-color: #ffff;">
+						<table id="tabalHistorico"
+							class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+							style="width: 100%">
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/reservas/journalGastos.js"
+		th:src="@{/resources/js/pages/reservas/journalGastos.js}"></script>
+	<script src="/resources/js/pages/reservas/journalGastosC.js"
+		th:src="@{/resources/js/pages/reservas/journalGastosC.js}"></script>
+</body>
+
+</html>

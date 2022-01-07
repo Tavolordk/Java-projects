@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="content-wrap">
+		<!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+		<main id="content" class="content" role="main">
+			<ol class="breadcrumb">
+				<li>Información Estadistica</li>
+				<li>Reporte Anual</li>
+				<li class="active">Vida</li>
+			</ol>
+			<h1 class="page-title">
+				Vida
+				<!-- <span class="fw-semi-bold">Resultados</span>-->
+			</h1>
+			<div class="row mb-lg">
+				<div class="col-lg-12">
+					<div class="clearfix">
+						<ul class="nav nav-tabs pull-xs-left" id="myTab" role="tablist">
+
+							<li class="nav-item"><a class="nav-link active"
+								id="home-tab" data-toggle="tab" href="#basic" role="tab"
+								aria-controls="basic" aria-expanded="true">Hipótesis</a></li>
+
+							<li class="nav-item"><a class="nav-link" id="profile-tab"
+								data-toggle="tab" href="#assumtion" role="tab"
+								aria-controls="assumtion" aria-expanded="false">Consistencia</a></li>
+
+							<li class="nav-item"><a class="nav-link" id="profile-tab"
+								data-toggle="tab" href="#validaciones" role="tab"
+								aria-controls="assumtion" aria-expanded="false">Validaciones</a></li>
+
+							<li class="nav-item"><a class="nav-link" id="profile-tab"
+								data-toggle="tab" href="#resultados" role="tab"
+								aria-controls="assumtion" aria-expanded="false">Resultados</a></li>
+
+
+						</ul>
+
+					</div>
+					<!-- class="clearfix" -->
+
+					<div class="tab-content mb-lg" id="myTabContent">
+
+						<!-- TAB UNO -->
+						<div role="tabpanel" class="tab-pane active in clearfix"
+							id="basic" aria-labelledby="basic-tab" aria-expanded="true">
+
+
+
+							<!-- SECCION UNO -->
+							<section class="widget">
+								<header>
+									<h4 style="color: #003489;">
+										Ejercicio
+										<!--  <span class="fw-semi-bold">Contable</span> -->
+									</h4>
+
+								</header>
+
+								<div>
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+								</div>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+											<!-- CUADRO 1 -->
+											<div class="form-group col-md-12">
+												<select data-placeholder="Selecciona un ramo"
+													class="select2 form-control" id="default-select">
+													<option value="Magellanic">2018</option>
+													<option value="Andromeda">2019</option>
+													<option value="Andromeda">2020</option>
+												</select>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</section>
+
+
+							<!-- SECCION DOS -->
+							<section class="widget">
+								<header>
+									<h4 style="color: #003489;">
+										Carga
+										<!--  <span class="fw-semi-bold">Contable</span> -->
+									</h4>
+
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+								</header>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+
+											<!-- CUADRO 1 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> RCV </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+											<!-- CUADRO 2 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> MYT </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+
+											<!-- CUADRO 3 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> CER </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+
+											<!-- CUADRO 4 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> CYM </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+
+											<!-- CUADRO 5 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> INC </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+
+											<!-- CUADRO 6 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> RHI </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+
+											<!-- CUADRO 7 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> TEV </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+											<!-- CUADRO 8 -->
+											<div class="col-md-8">
+												<label class="control-label col-md-2 text-md-right"
+													for="fileupload1"> RR7 </label>
+
+												<div class="fileinput fileinput-new input-group"
+													data-provides="fileinput">
+													<div class="form-control" data-trigger="fileinput">
+														<i class="glyphicon glyphicon-file fileinput-exists"></i>
+														<span class="fileinput-filename"></span>
+													</div>
+													<span class="input-group-addon btn btn-secondary btn-file">
+														<span class="fileinput-new">Seleccione un archivo</span> <span
+														class="fileinput-exists">Cambiar</span> <input
+														id="fileupload1" type="file">
+													</span> <a href="#"
+														class="input-group-addon btn btn-secondary fileinput-exists"
+														data-dismiss="fileinput">Quitar archivo</a>
+												</div>
+												<!-- <span class="help-block">Seleccione un archivo</span> -->
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+
+							</section>
+
+							<!-- SECCION 3 -->
+							<section class="widget">
+								<header>
+									<h4 style="color: #003489;">
+										Historico de <span class="fw-semi-bold">carga en el
+											sistema</span>
+									</h4>
+
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+								</header>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+											<table id="datatable-table"
+												class="table table-striped table-hover">
+												<thead>
+													<tr>
+														<th>Archivo</th>
+														<th>2017</th>
+														<th>2018</th>
+														<th>2019</th>
+														<th>2020</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>RCV</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>MYT</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>CER</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>CYM</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>INC</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>RHI</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>TEV</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+													<tr>
+														<td>RR7</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>OK</td>
+														<td>NO</td>
+													</tr>
+
+
+												</tbody>
+											</table>
+
+										</div>
+									</div>
+								</div>
+							</section>
+
+							<!-- SECCION 4 -->
+							<section class="widget">
+								<header>
+									<h4 style="color: #003489;">
+										Archivo <span class="fw-semi-bold">de validaciones</span>
+									</h4>
+
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+								</header>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+											<div /class="form-group col-md-6">
+												<h2>CATALOGO DE VALIDACIONES</h2>
+												<h4>SALUD DATOS GENERALES</h4>
+											</div>
+											<div class="form-group col-md-6">
+
+												<button id="verificarfecha" type="button"
+													class="btn btn-primary">
+													Exportar validaciones <span class="badge"></span>
+												</button>
+
+												<button id="verificarfecha" type="button"
+													class="btn btn-primary">
+													Calcular SESAs <span class="badge"></span>
+												</button>
+											</div>
+
+											<div class="form-group col-md-8">
+												<table id="datatable-table"
+													class="table table-striped table-hover">
+													<thead>
+														<tr>
+															<th>CAMPO</th>
+															<th>DESCRIPCIÓN</th>
+															<th>ERROR</th>
+															<th>AÑO</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>1</td>
+															<td>Número de poliza</td>
+															<td>No puede estar vacio</td>
+															<td>2019</td>
+														</tr>
+
+														<tr>
+															<td>2</td>
+															<td>Identificador Único</td>
+															<td>No puede estar vacio</td>
+															<td>2019</td>
+														</tr>
+
+														<tr>
+															<td>3</td>
+															<td>Identificador Único</td>
+															<td>Primeras 4 son letras</td>
+															<td>2019</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>Identificador Único</td>
+															<td>Dela posición 5 a 9 son números</td>
+															<td>2019</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>Identificador Único</td>
+															<td>Últimos 3 son letras</td>
+															<td>2019</td>
+														</tr>
+														<tr>
+															<td>6</td>
+															<td>Descripción del integrante del grupo familiar</td>
+															<td>Debe estar en el catalogo</td>
+															<td>2019</td>
+														</tr>
+														<tr>
+															<td>7</td>
+															<td>Fecha de nacimiento</td>
+															<td>Formato aaaammdd</td>
+															<td>2019</td>
+														</tr>
+
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+
+						</div>
+						<!-- FIN TAB UNO  -->
+
+						<!-- SEGUNDO APARTADO-PESTAÑA  -->
+
+						<!-- TAB DOS -->
+						<div class="tab-pane" id="assumtion">
+							<div role="tabpanel" aria-labelledby="assumtion-tab"
+								aria-expanded="true">
+								<header>
+									<h4 style="color: #003489;">
+										Cuadre con <span class="fw-semi-bold">RR7</span>
+									</h4>
+								</header>
+								<!-- SECCION UNO -->
+								<section class="widget">
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+
+									<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO UNO SECCIÓN UNO-->
+												<div class="form-group col-md-6">
+													<p align="center">Costo de siniestralidad</p>
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>RR7</th>
+																<th>RR8</th>
+																<th>Diferencia</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>040</td>
+																<td>6,432</td>
+																<td>6</td>
+															</tr>
+															<tr>
+																<td>050</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>060</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>070</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>080</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>090</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>110</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+
+														</tbody>
+													</table>
+
+
+												</div>
+												<!-- CUADRO DOS SECCION UNO-->
+												<div class="form-group col-md-6">
+													<p align="center">Prima Emitida</p>
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>RR7</th>
+																<th>RR8</th>
+																<th>Diferencia</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>040</td>
+																<td>6,432</td>
+																<td>6</td>
+															</tr>
+															<tr>
+																<td>050</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>060</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>070</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>080</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>090</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>110</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<!-- CUADRO TRES -->
+												<div class="form-group col-md-6">
+													<p align="center">Prima Emitida</p>
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>RR7</th>
+																<th>RR8</th>
+																<th>Diferencia</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>040</td>
+																<td>6,432</td>
+																<td>6</td>
+															</tr>
+															<tr>
+																<td>050</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>060</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>070</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>080</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>090</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>110</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<!-- CUADRO CUATRO -->
+												<div class="form-group col-md-6">
+													<p align="center">Prima Emitida</p>
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>RR7</th>
+																<th>RR8</th>
+																<th>Diferencia</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>040</td>
+																<td>6,432</td>
+																<td>6</td>
+															</tr>
+															<tr>
+																<td>050</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>060</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>070</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>080</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>090</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>110</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									<!-- FIN WIDGET BODY -->
+
+								</section>
+
+								<header>
+									<h4 style="color: #003489;">
+										Tendencias
+										<!-- <span class="fw-semi-bold">COR</span> -->
+									</h4>
+								</header>
+
+								<!-- SECCION DOS -->
+
+								<section>
+									<div class="pcoded-main-container" style="margin-top: 56px;">
+										<div class="pcoded-wrapper">
+
+											<div class="pcoded-content">
+												<div class="pcoded-inner-content">
+													<div class="main-body">
+														<div class="page-wrapper">
+															<div class="page-body">
+
+																<div class="row">
+																	<!-- DATO DE GRAFICOS-->
+
+																	<div class="col-md-12">
+																		<div class="card table-card">
+																			<div class="card-block">
+																				<div class="table-responsive">
+																					<table class="table table-hover  table-borderless">
+																						<thead>
+																							<tr>																							
+																								<th>Ramo</th>
+																								<th>Prima</th>
+																								<th>Prima Devengada</th>
+																								<th>Ocurridos</th>
+																								<th>Gastos de Ajuste</th>
+																								<th>Número de siniestros</th>
+																								<th>Número de certificados</th>
+																								<th>Número de pólizas</th>
+																							</tr>
+																						</thead>
+																						<tbody>
+																							<tr>
+																								<td>
+																									<div class="chk-option">
+																										<div class="checkbox-fade fade-in-primary">
+																											<label class="check-task"> 
+																										<!-- <input type="checkbox" value=""> -->	
+																												 <span
+																												class="cr"> 
+																												<i class="cr-icon feather icon-check txt-default"></i>
+																											</span>
+																											</label>
+																										</div>
+																									</div>
+																									<div class="d-inline-block align-middle">
+																										<!-- <h6>Able Pro</h6> -->
+																										<p class="text-muted m-b-0">030</p>
+																									</div>030</td>
+
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale1" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale2" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale3" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale4" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale5" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale6" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+																								<td><iframe class="chartjs-hidden-iframe"
+																										tabindex="-1"
+																										style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+																									<canvas id="app-sale7" height="59" width="118"
+																										style="display: block; width: 118px; height: 59px;"></canvas>
+																								</td>
+
+																							</tr>
+
+																						</tbody>
+																					</table>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- TERMINA TABLA DE GRAFICOS -->
+																</div>
+
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+
+
+
+							</div>
+						</div>
+						
+						<!-- SEGUNDO APARTADO-PESTAÑA  -->
+
+						<!-- TAB DOS -->
+						<div class="tab-pane" id="validaciones">
+							<div role="tabpanel" aria-labelledby="assumtion-tab"
+								aria-expanded="true">
+								<header>
+									<h4 style="color: #003489;">
+										<u>Resumen <span class="fw-semi-bold">General</span> </u> 
+									</h4>
+								</header>
+								<!-- SECCION UNO -->
+								<section class="widget">
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+
+									<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO UNO SECCIÓN UNO-->
+												
+												
+												
+												<!-- CUADRO UNO -->
+												<div class="form-group col-md-12">
+													<!-- <p align="center">Prima Emitida</p> -->
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>Validaciones Tolerancia 1</th>
+																<th>Validaciones Tolerancia 0</th>
+																<th>Números de incidencias</th>
+																<th>Número de validaciones afectadas</th>
+
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>35</td>
+																<td>2</td>
+																<td>175</td>
+																<td>37</td>
+															</tr>
+															<tr>
+																<td>040</td>
+																<td>10</td>
+																<td>1</td>
+																<td>50</td>
+																<td>11</td>
+															</tr>
+															<tr>
+																<td>050</td>
+																<td>80</td>
+																<td>0</td>
+																<td>400</td>
+																<td>80</td>
+															</tr>
+															<tr>
+																<td>60</td>
+																<td>75</td>
+																<td>0</td>
+																<td>375</td>
+																<td>75</td>
+															</tr>
+															<tr>
+																<td>70</td>
+																<td>10</td>
+																<td>0</td>
+																<td>50</td>
+																<td>10</td>
+															</tr>
+															<tr>
+																<td>80</td>
+																<td>2</td>
+																<td>0</td>
+																<td>10</td>
+																<td>2</td>
+															</tr>
+															<tr>
+																<td>90</td>
+																<td>0</td>
+																<td>0</td>
+																<td>0</td>
+																<td>0</td>															</tr>
+															<tr>
+																<td>110</td>
+																<td>8</td>
+																<td>0</td>
+																<td>40</td>
+																<td>8</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+
+
+											</div>
+										</div>
+									</div>
+									<!-- FIN WIDGET BODY -->
+
+								</section>
+
+								<header>
+									<h4>
+									<u>	Explordor de <span class="fw-semi-bold">validaciones</span> </u>
+									</h4>
+								</header>
+								<!-- SECCION DOS -->
+
+								<section class="widget">
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+									<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO 1 -->
+												<div class="form-group col-md-3">
+													<select data-placeholder="Selecciona un ramo"
+														class="select2 form-control" id="default-select">
+														<option value="Value1">Opción 1</option>
+														<option value="Value2">Opción 2</option>
+														<option value="Value3">Opción 3</option>
+													</select>
+												</div>
+	
+											</div>
+										</div>
+									</div>
+
+									<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO UNO SECCION DOS-->
+												<div class="form-group col-md-12">
+													
+													
+
+														<ul class="nav nav-tabs" id="myTab" role="tablist">
+														  <li class="nav-item">
+														    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos Generales</a>
+														  </li>
+														  <li class="nav-item">
+														    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Emision</a>
+														  </li>
+														  <li class="nav-item">
+														    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Siniestros</a>
+														  </li>
+
+														</ul>
+														
+														<div class="tab-content">
+														  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+														  <div class="col-md-8 col-md-offset-2">
+
+														  <table id="datatable-table"
+																class="table table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>Id de validación</th>
+																		<th>Descripción</th>
+																		<th>Error</th>
+																		<th>Incidencias</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>5</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>100</td>
+																	</tr>
+																	<tr>
+																		<td>8</td>
+																		<td>Identificador único</td>
+																		<td>No aparace en el catálogo</td>
+																		<td>12</td>
+																	</tr>
+																	<tr>
+																		<td>9</td>
+																		<td>Identificador único</td>
+																		<td>Formato de fecha no es aaaammdd</td>
+																		<td>5</td>
+																	</tr>
+																	<tr>
+																		<td>10</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>4</td>
+																	</tr>
+																	<tr>
+																		<td>15</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>3</td>
+																	</tr>
+																	<tr>
+																		<td>98</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>8</td>
+																	</tr>
+																	
+																	
+																</tbody>
+															</table>
+
+																	<button href="#" class="btn btn-success btn-sm ml-auto">Exportar</button>
+														  </div>
+													  		
+													  	
+														</div>
+														
+													  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+													 	 <div class="col-md-8 col-md-offset-2">
+
+														  <table id="datatable-table"
+																class="table table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>Id de validación</th>
+																		<th>Descripción</th>
+																		<th>Error</th>
+																		<th>Incidencias</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>5</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>100</td>
+																	</tr>
+																	<tr>
+																		<td>8</td>
+																		<td>Identificador único</td>
+																		<td>No aparace en el catálogo</td>
+																		<td>12</td>
+																	</tr>
+																	<tr>
+																		<td>9</td>
+																		<td>Identificador único</td>
+																		<td>Formato de fecha no es aaaammdd</td>
+																		<td>5</td>
+																	</tr>
+																	<tr>
+																		<td>10</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>4</td>
+																	</tr>
+																	<tr>
+																		<td>15</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>3</td>
+																	</tr>
+																	<tr>
+																		<td>98</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>8</td>
+																	</tr>
+																	
+																	
+																</tbody>
+															</table>
+
+																<button href="#" class="btn btn-info btn-sm ml-auto">Exportar</button>
+														 </div>
+													  </div>
+
+													  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+														  <div class="col-md-8 col-md-offset-2">
+
+														  <table id="datatable-table"
+																class="table table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>Id de validación</th>
+																		<th>Descripción</th>
+																		<th>Error</th>
+																		<th>Incidencias</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>5</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>100</td>
+																	</tr>
+																	<tr>
+																		<td>8</td>
+																		<td>Identificador único</td>
+																		<td>No aparace en el catálogo</td>
+																		<td>12</td>
+																	</tr>
+																	<tr>
+																		<td>9</td>
+																		<td>Identificador único</td>
+																		<td>Formato de fecha no es aaaammdd</td>
+																		<td>5</td>
+																	</tr>
+																	<tr>
+																		<td>10</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>4</td>
+																	</tr>
+																	<tr>
+																		<td>15</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>3</td>
+																	</tr>
+																	<tr>
+																		<td>98</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>8</td>
+																	</tr>
+																	
+																	
+																</tbody>
+															</table>
+
+																	<button href="#" class="btn btn-success btn-sm ml-auto">Exportar</button>
+														  </div>
+														
+													  </div>
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+															
+													
+									</div>
+									
+
+							</div>
+							
+								
+							</section>
+
+							<!-- SECCIÓN TRES -->
+							<section class="widget">
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+								<header>
+									<h4 style="color: #003489;">
+										<u> Matriz <span class="fw-semi-bold">Emplazamientos</span> </u>
+									</h4>
+								</header>
+
+								<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO UNO SECCION DOS-->
+												<div class="form-group col-md-12">
+													
+													
+
+														<ul class="nav nav-tabs" id="myTab" role="tablist">
+														  <li class="nav-item">
+														    <a class="nav-link active" id="dg01-tab" data-toggle="tab" href="#dg01" role="tab" aria-controls="home" aria-selected="true">Datos Generales</a>
+														  </li>
+														  <li class="nav-item">
+														    <a class="nav-link" id="dg02-tab" data-toggle="tab" href="#dg02" role="tab" aria-controls="profile" aria-selected="false">Emision</a>
+														  </li>
+														  <li class="nav-item">
+														    <a class="nav-link" id="dg03-tab" data-toggle="tab" href="#dg03" role="tab" aria-controls="messages" aria-selected="false">Siniestros</a>
+														  </li>
+
+														</ul>
+														
+														<div class="tab-content">
+														  <div class="tab-pane active" id="dg01" role="tabpanel" aria-labelledby="home-tab">
+														  <div class="col-md-8 col-md-offset-2">01
+
+														  <table id="datatable-table"
+																class="table table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>Id de validación</th>
+																		<th>Descripción</th>
+																		<th>Error</th>
+																		<th>Incidencias</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>5</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>100</td>
+																	</tr>
+																	<tr>
+																		<td>8</td>
+																		<td>Identificador único</td>
+																		<td>No aparace en el catálogo</td>
+																		<td>12</td>
+																	</tr>
+																	<tr>
+																		<td>9</td>
+																		<td>Identificador único</td>
+																		<td>Formato de fecha no es aaaammdd</td>
+																		<td>5</td>
+																	</tr>
+																	<tr>
+																		<td>10</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>4</td>
+																	</tr>
+																	<tr>
+																		<td>15</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>3</td>
+																	</tr>
+																	<tr>
+																		<td>98</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>8</td>
+																	</tr>
+																	
+																	
+																</tbody>
+															</table>
+
+
+														  </div>
+													  		
+													  	
+														</div>
+														
+													  <div class="tab-pane" id="dg02" role="tabpanel" aria-labelledby="profile-tab">
+													 	 <div class="col-md-8 col-md-offset-2">02
+
+														  <table id="datatable-table"
+																class="table table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>Id de validación</th>
+																		<th>Descripción</th>
+																		<th>Error</th>
+																		<th>Incidencias</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>5</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>100</td>
+																	</tr>
+																	<tr>
+																		<td>8</td>
+																		<td>Identificador único</td>
+																		<td>No aparace en el catálogo</td>
+																		<td>12</td>
+																	</tr>
+																	<tr>
+																		<td>9</td>
+																		<td>Identificador único</td>
+																		<td>Formato de fecha no es aaaammdd</td>
+																		<td>5</td>
+																	</tr>
+																	<tr>
+																		<td>10</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>4</td>
+																	</tr>
+																	<tr>
+																		<td>15</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>3</td>
+																	</tr>
+																	<tr>
+																		<td>98</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>8</td>
+																	</tr>
+																	
+																	
+																</tbody>
+															</table>
+
+
+														 </div>
+													  </div>
+
+													  <div class="tab-pane" id="dg03" role="tabpanel" aria-labelledby="messages-tab">
+														  <div class="col-md-8 col-md-offset-2">03
+
+														  <table id="datatable-table"
+																class="table table-striped table-hover">
+																<thead>
+																	<tr>
+																		<th>Id de validación</th>
+																		<th>Descripción</th>
+																		<th>Error</th>
+																		<th>Incidencias</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>5</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>100</td>
+																	</tr>
+																	<tr>
+																		<td>8</td>
+																		<td>Identificador único</td>
+																		<td>No aparace en el catálogo</td>
+																		<td>12</td>
+																	</tr>
+																	<tr>
+																		<td>9</td>
+																		<td>Identificador único</td>
+																		<td>Formato de fecha no es aaaammdd</td>
+																		<td>5</td>
+																	</tr>
+																	<tr>
+																		<td>10</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>4</td>
+																	</tr>
+																	<tr>
+																		<td>15</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>3</td>
+																	</tr>
+																	<tr>
+																		<td>98</td>
+																		<td>Identificador único</td>
+																		<td>últimos tres campos son letras</td>
+																		<td>8</td>
+																	</tr>
+																	
+																	
+																</tbody>
+															</table>
+
+
+														  </div>
+														
+													  </div>
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+															
+													
+									</div>
+								
+
+								
+								
+							</section>
+
+
+						</div>
+						
+						
+						<!-- TAB DOS -->
+						<div class="tab-pane" id="resultados">
+							<div role="tabpanel" aria-labelledby="assumtion-tab"
+								aria-expanded="true">
+								<header>
+									<h4 style="color: #003489;">
+
+									</h4>
+								</header>
+								<!-- SECCION UNO -->
+								<section class="widget">
+								<!-- 	<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+								-->				
+									<div class="widget-body">
+										<div class="row mb-lg">
+											
+											<!-- CUADRO 1 -->
+												<div class="form-group col-md-3">
+													Control de <span class="fw-semi-bold">observaciones</span> 
+												</div>
+												
+												<select class=" form-group col-md-2" id="default-select">
+														<option value="Value1">Opción 1</option>
+														<option value="Value2">Opción 2</option>
+														<option value="Value3">Opción 3</option>
+												</select>
+												<label class=" form-group col-md-2" >Ramo</label>
+												
+	
+
+										</div>
+										
+										<section class="widget">
+										
+			
+											<div class="widget-body">
+												<div class="row mb-lg">
+													<div class="form-row">
+														<!-- CUADRO 8 -->
+														<div class="col-md-8">
+														<table id="datatable-table"
+																class="table table-striped table-hover bordered">
+																<thead>
+																	<tr>
+																		
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>La prima tuvo un movimiento de:</td>
+																		<td>45</td>
+																		<td>%</td>
+
+																	</tr>
+																	<tr>
+																		<td>El Número de asegurados tuvo un movimiento de:</td>
+																		<td>15</td>
+																		<td>%</td>
+																	</tr>
+																	<tr>
+																		<td>El costo siniestralidad tuvo un movimiento de:</td>
+																		<td>78</td>
+																		<td>%</td>
+																	</tr>
+																	<tr>
+																		<td>El número de siniestros tubo un movimiento de:</td>
+																		<td>10</td>
+																		<td>%</td>
+																	</tr>																				
+																</tbody>
+															</table>
+														<button id="expor" type="button" class="btn btn-danger" >
+															Exportar<span class="badge"></span>
+														</button>
+
+														</div>
+																			
+			
+													</div>
+													
+												</div>
+											</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<button id="verificarfecha" type="button" class="btn btn-danger">
+													Generar Productos  <span class="badge"></span>
+												</button>
+												<button id="verificarfecha" type="button" class="btn btn-danger">
+													Enviar Historicos<span class="badge"></span>
+												</button>
+											</div>												
+										</div>
+
+										</section>
+										
+										
+									</div>
+								</section>
+							</div>
+						</div>	
+												
+					</div>
+				</div>
+			</div>
+	</div>
+
+	</main>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- page specific libs -->
+	<script th:src="@{/resources/underscore/underscore-min.js}"
+		src="resources/underscore/underscore-min.js"></script>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	
+
+
+	
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/googleCharts.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/googleCharts.js}">
+	</script>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadC.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadC.js}"></script>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidad.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidad.js}"></script>
+	
+	<!-- SALUD -->
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSaludC.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSaludC.js}"></script>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSalud.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSalud.js}"></script>
+	
+	<script th:src="@{/resources/underscore/underscore-min.js}"
+		src="resources/underscore/underscore-min.js"></script>
+
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/googleCharts.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/googleCharts.js}"></script>
+			<script
+		src="/resources/js/pages/informacionEstadistica/reporteAnual/daniosConsistenciaC.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteAnual/daniosConsistenciaC.js}"></script>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteAnual/daniosConsistencia.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteAnual/daniosConsistencia.js}"></script>
+
+	<!-- SALUD -->
+
+	<script type="text/javascript"
+		src="/resources/js/pages/informacionEstadistica/reporteAnual/jquery.min.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteAnual/jquery.min.js}"></script>
+
+	<script type="text/javascript"
+		src="/resources/js/pages/informacionEstadistica/reporteAnual/Chart.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteAnual/Chart.js}"></script>
+
+	<script type="text/javascript"
+		src="/resources/js/pages/informacionEstadistica/reporteAnual/custom-dashboard.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteAnual/custom-dashboard.js}"></script>
+
+</body>
+
+</html>

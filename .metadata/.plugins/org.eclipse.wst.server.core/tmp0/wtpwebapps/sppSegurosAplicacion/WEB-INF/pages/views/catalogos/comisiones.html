@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Comisiones</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="submit" class="btn btn-primary col-md-2"
+				name="btnEnviar" data-toggle="modal" data-target="#nuevaComisionModal">
+				<span style="padding: 5px"><i class="fas fa-plus-square"></i></span>Nueva
+				comisión
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaComisiones"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevaComisionModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevaComisionLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="formComisionesNuevo" autocomplete="off">
+							<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title" id="exampleModalLongTitle">Nueva
+									Comisión</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+
+								<div class="row">
+
+									<div class="form-group col-md-6">
+										<label for="fechaInicio">Fecha de Inicio de Vigencia:</label>
+										<div class="input-group">
+										<input type="text" class="form-control date" id="ct12FechaInicioVigencia"
+												name="ct12FechaInicioVigencia"> <span class="input-group-text"><i
+												class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="fechaFin">Fecha de Fin de Vigencia:</label> 
+										<div class="input-group">
+										<input type="text" class="form-control date" id="ct12FechaFinVigencia"
+												name="ct12FechaFinVigencia"> <span class="input-group-text"><i
+												class="fas fa-calendar-alt"></i></span>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="sublimite">% Comisiones:</label> <input
+											class="form-control" type="text" id="ct12PorcentajeComisiones"
+											name="ct12PorcentajeComisiones" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="impuesto">% Bono:</label> <input
+											class="form-control" type="text" id="bono"
+											name="ct12PorcentajeBono" maxlength="10"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="ramo">Ramo:</label> <select class="form-control"
+											id="ramo" name="cveRamo">
+										</select>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="producto">Producto:</label> <select
+											class="form-control" id="producto" name="cveProducto">
+										</select>
+									</div>
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-primary"
+									id="btnGuardarComision">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Finaliza jumbotron -->
+			 <div th:include="views/catalogos/editarComisiones :: comisionesEditFragment" id="editarComisiones"></div> 
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/comisionesC.js"
+		th:src="@{/resources/js/pages/catalogos/comisionesC.js}"></script>
+	<script src="/resources/js/pages/catalogos/comisiones.js"
+		th:src="@{/resources/js/pages/catalogos/comisiones.js}"></script>
+		
+		<script src="/resources/js/pages/catalogos/ramoC.js"
+		th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+
+	<script src="/resources/js/pages/catalogos/productoC.js"
+		th:src="@{/resources/js/pages/catalogos/productoC.js}"></script>
+</body>
+</html>

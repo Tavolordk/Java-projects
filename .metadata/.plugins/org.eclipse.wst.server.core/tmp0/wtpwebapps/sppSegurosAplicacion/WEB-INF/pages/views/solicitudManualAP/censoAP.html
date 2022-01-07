@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="capturaCensoApFragment" class="main-container"></div>
+    <div class="container main-container">
+        <div class="card wizard-card card-content">
+            <h1 class="display-4">Archivos Accidentes Personales</h1>
+            <form enctype="multipart/form-data" id="formArchivoPersonales" autocomplete="off">
+                <div class="form-row">
+                    <!-- <div class="form-group col-md-4">
+                        <label for="fileInput">Cliente:</label>
+                        <select class="form-control cliente"
+                            id="cliente" name="cliente">
+                        </select>
+                    </div> -->
+                    <div class="form-group col-md-4">
+                        <label for="fileInput">Buscar cliente:</label>
+                        <input id="desarrollador" class="form-control desarrollador autocomplete">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="fileInput">Producto:</label> <select
+                            class="form-control producto" id="claveProducto"
+                            name="claveProducto">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="fileInput">Subir archivo</label> <input
+                            id="fileInput" type="file" class="file" name="file">
+                        <div id="errorBlock" class="help-block"></div>
+                        <div id="msg" class="form-group mt-1 p-0 col-md-8"></div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-primary" id="btnCargarArchivoPersonales" type="button">Cargar archivo</button>
+                    </div>
+                </div>
+                
+            <div class="table-responsive main-container background-tabla" id="tablaDuplicados">
+           <!--  <h3>Duplicados</h3>
+                <table id="resultadoDuplicados"
+                    class="table table-sm table-hover table-bordered estiloTablas">
+                </table>
+            </div> -->
+            
+            <div class="table-responsive main-container background-tabla">
+            <h3>Cargados</h3>
+                <table id="resultadoCargaPersonales"
+                    class="table table-sm table-hover table-bordered estiloTablas">
+                </table>
+            </div>
+            
+            </form>
+        </div>
+    </div>
+    
+    <script src="/resources/js/pages/emision/personalesC.js" th:src="@{/resources/js/pages/emision/personalesC.js}"></script>
+    <script src="/resources/js/pages/emision/personales.js"   th:src="@{/resources/js/pages/emision/personales.js}"></script>
+    <script src="/resources/js/pages/catalogos/agrupadorC.js" th:src="@{/resources/js/pages/catalogos/agrupadorC.js}"></script>
+    
+</body>
+</html>

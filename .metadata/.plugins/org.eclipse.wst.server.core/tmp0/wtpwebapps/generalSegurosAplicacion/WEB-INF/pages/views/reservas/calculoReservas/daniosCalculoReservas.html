@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="content-wrap">
+		<!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+		<main id="content" class="content" role="main">
+		<ol class="breadcrumb">
+			<li>Reservas</li>
+			<li>Calculo de reservas</li>
+			<li class="active">Daños</li>
+		</ol>
+		<h1 class="page-title">
+			Calculo de - <span class="fw-semi-bold">Daños</span>	
+		</h1>
+		<section class="widget">
+			<header>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label class="col-md-12 control-label" for="default-select">Analisis
+							del factor</label> <select data-placeholder="Selecciona un ramo"
+							class="select2 form-control" id="default-select">
+							<option value="Magellanic">VIDA CP Individualx</option>
+							<option value="Andromeda">VIDA CP Grupo</option>
+						</select>
+					</div>
+					<div class="col-md-4">
+						<label class="col-md-12 control-label" for="default-select">Ejercicio</label>
+						<select data-placeholder="Selecciona un ejercicio"
+							class="select2 form-control" id="default-select2">
+							<option value="Magellanic">Auto</option>
+						</select>
+					</div>
+					<div class="col-md-4" style="text-align: center">
+						<button class="btn btn-primary width-100 mb-xs" role="button"
+							style="margin: 28px">Buscar</button>
+					</div>
+				</div>
+
+				<div class="widget-controls">
+					<a data-widgster="expand" title="Expand" href="#"><i
+						class="glyphicon glyphicon-chevron-up"></i></a> <a
+						data-widgster="collapse" title="Collapse" href="#"><i
+						class="glyphicon glyphicon-chevron-down"></i></a>
+				</div>
+			</header>
+			<div class="widget-body">
+
+				<div class="mt">
+					<table id="datatable-table" class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th class="no-sort hidden-sm-down">Info</th>
+								<th class="hidden-sm-down">Description</th>
+								<th class="hidden-sm-down">Date</th>
+								<th class="no-sort">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+							<tr>
+								<td>13</td>
+								<td><span class="fw-semi-bold">Ihnat</span></td>
+								<td class="hidden-sm-down"><small> <span
+										class="fw-semi-bold">Type:</span> &nbsp; JAVA
+								</small> <br> <small> <span class="fw-semi-bold">Dimensions:</span>
+										&nbsp; -
+								</small></td>
+								<td class="hidden-sm-down"><a href="#">Los Angeles</a></td>
+								<td class="hidden-sm-down">August 2, 2012</td>
+								<td class="width-150">
+									<div class="bg-gray-lighter progress-bar mt-xs">
+										<progress class="progress progress-sm progress-success"
+											value="100" max="100" style="width: 8%"></progress>
+									</div>
+								</td>
+							</tr>
+
+
+							<tr>
+								<td>17</td>
+								<td><span class="fw-semi-bold">Pham</span></td>
+								<td class="hidden-sm-down"><small> <span
+										class="fw-semi-bold">Type:</span> &nbsp; MAIL
+								</small> <br> <small> <span class="fw-semi-bold">Dimensions:</span>
+										&nbsp; -
+								</small></td>
+								<td class="hidden-sm-down"><a href="#">Tokyo</a></td>
+								<td class="hidden-sm-down">December 8, 2012</td>
+								<td class="width-150">
+									<div class="bg-gray-lighter progress-bar mt-xs">
+										<progress class="progress progress-sm progress-danger"
+											value="100" max="100" style="width: 44%"></progress>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>18</td>
+								<td><span class="fw-semi-bold">Peter</span></td>
+								<td class="hidden-sm-down"><small> <span
+										class="fw-semi-bold">Type:</span> &nbsp; PNG
+								</small> <br> <small> <span class="fw-semi-bold">Dimensions:</span>
+										&nbsp; 8320x6400
+								</small></td>
+								<td class="hidden-sm-down"><a href="#">Cape Town</a></td>
+								<td class="hidden-sm-down">December 29, 2012</td>
+								<td class="width-150">
+									<div class="bg-gray-lighter progress-bar mt-xs">
+										<progress class="progress progress-sm progress-bar-gray-light"
+											value="100" max="100" style="width: 5%"></progress>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>19</td>
+								<td><span class="fw-semi-bold">Uladz'</span></td>
+								<td class="hidden-sm-down"><small> <span
+										class="fw-semi-bold">Type:</span> &nbsp; JPEG
+								</small> <br> <small> <span class="fw-semi-bold">Dimensions:</span>
+										&nbsp; 2200x1600
+								</small></td>
+								<td class="hidden-sm-down"><a href="#">Mahileu</a></td>
+								<td class="hidden-sm-down">December 7, 2013</td>
+								<td class="width-150">
+									<div class="bg-gray-lighter progress-bar mt-xs">
+										<progress class="progress progress-sm progress-bar-gray-light"
+											value="100" max="100" style="width: 0%"></progress>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="form-group row" style="text-align: center">
+					<div class="col-md-6">
+						<button class="btn btn-primary " role="button"
+							style="margin: 28px">Exportar triangulo</button>
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-primary " role="button"
+							style="margin: 28px">Exportar Simulaciones</button>
+					</div>
+				</div>
+				<div class="row mb-lg">
+					<div class="col-md-12">
+						<header>
+							<h2 style="color: #003489">
+								<span class="fw-semi-bold">Factores de siniestralidad</span>
+							</h2>
+							<div class="widget-controls widget-controls-hover">
+								<a href="#"><i class="glyphicon glyphicon-cog"></i></a> <a
+									href="#"><i class="fa fa-refresh"></i></a>
+							</div>
+						</header>
+					</div>
+					<div class="col-md-6">
+						<section class="widget">
+							<header>
+								<h6>RRC Vida CP Individual</h6>
+								<div class="widget-controls">
+									<a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="stats-row" style="text-align: center">
+									<div class="stat-item">
+										<h6 class="name fs-sm">Media</h6>
+										<p class="value">.0254</p>
+									</div>
+									<div class="stat-item">
+										<p class="value">14.29</p>
+									</div>
+									<div class="stat-item">
+										<p class="value">7.211</p>
+									</div>
+								</div>
+
+								<p>
+									<small><span class="circle bg-warning"><i
+											class="fa fa-plus"></i></span></small> <span class="fw-semi-bold">8
+										734 higher</span> than last month
+								</p>
+							</div>
+						</section>
+					</div>
+					<div class="col-md-6">
+						<section class="widget">
+							<header>
+								<h6>IBNR Vida CP Individual</h6>
+								<div class="widget-controls">
+									<a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="stats-row">
+									<div class="stat-item">
+										<h6 class="name fs-sm">Overcome T.</h6>
+										<p class="value">104.85%</p>
+									</div>
+									<div class="stat-item">
+										<h6 class="name fs-sm">Takeoff Angle</h6>
+										<p class="value">14.29&deg;</p>
+									</div>
+									<div class="stat-item">
+										<h6 class="name fs-sm">World Pop.</h6>
+										<p class="value">7,211M</p>
+									</div>
+								</div>
+								<div class="bg-gray-lighter progress-bar">
+									<progress class="progress progress-primary progress-xs"
+										value="100" max="100" style="width: 60%"></progress>
+								</div>
+								<p>
+									<small><span class="circle bg-warning"><i
+											class="fa fa-plus"></i></span></small> <span class="fw-semi-bold">8
+										734 higher</span> than last month
+								</p>
+							</div>
+						</section>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-xl-5">
+						<section class="widget">
+							<header>
+								<h5>
+									Tabla de<span class="fw-semi-bold">Factores</span>
+								</h5>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a> <a href="#"
+										data-widgster="close"><i
+										class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt mb" id="flot-main"
+									style="width: 100%; height: 260px;"></div>
+								<div class="chart-tooltip" id="flot-main-tooltip"
+									style="opacity: 0"></div>
+								<p class="fs-mini text-muted">Así es como lucen los factores
+									en los últimos 24 meses</p>
+								<h5 class="mt">
+									Años <span class="fw-semi-bold">Anteriores</span>
+								</h5>
+								<div class="row mt">
+									<div class="col-md-6">
+										<div class="stats-row">
+											<div class="stat-item">
+												<p class="value5 fw-thin">2018</p>
+												<h6 class="name text-muted no-margin fs-mini">34 567</h6>
+											</div>
+											<div class="stat-item stat-item-mini-chart">
+												<div class="sparkline" data-type="bar"
+													data-bar-color="#f0b518" data-height="30"
+													data-bar-width="6" data-bar-spacing="2">9,12,14,15,10,14,20</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="stats-row">
+											<div class="stat-item">
+												<p class="value5 fw-thin">2019</p>
+												<h6 class="name text-muted no-margin fs-mini">34 567</h6>
+											</div>
+											<div class="stat-item stat-item-mini-chart">
+												<div class="sparkline" data-type="bar"
+													data-bar-color="#FFA587" data-height="30"
+													data-bar-width="6" data-bar-spacing="2">9,12,14,15,10,14,20</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+		</main>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+</body>
+</html>

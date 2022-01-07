@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Registro de perfiles</h4>
+			</div>
+		<div class="card-content">
+
+			<form id="formPerfil">
+				<button type="button" class="btn btn-primary col-md-2" data-toggle="modal"
+					id="nuevoPerfilModal">
+					<span style="padding: 5px"><i class="fas fa-plus-square"></i></span>Nuevo
+					perfil
+				</button>
+
+				<div class="table-responsive main-container"
+					style="background-color: #ffff;">
+					<table id="tablaPerfiles"
+						class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+						style="width: 100%">
+					</table>
+				</div>
+			</form>
+			<div th:include="views/accesos/editarPerfil :: perfilEditFragment"
+				id="editarPerfil"></div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/accesos/perfilC.js"
+		th:src="@{/resources/js/pages/accesos/perfilC.js}"></script>
+	<script src="/resources/js/pages/accesos/perfil.js"
+		th:src="@{/resources/js/pages/accesos/perfil.js}"></script>
+</body>
+
+</html>

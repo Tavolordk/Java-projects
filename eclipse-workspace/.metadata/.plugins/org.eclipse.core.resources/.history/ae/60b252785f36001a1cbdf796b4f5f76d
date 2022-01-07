@@ -1,0 +1,13 @@
+package figura;
+
+public class Caja {
+	int ancho, alto, profundo;
+	public Caja()
+	{
+		System.out.println("Este es el constructor vacío");
+		this.ancho=3;
+		this.alto=2;
+		this.profundo=6;
+	}
+
+}

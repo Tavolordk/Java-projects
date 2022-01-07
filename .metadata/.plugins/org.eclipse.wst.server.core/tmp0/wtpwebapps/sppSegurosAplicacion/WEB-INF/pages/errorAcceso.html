@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<!-- <div th:include="templates/layout :: menuFragment"></div> -->
+	<div class="container main-container">
+		<div class="jumbotron">
+		<h4 class="display-5">ACCESO NO PERMITIDO</h4>
+			<div class="text-center">
+				<img src="/resources/img/isotipoCustom.png"
+					th:src="@{/resources/img/isotipoCustom.png}"
+					class="img-fluid" alt="Responsive image" style="max-width:70%">
+			</div>
+			<br />
+			<button type="button" class="btn btn-primary text-truncate"
+				id="btnErrorAcceso">
+				<span class="mr-2"> <i class="fas fa-arrow-circle-left"></i>
+				</span>Regresar
+			</button>
+		</div>
+
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+</body>
+
+</html>

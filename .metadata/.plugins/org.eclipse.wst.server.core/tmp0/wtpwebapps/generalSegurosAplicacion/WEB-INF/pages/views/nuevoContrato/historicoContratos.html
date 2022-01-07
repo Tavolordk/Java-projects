@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment"></head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	
+	<div class="container main-container">
+		<div class="wizard-container">
+			<div class="card wizard-card" data-color="blue" id="wizard">
+				<div class="card-container">
+					<form id="nuevoHistorico" enctype="multipart/form-data">
+						<h3 style = "border-bottom-style: solid">CONTRATOS REASEGURO HISTORICO</h3>
+						<div id ="idContratosHist" class="table-responsive main-container background-tabla " style = "margin-bottom: 50px;margin-top: 25px">
+		    	 			<table id="contratosHist" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+		    			</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div th:include="templates/layout :: footerFragment"></div>	
+		<script src="/resources/js/pages/reaseguro/contratosHistoricoC.js" th:src="@{/resources/js/pages/reaseguro/contratosHistoricoC.js}"></script>
+	    <script src="/resources/js/pages/reaseguro/contratosHistoricosC.js"  th:src="@{/resources/js/pages/reaseguro/contratosHistoricos.js}"></script>
+</body>
+</html>

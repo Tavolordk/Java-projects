@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reportes RR8: Accidentes Personales</h4>
+			</div>
+		<div class="card-content">
+			<div class="float-right">
+    		<h2>	 
+    			<span id="numSolicitud" class="badge"></span>
+    		</h2>	 
+    	</div>
+		    		<form id="formReportesRR8" enctype="multipart/form-data">
+		    			<div class="form-row">
+		    			  <div class="form-group col-md-4">
+						    <label for="tipoReporte">Tipo reporte: </label>
+						     <select class="form-control" id="tipoReporte" name="tipoReporte">
+							    <option value="1">EMISIÓN ANUAL</option>
+<!-- 							    <option value="2">EMISIÓN TRIMESTRAL</option> -->
+							    <option value="3">SINIESTROS ANUAL</option>
+						    </select>
+					      </div>
+		    				<div id="divReporteAnual" class="form-group col-md-3">
+								<label for="txtFecha">Fecha:</label>
+								<div class="input-group">
+									<input class="form-control text-uppercase date" data-mask="0000-00-00" placeholder="aaaa-mm-dd" id="txtFecha"> <span class="input-group-btn">
+										<button id="btnFechaInicio" type="button" class="btn btn-default">
+											<i class="fas fa-search" style="color: #ffff"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+							<div id="divReporteTrimestral" class="form-group col-md-4" style="display:none">
+						    <label for="tipoReporte">Tipo reporte</label>
+						       <select class="form-control" id="numTrimestre" name="tipoReporte">
+							      <option value="1">1ER TRIMESTRE</option>
+							      <option value="2">2DO TRIMESTRE</option>
+							      <option value="3">3ER TRIMESTRE</option>
+							      <option value="4">4TO TRIMESTRE</option>
+						       </select>
+					        </div>							
+						<div class="form-row">
+							<div class="form-group col-md-12">
+							<button class="btn btn-primary float-right" id="btnRR"
+									type="button">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Generar Reporte
+								</button>
+			                    <!-- <button class="btn btn-primary float-right" id="btnPruebaReporte"
+									type="button">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Crear Reporte
+								</button> -->
+			                </div>			
+						</div>	
+						</div>								
+					</form>
+					<!-- Modal Eliminar Grupo-->
+					<div id="modalMuestraReporte" class="modal fade" role="dialog">
+						<div class="modal-dialog modal-lg">
+			
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header text-center">
+									<h3>
+										Reporte
+									</h3>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-row">
+										<div class="form-group col-md-12">
+						                    <div id="pdfReporte"></div>
+						                </div>			
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal"
+										id="btnCloseModal">Cerrar</button>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+		    	</div> 		    	
+		    </div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>	
+	<!-- JS Clientes -->	
+	<script src="/resources/js/pages/emision/reportesC.js" th:src="@{/resources/js/pages/emision/reportesC.js}"></script>
+	<script src="/resources/js/pages/emision/reportes.js" th:src="@{/resources/js/pages/emision/reportes.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramoC.js" th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/sucursalesC.js" th:src="@{/resources/js/pages/catalogos/sucursalesC.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+INDEX VERSION 1.131
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\332766710.index
+\MVCPrimerEncuentro2\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\953463515.index
+\MVCPrimerEncuentro2\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2991528857.index
+\ControlClientesProject\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2830127003.index
+\MVCPrimerEncuentro\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1222707981.index
+\proyecto_web\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1063988616.index
+\ControlClientes2\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1307240968.index
+\servlet\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3144366136.index
+\ControlClientes2\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2514464946.index
+\MVCPrimerEncuentro\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4068561746.index
+\MVCPrimerEncuentro2\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2946633296.index
+\nuevasPruebasMaven\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\670605042.index
+\MVCPrimerEncuentro\src\main\java
+C:\Users\Tavol\eclipse-2020-06\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3514120013.index
+\ControlClientes2\src\main\java

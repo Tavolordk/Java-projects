@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="camposAgrupadoresFragment" class="main-container">
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="ramo">Ramo:</label> <select class="form-control" id="ramo" name="ramo"></select>
+			</div>	
+			<div class="form-group col-md-4">
+				<label for="claveAgrupador">Clave</label> <input
+					class="form-control" type="text" id="claveAgrupador"
+					name="claveAgrupador" maxlength="100">
+			</div>
+<!-- 			<div class="form-group col-md-4">
+				<label for="fechaAlta">Fecha Alta:</label> 
+					<div class="input-group">
+						<input class="form-control date currentDate" type="text" id="fechaAlta"	name="fechaAlta" disabled>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+					</div>
+			</div>  -->
+			<div class="form-group col-md-4">
+			    <label for="choose-type">Tipo Producto:</label>
+				<div class="form-group">
+			<div
+				class="custom-control custom-radio">
+				<input type="radio" id="tipoProducto1"
+					name="esPublico" class="custom-control-input mr3"
+					value="true"> <label
+					class="custom-control-label" for="tipoProducto1">Público</label>
+			</div>
+			<div
+				class="custom-control custom-radio">
+				<input type="radio" id="tipoProducto2"
+					name="esPublico" class="custom-control-input"
+					value="false"> <label class="custom-control-label"
+					for="tipoProducto2">Privado</label>
+			</div>
+				</div>
+			</div>
+			<div class="form-group col-md-8">
+				<label for="nombreAgrupador">Descripción</label> <input
+					class="form-control" type="text" id="nombreAgrupador"
+					name="nombreAgrupador" maxlength="100">
+			</div>
+			
+		</div>
+		</div>
+</body>
+</html>

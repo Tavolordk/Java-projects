@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Generación reportes RR8</h4>
+			</div>
+		<div class="card-content">
+
+			<form enctype="multipart/form-data">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="tipoReporte">Tipo reporte</label> <select
+							class="form-control" id="tipoReporte" name="tipoReporte">
+							<option value="1">DATOS GENERALES</option>
+							<option value="2">EMISIÓN</option>
+							<option value="3">SINIESTROS</option>
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="fecha">Fecha:</label>
+						<div class="input-group">
+								<input type="text" class="form-control date" id="fecha" name="fecha" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"
+								 data-date-end-date="0d"/>
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="generarReporte">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Generar reporte
+						</button>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/emision/reportesrr8/reportesrr8C.js"
+		th:src="@{/resources/js/pages/emision/reportesrr8/reportesrr8C.js}"></script>
+	<script src="/resources/js/pages/emision/reportesrr8/reportesrr8.js"
+		th:src="@{/resources/js/pages/emision/reportesrr8/reportesrr8.js}"></script>
+</body>
+</html>

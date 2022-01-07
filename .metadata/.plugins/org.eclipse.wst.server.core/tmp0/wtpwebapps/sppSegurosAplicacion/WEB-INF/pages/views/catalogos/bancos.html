@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Bancos</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="button" class="btn btn-primary col-md-2"
+				name="btnEnviar" data-toggle="modal" data-target="#nuevoBancoModal">
+				<span style="margin-right: 5%"><i class="fas fa-plus-square"></i></span>Nuevo Banco
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaBanco"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevoBancoModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoBancoModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header"
+							style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+							<h5 class="modal-title" id="nuevoBancoModalLongTitle">Nuevo
+								Banco</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="formBancoNuevo" autocomplete="off">
+								<div class="row">
+
+									<div class="form-group col-md-6">
+										<label for="nombreBanco">Nombre:</label> <input
+											class="form-control" type="text" id="nombre"	
+											name="nombre" maxlength="80"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="nombreCorto">Nombre Corto:</label> <input
+											class="form-control" type="text" id="nombreCorto"
+											name="nombreCorto" maxlength="40"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="siglas">Siglas:</label> <input
+											class="form-control" type="text" id="siglas"
+											name="siglas" maxlength="20" />
+									</div>									
+								</div>
+							</form>
+							
+						</div>
+						
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary"
+								id="btnGuardarBanco">
+								<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+							</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+  			<div th:include="views/catalogos/editarBancos :: bancosEditFragment" id="editarBancos"></div>  
+		</div>
+	</div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/bancosC.js" th:src="@{/resources/js/pages/catalogos/bancosC.js}"></script>
+	<script src="/resources/js/pages/catalogos/bancos.js" th:src="@{/resources/js/pages/catalogos/bancos.js}"></script>
+</body>
+</html>

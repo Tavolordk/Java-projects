@@ -1,0 +1,48 @@
+.fa-custom-user-lock {
+	margin-bottom: 20px;
+	color: rgb(134, 166, 204);
+}
+
+.fa-custom-user, .fa-custom-key {
+	color: rgb(134, 166, 204);
+}
+
+.header-card-login{
+	/*background-color: rgb(200, 180, 106) !important;*/
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.25, rgb(245, 245, 245)),
+	color-stop(0.5, rgb(227, 227, 227))
+);
+background-image: -o-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -moz-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -webkit-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -ms-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: linear-gradient(to top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+}
+
+.footer-card-login{
+ 	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.25, rgb(245, 245, 245)),
+	color-stop(0.5, rgb(227, 227, 227))
+);
+background-image: -o-linear-gradient(bottom, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -moz-linear-gradient(bottom, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -webkit-linear-gradient(bottom, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -ms-linear-gradient(bottom, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: linear-gradient(to bottom, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+ }
+
+.logoLogin{
+	width: 70% !important;
+	height: 100% !important;
+}
+
+.marginInputs{
+	margin-top: -10% !important;
+}

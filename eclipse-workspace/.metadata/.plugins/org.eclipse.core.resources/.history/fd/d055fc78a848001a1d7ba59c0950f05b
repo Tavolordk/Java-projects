@@ -1,0 +1,26 @@
+package Polimorfismo;
+
+public class EjemploInstanceOf {
+
+	public static void main(String [] args)
+	{
+		Empleado e1 = new Empleado("Tavo", 50000);
+		determinaTipo(e1);
+		Gerente g1 = new Gerente("Octavio", 45600, "IT");
+		//determinaTipo(g1);
+	}
+	
+	public static void determinaTipo(Empleado empleado)
+	{
+		if(empleado instanceof Empleado)
+		{
+			System.out.println(empleado.getNombre());
+		}
+		
+		else if(empleado instanceof Gerente)
+		{
+			System.out.println(((Gerente) empleado).getDepartamento());
+		}
+		 
+	}
+}

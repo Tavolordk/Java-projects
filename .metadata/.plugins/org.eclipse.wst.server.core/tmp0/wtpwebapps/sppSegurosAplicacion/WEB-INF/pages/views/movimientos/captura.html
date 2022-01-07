@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="jumbotron">
+		<form id="formMovimiento" autocomplete="off" class="needs-validation" novalidate>
+				<h2 style= "border-bottom-style: solid">Movimientos</h2>
+				<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+					<div class="form-group col-md-3 siniestro">
+						<label for="noSiniestro">Número de Siniestro:</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase" type="text" id="idSiniestro" name="idSiniestro" /><span class="input-group-btn">
+								<button id="btnCargaMovimientos" type="button" class="btn btn-default">
+									<i class="fas fa-search" style="color: #ffff"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-3 siniestro">
+						<label for="estatus">Estatus Siniestro:</label>
+						<input class="form-control text-uppercase" type="text" id="siniestroEstatus" name="siniestroEstatus"  disabled/>
+					</div>
+					
+					<div class="form-group col-md-3 siniestro">
+						<label for="cobertura">Cobertura afectada:</label>
+						<select	class="form-control" id="idCobertura" name="idCobertura">
+						</select>
+					</div>
+					
+					<div class="form-group col-md-3 siniestro">
+						<label for="estatus">Limite SA:</label>
+						<input class="form-control text-uppercase" type="text" id="limiteSA" name="limiteSA"  disabled/>
+					</div>
+					
+					<div class="form-group col-md-2">
+						<label for="beneficiario">Moneda Poliza:</label>
+						<input class="form-control text-uppercase" cveMon="" type="text" id="polMoneda" disabled/>
+					</div>
+					<div class="form-group col-md-2 siniestro dedCoa">
+						<label for="tipoMovimiento">Deducible:</label>
+						<input class="form-control text-uppercase currency moneda"  type="text" id="deducibleCob" disabled/>
+					</div>
+					<div class="form-group col-md-2 siniestro dedCoa">
+						<label for="tipoMovimiento">Coaseguro:</label>
+						<input class="form-control text-uppercase currency"  type="text" id="coaseguroCob" disabled/>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label for="beneficiario">Beneficiario:</label>
+						<input class="form-control text-uppercase" type="text" id="beneficiario" disabled/>
+					</div>
+					<div class="form-group col-md-12">
+						<label for="contratante">Cliente:</label>
+						<input class="form-control text-uppercase" type="text" id="contratante" disabled/>
+					</div>
+				</div>
+				
+				<div style = "margin-bottom: 50px;margin-top: 25px" class="table-responsive main-container background-tabla">
+					<table id="resultadoBusqueda"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+				
+				<h2 style="border-bottom-style: solid">Movimiento a Capturar</h2>
+				<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+					<div class="row">
+						<div class="form-group col-md-3 siniestro">
+							<label for="tipoMoneda">Tipo de Moneda:</label>
+							<select	class="form-control" id="tipoMoneda" name="tipoMoneda">	</select>
+						</div>
+						<div class="form-group col-md-3 siniestro dll">
+							<label for="tipoMovimiento">Tipo Cambio:</label>
+							<input class="form-control text-uppercase currency moneda"  type="text" id="tipoCambio" name="tipoMoneda" disabled/>
+						</div>
+						<div class="form-group col-md-3 siniestro dedCoa">
+							<label for="tipoMovimiento">Deducible:</label>
+							<input class="form-control text-uppercase currency moneda"  type="text" id="deducible" name="deducible" disabled/>
+						</div>
+						<div class="form-group col-md-3 siniestro dedCoa">
+							<label for="tipoMovimiento">Coaseguro:</label>
+							<input class="form-control text-uppercase currency moneda"  type="text" id="coaseguro" name="coaseguro" disabled/>
+						</div>
+				    </div>
+					<div class="row">
+						<div class="form-group col-md-3 siniestro">
+							<label for="tipoMovimiento">Tipo de mov:</label>
+							<select	class="form-control" id="tipoMovimiento" name="tipoMovimiento"></select>
+						</div>
+	
+						<div class="form-group col-md-3 siniestro">
+							<label for="tipoConcepto">Concepto:</label>
+							<select	class="form-control" id="tipoConcepto" name="tipoConcepto">
+							</select>
+							<input class = "form-control" type="text" id = "tipoConcepto2" name="tipoConcepto">
+						</div>
+						
+						<div class="form-group col-md-3 siniestro ap" style = "display:none">
+							<label for="tipoConcepto">Sub Concepto:</label>
+							<select	class="form-control" id="subConcepto" name="subConcepto">
+							</select>
+						</div>
+						
+						<div class="form-group col-md-3 siniestro">
+							<label for="fechaAplicacion">Fecha aplicación:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaAplicacion" name="fechaAplicacion" data-mask="0000-00-00" placeholder="aaaa-mm-dd"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-3 siniestro">
+							<label for="fechaFactura">Fecha factura:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaFactura" name="fechaFactura" data-mask="0000-00-00" placeholder="aaaa-mm-dd"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-3 siniestro">
+							<label for="calculaIVA">Calcular IVA:</label><br>
+							<input type="checkbox" id="calculaIVA" value="IVA">
+						</div>
+						<div class="form-group col-md-3 siniestro tipoIVA" style = "display:none">
+							<label for="identGastos">Identif. Gastos:</label>
+							<select	class="form-control" id="identGastos" name="identGastos">
+							<option data-id = "0" value = "0" selected disabled>Seleccione Tipo IVA</option>
+							<option data-id = "1" value = "IVA 16%">IVA 16%</option>
+							<option data-id = "2" value = "Excento">Excento</option>
+							<option data-id = "3" value = "Tasa cero">Tasa cero</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3 siniestro">
+							<label for="calculaISR">Retención ISR e IVA:</label><br>
+							<input type="checkbox" id="calculaISR" value="ISR">
+						</div>
+						
+						<div class="form-group col-md-3 siniestro">
+							<label for="importe">Importe:</label>
+							<input class="form-control text-uppercase currencyNegative moneda" type="text" id="importe" name="importe" maxlength="16"/>
+						</div>
+						<div class="form-group col-md-3 siniestro">
+							<label for="importe">SubTotal:</label>
+							<input class="form-control text-uppercase currencyNegative moneda" disabled type="text" id="subTotal" name="subTotal" maxlength="16"/>
+						</div>
+						<div class="form-group col-md-3 siniestro">
+							<label for="iva">IVA:</label>
+							<input class="form-control text-uppercase currency moneda" disabled type="text" id="iva" name="iva"  />
+						</div>
+	
+						<div class="form-group col-md-3 siniestro" id="isrRetenidoBloque">
+							<label for="isrRetenido">ISR retenido:</label>
+							<input class="form-control text-uppercase currency moneda"  disabled type="text" id="isrRetenido" name="isrRetenido" />
+						</div>
+						
+						<div class="form-group col-md-3 siniestro" id="ivaRetenidoBloque">
+							<label for="ivaRetenido">IVA retenido:</label>
+							<input class="form-control text-uppercase currency moneda" disabled type="text" id="ivaRetenido" name="ivaRetenido"  />
+						</div>
+						<div class="form-group col-md-3 siniestro">
+							<label for="total">Total a pagar:</label>
+							<input class="form-control text-uppercase currency moneda" disabled type="text" id="total" name="total"  />
+						</div>
+					</div>
+				</div>
+				
+				<h2 style="border-bottom-style: solid">Datos Persona Física o Moral</h2>
+				<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="nuevoCliente" role="tabpanel">	
+							<div class="form-group">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="radioFisicoN" name="fisicoMoral" class="custom-control-input mr3" value="1" checked="checked">
+									<label class="custom-control-label" for="radioFisicoN" style="font-size: 25px">Proveedor</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="radioMoralN" name="fisicoMoral" class="custom-control-input" value="2">
+									<label class="custom-control-label" for="radioMoralN" style="font-size: 25px">Beneficiario</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="nombreProveedor">Nombre o razón social:</label>
+							<input class="form-control text-uppercase proveedor clean" type="text" id="nombreProveedor" name="nombreProveedor"  />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="rfcProveedor">RFC Proveedor:</label>
+							<input class="form-control text-uppercase rfc clean" type="text" id="rfcProveedor" name="rfcProveedor" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="clabe">CLABE:</label>
+							<input class="form-control text-uppercase clabe clean" type="text" id="clabe" name="clabe" maxlength="18" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="facturaElectronica">Factura electrónica:</label>
+							<input class="form-control text-uppercase" type="text" id="facturaElectronica" name="facturaElectronica"  maxlength="20"/>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="folioFactura">Folio factura:</label>
+							<input class="form-control text-uppercase" type="text" id="folioFactura" name="folioFactura" maxlength="50" />
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="facturaArchivo">Factura archivo:</label>
+							<input id="facturaArchivo" type="file" class="file" name="file[]">
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="formaPago">Forma de pago:</label>
+							<select	class="form-control" id="tipoPago" name="tipoPago">
+							</select>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="servicio">Servicio solicitado:</label>
+							<input class="form-control text-uppercase" type="text" id="servicio" name="servicio"  maxlength="100"/>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="fechaSolicitud">Fecha solicitud:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaSolicitud" name="fechaSolicitud" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="fechaFinaliza">Fecha finaliza:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaFinaliza" name="fechaFinaliza" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="diasEjecucion">Días ejecución:</label>
+							<input class="form-control text-uppercase numberClass" type="text" id="diasEjecucion" name="diasEjecucion"  maxlength="2"/>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="servicioEstatus">Estatus:</label>
+							<input class="form-control text-uppercase" type="text" id="servicioEstatus" name="servicioEstatus"  maxlength="50"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button type="button" class="btn btn-primary text-truncate" id="guardaMovimiento">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Guardar
+						</button>
+					</div>
+				</div>
+		</form>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<!-- JS Siniestros -->
+	<script src="/resources/js/pages/siniestros/siniestrosC.js" th:src="@{/resources/js/pages/siniestros/siniestrosC.js}"></script>
+	<script src="/resources/js/pages/siniestros/siniestros.js" th:src="@{/resources/js/pages/siniestros/siniestros.js}"></script>
+</body>
+</html>

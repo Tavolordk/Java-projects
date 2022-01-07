@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Municipios</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="button" class="btn btn-primary col-md-2"
+				name="btnEnviarMunicipio" data-toggle="modal"
+				data-target="#nuevoMunicipioModal">
+				<span style="padding: 5px"><i class="fas fa-plus-square"></i></span>Nuevo
+				Municipio
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaMunicipio"
+					class="ttable table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevoMunicipioModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoMunicipioModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="formMunicipiosNuevo" autocomplete="off">
+							<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title" id="nuevoMunicipioModalLongTitle">Nuevo
+									Municipio</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							
+							<div class="modal-body">
+
+								<div class="row">
+								
+									<div class="form-group col-md-6">
+										<label for="claveMunicipio">Clave de Municipio:</label> <input
+											id="claveMunicipio" name="claveMunicipio" type="text"
+											class="form-control" />
+									</div>
+									
+									<div class="form-group col-md-6">
+										<label for="nameMunicipio">Nombre de Municipio:</label> <input
+											id="municipio" name="nombreMunicipio" type="text"
+											class="form-control" />
+									</div>
+									
+									<div class="form-group col-md-6">
+										<label for="estado">Estado:</label> <select
+											class="form-control estado" id="estado" name="estado">
+										</select>
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-primary"
+									id="btnGuardarMunicipio">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div th:include="views/catalogos/editarMunicipios :: municipiosEditFragment" id="editarMunicipios"></div>
+			
+		</div>
+
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/municipiosC.js"
+		th:src="@{/resources/js/pages/catalogos/municipiosC.js}"></script>
+	<script src="/resources/js/pages/catalogos/municipios.js"
+		th:src="@{/resources/js/pages/catalogos/municipios.js}"></script>
+</body>
+
+</html>

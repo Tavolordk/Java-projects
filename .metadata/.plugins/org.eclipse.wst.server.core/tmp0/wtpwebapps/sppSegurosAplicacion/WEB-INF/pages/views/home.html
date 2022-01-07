@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card card-content">
+			<div class="text-center">
+				<!-- <img src="/resources/img/SPPSegurosTransparent.png" style="max-width:70%"
+					th:src="@{/resources/img/SPPSegurosTransparent.png}"
+					class="img-fluid" alt="Responsive image"> -->
+				<img style="max-width:30%"
+					th:src="@{/resources/img/LogotipoLeyenda.png}"
+					class="img-fluid" alt="Responsive image">
+			</div>
+		</div>
+
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+</body>
+
+</html>

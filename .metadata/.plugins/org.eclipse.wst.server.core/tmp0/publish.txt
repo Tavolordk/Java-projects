@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Wed May 19 05:48:34 CDT 2021
+org.eclipse.jst.j2ee.server\:sppSegurosPersistencia=WEB-INF/lib/sppSegurosPersistencia-1.0.0.jar
+org.eclipse.jst.j2ee.server\:generalSegurosPersistencia=WEB-INF/lib/generalSegurosPersistencia-1.0.0.jar
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Tavol\\.m2\\repository\\org\\springframework\\spring-web\\5.0.6.RELEASE\\spring-web-5.0.6.RELEASE.jar=WEB-INF/lib/spring-web-5.0.6.RELEASE.jar

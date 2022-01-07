@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reportes RR8 FES</h4>
+			</div>
+		<div class="card-content">
+		<div class="float-right">
+    		<h2>	 
+    			<span id="numSolicitud" class="badge"></span>
+    		</h2>	 
+    	</div>
+		    		<form id="formReportesRR8" enctype="multipart/form-data">
+		    			<div class="form-row">
+		    			  <div class="form-group col-md-4">
+						    <label for="tipoReporte">Tipo reporte: </label>
+						     <select class="form-control" id="tipoReporte" name="tipoReporte">
+							    <option value="1">Seguro Directo</option>
+							    <option value="2">Seguro Directo Estado</option>
+							    <option value="3">Reaseguro Tomado Extranjero</option>
+							    <option value="4">Reaseguro Cedido Extranjero</option>
+							    <option value="5">Suma Aseguradas Cedidas</option>
+						    </select>
+					      </div>
+                          <div id="divReporteTrimestral" class="form-group col-md-4">
+						    <label for="tipoReporte">Ejercicio:</label>
+						       <select class="form-control lstAniosReporte" id="ejercicio" name="ejercicio"></select>
+					      </div>							
+		    			</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button class="btn btn-primary float-left" id="btnRR8Fes"
+									type="button">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Generar Reporte
+								</button>
+			                </div>			
+						</div>									
+					</form>
+					</div>
+		    	</div> 		    	
+		    </div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>	
+
+	<script src="/resources/js/pages/emision/reportesRR8C.js" th:src="@{/resources/js/pages/emision/reportesRR8C.js}"></script>
+	<script src="/resources/js/pages/emision/reportesRR8.js" th:src="@{/resources/js/pages/emision/reportesRR8.js}"></script>
+</body>
+
+</html>

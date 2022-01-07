@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="tabsAUTOSFragment" class="main-container">
+		<div class="container main-container">
+			<div class="wizard-container">
+				<div class="card wizard-card" data-color="blue" id="wizard">
+					<div class="wizard-navigation">
+						<ul id="tabs" class="nav nav-tabs">
+							<li class="nav-item"><a href="#hipotesisTabAutos" 		data-toggle="tab" class="styleTab tabActive" id="tabhipotesis">Historico de informacion</a></li>
+							<li class="nav-item"><a href="#analisisTabAutos" 		data-toggle="tab" class="styleTab tabActive" id="tabanalisis">Calidad de informacion</a></li>
+							<li class="nav-item"><a href="#validacionesTabAutos" 	data-toggle="tab" class="styleTab tabActive" id="tabvalidaciones">Validaciones</a></li>
+							<li class="nav-item"><a href="#resultadosTabAutos" 		data-toggle="tab" class="styleTab tabActive" id="tabresultados">Generar SESA</a></li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane" id="hipotesisTabAutos">
+							<div th:include="views/autos/hipotesisAUTOS:: hipotesisFormFragmentAutos" id="hipotesisAUTOSTab"></div>
+						</div>
+						<div class="tab-pane" id="analisisTabAutos">
+							<div th:include="views/autos/analisisAUTOS.html:: analisisFormFragmentAutos" id="analisisAUTOSTab"></div>
+						</div>
+						<div class="tab-pane" id="validacionesTabAutos">
+							<div th:include="views/autos/validacionesAUTOS.html:: validacionesFormFragmentAutos" id="validacionesAUTOSTab"></div>
+						</div>
+						<div class="tab-pane" id="resultadosTabAutos">
+							<div th:include="views/autos/reporteAnualAUTOS:: resultadoFormFragmentAutos" id="resultadoAUTOSTab"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

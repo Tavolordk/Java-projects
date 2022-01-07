@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:fragment="headerFragment">
+	<meta http-equiv="Content-Type" content="text/html;" charset="UTF-8"/>
+	<title>Light it</title>
+
+<link rel="icon" href="/resources/img/isotipoCustom.ico" th:href="@{/resources/img/isotipoCustom.ico}" type="image/png" sizes="16x16" />
+<link rel="stylesheet" href="/resources/css/bootstrap4.1/bootstrap.min.css" th:href="@{/resources/css/bootstrap4.1/bootstrap.min.css}" />
+<link rel="stylesheet" href="/resources/css/fontawesome5.1/all.css" th:href="@{/resources/css/fontawesome5.1/all.css}" />
+<link rel="stylesheet" href="/resources/css/dataTables1.10/datatables.css" th:href="@{/resources/css/dataTables1.10/dataTables.bootstrap4.css}" />
+<link rel="stylesheet" href="/resources/css/dataTables1.10/buttons.dataTables.css" th:href="@{/resources/css/dataTables1.10/buttons.dataTables.css}" />
+<link rel="stylesheet" href="/resources/css/dataTables1.10/buttons.dataTables.min.css" th:href="@{/resources/css/dataTables1.10/buttons.dataTables.min.css}" />
+<link rel="stylesheet" href="/resources/css/fileupload/fileinput.min.css" th:href="@{/resources/css/fileupload/fileinput.min.css}" />
+<link rel="stylesheet" href="/resources/css/bootstrap4.1/bootstrap-datepicker.css" th:href="@{/resources/css/bootstrap4.1/bootstrap-datepicker.css}" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- CSS Locales -->
+<link rel="stylesheet" href="/resources/css/principal.css" th:href="@{/resources/css/principal.css}" />
+<link rel="stylesheet" href="/resources/css/login.css" th:href="@{/resources/css/login.css}" />
+<link rel="stylesheet" href="/resources/css/customDataTables.css" th:href="@{/resources/css/customDataTables.css}" />
+<link rel="stylesheet" href="/resources/css/tab.css" th:href="@{/resources/css/tab.css}" />
+<link rel="stylesheet" href="/resources/css/pages/clientes.css" th:href="@{/resources/css/pages/clientes.css}" />
+<link rel="stylesheet" href="/resources/css/pages/siniestros.css" th:href="@{/resources/css/pages/siniestros.css}" />
+<link rel="stylesheet" href="/resources/css/bootstrap-select.css" th:href="@{/resources/css/bootstrap-select.css}" />
+
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+	<div th:fragment="menuFragment">
+
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+				<a class="navbar-brand rounded" href="#" th:href="@{/home}"> 
+					<!-- <img src="/resources/img/Isotipo.jpg" th:src="@{/resources/img/isotipoCustom.png}" 
+						width="35" alt="isotipo" class="d-inline-block align-top"> -->
+					<img src="/resources/img/Isotipo.jpg" th:src="@{/resources/img/LogotipoBackground.png}" 
+						width="100%" alt="isotipo" class="d-inline-block align-top">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+	<!-- Pestaña Administración-->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+					<!-- Pestaña Administración-->
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'clientes')}"> Administración </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><a class="dropdown-item" href="#" th:href="@{/usuarios}" th:if="${#arrays.contains(menu.acceso, 'usuarios')}">Usuarios</a>
+								<a class="dropdown-item" href="#" th:href="@{/perfiles}" th:if="${#arrays.contains(menu.acceso, 'perfiles')}">Perfiles</a>
+							
+							</div>
+						</li>
+						
+						<!-- Pestaña Promotorias-->
+						<!--<li class=""><a class="nav-link" href="#" th:href="@{/clientes}" id="navbarDropdownMenuLink" 
+							   th:if="${#arrays.contains(menu.acceso, 'clientes')}"> Promotorías </a>
+						</li>-->
+						<!-- Pestaña Agentes-->
+						<!--<li class=""><a class="nav-link" href="#" th:href="@{/agentes}" id="navbarDropdownMenuLink" 
+							  th:if="${#arrays.contains(menu.acceso, 'agentes')}"> Agentes </a>
+						</li>-->
+						
+						<!-- Pestaña Reportes-->
+						<!--<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'clientes')}"> Reportes </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/agentesPromotorias}" th:if="${#arrays.contains(menu.acceso, 'reporteComisionAgente')}">Promotorías/Agentes</a>
+								<a class="dropdown-item" href="#" th:href="@{/reporteComisionAgente}" th:if="${#arrays.contains(menu.acceso, 'reporteComisionAgente')}">Comisiones de agentes</a>
+								<a class="dropdown-item" href="#" th:href="@{/reporteVigencias}" th:if="${#arrays.contains(menu.acceso, 'reporteComisionAgente')}">Vigencias Documentos</a>
+								</div>
+						</li>-->
+						
+						<!-- <li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'catalogos')}"> Catálogos </a>
+							<div class="dropdown-menu"
+								aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/agentes}" th:if="${#arrays.contains(menu.acceso, 'agentes')}">Agentes</a>
+								<a class="dropdown-item" href="#" th:href="@{/agrupadores}" th:if="${#arrays.contains(menu.acceso, 'agrupadores')}">Agrupadores</a>
+								<a class="dropdown-item" href="#" th:href="@{/bancos}" th:if="${#arrays.contains(menu.acceso, 'bancos')}">Bancos</a>
+								<a class="dropdown-item" href="#" th:href="@{/producto}" th:if="${#arrays.contains(menu.acceso, 'producto')}">Producto</a>
+ 								<a class="dropdown-item" href="#" th:href="@{/coberturas}" id="coberturasMenu" th:if="${#arrays.contains(menu.acceso, 'coberturas')}">Coberturas</a> 
+								<a class="dropdown-item" href="#" th:href="@{/coberturasProducto}" th:if="${#arrays.contains(menu.acceso, 'coberturasProducto')}">Coberturas Producto</a>
+								<!-- <a class="dropdown-item" href="#" th:href="@{/estados}" th:if="${#arrays.contains(menu.acceso, 'estados')}">Estados</a>
+								<!--<a class="dropdown-item" href="#" th:href="@{/municipios}" th:if="${#arrays.contains(menu.acceso, 'municipios')}">Municipios</a>
+								<a class="dropdown-item" href="#" th:href="@{/colonias}" th:if="${#arrays.contains(menu.acceso, 'colonias')}">CP y colonias</a> -->
+								<!--<a class="dropdown-item" href="#" th:href="@{/moneda}" th:if="${#arrays.contains(menu.acceso, 'moneda')}">Moneda</a>
+								<a class="dropdown-item" href="#" th:href="@{/nivelesAcceso}" th:if="${#arrays.contains(menu.acceso, 'nivelesAcceso')}">Niveles de acceso</a>
+								<a class="dropdown-item" href="#" th:href="@{/ramo}" th:if="${#arrays.contains(menu.acceso, 'ramo')}">Ramo</a>
+								<a class="dropdown-item" href="#" th:href="@{/subramo}" th:if="${#arrays.contains(menu.acceso, 'subramo')}">Subramo</a>
+								<a class="dropdown-item" href="#" th:href="@{/estatus}" th:if="${#arrays.contains(menu.acceso, 'estatus')}">Estatus</a>
+								<a class="dropdown-item" href="#" th:href="@{/tipoCambio}" th:if="${#arrays.contains(menu.acceso, 'tipoCambio')}">Tipo de cambio</a>
+								<a class="dropdown-item" href="#" th:href="@{/usuarios}" th:if="${#arrays.contains(menu.acceso, 'usuarios')}">Usuarios</a>
+								<a class="dropdown-item" href="#" th:href="@{/perfiles}" th:if="${#arrays.contains(menu.acceso, 'perfiles')}">Perfiles</a>
+							</div></li>	
+							
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            	th:if="${#arrays.contains(menu.acceso, 'emision')}">
+                                Emisión
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#" th:href="@{/archivosAgrupadores}" th:if="${#arrays.contains(menu.acceso, 'archivosAgrupadores')}">Carga de archivos agrupadores</a></li>
+                                <li><a class="dropdown-item" href="#" th:href="@{/voboArchivosAgrupadores}" th:if="${#arrays.contains(menu.acceso, 'voboArchivosAgrupadores')}">Conciliación de información</a></li>
+                                <li><a class="dropdown-item" href="#" th:href="@{/archivoHabitabilidad}" th:if="${#arrays.contains(menu.acceso, 'archivoHabitabilidad')}">Carga de archivos de escrituración</a></li>
+                                <li><a class="dropdown-item  dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiSolicitudManualD')}">Solicitud manual de daños</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#"
+											th:href="@{/capturaSolicitudManual}" th:if="${#arrays.contains(menu.acceso, 'capturaSolicitudManual')}">Capturar solicitud</a></li>
+										<li><a class="dropdown-item" href="#"
+											th:href="@{/buscaSolicitudManual}" th:if="${#arrays.contains(menu.acceso, 'buscaSolicitudManual')}">Modificar solicitud</a></li>
+
+									</ul></li>
+								<li><a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiSolicitudManualAp')}">Solicitud manual accidentes personales</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#"
+											th:href="@{/CapturaSolicitudManualAP}" th:if="${#arrays.contains(menu.acceso, 'CapturaSolicitudManualAP')}">Capturar solicitud</a></li>
+										<li><a class="dropdown-item" href="#"
+											th:href="@{/buscaSolicitudManualAP}" th:if="${#arrays.contains(menu.acceso, 'buscaSolicitudManualAP')}">Modificar solicitud</a></li>
+
+									</ul>
+								</li>
+                                <li><a class="dropdown-item" href="#" th:href="@{/impresiondeDocumentos}" th:if="${#arrays.contains(menu.acceso, 'impresiondeDocumentos')}">Impresión de documentos</a></li>
+                                <li><a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiEndosos')}">Emisión de Endosos</a>
+                                	<ul class="dropdown-menu">
+	                                    <li>
+	                                    <a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiEndosoAumento')}">Endoso Aumento</a>
+		                                    <ul class="dropdown-menu">
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoNuevaCasa}" th:if="${#arrays.contains(menu.acceso, 'endosoNuevaCasa')}">Nueva casa</a></li>
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/incrementoSumaAsegurada}" th:if="${#arrays.contains(menu.acceso, 'incrementoSumaAsegurada')}">Incremento suma asegurada</a></li>
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoNuevoAseguradoAP}" th:if="${#arrays.contains(menu.acceso, 'endosoNuevoAseguradoAP')}">Nuevo asegurado AP</a></li>
+		                                    </ul>
+	                                    <a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiEndosoCambio')}">Endoso Cambio</a>
+		                                    <ul class="dropdown-menu">
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoNombreAseguradoD}" th:if="${#arrays.contains(menu.acceso, 'endosoNombreAseguradoD')}">Cambiar asegurado daños</a></li>
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoCambioBeneficiarioAP}" th:if="${#arrays.contains(menu.acceso, 'endosoCambioBeneficiarioAP')}">Cambiar beneficiario AP</a></li>
+		                                    </ul>
+	                                    <a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiEndosoDisminucion')}">Endoso Disminución</a>
+		                                    <ul class="dropdown-menu">
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoCancelarCertificado}" th:if="${#arrays.contains(menu.acceso, 'endosoCancelarCertificado')}">Cancelar Certificado</a></li>
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/decrementoSumaAsegurada}" th:if="${#arrays.contains(menu.acceso, 'decrementoSumaAsegurada')}">Disminución suma asegurada</a></li>
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoBajaAseguradoAP}" th:if="${#arrays.contains(menu.acceso, 'endosoBajaAseguradoAP')}">Baja asegurado AP</a></li>
+		                                    	<li><a class="dropdown-item" href="#" th:href="@{/endosoCancelarPoliza}" th:if="${#arrays.contains(menu.acceso, 'endosoCancelarPoliza')}">Cancelar Póliza</a></li>
+		                                    </ul>
+	                                    </li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="#" th:href="@{/busquedaPoliza}" th:if="${#arrays.contains(menu.acceso, 'busquedaPoliza')}">Búsqueda de póliza</a></li>
+                                <li><a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiReportes')}">Reportes</a>
+                               		 <ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#" th:href="@{/reporteTrazabilidad}" th:if="${#arrays.contains(menu.acceso, 'reporteTrazabilidad')}">Reportes Trazabilidad</a></li>
+											<li><a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'emiReportesRr8')}">Reportes RR8</a>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item" href="#" th:href="@{/reporteRR8}" th:if="${#arrays.contains(menu.acceso, 'reporteRR8')}">Reportes RR8 AP</a>
+													<li><a class="dropdown-item" href="#" th:href="@{/reportesrr8}" th:if="${#arrays.contains(menu.acceso, 'reportesrr8')}">Reportes RR8 Daños</a></li>
+													<li><a class="dropdown-item" href="#" th:href="@{/rr8CorsOrs}" th:if="${#arrays.contains(menu.acceso, 'rr8CorsOrs')}">Reportes RR8 CORS/ORS</a></li>
+													<li><a class="dropdown-item" href="#" th:href="@{/rr8Fes}" th:if="${#arrays.contains(menu.acceso, 'rr8Fes')}">Reportes RR8 FES</a></li>
+												</ul>
+											</li>
+									    <li><a class="dropdown-item" href="#" th:href="@{/reportesExcel}" th:if="${#arrays.contains(menu.acceso, 'reportesExcel')}">Reportes Excel</a></li>
+									    <li><a class="dropdown-item" href="#" th:href="@{/reporteActuarial}" th:if="${#arrays.contains(menu.acceso, 'reporteActuarial')}">Reportes Actuarios</a></li>
+									    <li><a class="dropdown-item" href="#" th:href="@{/reporteConexos}" th:if="${#arrays.contains(menu.acceso, 'reporteConexos')}">Reportes Anexos y Conexos</a></li>
+									</ul>
+                                </li>
+                                <li><a class="dropdown-item" href="#" th:href="@{/contabilidad/emision}" th:if="${#arrays.contains(menu.acceso, 'contabilidad/emision')}">Contabilidad</a></li>
+                            </ul>
+                        </li>
+
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'clientes')}"> Clientes </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/clientes}" th:if="${#arrays.contains(menu.acceso, 'clientes')}">Captura de contratantes</a>
+								<a class="dropdown-item" href="#" th:href="@{/proveedores/captura}" th:if="${#arrays.contains(menu.acceso, 'proveedores/captura')}">Captura de proveedores</a>  
+								<a class="dropdown-item" href="#" th:href="@{/beneficiariosSiniestro}" th:if="${#arrays.contains(menu.acceso, 'beneficiarioSini')}">Captura Beneficiario</a>
+								<a class="dropdown-item" href="#" th:href="@{/proveedores/consulta}" th:if="${#arrays.contains(menu.acceso, 'proveedores/consulta')}">Consulta de proveedores</a>
+								<a class="dropdown-item" href="#" th:href="@{/reporteOperaciones}" th:if="${#arrays.contains(menu.acceso, 'reporteOperaciones')}">Reporte Inusuales/Relevantes</a>
+							</div></li>
+
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'siniestros')}"> Siniestros </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/captura}" th:if="${#arrays.contains(menu.acceso, 'siniestro/captura')}">Captura siniestro</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/consulta}" th:if="${#arrays.contains(menu.acceso, 'siniestro/consulta')}">Consulta siniestro</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/busqueda}" th:if="${#arrays.contains(menu.acceso, 'siniestro/busqueda')}">Busqueda de siniestros</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/reserva/pendiente}" th:if="${#arrays.contains(menu.acceso, 'siniestro/reserva/pendiente')}">Reserva pendiente</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/reserva/pendiente/siniestrosPagos}" th:if="${#arrays.contains(menu.acceso, 'siniestroPagos')}">Reportes Siniestros</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/movimientos/captura}" th:if="${#arrays.contains(menu.acceso, 'siniestro/movimientos/captura')}">Movimientos siniestros</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/movimientos/consulta}" th:if="${#arrays.contains(menu.acceso, 'siniestro/movimientos/consulta')}">Consulta movimientos</a>
+								<a class="dropdown-item" href="#" th:href="@{/contabilidad/siniestros}" th:if="${#arrays.contains(menu.acceso, 'contabilidad/siniestros')}">Contabilidad</a>
+								<a class="dropdown-item" href="#" th:href="@{/siniestro/carga/ap}" th:if="${#arrays.contains(menu.acceso, 'siniestro/carga/ap')}">Carga siniestro AP</a>
+							</div>
+						</li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            	th:if="${#arrays.contains(menu.acceso, 'cobranza')}">
+                                Cobranza
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                           		 <li><a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'cbzaCapturaLiq')}">Captura Liquidaciones</a>
+									<ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" th:href="@{/capturaLiqView}" th:if="${#arrays.contains(menu.acceso, 'capturaLiqView')}">Alta Liquidación</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/modificaLiqView}" th:if="${#arrays.contains(menu.acceso, 'modificaLiqView')}">Modifica Liquidación</a></li>
+										<li><a class="dropdown-item dropdown-toggle" href="#" th:if="${#arrays.contains(menu.acceso, 'cbzaPrimasDep')}">Primas Depósito</a>
+                                        	<ul class="dropdown-menu">
+                                        		<li><a class="dropdown-item" href="#" th:href="@{/primasAutomaticas}" th:if="${#arrays.contains(menu.acceso, 'primasAutomaticas')}">Aplicación Automática</a></li>
+                                        		<li><a class="dropdown-item" href="#" th:href="@{/primasManuales}" th:if="${#arrays.contains(menu.acceso, 'primasManuales')}">Aplicación Manual</a></li>
+		                                        
+                                        	</ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li><a class="dropdown-item" href="#" th:href="@{/busquedaRecibos}" th:if="${#arrays.contains(menu.acceso, 'busquedaRecibos')}">Consulta de Recibos</a></li>
+								<li><a class="dropdown-item" href="#" th:href="@{/cancelacionPolizas}" th:if="${#arrays.contains(menu.acceso, 'cancelacionPolizas')}">Cancelación de Póliza</a></li>
+								<li><a class="dropdown-item" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'rehabilitarPoliza')}">Rehabilitación Póliza Con Pago</a></li>
+								<li><a class="dropdown-item" href="#" th:href="@{/rehabTemp}" th:if="${#arrays.contains(menu.acceso, 'rehabTemp')}">Rehabilitación Póliza Sin Pago</a></li>
+								<li><a class="dropdown-item" href="#" th:href="@{/reporteComisionAgente}" th:if="${#arrays.contains(menu.acceso, 'reporteComisionAgente')}">Reporte de Comisiónes</a></li>
+<!-- 							    <li><a class="dropdown-item" href="#" th:href="@{/corteCajaLiq}" th:if="${#arrays.contains(menu.acceso, 'corteCajaLiq')}">Corte de Caja</a></li> -->
+								<!--<li><a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'rehabilitarPoliza')}">Reportes</a>
+									<ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" th:href="@{/recibosPendientes}" th:if="${#arrays.contains(menu.acceso, 'recibosPendientes')}">Generación del DxP</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/buscaPrimasReporte}" th:if="${#arrays.contains(menu.acceso, 'buscaPrimasReporte')}">Reporte PxD</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/contabilidad/liquidacion}" th:if="${#arrays.contains(menu.acceso, 'contabilidad/liquidacion')}">Póliza Contable Recibos</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/contabilidad/cbzaValores}" th:if="${#arrays.contains(menu.acceso, 'contabilidad/cbzaValores')}">Póliza Contable Cobranza Valores</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/reporteDeudLiq}" th:if="${#arrays.contains(menu.acceso, 'reporteDeudLiq')}">Reporte DEUD</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/reportePagos}" th:if="${#arrays.contains(menu.acceso, 'reportePagos')}">Archivo Pagos</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/CFDI}" th:if="${#arrays.contains(menu.acceso, 'CFDI')}">CFDI</a></li>
+                                        <li><a class="dropdown-item" href="#" th:href="@{/cargaCFDI}" th:if="${#arrays.contains(menu.acceso, 'cargaCFDI')}">Carga CFDI</a></li>
+                                    </ul>
+								</li>-->
+                            <!-- </ul>
+                        </li>-->
+                        	
+						
+						
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'admContratos')}">  Contratos </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/reaseguro/contrato/captura}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/contrato/captura')}">Nuevo contrato</a>
+                                <a class="dropdown-item" href="#" th:href="@{/reaseguro/contrato/consulta}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/contrato/consulta')}">Modificar contrato</a>
+                                <a class="dropdown-item" href="#" th:href="@{/reaseguro/contrato/historico}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/contrato/historico')}">Histórico</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'reaInformeRea')}"> Reasegurador </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/reaseguroFactura}" th:if="${#arrays.contains(menu.acceso, 'reaseguroFactura')}">Estados de cuenta</a>
+                                <a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/bordereaux/siniestros}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/bordereaux/siniestros')}">Bordereaux siniestros</a>
+                                <a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/bordereaux/primas}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/bordereaux/primas')}">Bordereaux primas</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'reaReporteReg')}"> Reportes </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/rr6trime}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/rr6trime')}">RR6TRIME</a>
+                                <a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/rr6trimd}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/rr6trimd')}">RR6TRIMD</a>
+                                <a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/rr6Anual}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/rr6Anual')}">RR6 Anual</a>
+							</div>
+						</li>
+						
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'reaContaReaseguro')}"> Contabilidad </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'reaCalculoPrimas')}">Cálculo de primas</a>
+                                  	<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/proporcional}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/proporcional')}">Proporcional</a></li>
+										<li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/noproporcional}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/noproporcional')}">No proporcional</a></li>
+	                                </ul>
+							</div>
+						</li>
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> Gráficas </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="#" th:href="@{/reaseguro/interno}">Control interno</a>
+                                <!-- <a class="dropdown-item" href="#" th:href="@{/reaseguro/productos}">Productos</a>-->
+								<a class="dropdown-item" href="#" th:href="@{/reaseguro/siniestros}">Siniestros</a>
+							</div>
+						</li>
+<!-- ///////////////////////////////////////////////////////////////////////////  INICIO NUEVO MENU LUIS 04-jULIO-2019  //////////////////////////////////////////////////////////////////////////////////////////////////--> 
+						<!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:if="${#arrays.contains(menu.acceso, 'reaseguro')}"> Reaseguro </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							
+							<a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'admContratos')}">Administración de Contratos</a>
+								<ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/contrato/captura}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/contrato/captura')}">Nuevo contrato</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/contrato/consulta}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/contrato/consulta')}">Modificar contrato</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/contrato/historico}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/contrato/historico')}">Histórico</a></li>
+                               </ul>
+                                
+                            <a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'reaInformeRea')}">Informe al Reasegurador</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguroFactura}" th:if="${#arrays.contains(menu.acceso, 'reaseguroFactura')}">Estados de cuenta</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/bordereaux/siniestros}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/bordereaux/siniestros')}">Bordereaux siniestros</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/bordereaux/primas}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/bordereaux/primas')}">Bordereaux primas</a></li>
+                                </ul> 
+                            
+                           <a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'reaReporteReg')}">Reportes Regulatorios</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/rr6trime}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/rr6trime')}">RR6TRIME</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/rr6trimd}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/rr6trimd')}">RR6TRIMD</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/rr6Anual}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/rr6Anual')}">RR6 Anual</a></li>
+                                </ul>    
+						
+						   <a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'reaContaReaseguro')}">Contabilidad</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                    	<a class="dropdown-item dropdown-toggle" href="#" th:href="@{/rehabilitarPoliza}" th:if="${#arrays.contains(menu.acceso, 'reaCalculoPrimas')}">Cálculo de primas</a>
+                                    	<ul class="dropdown-menu">
+											<li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/proporcional}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/proporcional')}">Proporcional</a></li>
+											<li><a class="dropdown-item" href="#" th:href="@{/reaseguro/reportes/noproporcional}" th:if="${#arrays.contains(menu.acceso, 'reaseguro/reportes/noproporcional')}">No proporcional</a></li>
+		                                </ul>
+                                    </li>
+								</ul>   
+							<a class="dropdown-item dropdown-toggle" href="#">Gráficas</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/interno}">Control interno</a></li>
+                                    <li><a class="dropdown-item" href="#" th:href="@{/reaseguro/productos}">Productos</a></li>
+									<li><a class="dropdown-item" href="#" th:href="@{/reaseguro/siniestros}">Siniestros</a></li>
+								</ul>                     
+							</div>
+						</li><!-- -->
+					</ul>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<span th:text="${menu.usuario.nombreUsuario}"></span>
+							<a class="nav-link text-right" th:href="@{/logout}"> Salir <i class="fas fa-sign-out-alt"></i></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+	<div th:fragment="footerFragment">
+
+		<!-- Modal 
+		<div class="modal" id="loadingModal" tabindex="-1"
+			role="dialog" aria-labelledby="loadingModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+				<div>
+					<i class="fas fa-circle-notch fa-10x fa-spin" style="color: rgb(200, 180, 106)"></i>
+				</div>
+			</div>
+		</div>-->
+		<div class="modal" id="loadingModal" tabindex="-1"
+			role="dialog" aria-labelledby="loadingModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+				<div>
+					<img th:src="@{/resources/img/turnOn.gif}" style="width: 200px;">
+				</div>
+			</div>
+		</div>
+
+		<script src="/resources/js/jquery-3.2.1.js"	th:src="@{/resources/js/jquery-3.2.1.js}"></script>
+ 		<script src="/resources/js/jquery-ui.min.js" th:src="@{/resources/js/jquery-ui.min.js}"></script>
+
+		<script src="/resources/js/popper.min.js"	th:src="@{/resources/js/popper.min.js}"></script>
+		<script src="/resources/js/fontawesome5.1/all.js" th:src="@{/resources/js/fontawesome5.1/all.js}"></script>
+		<script src="/resources/js/dataTables1.10/datatables.js" th:src="@{/resources/js/dataTables1.10/datatables.min.js}"></script>
+		<script src="/resources/js/dataTables1.10/datatables.js" th:src="@{/resources/js/dataTables1.10/dataTables.bootstrap4.min.js}"></script>
+		<script src="/resources/js/dataTables1.10/dataTables.buttons.js" th:src="@{/resources/js/dataTables1.10/dataTables.buttons.js}"></script>
+		<script src="/resources/js/dataTables1.10/dataTables.buttons.min.js" th:src="@{/resources/js/dataTables1.10/dataTables.buttons.min.js}"></script>
+		<script src="/resources/js/dataTables1.10/jszip.min.js" th:src="@{/resources/js/dataTables1.10/jszip.min.js}"></script>
+		<script src="/resources/js/dataTables1.10/buttons.html5.min.js" th:src="@{/resources/js/dataTables1.10/buttons.html5.min.js}"></script>
+ 		<script src="/resources/js/fileupload/fileinput.min.js" th:src="@{/resources/js/fileupload/fileinput.min.js}"></script>
+		<script src="/resources/js/fileupload/es.js" th:src="@{/resources/js/fileupload/es.js}"></script>
+		<script src="/resources/js/fileupload/theme.js" th:src="@{/resources/js/fileupload/theme.js}"></script>
+		<script src="/resources/js/bootstrap4.1/bootstrap-datepicker.js" th:src="@{/resources/js/bootstrap4.1/bootstrap-datepicker.js}"></script>
+		<script src="/resources/js/bootstrap4.1/bootstrap-datepicker.es.min.js" th:src="@{/resources/js/bootstrap4.1/bootstrap-datepicker.es.min.js}"></script>
+		<script src="/resources/js/jquery.mask.min.js"	th:src="@{/resources/js/jquery.inputmask.min.js}"></script>
+		<script src="/resources/js/jquery.validate.min.js"	th:src="@{/resources/js/jquery.validate.min.js}"></script>
+		<script src="/resources/js/jquery.numeric.js"	th:src="@{/resources/js/jquery.numeric.js}"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<!--Tabs  -->
+		<script src="/resources/js/jquery.bootstrap.js"
+			th:src="@{/resources/js/jquery.bootstrap.js}"></script>
+			
+		<!-- JS Locales -->
+		<script src="/resources/js/utils.js"	th:src="@{/resources/js/utils.js}"></script>
+		<script src="/resources/js/tablaConfig.js"	th:src="@{/resources/js/tablaConfig.js}"></script>
+		<script src="/resources/js/datepickerConfig.js" th:src="@{/resources/js/datepickerConfig.js}"></script>
+		<script src="/resources/js/fileinputConfig.js"	th:src="@{/resources/js/fileinputConfig.js}"></script>
+		<script src="/resources/js/mensajesConfig.js"	th:src="@{/resources/js/mensajesConfig.js}"></script>
+		<script src="/resources/js/principal.js"	th:src="@{/resources/js/principal.js}"></script>
+		<script src="/resources/js/jquery.userTimeout.js"	th:src="@{/resources/js/jquery.userTimeout.js}"></script>
+
+		<!--Tabs  -->
+		<script src="/resources/js/tab.js" th:src="@{/resources/js/tab.js}"></script>
+		
+		<!-- Municipios -->
+		<script src="/resources/js/pages/catalogos/sepomex.js"	th:src="@{/resources/js/pages/catalogos/sepomexC.js}"></script>
+		
+		<script src="/resources/js/bootstrap-select.js" th:src="@{/resources/js/bootstrap-select.js}"></script>
+	</div>
+	
+	<div th:fragment="footerLoginFragment">
+		<script src="/resources/js/jquery-3.2.1.js"	th:src="@{/resources/js/jquery-3.2.1.js}"></script>
+		<script src="/resources/js/fontawesome5.1/all.js" th:src="@{/resources/js/fontawesome5.1/all.js}"></script>
+		<script src="/resources/js/jquery.bootstrap.js"
+			th:src="@{/resources/js/jquery.bootstrap.js}"></script>
+	</div>
+</body>
+
+</html>

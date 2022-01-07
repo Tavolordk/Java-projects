@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Diseño" pageWidth="595" pageHeight="842" columnWidth="469" leftMargin="63" rightMargin="63" topMargin="12" bottomMargin="12" uuid="70c75023-98a6-446e-9636-2f913d1b264f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<style name="NombreEmpresa" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="16" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="TipoDocumento" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="14" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="texto" hTextAlign="Justified" vTextAlign="Middle" markup="styled" fontSize="11"/>
+	<style name="parametros" hTextAlign="Left" vTextAlign="Middle" markup="styled" fontSize="11"/>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="fecha_Emsion" class="java.lang.String"/>
+	<parameter name="nombre_Asegurado" class="java.lang.String"/>
+	<parameter name="tipo_Seguro" class="java.lang.String"/>
+	<parameter name="beneficio1" class="java.lang.String"/>
+	<parameter name="beneficio2" class="java.lang.String"/>
+	<parameter name="beneficio3" class="java.lang.String"/>
+	<parameter name="beneficio4" class="java.lang.String"/>
+	<parameter name="funcionario_Autorizado" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="firma" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[set language 'spanish' SELECT N.ENCABEZADO ,N.MES, N.ANIO, N.NOMBRECLIENTE, N.NOMBRE, RTRIM(STRING_AGG(N.COBERTURAS,CHAR(13))) AS COBERTURAS, RTRIM(STRING_AGG(N.COBERTURAS2,CHAR(13))) AS COBERTURAS2 
+, RTRIM(STRING_AGG(N.TIPO_COB,CHAR(13)) WITHIN GROUP (ORDER BY CVE_COBERTURA ASC))  AS TIPO_COB
+, RTRIM(STRING_AGG(N.CVE_COBERTURA,CHAR(13)) WITHIN GROUP (ORDER BY CVE_COBERTURA ASC))  AS CVE_COBERTURA
+FROM
+(select PRD.encabezado AS ENCABEZADO, DATENAME (month,fecha_emision) AS MES,DATENAME(year,fecha_emision) AS ANIO
+,CASE CTE.fisico
+WHEN 0 THEN UPPER(CTE.denominacion)
+WHEN 1 THEN CTE.nombre_cliente+' '+CTE.apellido_paterno+' '+CTE.apellido_materno
+END AS NOMBRECLIENTE 
+,PRD.nombre AS NOMBRE
+,CASE
+WHEN COP.descripcion LIKE '%ASISTENCIA%' OR CT.id_tipo_cobertura = 4 THEN COP.descripcion
+ELSE ''
+END AS COBERTURAS
+,CASE
+WHEN CT.id_tipo_cobertura <> 4 THEN COP.descripcion
+END AS COBERTURAS2
+,CT.id_tipo_cobertura AS TIPO_COB, CT.Cve_Cobertura AS CVE_COBERTURA
+from POLIZAS
+LEFT JOIN CLIENTES CTE ON CTE.id_cliente = POLIZAS.id_contratante
+LEFT JOIN PRODUCTOS PRD ON PRD.Cve_Producto = POLIZAS.cve_producto
+LEFT JOIN COBERTURAS_PRODUCTO  COP ON POLIZAS.cve_producto = COP.id_producto
+LEFT JOIN CT10_COBERTURAS CT ON CT.Cve_Cobertura = COP.id_cobertura
+WHERE id_poliza = $P{no_Poliza}
+GROUP BY PRD.encabezado, fecha_emision,CTE.nombre_cliente,CTE.apellido_paterno,CTE.apellido_materno,CTE.fisico
+,CTE.denominacion,PRD.nombre,COP.descripcion,CT.id_tipo_cobertura,CT.Cve_Cobertura,CT.id_tipo_cobertura) AS N
+GROUP BY N.ENCABEZADO, N.MES, N.ANIO, N.NOMBRECLIENTE, N.NOMBRE]]>
+	</queryString>
+	<field name="MES" class="java.lang.String"/>
+	<field name="ANIO" class="java.lang.String"/>
+	<field name="NOMBRECLIENTE" class="java.lang.String"/>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="COBERTURAS" class="java.lang.String"/>
+	<field name="COBERTURAS2" class="java.lang.String"/>
+	<field name="ENCABEZADO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="-20" y="0" width="139" height="26" uuid="9f982b06-7d78-4512-86c2-c781f9e18dc0"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="NombreEmpresa" x="150" y="0" width="319" height="19" uuid="8f44b6ff-56ba-4044-bb7f-a181fd0e97e6"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="20" width="319" height="13" uuid="796be3cc-dfc2-4e73-90af-e51514e34cfe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b><font color=#856429> Carta de Bienvenida: " +$F{ENCABEZADO}+ " </font></b>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="746" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="-10" width="139" height="9" uuid="bc130751-33c0-4343-a7f4-64571407496f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="texto" mode="Opaque" x="0" y="168" width="469" height="82" uuid="92f2d074-9d3e-45ce-ae89-bf5c2c35c3cf"/>
+				<textElement verticalAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le damos la más cordial bienvenida y agradecemos su confianza al haber adquirido su Seguro de Accidentes Personales <style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>"+$F{NOMBRE}+"</style>, el cuál le ofrece los siguientes beneficios:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="texto" x="279" y="44" width="190" height="20" uuid="7e007a47-232c-413b-8d4f-effcac35b5e7"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ciudad de México,"+$F{MES}+" "+$F{ANIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="texto" x="0" y="120" width="278" height="20" uuid="a8121d6e-9fd6-41d9-ae35-ddcfdce8d4e2"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Estimado(a) <style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>"+$F{NOMBRECLIENTE}+ "</style>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="texto" mode="Opaque" x="0" y="385" width="469" height="30" uuid="f0befe76-a941-4c92-861c-61ed5801e128"/>
+				<textElement verticalAlignment="Justified" markup="html">
+					<font fontName="SansSerif" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Así como los siguientes Servicios de Asistencia:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="264" width="471" height="116" uuid="faae78e0-9067-43f3-816a-6bb9e18cc10c"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COBERTURAS2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="texto" mode="Opaque" x="1" y="581" width="469" height="50" uuid="a1c61618-24b9-4301-bd32-71185dde6054"/>
+				<textElement verticalAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En <style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>SPP Institución de Seguros, S.A. de C.V.</style> estamos a su lado para apoyarlo siempre y en todo momento."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="texto" mode="Opaque" x="-1" y="524" width="469" height="50" uuid="2cf725ed-4e04-4d2c-8656-e732d26b3f27"/>
+				<textElement verticalAlignment="Justified" markup="html">
+					<font fontName="SansSerif" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le invitamos a leer cuidadosamente las condiciones generales de su seguro para aprovechar los beneficios y asistencias."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="420" width="471" height="99" uuid="085cf354-5491-4e44-9b3a-1bc67c690531"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COBERTURAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="673" width="467" height="40" uuid="d702d51a-edbe-4804-b1be-a6c18362a008"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="631" width="467" height="35" uuid="8d392d7c-c62c-460e-9bd0-a23c16149d6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>ATENTAMENTE </style>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="713" width="467" height="30" uuid="d5619b12-d325-4254-bb14-386096cfc81f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#A6A6A6' isBold='true' pdfFontName='Helvetica-Bold'>Apoderado Legal SPP Institución de Seguros, S.A. de C.V. </style>"]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="167" y="670" width="139" height="27" uuid="92cf66e4-9241-4bbe-9def-2103c78d10f1"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="371" y="0" width="100" height="36" uuid="bc8cc0c1-b76c-480e-8264-9a8cc9edae4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[<style forecolor= "#003366"  isBold="true" pdfFontName='Helvetica-Bold'>Página 1 de 1</style>]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

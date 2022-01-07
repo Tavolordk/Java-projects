@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Servlet.java&apos; to &apos;index.jsp&apos;&#x0D;&#x0A;- Original project: &apos;formularioServer&apos;&#x0D;&#x0A;- Destination element: &apos;index.jsp&apos;&#x0D;&#x0A;- Original element: &apos;web.Servlet.java&apos;" description="Copy compilation unit" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;web{Servlet.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1587321218586" target="/formularioServer/src/main/webapp/index.jsp" units="1" version="1.0"/>
+</session>

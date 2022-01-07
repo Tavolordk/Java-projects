@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Captura de siniestros</h4>
+			</div>
+		<div class="card-content">
+		<div th:fragment="formularioSiniestro">
+			<form id="formSiniestro" autocomplete="off" class="needs-validation" novalidate>
+				
+				<div id="polizaBloque">
+					<h2>Póliza</h2>
+					<div class="row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="ramo">Ramo:</label>
+							<select	class="form-control lstRamos" id="ramo" name="ramo"></select>
+						</div>
+						<div class="form-group col-md-2 siniestro">
+							<label for="busquedaPoliza">No. Póliza:</label>
+							<input class="form-control numberClass limpiar" id="busquedaPoliza" name="busquedaPoliza" maxlength="8">
+						</div>
+						<div class="form-group col-md-4 siniestro lstAsegurados">
+							<label for="ramo">Asegurados:</label>
+							<select	class="form-control asegurados limpiar" id="asegurados" name=""></select>
+						</div>
+						<div class="form-group col-md-2 siniestro">
+							<label for="certificado">Certificado:</label>
+							<div class="input-group">
+							<input class="form-control text-uppercase numberClass limpiar" type="text" id="certificado" name="certificado" maxlength="10"/><span class="input-group-btn">
+								<button id="btnBusquedaPoliza" type="button" class="btn btn-default">
+									<i class="fas fa-search" style="color: #ffff"></i>
+								</button>
+							</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="form-group col-md-3 siniestro lstAsegurados">
+							<label for="ramo">Sexo:</label>
+							<input class="form-control limpiar" id="sexo" disabled>
+						</div>
+						<div class="form-group col-md-3 siniestro lstAsegurados">
+							<label for="ramo">Fecha Nacimiento:</label>
+							<input class="form-control limpiar" id="birthday" disabled>
+						</div>
+						<div class="form-group col-md-3 siniestro lstAsegurados">
+							<label for="ramo">Grupo:</label>
+							<input class="form-control limpiar" id="grupoAP" disabled>
+						</div>
+						<div class="form-group col-md-3 siniestro lstAsegurados">
+							<label for="ramo">Ocupación:</label>
+							<input class="form-control limpiar" id="ocupacion" disabled>
+						</div>
+						
+						
+					</div>
+					<div class="row">
+						<div class="form-group col-md-2 siniestro">
+							<label for="estatus">Estatus:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="estatus" name="estatus" disabled />
+						</div>
+	
+						<div class="form-group col-md-2 siniestro">
+							<label for="sucursal">Sucursal:</label>
+							<select class="form-control text-uppercase" id="sucursal" name="sucursal" disabled></select>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="polizaVigencia">Vigencia Poliza:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="polizaVigencia" name="polizaVigencia" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="endosoVigencia">Vigencia Endoso:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="endosoVigencia" name="endosoVigencia" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="cliente">Asegurado:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="polizaAseguradoNombre" name="polizaAseguradoNombre"  disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="cliente">Dirección:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="calle" name="calle" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="cliente">Estado:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="estado" name="estado" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="cliente">Municipio:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="municipio" name="municipio" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro diversos">
+							<label for="cliente">NSS:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="nss" name="nss" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro diversos">
+							<label for="cliente">CUV:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="cuv" name="cuv" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro diversos">
+							<label for="ov">Orden verificación:</label>
+							<input class="form-control text-uppercase" type="text" id="ov" name="ov" disabled />
+						</div>
+						
+<!-- 						<div class="form-group col-md-4 siniestro"> -->
+<!-- 							<label for="cliente">Suma asegurada:</label> -->
+<!-- 							<input class="form-control text-uppercase moneda limpiar" type="text" id="sumaAsegurada" name="sumaAsegurada" disabled /> -->
+<!-- 						</div> -->
+						
+<!-- 						<div class="form-group col-md-4 siniestro diversos"> -->
+<!-- 							<label for="cliente">Cliente:</label> -->
+<!-- 							<input class="form-control text-uppercase limpiar" type="text" id="polizaBeneficiarioNombre" name="polizaBeneficiarioNombre"  disabled /> -->
+<!-- 						</div> -->
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="cliente">Cliente:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="polizaContratanteNombre" name="polizaContratanteNombre"  disabled />
+						</div>
+
+						<div class="form-group col-md-4 siniestro">
+							<label for="agente">Agente:</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="agente" name="agente" disabled />
+						</div>
+						
+						<div class="form-group col-md-4 siniestro diversos">
+							<label for="cliente">Contratante  (Agrupador):</label>
+							<input class="form-control text-uppercase limpiar" type="text" id="agrupador" name="agrupador" disabled />
+						</div>
+					</div>
+					<div>
+						<div class ="row">
+							<div class="form-group col-md-3 siniestro">
+								<label for="cobertura_1">Cobertura:</label>
+								<input class="form-control text-uppercase limpiar" type="text" id="cobertura_0" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<label for="cobertura_1">Monto:</label>
+								<input class="form-control text-uppercase limpiar" type="text" id="montoCob_0" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<label for="deducible_1">Deducible:</label>
+								<input class="form-control text-uppercase limpiar" type="text" id="deducible_0" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<label for="deducible_1">Coaseguro:</label>
+								<input class="form-control text-uppercase limpiar" type="text" id="coaseguro_0" disabled />
+							</div>
+						</div>
+	
+						<div class ="row">
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="cobertura_1" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="montoCob_1" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="deducible_1" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="coaseguro_1" disabled />
+							</div>
+						</div>
+						<div class ="row">
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="cobertura_2" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="montoCob_2" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="deducible_2" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<input class="form-control text-uppercase limpiar" type="text" id="coaseguro_2" disabled />
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12">
+							<button type="button" class="btn btn-primary text-truncate" id="validaPoliza">
+								<span class="mr-2">
+									<i class="fas fa-check"></i>
+								</span>Continuar
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				<div id="datosSiniestroBloque">
+<!-- 					<h2 style= "border-bottom-style: solid">Datos del Siniestro</h2> -->
+					<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="fechaOcurrenciaSiniestro">Fecha de ocurrido:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaOcurrenciaSiniestro" name="fechaOcurrenciaSiniestro" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" data-date-end-date="0d"/>
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="fechaAviso">Fecha de aviso:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaAviso" name="fechaAviso" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" data-date-end-date="0d"/>
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="fechaReporteSiniestro">Fecha de registro:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date currentDate" id="fechaReporteSiniestro" name="fechaReporteSiniestro" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" disabled
+								/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-12 siniestro">
+							<label for="causa">Causa:</label>
+							<select class="form-control" id="causa" name="causa">
+							</select>
+						</div>
+					</div>
+					<h2 style= "border-bottom-style: solid">Datos de quien reporta</h2>
+					<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="reportaNombre">Nombre:</label>
+							<input class="form-control text-uppercase" type="text" id="reportaNombre" name="reportaNombre" maxlength="70"/>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="reportaTelefono">Teléfono:</label>
+							<div class="row">
+								<div class="col-4 col-sm-3">
+									<input class="form-control numberClass" type="text" id="reportaTelefonoLada" name="reportaTelefonoLada" maxlength="3"/>
+								</div>
+								<div class="col-8 col-sm-9">
+									<input class="form-control numberClass" type="text" id="reportaTelefono" name="reportaTelefono" maxlength="10" />
+								</div>
+							</div>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="reportaCorreo">Correo electrónico:</label>
+							<input class="form-control text-uppercase" type="text" id="reportaCorreo" name="reportaCorreo" maxlength="70"/>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="reportaCelular">Celular:</label>
+							<div class="row">
+								<div class="col-4 col-sm-3">
+									<input class="form-control numberClass" type="text" id="reportaCelularLada" name="reportaCelularLada" maxlength="3"/>
+								</div>
+								<div class="col-8 col-sm-9">
+									<input class="form-control numberClass" type="text" id="reportaCelular" name="reportaCelular" maxlength="10"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="reportaNarracion">Narración:</label>
+							<input class="form-control text-uppercase" type="text" id="reportaNarracion" name="reportaNarracion" maxlength="500"/>
+						</div>
+					</div>
+					<h2 style= "border-bottom-style: solid">Datos ajustador y/o dictaminador</h2>
+					<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="ajustadorNombre">Nombre:</label>
+							<input class="form-control text-uppercase" type="text" id="ajustadorNombre" name="ajustadorNombre" maxlength="70"/>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="ajustadorFechaAsig">Fecha de asignación:</label>
+							<div class="input-group">
+							<input class="form-control date" type="text" id="ajustadorFechaAsig" name="ajustadorFechaAsig" data-mask="0000-00-00" placeholder="aaaa-mm-dd"  maxlength="10"
+								/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro">
+							<label for="ajustadorHoraAsig">Hora de asignación:</label>
+							<input class="form-control text-uppercase hour" type="text" id="ajustadorHoraAsig" name="ajustadorHoraAsig"  placeholder="00:00" maxlength="5"/>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro diversos">
+							<label for="ajustadorFechaCierre">Fecha de cierre:</label>
+							<div class="input-group">
+							<input class="form-control date" type="text" id="ajustadorFechaCierre" name="ajustadorFechaCierre" data-mask="0000-00-00" placeholder="aaaa-mm-dd"  maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+	
+						<div class="form-group col-md-4 siniestro diversos">
+							<label for="ajustadorHoraCierre">Hora de cierre:</label>
+							<input class="form-control text-uppercase hour" type="text" id="ajustadorHoraCierre" name="ajustadorHoraCierre" placeholder="00:00" maxlength="5"/>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="ajustadorCausa">Causa del siniestro:</label>
+							<input class="form-control text-uppercase" type="text" id="ajustadorCausa" name="ajustadorCausa" maxlength="250"/>
+						</div>
+						
+						<div class="form-group col-md-12 siniestro">
+							<label for="ajustadorNarracion">Narración detallada:</label>
+							<input class="form-control text-uppercase" type="text" id="ajustadorNarracion" name="ajustadorNarracion" maxlength="1500"/>
+						</div>
+						
+						<div class="form-group col-md-12 siniestro">
+							<label for="ajustadorComentarios">Comentarios generales:</label>
+							<input class="form-control text-uppercase" type="text" id="ajustadorComentarios" name="ajustadorComentarios" maxlength="3000"/>
+						</div>
+					</div>
+					
+					<h3 style= "border-bottom-style: solid">Siniestro estatus</h3>
+					<div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+						<div class="form-group col-md-4 siniestro">
+							<label for="estatusSiniestro">Estatus:</label>
+							<select	class="form-control" id="estatusSiniestro" name="estatusSiniestro" disabled>
+								<option selected value="1">PENDIENTE</option>
+							</select>
+						</div>
+					</div>
+					
+					
+					<div class="row diversos">
+					    <h3 class= "diversos">Fotos</h3>
+						<div class="form-group col-md-12 siniestro">
+							<input id="foto" name="input-b6[]" type="file" multiple>
+						</div>
+					</div>
+					
+					<div class="row diversos">	
+						<div class="row col-md-12 ">
+							<h3>Documentos</h3>
+							<div class="form-group col-md-12 siniestro">
+								<input id="documentoDiv" name="input-b6[]" type="file" multiple>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row bloqueArchivosAp lstAsegurados">	
+						<div class="row">
+							<div class="form-group col-md-4 siniestro">
+								<h3>Documentos</h3>
+								<input id="documentoAp" name="input-b6[]" type="file" multiple>
+							</div>
+							
+							<div class="form-group col-md-4 siniestro">
+							    <h3>Dictamen Proveedor</h3>
+								<input id="dictamenProv" name="input-b6[]" type="file" multiple>
+							</div>
+							
+							<div class="form-group col-md-4 siniestro">
+							    <h3>Informe Médico</h3>	
+								<input id="infMedico" name="input-b6[]" type="file" multiple>
+							</div>
+						</div>
+					</div>
+					
+					<div class="bloqueArchivosExtra diversos">
+					  <div class = "row">
+						<div class="form-group col-md-3" id="cartaReclamacionBloque">
+							<label for="">Carta reclamación:</label>
+							<input id="cartaReclamacion" type="file" class="file" name="file[]">
+						</div>
+						
+						<div class="form-group col-md-3" id="identificacionOficialBloque">
+							<label for="">Identificación:</label>
+							<input id="identificacionOficial" type="file" class="file" name="file[]">
+						</div>
+						
+						<div class="form-group col-md-3" id="comprobanteDomicilioBloque">
+							<label for="">Comprobante de domicilio:</label>
+							<input id="comprobanteDomicilio" type="file" class="file" name="file[]">
+						</div>
+						
+						<div class="form-group col-md-3" id="presupuestoReparacionBloque">
+							<label for="">Presupuesto de reparación:</label>
+							<input id="presupuestoReparacion" type="file" class="file" name="file[]">
+						</div>
+					  </div>
+					</div>
+					
+					<div id="estimacionesBloque">
+					   <h3  style= "border-bottom-style: solid" id="estimacionesTitle">Estimaciones</h3>
+					   <div style = "margin-bottom: 50px;margin-top: 25px" class="form-row">
+						    <div class = "form-group col-md-3">
+						        <label for="deducible_1">Cobertura:</label>
+						    	<select class="form-control cobertura lstCoberturas" id="coberturas" name="cobertura"></select>
+						    </div>
+							<div class = "form-group col-md-3" >
+								<label for="deducible_1">Limite SA:</label>
+								<input class="form-control text-uppercase cobertura moneda currency" type="text" id="cobertura4" name="importe" maxlength="16" >
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<label for="deducible_1">Deducible:</label>
+								<input class="form-control text-uppercase limpiar" type="text" id="deducible" disabled />
+							</div>
+							<div class="form-group col-md-3 siniestro">
+								<label for="deducible_1">Coaseguro:</label>
+								<input class="form-control text-uppercase limpiar" type="text" id="coaseguro" disabled />
+							</div>
+					   </div>
+					</div>
+											
+					<div class="row">
+						<div class="form-group col-md-12">
+							<button type="button" class="btn btn-primary text-truncate" id="guardaSiniestro">
+								<span class="mr-2">
+									<i class="fas fa-save"></i>
+								</span>Guardar
+							</button>
+	<!-- 						<button type="button" class="btn btn-primary text-truncate" id="cargaCoberturas"> -->
+	<!-- 							<span class="mr-2"> -->
+	<!-- 								<i class="fas fa-table"></i> -->
+	<!-- 							</span>Coberturas -->
+	<!-- 						</button> -->
+							<button type="button" class="btn btn-primary text-truncate" id="regresar">
+								<span class="mr-2">
+									<i class="fas fa-chevron-left"></i>
+								</span>Póliza
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<!-- JS Siniestros -->
+	<script src="/resources/js/pages/siniestros/siniestrosC.js" th:src="@{/resources/js/pages/siniestros/siniestrosC.js}"></script>
+	<script src="/resources/js/pages/siniestros/siniestros.js" th:src="@{/resources/js/pages/siniestros/siniestros.js}"></script>
+</body>
+</html>

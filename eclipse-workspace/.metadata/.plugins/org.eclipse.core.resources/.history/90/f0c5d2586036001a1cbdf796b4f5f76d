@@ -1,0 +1,14 @@
+package figura;
+
+public class PruebaCaja {
+
+	public static void main(String [] args)
+	{
+		int A = 3;
+		int B = 2;
+		int C = 6;
+		Caja objeto1 = new Caja();
+		Caja objeto2 = new Caja(A,B,C);
+		System.out.println("El volumen es: " + objeto1.calcularVolumen());
+	}
+}

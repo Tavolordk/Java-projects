@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Escrituración</h4>
+			</div>
+		<div class="card-content">
+
+			<form enctype="multipart/form-data">
+				<div class="form-row">
+					<div class="form-group col-md-8">
+						<label for="fileInput">Subir archivo de escrituración</label> <input
+							id="fileInputHabitabilidad" type="file" class="file"
+							name="file">
+						<div id="errorBlock" class="help-block"></div>
+					</div>
+				</div>
+				
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<button class="btn btn-primary" id="btnCargarArchivoHabitabilidad" type="button">Cargar archivo</button>
+					</div>
+				</div>
+				
+			<div class="table-responsive main-container background-tabla">
+			<h3>Guardados</h3>
+				<table id="resultadoGuardados"
+					class="table table-sm table-hover table-bordered estiloTablas">
+				</table>
+			</div>
+			
+			<div class="table-responsive main-container background-tabla" id="tablaNoGuardados">
+			<h3>No Guardados</h3>
+				<table id="resultadoNoGuardados"
+					class="table table-sm table-hover table-bordered estiloTablas">
+				</table>
+			</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/emision/agrupadoresC.js"
+		th:src="@{/resources/js/pages/emision/agrupadoresC.js}"></script>
+	<script src="/resources/js/pages/emision/agrupadores.js"
+		th:src="@{/resources/js/pages/emision/agrupadores.js}"></script>
+</body>
+</html>

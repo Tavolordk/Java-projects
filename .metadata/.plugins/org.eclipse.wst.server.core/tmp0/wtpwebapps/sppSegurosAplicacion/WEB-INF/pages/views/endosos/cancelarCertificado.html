@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Cancelar certificado</h4>
+			</div>
+		<div class="card-content">
+
+			<form id="formCancelarCertificado">
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="idRamo">Ramo</label> <select class="form-control ramo" id="idRamo" name="idRamo"></select>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="numeroPoliza">Número de póliza</label> <input class="form-control numberClass"
+							id="numeroPoliza" name="numeroPoliza">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="numeroCertificado">Número de certificado</label> <input
+							class="form-control numberClass" id="numeroCertificado" name="numeroCertificado">
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary" id="btnBuscarCertificado">Buscar</button>
+
+				<div class="form-row info d-none">
+					<div class="form-group col-md-2">
+						<label for="fecha">Fecha efectividad:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date-endosos" id="fechaEfectividad" name="fechaEfectividad"
+								data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="numeroPoliza">Número de póliza</label> <input class="form-control"
+							id="numeroPoliza" name="numeroPoliza" disabled="disabled">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="numeroCertificado">Número de certificado</label> <input
+							class="form-control numberClass" id="numeroCertificado" name="numeroCertificado"
+							disabled="disabled">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="asegurado">Asegurado</label> <input class="form-control" id="asegurado"
+							name="asegurado" disabled="disabled">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="sumaAsegurada">Suma asegurada</label> <input class="form-control"
+							id="sumaAsegurada" name="sumaAsegurada" disabled="disabled">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="numCredito">Número de crédito</label> <input class="form-control" id="numCredito"
+							name="numCredito" disabled="disabled">
+					</div>
+				</div>
+
+				<button type="button" class="btn btn-danger info d-none" id="btnCancelarCertificado">Cancelar
+					certificado</button>
+			</form>
+		</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/endosos/endososC.js"
+		th:src="@{/resources/js/pages/endosos/endososC.js}"></script>
+	<script src="/resources/js/pages/endosos/endosos.js"
+		th:src="@{/resources/js/pages/endosos/endosos.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramoC.js"
+		th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+</body>
+
+</html>

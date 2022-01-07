@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Captura de promotorías</h4>
+			</div>
+		<div class="card-content">
+
+			<ul class="nav nav-tabs" id="tabClientes" role="tablist">
+				<li id="nuevoTab" class="nav-item" th:if="${#arrays.contains(menu.acceso, 'capturaContratantes')}"><a
+					class="nav-link nav-color active" data-toggle="tab"
+					href="#nuevoCliente" role="tab" aria-controls="nuevo"
+					aria-selected="true">Nuevo</a></li>
+
+				<li id="consultarTab" class="nav-item" th:if="${#arrays.contains(menu.acceso, 'consultaContratantes')}"><a
+					class="nav-link nav-color" data-toggle="tab"
+					href="#consultarCliente" role="tab" aria-controls="consultar"
+					aria-selected="true">Consultar</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="nuevoCliente"
+					role="tabpanel">
+					<div class="form-group">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="radioFisicoN" name="radiosClientesNuevo"
+								class="custom-control-input mr3" value="1" checked="checked">
+							<label class="custom-control-label" for="radioFisicoN"
+								style="font-size: 25px">Fisica</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="radioMoralN" name="radiosClientesNuevo"
+								class="custom-control-input" value="0"> <label
+								class="custom-control-label" for="radioMoralN"
+								style="font-size: 25px">Moral</label>
+						</div>
+					</div>
+
+					<div th:if="${#arrays.contains(menu.acceso, 'capturaContratantes')}"
+						th:include="views/clientes/clienteNuevo :: clienteNuevoFragment"
+						id="clienteNuevo">
+					</div>
+						
+					<div
+					    th:include="views/clientes/busquedaCliente :: busquedaClienteFragment"
+						id="busquedaCliente" class="d-none">
+					</div>
+				</div>
+
+<!-- 				<div class="tab-pane fade" id="consultarCliente" role="tabpanel">
+					<div class="form-group">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input class="custom-control-input mr3" type="radio"
+								name="radiosClientesBuscar" id="radioFisicoC" value="1"
+								checked="checked"> <label style="font-size: 25px"
+								class="custom-control-label" for="radioFisicoC">Fisica </label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input class="custom-control-input mr3" type="radio"
+								name="radiosClientesBuscar" id="radioMoralC" value="0">
+							<label style="font-size: 25px" class="custom-control-label"
+								for="radioMoralC">Moral</label>
+						</div>
+					</div>
+
+					
+				</div> -->
+			</div>
+			<!-- Finaliza jumbotron -->
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS Clientes -->
+	<script src="/resources/js/pages/catalogos/paisC.js" th:src="@{/resources/js/pages/catalogos/paisC.js}"></script>
+	<script src="/resources/js/pages/catalogos/cargoC.js" th:src="@{/resources/js/pages/catalogos/cargoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/monedaC.js" th:src="@{/resources/js/pages/catalogos/monedaC.js}"></script>
+	<script src="/resources/js/pages/catalogos/formaPagoC.js" th:src="@{/resources/js/pages/catalogos/formaPagoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/giroMercantilC.js" th:src="@{/resources/js/pages/catalogos/giroMercantilC.js}"></script>
+	<script src="/resources/js/pages/catalogos/identificacionC.js" th:src="@{/resources/js/pages/catalogos/identificacionC.js}"></script>
+	<script src="/resources/js/pages/catalogos/coloniasC.js" th:src="@{/resources/js/pages/catalogos/coloniasC.js}"></script>
+	<script src="/resources/js/pages/clientes/clientesC.js"	th:src="@{/resources/js/pages/clientes/clientesC.js}"></script>
+	<script src="/resources/js/pages/clientes/clientes.js" th:src="@{/resources/js/pages/clientes/clientes.js}"></script>
+	<script src="/resources/js/pages/catalogos/ocupacionC.js" th:src="@{/resources/js/pages/catalogos/ocupacionC.js}"></script>
+</body>
+
+</html>

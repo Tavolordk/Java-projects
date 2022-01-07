@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;pruebas&apos; to &apos;formularioServer&apos;" description="Rename resource &apos;pruebas&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/pruebas" name="formularioServer" stamp="1585527570101" updateReferences="true"/>
+</session>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="camposUsuarioFragment" class="main-container">
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<label for="nombreUsuario">Nombre</label> <input
+					class="form-control text-uppercase" id="nombreUsuario"
+					name="nombreUsuario" maxlength="100">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="apePaterno">Apellido paterno</label> <input
+					class="form-control text-uppercase" id="apePaterno"
+					name="apePaterno" maxlength="100">
+			</div>
+			<div class="form-group col-md-4">
+				<label for="apeMaterno">Apellido materno</label> <input
+					class="form-control text-uppercase" id="apeMaterno"
+					name="apeMaterno" maxlength="100">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4 nuevoUsuario">
+				<label for="username">Nombre de usuario</label> <input
+					class="form-control" id="username" name="username" maxlength="200">
+			</div>
+			<div class="form-group col-md-4 nuevoUsuario">
+				<label for="password">Contraseña</label> <input type="password"
+					class="form-control" id="password" name="password" maxlength="15">
+					<div class="feed"></div>
+			</div>
+			<div class="form-group col-md-4 nuevoUsuario">
+				<label for="password">Confirmar contraseña</label> <input type="password"
+					class="form-control" id="confirmarPassword" maxlength="15">
+					<div class="feedConfirm"></div>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="perfil">Perfil</label> <select
+					class="form-control perfil" id="perfil">
+					<option value="">Seleccione opción...</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<hr style="width: 25%">
+			<h4>Permisos especiales</h4>
+			<hr style="width: 25%">
+		</div>
+		<div class="form-row">
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input"
+					name="generarPoliza" id="generarPoliza"> <label
+					class="custom-control-label" for="generarPoliza">Generar
+					pólizas</label>
+			</div>
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input" name="saMaxima"
+					id="saMaxima"> <label class="custom-control-label"
+					for="saMaxima">Modificar suma asegurada máxima</label>
+			</div>
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input"
+					name="pagoSiniestros" id="pagoSiniestros"> <label
+					class="custom-control-label" for="pagoSiniestros">Pagos
+					siniestros</label>
+			</div>
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input" name="liqManual"
+					id="liqManual"> <label class="custom-control-label"
+					for="liqManual">Liquidación manual</label>
+			</div>
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input"
+					name="contratoReaseguro" id="contratoReaseguro"> <label
+					class="custom-control-label" for="contratoReaseguro">Autorizar
+					Contrato Rea.</label>
+			</div>
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input"
+					name="recuperarContra" id="recuperarContra"> <label
+					class="custom-control-label" for="recuperarContra">Recuperación de contraseña</label>
+			</div>
+			<div class="custom-control custom-checkbox mr-3">
+				<input type="checkbox" class="custom-control-input"
+					name="oficialCumplimiento" id="oficialCumplimiento"> <label
+					class="custom-control-label" for="oficialCumplimiento">Oficial de cumplimiento</label>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

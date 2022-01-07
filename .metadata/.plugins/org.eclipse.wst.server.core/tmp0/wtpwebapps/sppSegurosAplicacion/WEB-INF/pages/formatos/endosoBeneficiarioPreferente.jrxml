@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="endosoBeneficiarioPreferente" pageWidth="595" pageHeight="842" columnWidth="469" leftMargin="63" rightMargin="63" topMargin="11" bottomMargin="11" uuid="afa38fdd-aaba-468c-b6f0-ae7f6ba7cb68">
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="firma" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT POL.numero_poliza AS POLIZA, CER.numero_credito AS CERTIFICADO
+, CASE CTE.fisico
+WHEN 0 THEN UPPER(CTE.denominacion)
+WHEN 1 THEN CTE.nombre_cliente+' '+CTE.apellido_paterno+' '+CTE.apellido_materno
+END AS A_NOMBRE_DE
+,FORMAT(POL.fecha_inicio_vigencia,'dd/MM/yyyy') AS VIGENCIA
+,AGP.nombre AS BENEF_PREFERENTE
+,PRD.autorizaciones AS REGISTRO
+,FORMAT(PRD.fecha_registro,'dd/MM/yyyy') AS FECHA_REG
+,CASE PRD.tipo_producto
+WHEN 0 THEN 'SPP-FR-PD-24'
+WHEN 1 THEN 'SPP-FR-PD-24'
+END AS CODIGO
+,PRD.version_fecha AS VERSION_FEC
+FROM CERTIFICADO CER
+LEFT JOIN POLIZAS POL ON POL.id_poliza = CER.poliza
+LEFT JOIN CLIENTES CTE ON CTE.id_cliente = POL.id_contratante
+LEFT JOIN CUVS CUV ON CUV.id_cuv = POL.id_ov
+LEFT JOIN PRODUCTOS PRD ON PRD.Cve_Producto = POL.cve_producto
+LEFT JOIN CT20_AGRUPADORES AGP ON AGP.id_agrupador = PRD.agrupador
+WHERE id_certificado = $P{no_Poliza}]]>
+	</queryString>
+	<field name="POLIZA" class="java.lang.String"/>
+	<field name="A_NOMBRE_DE" class="java.lang.String"/>
+	<field name="VIGENCIA" class="java.lang.String"/>
+	<field name="BENEF_PREFERENTE" class="java.lang.String"/>
+	<field name="CERTIFICADO" class="java.lang.String"/>
+	<field name="FECHA_REG" class="java.lang.String"/>
+	<field name="REGISTRO" class="java.lang.String"/>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="-30" y="1" width="139" height="26" uuid="75412688-4436-4e89-a223-f0afe78d758f"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-30" y="27" width="139" height="9" uuid="fccb398f-7395-4dc8-a438-11efa9d4075b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="20" width="319" height="16" uuid="eecd9455-fef4-4e05-be3b-856766301933"/>
+				<textElement textAlignment="Right" markup="styled">
+					<font size="12"/>
+					<paragraph rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#856429" pdfFontName="Helvetica-Bold">Endoso: Beneficiario Preferente</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="0" width="319" height="20" uuid="290716aa-7f4f-4717-9e54-91bb9bddeadb"/>
+				<textElement textAlignment="Right" markup="styled">
+					<font size="14"/>
+					<paragraph rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="748" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="60" width="140" height="104" uuid="c4c0b405-4467-4bc4-9b29-b30c8acdfd58"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="60" width="140" height="26" uuid="d12fcf8e-5ebf-4302-a737-2844ec56ae43"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="styled">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>ENDOSO QUE SE 
+AGREGA A LA PÓLIZA: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="60" width="250" height="26" uuid="4efe5cb8-43fe-4dc0-9025-58011ff24248"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POLIZA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="86" width="140" height="26" uuid="1285e0fc-bd13-4bc8-897a-09f581882688"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>No. DE CERTIFICADO: </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="112" width="140" height="26" uuid="6c1f772b-ecc0-4812-a1fb-ad2e250a614f"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="styled">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>EXPEDIDA A NOMBRE
+DE: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="86" width="250" height="26" uuid="bb3be387-f1ea-49ca-9423-c6364026f7d8"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CERTIFICADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="112" width="250" height="26" uuid="a05e2ac3-7788-4e50-a4f5-199200c41842"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{A_NOMBRE_DE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="221" width="468" height="59" uuid="2994eacf-ba9f-461d-a674-95302d677dcb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled">
+					<font size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Por el presente ENDOSO se hace constar que la “Compañía” realizará el pago de cualquier indemnización que se genere por los riesgos que se encuentren cubiertos de acuerdo con lo señalado en las Condiciones Generales de la Póliza a:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="311" width="468" height="59" uuid="0e0be03c-26b6-4d4c-b498-1810c9d7631b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled">
+					<font size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Todos los términos y condiciones de la póliza continúan sin cambio alguno, salvo lo estipulado en el presente."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="550" width="467" height="35" uuid="03f0bed9-d336-472c-b19a-fa0f80f0d809"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>ATENTAMENTE </style>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="613" width="467" height="20" uuid="0addac21-e246-49ca-bf4e-bdb562cc1a68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="633" width="467" height="30" uuid="af0add6d-97b3-4409-954a-c8586ff1e98d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#A6A6A6' isBold='true' pdfFontName='Helvetica-Bold'>Apoderado Legal SPP Institución de Seguros, S.A. de C.V. </style>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="280" width="468" height="30" uuid="fb7af727-c91e-4480-8916-dfe30d7d0474"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#A6A6A6' isBold='true' pdfFontName='Helvetica-Bold'>" +$F{BENEF_PREFERENTE}+ "</style>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="138" width="140" height="26" uuid="2bc9de31-8ee8-44a7-b959-dbc92a14d9b5"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top" markup="styled">
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CON VIGENCIA A PARTIR DE 
+LAS 12 HRS. DEL DÍA: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="138" width="250" height="26" uuid="af428397-6395-4033-ad00-fac0a5ccd2b3"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VIGENCIA}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="157" y="594" width="153" height="34" uuid="222d8d67-4f4c-452b-b171-e7706ff61af7"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="2" y="672" width="468" height="76" uuid="1033c4c9-fcb0-472e-b75b-9cc0c6d27a46"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Oblique'>En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, la documentación contractual y la nota técnica que integran este producto de Seguro, quedaron registradas ante la Comisión Nacional de Seguros y Fianzas, a partir del día "+$F{FECHA_REG}+", con el número " +$F{REGISTRO}+ ".</style>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="369" y="0" width="100" height="36" uuid="11ae16f0-694a-4c33-b8da-3b36d0c4e187"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>Página 1 de 1 </style>]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="formularioCoberturasProductoFragment"
+		class="main-container">
+		<fieldset class="scheduler-border col-md-12">
+			<legend class="scheduler-border">Generales</legend>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="idRamo">Ramo:</label> <select class="form-control ramo"
+						id="idRamo" name="idRamo">
+					</select>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="cveProducto">Producto:</label> <select
+						class="form-control producto" id="cveProducto" name="cveProducto">
+					</select>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="cveCobertura">Cobertura:</label> <select
+						class="form-control cobertura" id="cveCobertura"
+						name="cveCobertura">
+					</select>
+				</div>
+
+				<!-- <div class="form-group col-md-4">
+					<label for="descripcion">Nombre Cobertura Producto:</label> <input
+						class="form-control text-uppercase" type="text" id="descripcion"
+						name="descripcion" maxlength="100">
+				</div> -->
+
+				<div class="form-group col-md-3">
+					<label for="plazoCobertura">Plazo Cobertura:</label> <input
+						class="form-control numberClass" type="text" id="plazoCobertura"
+						name="plazoCobertura" maxlength="3">
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="sumaAseguradaMinima">Suma Asegurada:</label> <input
+						class="form-control moneda" type="text"
+						id="sumaAseguradaMinima" name=sumaAseguradaMinima maxlength="20" />
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="sublimite">Sublimite:</label> <input
+						class="form-control numberClass" type="text" id="sublimite"
+						name="sublimite" maxlength="10" />
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset class="scheduler-border col-md-12">
+			<legend class="scheduler-border">Cálculo de tarifas</legend>
+			<div class="form-row">
+				<div class="form-group col-md-4 md-2">
+					<label for="primaRiesgo">Prima Riesgo:</label> <input
+						class="form-control asistencia" type="text" id="primaRiesgo"
+						name="primaRiesgo" maxlength="18" />
+				</div>
+
+				<div class="form-group col-md-4 md-2">
+					<label for="gastosAdq asistencia">% Gastos Adq:</label> <input
+						class="form-control formatoPorcentaje asistencia" type="text" id="gastosAdq" name="gastosAdq"
+						maxlength="18" />
+				</div>
+
+				<div class="form-group col-md-4 md-2">
+					<label for="gastosAdm">% Gastos Adm:</label> <input
+						class="form-control formatoPorcentaje asistencia" type="text" id="gastosAdm" name="gastosAdm"
+						maxlength="18" />
+				</div>
+
+				<div class="form-group col-md-4 md-2">
+					<label for="utilidad">% Utilidad:</label> <input
+						class="form-control formatoPorcentaje asistencia" type="text" id="utilidad" name="utilidad"
+						maxlength="18" />
+				</div>
+
+				<div class="form-group col-md-4 md-2">
+					<label for="idTarifa">Tarifa:</label> <input class="form-control formatoPorcentaje"
+						type="text" id="idTarifa" name="idTarifa" maxlength="18" />
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="impuesto">Impuesto:</label> <input
+						class="form-control formatoPorcentaje text-uppercase" type="text" id="impuesto"
+						name="impuesto" maxlength="10" />
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="deducible">Deducible:</label> <input
+						class="form-control formatoPorcentaje" type="text" id="deducible" name="deducible"
+						maxlength="18" />
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="coaseguro">Coaseguro:</label> <input
+						class="form-control formatoPorcentaje" type="text" id="coaseguro" name="coaseguro"
+						maxlength="10" />
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="scheduler-border col-md-12">
+			<legend class="scheduler-border">Adicionales</legend>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="fechaAlta">Fecha Alta:</label>
+					<div class="input-group">
+						<input class="form-control date currentDate" type="text"
+							id="fechaAlta" name="fechaAlta" disabled> <span
+							class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+						</span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="comisionAgenteCobertura">Comisión Agente
+						Cobertura:</label> <input class="form-control comisionAgenteCobertura" type="text"
+						id="comisionAgenteCobertura formatoPorcentaje" name="comisionAgenteCobertura"
+						maxlength="20" />
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="comisionPromotorCobertura">Comisión Promotor
+						Cobertura:</label> <input class="form-control comisionPromotorCobertura"
+						id="comisionPromotorCobertura formatoPorcentaje" name="comisionPromotorCobertura"
+						maxlength="20" />
+				</div>
+				
+				<div class="form-group col-md-4 porcentajeSAIndemnizar-box d-none">
+					<label for="porcentajeSAIndemnizar">% SA a indemnizar:</label> <input class="form-control porcentajeSAIndemnizar numberClass"
+						id="porcentajeSAIndemnizar" name="porcentajeSAIndemnizar"
+						maxlength="3" min="0" max="100"/>
+				</div>
+				
+				<div class="form-group col-md-4 porcentajePerdidaTotal-box d-none">
+					<label for="porcentajePerdidaTotal" style="font-size: 0.8em !important">
+						% pérdida total / valor escrituración:</label> <input class="form-control porcentajePerdidaTotal numberClass"
+						id="porcentajePerdidaTotal" name="porcentajePerdidaTotal"
+						maxlength="3" min="0" max="100"/>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wst.html.ui.internal.preferences.ui.HTMLTemplatePreferencePage$HTMLEditTemplateDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="173"/>
+		<item key="DIALOG_Y_ORIGIN" value="0"/>
+		<item key="DIALOG_WIDTH" value="611"/>
+		<item key="DIALOG_HEIGHT" value="436"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="success"/>
+		<list key="findhistory">
+			<item value="sorting_disabled"/>
+			<item value="sorting_disabled success"/>
+			<item value="="/>
+			<item value="width"/>
+			<item value="style"/>
+			<item value="obtener"/>
+			<item value="claveMoneda"/>
+			<item value="moneda"/>
+			<item value="btnSiguiente"/>
+			<item value="estatus"/>
+			<item value="siguienteTab"/>
+			<item value="siguiente"/>
+			<item value="formValido"/>
+			<item value="guardaContrato"/>
+			<item value="guarda"/>
+		</list>
+		<list key="replacehistory">
+			<item value="success"/>
+			<item value=""/>
+			<item value="sorting_disabled success"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="984"/>
+		<item key="DIALOG_Y_ORIGIN" value="163"/>
+		<item key="DIALOG_WIDTH" value="284"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

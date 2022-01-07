@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="content-wrap">
+		<!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+		<main id="content" class="content" role="main">
+			<ol class="breadcrumb">
+				<li>Información Estadistica</li>
+				<li>Reporte Trimestral</li>
+				<li class="active">Reportes</li>
+			</ol>
+			<h1 class="page-title">
+				Análisis - <span class="fw-semi-bold">Resultados</span>
+			</h1>
+			<div class="row mb-lg">
+				<div class="col-lg-12">
+					<div class="clearfix">
+						<ul class="nav nav-tabs pull-xs-left" id="myTab" role="tablist">
+
+							<li class="nav-item"><a class="nav-link active"
+								id="home-tab" data-toggle="tab" href="#basic" role="tab"
+								aria-controls="basic" aria-expanded="true">Análisis</a></li>
+
+							<li class="nav-item"><a class="nav-link" id="profile-tab"
+								data-toggle="tab" href="#assumtion" role="tab"
+								aria-controls="assumtion" aria-expanded="false">Resultados</a></li>
+
+						</ul>
+
+					</div>
+					<!-- class="clearfix" -->
+
+					<div class="tab-content mb-lg" id="myTabContent">
+						<div role="tabpanel" class="tab-pane active in clearfix"
+							id="basic" aria-labelledby="basic-tab" aria-expanded="true">
+							<header>
+								<h4>
+									Cuadre <span class="fw-semi-bold">Contable</span>
+								</h4>
+							</header>
+							<!-- SECCION UNO -->
+							<section class="widget">
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+											<!-- CUADRO 1 -->
+											<div class="form-group col-md-6">
+												<p>General de Seguros</p>
+												<table id="datatable-table"
+													class="table table-striped table-hover">
+													<thead>
+														<tr>
+															<th>Ramo</th>
+															<th>RR8ORS</th>
+															<th>RR7</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>030</td>
+															<td>6,516,132</td>
+															<td>6,516,132</td>
+														</tr>
+														<tr>
+															<td>040</td>
+															<td>6,432</td>
+															<td>6,432</td>
+														</tr>
+														<tr>
+															<td>050</td>
+															<td>213,543</td>
+															<td>213,543</td>
+														</tr>
+														<tr>
+															<td>060</td>
+															<td>213,543</td>
+															<td>211,453</td>
+														</tr>
+														<tr>
+															<td>070</td>
+															<td>256,452</td>
+															<td>256,452</td>
+														</tr>
+														<tr>
+															<td>080</td>
+															<td>25,464</td>
+															<td>25,464</td>
+														</tr>
+														<tr>
+															<td>090</td>
+															<td>6,848</td>
+															<td>6,848</td>
+														</tr>
+														<tr>
+															<td>110</td>
+															<td>3,565</td>
+															<td>3,565</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+
+											<!-- CUADRO 2 -->
+											<div class="form-group col-md-6">
+												<p>General de Salud</p>
+												<table id="datatable-table"
+													class="table table-striped table-hover">
+													<thead>
+														<tr>
+															<th>Ramo</th>
+															<th>RR8ORS</th>
+															<th>RR7</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>031</td>
+															<td>213,543</td>
+															<td>213,543</td>
+														</tr>
+														<tr>
+															<td>034</td>
+															<td>6,432</td>
+															<td>6,432</td>
+														</tr>
+														<tr>
+															<td>037</td>
+															<td>213,543</td>
+															<td>213,530</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</section>
+							<header>
+								<h4>
+									Homogeneidad
+									<!--  <span class="fw-semi-bold">Contable</span> -->
+								</h4>
+
+							</header>
+
+							<!-- SECCION DOS -->
+							<section class="widget">
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+											<!-- CUADRO 1 -->
+											<div class="form-group col-md-6">
+
+												<!-- Grafica General seguros-->
+												<div class="card-content">
+													<div id="chart_div_general_seguros"
+														style="width: 100%; height: 500px;"></div>
+												</div>
+											</div>
+
+											<!-- CUADRO 2 -->
+											<div class="form-group col-md-6">
+												<!-- Grafica General seguros-->
+												<div class="card-content">
+													<div id="chart_div_general_salud"
+														style="width: 100%; height: 500px;"></div>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</section>
+
+						</div>
+						<!-- FIN APARTADO ANALISIS  -->
+
+						<!-- SEGUNDO APARTADO RESULTADOS  -->
+
+						<div class="tab-pane" id="assumtion">
+							<div role="tabpanel" aria-labelledby="assumtion-tab"
+								aria-expanded="true">
+								<header>
+									<h4>
+										RR8ORS <span class="fw-semi-bold">(Resumen)</span>
+									</h4>
+								</header>
+								<!-- SECCION UNO -->
+								<section class="widget">
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+
+									<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO UNO SECCIÓN UNO-->
+												<div class="form-group col-md-6">
+													<p></p>
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>Asegurados</th>
+																<th>Siniestros</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+															</tr>
+
+															<tr>
+																<td>040</td>
+																<td>6,432</td>
+																<td>6</td>
+															</tr>
+
+															<tr>
+																<td>050</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+
+															<tr>
+																<td>060</td>
+																<td>215,453</td>
+																<td>214</td>
+															</tr>
+
+															<tr>
+																<td>070</td>
+																<td>256,452</td>
+																<td>255</td>
+															</tr>
+
+															<tr>
+																<td>080</td>
+																<td>24,464</td>
+																<td>25</td>
+															</tr>
+
+															<tr>
+																<td>090</td>
+																<td>6,848</td>
+																<td>7</td>
+															</tr>
+
+															<tr>
+																<td>110</td>
+																<td>3,565</td>
+																<td>4</td>
+															</tr>
+
+
+														</tbody>
+													</table>
+
+
+												</div>
+												<!-- CUADRO DOS SECCION UNO-->
+												<div class="form-group col-md-6">
+													<p>General de Salud</p>
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>Asegurados</th>
+																<th>Siniestros</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>031</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+															<tr>
+																<td>034</td>
+																<td>6,432</td>
+																<td>6</td>
+															</tr>
+															<tr>
+																<td>037</td>
+																<td>213,543</td>
+																<td>212</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+								</section>
+
+								<header>
+									<h4>
+										RR8<span class="fw-semi-bold">COR</span>
+									</h4>
+								</header>
+								<!-- SECCION DOS -->
+
+								<section class="widget">
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+									</div>
+
+									<div class="widget-body">
+										<div class="row mb-lg">
+											<div class="form-row">
+												<!-- CUADRO UNO SECCION DOS-->
+												<div class="form-group col-md-6">
+													<table id="datatable-table"
+														class="table table-striped table-hover">
+														<thead>
+															<tr>
+																<th>Ramo</th>
+																<th>Polizas</th>
+																<th>Cetificados</th>
+																<th>Prima</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>030</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>040</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>050</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>060</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>070</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>080</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>090</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+															<tr>
+																<td>110</td>
+																<td>6,516,132</td>
+																<td>6,477</td>
+																<td>6,477</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+
+
+											</div>
+											<!-- CUADRO DOS SECCIÓN DOS-->
+											<div class="form-group col-md-6">
+												<table id="datatable-table"
+													class="table table-striped table-hover">
+													<thead>
+														<tr>
+															<th>Ramo</th>
+															<th>Polizas</th>
+															<th>Certificados</th>
+															<th>Prima</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>031</td>
+															<td>6,516,132</td>
+															<td>6,477</td>
+															<td>6,477</td>
+														</tr>
+														<tr>
+															<td>034</td>
+															<td>500</td>
+															<td>152</td>
+															<td>6,477</td>
+														</tr>
+														<tr>
+															<td>037</td>
+															<td>500</td>
+															<td>152</td>
+															<td>6,477</td>
+														</tr>
+
+													</tbody>
+												</table>
+											</div>
+
+										</div>
+									</div>
+							</div>
+
+							</section>
+
+							<!-- SECCIÓN TRES -->
+							<section class="widget">
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+
+								<div class="widget-body">
+									<div class="row mb-lg">
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<button id="verificarfecha" type="button"
+													class="btn btn-primary">
+													Generar Productos <span class="badge"></span>
+												</button>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</section>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	</main>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- page specific libs -->
+	<script th:src="@{/resources/underscore/underscore-min.js}"
+		src="resources/underscore/underscore-min.js"></script>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/googleCharts.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/googleCharts.js}"></script>
+		<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadC.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadC.js}"></script>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidad.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidad.js}"></script>
+
+	<!-- SALUD -->
+		<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSaludC.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSaludC.js}"></script>
+	<script
+		src="/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSalud.js"
+		th:src="@{/resources/js/pages/informacionEstadistica/reporteTrimestral/analisisHomogeneidadSalud.js}"></script>
+
+</body>
+
+</html>

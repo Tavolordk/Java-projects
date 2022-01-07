@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="movimientoEditFragment" class="main-container">
+		<div class="modal fade" id="editarMovimientoModal" tabindex="-1"
+			role="dialog" aria-labelledby="editarMovimientoModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="editarMovimientoModalLabel" align="center" style="background: blue; color: white">EDITAR MOVIMIENTO</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formEditarMovimiento" enctype="multipart/form-data" autocomplete="off" class="needs-validation" novalidate>
+							<div class="row">
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Póliza:</label>
+								<input	class="form-control text-uppercase numberClass" type="text" id="poliza" name="poliza" maxlength="8" />
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Ramo:</label>
+								 <select class="form-control text-uppercase lstRamos" id="ramo" name="ramo">
+								 </select>
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Número Recibo:</label>
+								 <input	class="form-control text-uppercase numberClass" type="text" id="recibo" name="recibo"  maxlength="5"/>
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Endoso:</label>
+								 <input	class="form-control text-uppercase numberClass" type="text" id="endoso" name="endoso" onBlur="modificaLiqC.validaRecibosModal()" maxlength="5" />
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Sucursal:</label>
+								 <select class="form-control text-uppercase lstSucursal" id="sucursal" name="sucursal" disabled>
+								 </select>
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Tipo Endoso:</label>
+								 <input	class="form-control text-uppercase" type="text" id="tipoEndoso" name="tipoEndoso" disabled />
+							</div>
+							
+							<div class="form-group col-md-4">
+								<label for="fecha">Fecha Pago: </label>
+								<div class="input-group">
+									<input type="text" class="form-control date currentDate"
+										id="fechaPago" name="fechaPago"
+										placeholder="aaaa-mm-dd" disabled/> <span class="input-group-text">
+										<i class="fas fa-calendar-alt"></i>
+									</span>
+								</div>
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Prima Total:</label>
+								 <input	class="form-control text-uppercase numberClass" type="text" id="primaTotal" name="primaTotal" maxlength="12" disabled/>
+							</div>
+							
+							<div class="form-group col-md-4 ">
+								<label for="nombre">Prima Neta:</label>
+								 <input	class="form-control text-uppercase numberClass" type="text" id="primaNeta" name="primaNeta" maxlength="12" disabled/>
+							</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"	data-dismiss="modal">
+							<span class="mr-2"> <i class="fas fa-ban"></i></span>
+							Cancelar
+						</button>
+						<button type="button" class="btn btn-primary text-truncate"	 id="actualizarMovimientos">
+							<span class="mr-2"> <i class="fas fa-save"></i></span>
+							Guardar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

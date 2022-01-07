@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card card-content">
+		<div th:fragment="reaseguradoresFormFragment">
+			<h2>Reaseguradores</h2>
+			<div class="table-responsive main-container background-tabla">
+				<table id="reaseguradoresTabla" class="table table-sm table-hover table-bordered estiloTablas fullwidth">
+				</table>
+			</div>
+			<form autocomplete="off" class="needs-validation" id="formReaseguradores" novalidate>
+				<div class="row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="contratoRR6">Contrato RR-6:</label>
+						<input class="form-control text-uppercase" id="contratoRR6" name="contratoRR6" maxlength="16"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="numeroCapa">Número capa:</label>
+						<input class="form-control text-uppercase numberClass" id="numeroCapa" name="numeroCapa" maxlength="2"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="participacionReasegurador">Participación (%):</label>
+						<input class="form-control text-uppercase currency" id="participacionReasegurador" name="participacionReasegurador" maxlength="8"/>
+					</div>
+
+					<div class="form-group col-md-6 siniestro">
+						<label for="nombreIntermediario">Intermediario:</label>
+						<input class="form-control text-uppercase autoCompletarIntermediario" id="nombreIntermediario" name="nombreIntermediario" maxlength="10"/>
+					</div>
+
+					<div class="form-group col-md-4 siniestro">
+						<label for="porcentajeCorretaje">Porcentaje broker/corretaje (%):</label>
+						<input class="form-control text-uppercase currency" id="porcentajeCorretaje" name="porcentajeCorretaje" maxlength="8"/>
+					</div>
+					
+					
+					<div class="form-group col-md-6 siniestro">
+						<label for="nombreCompania">Compañia:</label>
+						<input class="form-control text-uppercase autoCompletaProveedor" id="nombreCompania" name="nombreCompania" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-6 siniestro">
+						<label for="claveCNSF">Clave registro CNSF:</label>
+						<input class="form-control text-uppercase autoCompletaProveedor" id="claveCNSF" name="claveCNSF" disabled/>
+					</div>
+					
+				</div>
+				<div class="row">
+					
+					<div class="form-group col-md-4 pbBloque">
+						<label for="porcentajeGastosReaseguradorPB">Gastos reasegurador PB (%):</label>
+						<input class="form-control text-uppercase numberClass" id="porcentajeGastosReaseguradorPB" name="porcentajeGastosReaseguradorPB" maxlength="3"/>
+					</div>
+					
+					<div class="form-group col-md-4 pbBloque">
+						<label for="sONORPB">Siniestros ocurridos PB (%):</label>
+						<input class="form-control text-uppercase numberClass" id="sONORPB" name="sONORPB" maxlength="3"/>
+					</div>
+					
+					<div class="form-group col-md-4  pbBloque">
+						<label for="porcentajeParticBeneficiosPB">Participacion beneficios PB (%):</label>
+						<input class="form-control text-uppercase numberClass" id="porcentajeParticBeneficiosPB" name="porcentajeParticBeneficiosPB" maxlength="3"/>
+					</div>
+					
+				</div>
+				<div class="row">
+
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="agregaReaseguradorNoP">
+							<span class="mr-2">
+							</span>Agregar y capturar nuevo
+						</button>
+						
+						<!-- <button  type="button" class="btn btn-primary text-truncate btnAgregarCapas" id="saltarTabCapas">
+							<span class="mr-2">
+							</span>Capas
+						</button> -->
+					</div>
+					
+				</div>
+				
+				<div class="row">
+
+					<div class="form-group col-md-6 d-flex justify-content-start">
+						<button  type="button" class="btn btn-primary text-truncate btnAnterior">
+							<span class="mr-2"><i class="fas fa-arrow-circle-left"></i>
+							</span>Anterior
+						</button>
+					</div>
+					
+					<div class="form-group col-md-6 d-flex justify-content-end">
+						<button  type="button" class="btn btn-primary text-truncate btnSiguiente">
+							Siguiente
+							<span class="mr-2"><i class="fas fa-arrow-circle-right"></i>
+							</span>
+						</button>
+					</div>					
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/detalleC.js" th:src="@{/resources/js/pages/reaseguro/detalleC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/detalle.js" th:src="@{/resources/js/pages/reaseguro/detalle.js}"></script>
+</body>
+</html>

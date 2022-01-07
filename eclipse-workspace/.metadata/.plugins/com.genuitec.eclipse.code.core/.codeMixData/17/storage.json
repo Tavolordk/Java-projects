@@ -1,0 +1,14 @@
+{
+    "telemetry.machineId": "deb8e3f10be7802b7d428e9560a768ce512678f58653d6231792c635b0081e89",
+    "openedPathsList": {
+        "workspaces3": [
+            {
+                "id": "493cfcf62aa7791a0cfe4abaff7cd5a9",
+                "configURIPath": "file:///c%3A/Users/Tavol/eclipse-workspace/.metadata/codemix.code-workspace"
+            }
+        ],
+        "files2": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#1e1e1e"
+}

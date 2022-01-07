@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8"/>
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="wizard-container">
+			<div th:fragment="ocurridoFragment">
+				<div class="card-container">
+					<section class="columns">
+						<h1 class="display-8">OCURRIDOS</h1>
+						<div class="form-row">
+							<div class="form-group col-md-10">
+								<button class="btn btn-primary" id="btnDescargarHistorico"
+									 type="button">Descargar Excel</button>
+							</div>
+							<!-- TABLA -->
+							<div class="form-group col-md-12">
+								<div class="card-content">
+									<div class="table-responsive main-container"
+										style="background-color: #ffff;">
+										<table id="tablaOcurridos"
+											class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+											style="width: 100%">
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+				
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+</html>

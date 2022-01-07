@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="capturaGruposAPFragment" class="main-container">
+
+		<form id="formCapturaGruposAP" enctype="multipart/form-data">
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="nombreGrupo">Nombre de Grupo:</label> <input
+						class="form-control required input_upper" type="text" id="nombreGrupo"
+						name="nombreGrupo" />
+				</div>
+				<div class="form-group col-md-3">
+					<label for="ocupacion">Ocupación:</label> <select
+						class="form-control ocupacion" id="ocupacion" name="ocupacion" required>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="nivelRiesgo">Nivel de Riesgo:</label> <input
+						class="form-control required input_upper riesgo" type="text" id="nivelRiesgo"
+						name="nivelRiesgo" maxlength="1"/>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<button class="btn btn-primary float-right" id="btnCargarGrupo"
+						type="button">
+						<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+					</button>
+				</div>
+
+			</div>
+
+		</form>
+		<div class="row">			
+			<div class="col-md-12">
+				<h5>Grupos</h5>
+				<div class="table-responsive main-container background-tabla"
+					id="tablaGrupos">
+					<table id="resultadoGrupos"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<!-- Modal Subir Censo-->
+		<div id="SubirGrupoModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h3>Carga de Censo</h3>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<strong>Id Grupo: </strong><span id="idGrupo"></span> <strong>Nombre Grupo: </strong><span id="nombreGrupoU"></span>
+						<form class="form-inline" enctype="multipart/form-data" id="formArchivoPersonales" autocomplete="off">
+							<div class="form-group mb-2">
+								<label for="fileInput">Subir archivo</label> <input
+										id="fileInput" type="file" class="file" name="file">
+								<div id="errorBlock" class="help-block"></div>
+								<div id="msg" class="form-group mt-1 p-0 col-md-8"></div>
+							</div>
+							<div class="form-group mx-sm-3 mb-2">
+								<button type="button" class="btn btn-primary mb-2" id="btnCargarArchivoPersonales">Cargar archivo</button>								
+							</div>							
+						</form>
+						<div class="col-md-12">
+							<div class="table-responsive main-container background-tabla">
+								<table id="resultadoCargaCenso"
+									class="table table-sm table-hover table-bordered estiloTablas">
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							id="btnCloseModal">Cerrar</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Modal Editar Grupo-->
+		<div id="EditarGrupoModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h3>
+							Editar Grupo <span id="idGrupoE"></span>
+						</h3>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="nombreGrupo">Nombre de Grupo:</label> <input
+									class="form-control input_upper" type="text"
+									id="nombreGrupoE" name="nombreGrupo" />
+							</div>
+							<div class="form-group col-md-4">
+								<label for="ocupacion">Ocupación:</label> <select
+									class="form-control" id="ocupacionE" name="ocupacion">
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="nivelRiesgo">Nivel de Riesgo:</label> <input
+									class="form-control input_upper riesgo" type="text"
+									id="nivelRiesgoE" name="nivelRiesgo" maxlength="1"/>
+							</div>
+							<!-- <div class="form-group col-md-3">
+								<label for="producto">Producto:</label> <select
+									class="form-control" id="productoE" name="producto">
+									<option value="0">Seleccione Producto...</option>
+								</select>
+							</div> -->
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">								
+								<button class="btn btn-primary float-right" id="btnCargarGrupoE"
+									type="button">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+								</button>
+								<button class="btn btn-danger float-right mr-3"
+									id="btnEliminarGrupoE" type="button">
+									<span style="padding: 5px"><i class="fas fa-trash"></i></span>Eliminar Censo
+								</button>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="table-responsive main-container background-tabla">
+								<table id="CensoGrupoE"
+									class="table table-sm table-hover table-bordered estiloTablas">
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							id="btnCloseModal">Cerrar</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Modal Eliminar Grupo-->
+		<div id="EliminarGrupoModal" class="modal fade" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h3>
+							Eliminar Grupo <span id="idGrupoE"></span>
+						</h3>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="col-sm-12">
+							<h4>¿Está seguro que desea eliminar el grupo?</h4>
+							<p><strong>Id Grupo: </strong><span id="idGrupoB"></span> <strong>Nombre Grupo: </strong><span id="nombreGrupoB"></span></p>
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							id="btnEliminarGrupoB">Aceptar</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal"
+							id="btnCloseModal">Cerrar</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

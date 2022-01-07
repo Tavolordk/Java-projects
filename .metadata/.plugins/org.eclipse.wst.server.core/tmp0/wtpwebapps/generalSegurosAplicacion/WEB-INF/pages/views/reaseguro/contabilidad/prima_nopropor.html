@@ -1,0 +1,72 @@
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> -->
+		<fieldset>
+			<div class="form-group col-md-4">
+				<label class="col-md-12 control-label" for="contratos">
+					Contratos
+				</label> 
+				<select data-placeholder="Seleccione contrato" class="select2 form-control" id="contratos" required="required">
+					<option value="0">Seleccione contrato</option>
+					<option value="1">AP DAÑOS</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="desde">Desde:</label>
+				<div>
+					<input type="date" class="form-control date" id="desde" name="desde" placeholder="yyyy-mm-dd" min="2018-01-01"
+						max="2050-12-31" required="true" /> <span
+						class="input-group-text"><i
+						class="fas fa-calendar-alt"></i></span> <span
+						class="input-group-btn"> </span>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="hasta">Hasta:</label>
+				<div>
+					<input type="date" class="form-control date" id="hasta" name="hasta" placeholder="yyyy-mm-dd" min="2018-01-01"
+						max="2050-12-31" required="true" /> <span
+						class="input-group-text"><i
+						class="fas fa-calendar-alt"></i></span> <span
+						class="input-group-btn"> </span>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<button class="btn btn-primary" id="btnCalcular"
+					type="button">Calcular</button>
+			</div>
+			<div class="form-group col-md-4">
+				<button class="btn btn-primary" id="btnContabilidad"
+					type="button" disabled>Contabilidad</button>
+			</div>
+		</fieldset>
+		
+		
+		<!-- *********************************************************** -->
+		
+		<fieldset>
+			<div class="form-group col-md-4">
+				<label for="pmd">PMD:</label> <input
+					class="form-control text-uppercase" type="text"
+					id="pmd" name="pmd" maxlength="200" disabled/>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="factor">Factor de ajuste (%):</label> <input
+					class="form-control text-uppercase" type="text"
+					id="factor" name="factor" maxlength="200" disabled/>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="prima">Prima ajuste:</label> <input
+					class="form-control text-uppercase" type="text"
+					id="prima" name="prima" maxlength="200" disabled/>
+			</div>
+			
+			<div class="form-group col-md-4">
+				<label for="prim_ret">Primas retenidas:</label> <input
+					class="form-control text-uppercase" type="text"
+					id="prim_ret" name="prim_ret" maxlength="200" disabled/>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="prim_aj">Prima ajustada a contabilizar:</label> <input
+					class="form-control text-uppercase" type="text"
+					id="prim_aj" name="prim_aj" maxlength="200" disabled/>
+			</div>
+		</fieldset>

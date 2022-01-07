@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+<div th:include="templates/layout :: menuFragment"></div>
+
+<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Recibo AP</h4>
+			</div>
+		<div class="card-content">
+			<form id="formPolizaBuscar" autocomplete="off">
+			
+			<div class="row">
+				<div class="form-group col-md-4">
+					<label for="busquedaFechaInicio">Inicio</label>
+					<div class="input-group">
+						<input type="text" class="form-control date" id="busquedaFechaInicio" name="busquedaFechaInicio" placeholder="yyyy-mm-dd" />
+						<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="busquedaFechaFin">Fin</label>
+					<div class="input-group">
+						<input type="text" class="form-control date" id="busquedaFechaFin" name="busquedaFechaFin" placeholder="yyyy-mm-dd" />
+						<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						
+						<input type="text" class="form-control date" id="tipoBusqueda" name="tipoBusqueda" value="BusquedaPolizasCBAP" hidden />
+						<input type="text" class="form-control date" id="tipometodo" name="tipometodo"  value="recibo_ap" hidden />
+						
+						<span class="input-group-btn">
+							<button id="btnconsultarPolizaByFecha" type="button" class="btn btn-md">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+					</div>					
+				</div>
+				<div class="form-group col-md-4">
+					<label for="">Descargar</label>
+					<div class="input-group">
+						<span class="input-group-btn">
+							<a href="impresionesC/recibo_apAll/?" target="_blank" >
+								<button id="" type="button" class="btn btn-md">
+									<i class="fas fa-download" style="color: #ffff"></i>
+								</button>
+							</a>
+						</span>
+					</div>
+				</div>
+	
+			</div>
+			
+			<div class="table-responsive main-container background-tabla">
+				<table id="resultadoBusquedaPoliza"
+					class="table table-sm table-hover table-bordered estiloTablas">
+				</table>
+			</div>
+			
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<script src="/resources/js/pages/emision/busquedaImpresionesPolizaCBAPC.js"	th:src="@{/resources/js/pages/emision/busquedaImpresionesPolizaCBAPC.js}"></script>
+	<script src="/resources/js/pages/emision/busquedaImpresionesPolizaCBAP.js" th:src="@{/resources/js/pages/emision/busquedaImpresionesPolizaCBAP.js}"></script>
+</body>
+</html>

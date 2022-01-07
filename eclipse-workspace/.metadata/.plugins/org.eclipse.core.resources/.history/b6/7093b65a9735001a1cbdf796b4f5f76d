@@ -1,0 +1,14 @@
+package figura;
+
+public class PruebaAritmetica {
+
+	public static void main(String[] args)
+	{
+		Aritmetica aritmetica = new Aritmetica();
+		int resultado = aritmetica.sumar();
+		System.out.println("El resultado es: " + resultado);
+		
+		Aritmetica aritmetica2 = new Aritmetica(4, 3);
+		System.out.println("resultado2: " + aritmetica2.sumar());
+	}
+}

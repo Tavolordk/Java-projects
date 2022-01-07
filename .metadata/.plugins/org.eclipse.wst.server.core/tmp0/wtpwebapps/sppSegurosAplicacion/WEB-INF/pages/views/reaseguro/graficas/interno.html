@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card grey lighten-4 animated fadeIn">
+			<!-- Card content -->
+			<div class="card-body">
+
+				<!-- Title -->
+				<h4 class="card-title">
+					<a>Control interno</a>
+				</h4>
+					<form>
+
+						<div class="form-group col-md-4">
+					<label for="lmr">LMR</label> <input
+						class="form-control text-uppercase" type="text" id="lmr"
+						name="lmr" maxlength="100"/>
+				</div>
+				
+				<div class="form-group col-md-4">
+					<label for="vigor">Vigor:</label> <input
+						class="form-control text-uppercase date currentDate" type="text" id="vigor"
+						name="vigor" maxlength="100"/>
+				</div>
+				
+				<div class="form-group col-md-4">
+					<label for="vigor">Vigor:</label> <select id="ramo" class="browser-default custom-select ramo">
+							<option value="" disabled>Seleccione...</option>
+						</select>
+				</div>
+				
+						<div class="form-group col-md-4">
+					<label for="rango">Rango:</label> <input
+						class="form-control text-uppercase" type="text" id="rango"
+						name="rango" maxlength="100"/>
+				</div>
+
+						<!-- Send button -->
+						<div class="d-flex justify-content-end">
+							<button class="btn btn-primary" type="button" id="btnBuscarPolizas">
+								<i class="fas fa-search"></i>Buscar
+							</button>
+						</div>
+					</form>
+				</div>
+				
+				<div class="">
+					<div id="contratos" class="blue-grey lighten-5" style="width: 80%"></div>				
+				</div>
+				
+
+		</div>
+
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/reaseguro/contratosC.js" th:src="@{/resources/js/pages/reaseguro/contratosC.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramoC.js" th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/internoC.js" th:src="@{/resources/js/pages/reaseguro/internoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/interno.js" th:src="@{/resources/js/pages/reaseguro/interno.js}"></script>

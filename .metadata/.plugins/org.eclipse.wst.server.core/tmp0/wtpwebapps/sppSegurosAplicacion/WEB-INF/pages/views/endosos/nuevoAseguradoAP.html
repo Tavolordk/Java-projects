@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Nuevo Asegurado AP</h4>
+			</div>
+		<div class="card-content">
+
+			<form id="formNuevoAseguradoAp">
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="numeroPoliza">Número de póliza</label> <input class="form-control numberClass"
+							id="numeroPoliza" name="numeroPoliza">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="grupo">Grupo</label> <input class="form-control text-uppercase" id="grupo"
+							name="grupo">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-2">
+						<label for="fecha">Fecha efectividad:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date-endosos" id="fechaEfectividad" name="fechaEfectividad"
+								data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="nombreAsegurado">Nombre</label> <input class="form-control text-uppercase"
+							id="nombreAsegurado" name="nombreAsegurado" maxlength="100">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="apellidoPaternoAsegurado">Apellido paterno</label> <input
+							class="form-control text-uppercase" id="apellidoPaternoAsegurado"
+							name="apellidoPaternoAsegurado" maxlength="100">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="apellidoMaternoAsegurado">Apellido materno</label> <input
+							class="form-control text-uppercase" id="apellidoMaternoAsegurado"
+							name="apellidoMaternoAsegurado" maxlength="100">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaNacimiento" name="fechaNacimiento"
+								data-mask="0000-00-00" data-date-end-date="0d" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline mt-4 ml-2">
+						<input type="radio" id="radioHombre" name="sexo" class="custom-control-input" value="M">
+						<label class="custom-control-label" for="radioHombre">Hombre</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline mt-4 ml-2">
+						<input type="radio" id="radioMujer" name="sexo" class="custom-control-input" value="F">
+						<label class="custom-control-label" for="radioMujer">Mujer</label>
+					</div>
+				</div>
+
+				<div class="table-responsive main-container background-tabla">
+					<h3>Beneficiarios</h3>
+					<table id="tablaBeneficiariosNuevo"
+						class="table table-sm table-hover table-bordered estiloTablas" style="width: 100%">
+					</table>
+				</div>
+
+				<div class="form-row float-right mt-3">
+					<button type="button" class="btn btn-primary" id="btnGuardarAseguradoAp">Guardar</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/parentescoC.js"
+		th:src="@{/resources/js/pages/catalogos/parentescoC.js}"></script>
+	<script src="/resources/js/pages/endosos/endososAPC.js"
+		th:src="@{/resources/js/pages/endosos/endososAPC.js}"></script>
+	<script src="/resources/js/pages/endosos/endososAP.js"
+		th:src="@{/resources/js/pages/endosos/endososAP.js}"></script>
+
+</body>
+
+</html>

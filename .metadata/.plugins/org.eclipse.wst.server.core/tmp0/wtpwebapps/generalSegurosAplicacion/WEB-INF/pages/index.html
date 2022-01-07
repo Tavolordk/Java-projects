@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body class="login-page">
+	<div class="container">
+    <main id="content" class="widget-login-container" role="main">
+        <div class="row">
+            <div class="col-xl-4 col-md-6 col-xs-10 col-xl-offset-4 col-md-offset-3 col-xs-offset-1">
+                <section class="widget widget-login animated fadeInUp">
+                    <header>
+                       <h5 class="widget-login-logo animated fadeInUp">
+		                    <img src="/resources/img/gsLogoTrans.png" th:src="@{/resources/img/gsLogoTrans.png}" style="max-width: 100%">
+		                </h5>
+                    </header>
+                    <div class="widget-body">
+                        <form method="post" th:action="@{/login}">
+                            <fieldset>
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label" for="prepended-input" style="color: #063d92;">Usuario</label>
+                                    <div class="col-md-12">
+                                    	<input  class="form-control" type="text" name="username" placeholder="Usuario">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 control-label " for="password-field" style="color: #063d92;">Contraseña</label>
+                                    <div class="col-md-12">
+                                    	<input type="password" class="form-control" id="password-field" name="password" placeholder="Contraseña">
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div class="btn-toolbar pull-xs-right">
+                                    	<input type="submit" class="btn btn-primary float-right" value="Entrar">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <div class="alert alert-danger" role="alert" th:if="${error}"> [[${error}]] </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="page-footer">
+        2020 <span><img th:src="@{/resources/img/logoLight.png}" style="width: 30px"></span> Light it
+    </footer>
+</div>
+<!-- The Loader. Is shown when pjax happens -->
+<div class="loader-wrap hiding hide">
+    <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+</div>
+<style>
+    .login-pages {
+    background-color: #1173b5;
+
+    }
+    .login-page {
+        color: #fff;
+        background: -webkit-linear-gradient(150deg, #7bb4e0  33%, rgba(0, 0, 0, 0) 33%), -webkit-linear-gradient(110deg, #1073b6 66%, #a2c316 66%,#a1c316 66%);
+        background: -o-linear-gradient(150deg, #7bb4e0  33%, rgba(0, 0, 0, 0) 33%), -o-linear-gradient(110deg, #1073b6 66%, #a2c316 66%,#a1c316 66%);
+        background: -moz-linear-gradient(150deg, #7bb4e0  33%, rgba(0, 0, 0, 0) 33%), -moz-linear-gradient(110deg, #1073b6 66%, #a2c316 66%,#a1c316 66%);
+        background: linear-gradient(150deg, #7bb4e0  33%, rgba(0, 0, 0, 0) 33%), linear-gradient(110deg, #1073b6 66%, #a2c316 66%,#a1c316  66%);
+    }
+    .login-page .page-footer {
+    margin-bottom: 30px;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+}
+</style>
+</body>
+
+</html>

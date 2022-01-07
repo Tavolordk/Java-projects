@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="pagina1::#paginas#pagina1.xhtml"
+    NAME="output" PATH="/paginas/pagina1.xhtml"
+    TARGET="rules:#paginas#pagina1.xhtml" TITLE="pagina1" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="pagina2::#paginas#paginaFormulario.xhtml"
+    NAME="output1" PATH="/paginas/paginaFormulario.xhtml"
+    TARGET="rules:#paginas#paginaFormulario.xhtml" TITLE="pagina2" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#pagina1.xhtml"
+  PATH="/paginas/pagina1.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#pagina1.xhtml:0" NAME="item"
+   PATH="/paginas/pagina1.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="regresar::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="regresar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#paginaFormulario.xhtml"
+  PATH="/paginas/paginaFormulario.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#paginaFormulario.xhtml:0" NAME="item"
+   PATH="/paginas/paginaFormulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="pagina1::#paginas#pagina1.xhtml"
+    NAME="output" PATH="/paginas/pagina1.xhtml"
+    TARGET="rules:#paginas#pagina1.xhtml" TITLE="pagina1" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

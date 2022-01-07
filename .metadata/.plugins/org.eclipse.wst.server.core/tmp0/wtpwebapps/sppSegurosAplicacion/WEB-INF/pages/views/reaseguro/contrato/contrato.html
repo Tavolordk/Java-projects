@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card card-content">
+		
+			<div th:fragment="contratoFormFragment">
+				<form autocomplete="off" class="needs-validation" id="formContrato" novalidate>
+					
+					<h2>Contrato</h2>
+					<div class="row">
+						<div class="form-group col-md-4">
+							<label for="nombreContrato">Nombre contrato:</label>
+							<input class="form-control text-uppercase" id="nombreContrato" name="nombreContrato" maxlength="50"/>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label>Tipo reaseguro:</label>
+							<input	class="form-control text-uppercase cont-tipoReaseguro " readonly/>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label>Tipo protección:</label>
+							<input	class="form-control text-uppercase cont-tipoProteccion" readonly />
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="estatus">Estatus:</label>
+							<input	class="form-control text-uppercase cont-estatus" id="estatus" name="estatus" value="CAPTURA" data-cveEstatus="31" readonly/>
+							<!-- <select	class="form-control text-uppercase" id="estatus" name="estatus">
+								<option value="31">CAPTURA</option>
+								<option value="16">VIGENTE</option>
+								<option value="4">CERRADO</option>
+								<option value="99">CANCELADO / CON MOVIMIENTOS</option>
+							</select> -->
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="inicioVigencia">Inicio vigencia contrato:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date cont-iniVigencia" id="inicioVigencia" name="inicioVigencia" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="finVigencia">Fin vigencia contrato:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date finVigencia" id="finVigencia" name="finVigencia" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="anioSuscripcion">Año suscripción:</label>
+							<input class="form-control text-uppercase numberClass anioSuscripcion" id="anioSuscripcion" name="anioSuscripcion" maxlength="4"/>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="claveMoneda">Clave moneda:</label>
+							<select	class="form-control text-uppercase" id="claveMoneda" name="claveMoneda">
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="periodicidadBerderaux">Periodicidad borderaux:</label>
+							<select	class="form-control text-uppercase periodicidadBourderaux" id="periodicidadBerderaux" name="periodicidadBerderaux">
+								<option value="12">MENSUAL</option>
+								<option value="4">TRIMESTRAL</option>
+								<option value="2">SEMESTRAL</option>
+								<option value="1">ANUAL</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="periodicidadPerfilCartera">Periodicidad perfil cartera:</label>
+							<select	class="form-control text-uppercase periodicidadPerfilCartera" id="periodicidadPerfilCartera" name="periodicidadPerfilCartera">
+								<option value="12">MENSUAL</option>
+								<option value="4">TRIMESTRAL</option>
+								<option value="2">SEMESTRAL</option>
+								<option value="1">ANUAL</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="pendienteAutorizacion">Pendiente autorización:</label>
+							<select	class="form-control text-uppercase pendienteAutorizacion" id="pendienteAutorizacion" name="pendienteAutorizacion">
+								<option value="SI" selected>SI</option>
+								<option value="NO" th:if="${#arrays.contains(menu.permisos, 'contratoReaseguro')}">NO</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="fechaAutorizacion">Fecha autorización:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date currentDate fechaAutorizacion" id="fechaAutorizacion" name="fechaAutorizacion" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="calculoUtilidades">Cálculo de PTU:</label>
+							<select	class="form-control text-uppercase calculoUtilidades" id="calculoUtilidades" name="calculoUtilidades">
+								<option value="SI">SI</option>
+								<option value="NO">NO</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="porcentajePTU">Porcentaje PTU:</label>
+							<input class="form-control text-uppercase porcentajePTU" id="porcentajePTU" name="porcentajePTU" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="formulaUtilidades">Fórmula utilidades:</label>
+							<select	class="form-control text-uppercase formulaUtilidades" id="formulaUtilidades" name="formulaUtilidades">
+							<option value="1">(Primas - Siniestros) * Porcentaje de PTU</option>
+							<option value="2">(Primas Cedidas - Siniestros Cedidos ) * Porcentaje de PTU</option>
+							<option value="3">(Prima riesgo - Siniestros) * Porcentaje de PTU</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="aniosDesface">Años desface:</label>
+							<input class="form-control text-uppercase aniosDesface" id="aniosDesface" name="aniosDesface" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4">
+							<label for="contratoRR6CNSF">Contrato RR-6 CNSF:</label>
+							<input class="form-control text-uppercase contratoRR6CNSF" id="contratoRR6CNSF" name="contratoRR6CNSF" maxlength="16"/>
+						</div>
+					</div>
+					
+					<h3>Específicos</h3>
+					<div th:include="views/reaseguro/contrato/contrato:: contratoFormFragment2" id="contratoReaseguroTabNoProp" style="display:none;"></div>
+					<div class="row tc-especificos d-none">
+						<div class="form-group col-md-4 tc-cuotaParte tc-excedente tc-mixto d-none">
+							<label for="capacidadMaxima">Capacidad máxima del contrato:</label>
+							<input class="form-control text-uppercase numberClass moneda capacidadMaxima" id="capacidadMaxima" name="capacidadMaxima" maxlength="16"/>
+						</div>
+						
+						<!-- <div class="form-group col-md-4">
+							<label for="limiteContrato">Límite contrato:</label>
+							<input class="form-control text-uppercase numberClass moneda" id="limiteContrato" name="limiteContrato" maxlength="16"/>
+						</div> -->
+						
+						<div class="form-group col-md-4 tc-cuotaParte tc-mixto d-none">
+							<label for="montoRetencionImporte">Monto retención (Importe):</label>
+							<input class="montoRetencionImporte form-control text-uppercase numberClass moneda" id="montoRetencionImporte" name="montoRetencionImporte" maxlength="16" disabled/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-cuotaParte tc-mixto d-none">
+							<label for="montoRetencionPorcentaje">Porcentaje retención (%):</label>
+							<input class="montoRetencionPorcentaje form-control text-uppercase numberClass" id="montoRetencionPorcentaje" name="montoRetencionPorcentaje" maxlength="3"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-cuotaParte tc-mixto d-none">
+							<label for="montoCesionPorcentaje">Porcentaje cesión (%):</label>
+							<input class="montoCesionPorcentaje form-control text-uppercase numberClass" id="montoCesionPorcentaje" name="montoCesionPorcentaje" maxlength="3" disabled/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-cuotaParte tc-mixto d-none">
+							<label for="montoCesionImporte">Monto cesión (Importe):</label>
+							<input class="montoCesionImporte form-control text-uppercase numberClass moneda" id="montoCesionImporte" name="montoCesionImporte" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-cuotaParte tc-excedente tc-mixto d-none">
+							<label for="porcentajeComisionReaseguroPrimaCedida">Comisión reaseguro prima cedida (%):</label>
+							<input class="form-control text-uppercase numberClass" id="porcentajeComisionReaseguroPrimaCedida" name="porcentajeComisionReaseguroPrimaCedida" maxlength="3"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excedente tc-mixto d-none">
+							<label for="montoRetencionImportePleno">Monto retención (Monto pleno o línea):</label>
+							<input class="montoRetencionImporte form-control text-uppercase numberClass moneda" id="montoRetencionImportePleno" name="montoRetencionImportePleno" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excedente tc-mixto d-none">
+							<label for="tablaPlenos">Tabla de plenos:</label>
+							<select	class="form-control text-uppercase" id="tablaPlenos" name="tablaPlenos">
+								<option value="">Seleccione...</option>
+								<option value="SI">SI</option>
+								<option value="NO">NO</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excedente tc-mixto d-none">
+							<label for="numeroPlenos">Número de plenos:</label>
+							<input class="form-control text-uppercase numberClass numeroPlenos" id="numeroPlenos" name="numeroPlenos" maxlength="16" disabled/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida tc-wxl tc-xlCat d-none">
+							<label for="prioridad">Prioridad:</label>
+							<input class="form-control text-uppercase numberClass moneda prioridad" id="prioridad" name="prioridad" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida tc-wxl tc-xlCat d-none">
+							<label for="lmResponsabilidad">Límite máximo resp. de contrato:</label>
+							<input class="form-control text-uppercase numberClass moneda lmResponsabilidad" id="lmResponsabilidad" name="lmResponsabilidad" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-wxl tc-xlCat d-none">
+							<label for="coutaMinima">Couta mínima:</label>
+							<input class="form-control text-uppercase numberClass coutaMinima" id="coutaMinima" name="coutaMinima" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-wxl tc-xlCat d-none">
+							<label for="coutaMaxima">Cuota máxima:</label>
+							<input class="form-control text-uppercase numberClass coutaMaxima" id="coutaMaxima" name="coutaMaxima" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida d-none">
+							<label for="reinstalaciones">Reinstalaciones:</label>
+							<input class="form-control text-uppercase numberClass reinstalaciones" id="reinstalaciones" name="reinstalaciones" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida tc-wxl tc-xlCat d-none">
+							<label for="pdmImporte">PMD anual (Importe):</label>
+							<input class="form-control text-uppercase moneda pdmImporte" id="pdmImporte" name="pdmImporte" maxlength="16"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida d-none">
+							<label for="primaAjuste">Prima de ajuste:</label>
+							<input class="form-control text-uppercase primaAjuste moneda" id="primaAjuste" name="primaAjuste" maxlength="8" disabled="disabled"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida d-none">
+							<label for="porcentajePrima">% de prima o SA (%Ajuste):</label>
+							<input class="form-control text-uppercase porcentajePrima formatoPorcentaje" id="porcentajePrima" name="porcentajePrima" maxlength="8"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-excesoPerdida d-none">
+							<label for="rateOnLine">Comisión/Rate on Line:</label>
+							<input class="form-control text-uppercase currency moneda rateOnLine" id="rateOnLine" name="rateOnLine" maxlength="8"/>
+						</div>
+						
+						<div class="form-group col-md-4 tc-wxl tc-xlCat d-none">
+							<label for="factorAjuste">Factor de ajuste (%):</label>
+							<input class="form-control text-uppercase currency formatoPorcentaje" id="" name="factorAjuste" maxlength="8"/>
+						</div>
+						
+						<div class="form-group col-md-4 facultativo d-none">
+							<label for="cubreProducto">Cubre producto:</label>
+							<select	class="form-control text-uppercase cubreProducto" id="cubreProducto" name="cubreProducto">
+								<option value="">Seleccione...</option>
+								<option value="SI">SI</option>
+								<option value="NO">NO</option>
+							</select>
+						</div>					
+						
+						<div class="form-group col-md-4 facultativo d-none">
+							<label for="polizas">Pólizas:</label>
+							<select	class="form-control text-uppercase multiselect-polizas" id="polizas" name="polizas" multiple>
+							</select>
+						</div>
+						
+						<!-- <div class="form-group col-md-4 ">
+							<label for="tipoFactorTasaPrima">Tipo de prima:</label>
+							<select	class="form-control text-uppercase" id="tipoFactorTasaPrima" name="tipoFactorTasaPrima">
+								<option value="1">PRIMA MINIMA DE DEPOSITO</option>
+								<option value="2">PRIMA DE AJUSTE</option>
+							</select>
+						</div> -->
+						
+	<!-- 					<div class="form-group col-md-4 siniestro"> -->
+	<!-- 						<label for="porcentajeTasaPrima">Tasa prima (%):</label> -->
+	<!-- 						<input class="form-control text-uppercase currency" id="porcentajeTasaPrima" name="porcentajeTasaPrima" maxlength="8"/> -->
+	<!-- 					</div> -->
+						
+						<!-- <div class="form-group col-md-4 proporcionalBloque">
+							<label for="calculaPB">Calcula PB:</label>
+							<select	class="form-control text-uppercase" id="calculaPB" name="calculaPB">
+								<option value="SI">SI</option>
+								<option value="NO">NO</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="polizaFacultativo">Póliza facultativo:</label>
+							<select	class="form-control text-uppercase" id="polizaFacultativo" name="polizaFacultativo">
+								<option value="SI">SI</option>
+								<option value="NO">NO</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-4 siniestro">
+							<label for="fechaAutorizacionFacultativo">Fecha autorización facultativo:</label>
+							<div class="input-group">
+								<input type="text" class="form-control date" id="fechaAutorizacionFacultativo" name="fechaAutorizacionFacultativo" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+								<span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+							</div>
+						</div> -->
+						
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 d-flex justify-content-start">
+							<button  type="button" class="btn btn-primary text-truncate btnAgregarReaseguradores btnAnterior" >
+								<span class="mr-2"><i class="fas fa-arrow-circle-left"></i>
+								</span>Anterior
+							</button>
+						</div>
+						
+						<div class="form-group col-md-6 d-flex justify-content-end">
+							<button  type="button" class="btn btn-primary text-truncate btnAgregarReaseguradores btnSiguiente" >
+								Siguiente
+								<span class="mr-2"><i class="fas fa-arrow-circle-right"></i>
+								</span>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div th:fragment="contratoFormFragment2">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label>Cuota:</label>
+						<input class="form-control text-uppercase numberClass moneda" id="cuota" name="cuota" maxlength="50"/>
+					</div>
+					<div class="form-group col-md-4">
+						<label>Retensi&oacute;n:</label>
+						<select	class="form-control text-uppercase" id="retencion" name="retencion">
+							<option value="0">Seleccione</option>
+							<option value="1">Si</option>
+							<option value="2">No</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/contratosC.js" th:src="@{/resources/js/pages/reaseguro/contratosC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/contratos.js" th:src="@{/resources/js/pages/reaseguro/contratos.js}"></script>
+</body>
+</html>

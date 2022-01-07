@@ -1,0 +1,11 @@
+package figura;
+
+public class PasoPorReferencia {
+
+	public static void main(String [] args)
+	{
+		Referencia referencia = new Referencia();
+		referencia.cambiarNombre("Juan");
+		System.out.println("Nombre: " + referencia.obtenerNombre());
+	}
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="capturaCertificadoFragment" class="main-container">
+        <form id="formCapturaCertificado" enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="calle">Calle:</label>
+                    <input class="form-control input_upper" type="text" id="calle" name="calle" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="noExterior">No. Exterior:</label>
+                    <input class="form-control input_upper" type="text" id="numeroExterior" name="numeroExterior" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="noInterior">No. Interior:</label>
+                    <input class="form-control input_upper" type="text" id="numeroInterior" name="numeroInterior" />
+                </div>
+                <div class="form-group col-md-2">
+                    <div class="input-group">
+                        <label for="avanceObra">Avance de la Obra:</label>
+                        <input class="form-control numberClass" type="text" id="avanceObra" name="avanceObra" />
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4 ui-widget">
+                    <label for="cp">Código Postal:</label>
+                    <input class="form-control codigoPostal numberClass" id="codigoPostal" name="codigoPostal" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="estado">Estado:</label>
+                    <select class="form-control estado" id="estado" name="estado" disabled="disabled">
+                        <option value="0" selected="selected">Seleccione opción...
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="municipio">Municipio:</label>
+                    <select class="form-control municipio" id="municipio" name="municipio" disabled="disabled">
+                        <option value="0" selected="selected">Seleccione opción...
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="asegurado">Asegurado:</label>
+                    <input class="form-control input_upper" type="text" id="asegurado" name="asegurado" />
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button class="btn btn-primary float-right" id="btnGuardarCertificado" type="button">
+                        <span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <h5>Certificados</h5>
+            <div class="col-md-12">
+                <div class="table-responsive main-container background-tabla" id="tablaCertificados">
+                    <table id="resultadoCertificados" class="table table-sm table-hover table-bordered estiloTablas">
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Editar Certificado-->
+        <div id="EditarCertificadoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                	<form id="formEditarCertificado" enctype="multipart/form-data">
+                    <div class="modal-header text-center">
+                        <h3>
+							Editar Certificado <span id="idCertificadoActualiza"></span>
+						</h3>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="calle">Calle:</label>
+                                    <input class="form-control input_upper" type="text" id="calleActualiza" name="calleActualiza" />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="noExterior">No. Exterior:</label>
+                                    <input class="form-control input_upper" type="text" id="numeroExteriorActualiza" name="numeroExteriorActualiza" />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="noInterior">No. Interior:</label>
+                                    <input class="form-control input_upper" type="text" id="numeroInteriorActualiza" name="numeroInteriorActualiza" />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <div class="input-group">
+                                        <label for="avanceObra">Avance Obra:</label>
+                                        <input class="form-control numberClass" type="text" id="avanceObraActualiza" name="avanceObraActualiza" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 ui-widget">
+                                    <label for="codigoPostalActualiza">Código Postal:</label>
+                                    <input class="form-control codigoPostalActualiza numberClass" id="codigoPostalActualiza" name="codigoPostalActualiza" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="estadoActualiza">Estado:</label>
+                                    <select class="form-control estadoActualiza" id="estadoActualiza" name="estadoActualiza" disabled="disabled">
+                                        <option value="0" selected="selected">Seleccione opción...
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="municipioActualiza">Municipio:</label>
+                                    <select class="form-control municipioActualiza" id="municipioActualiza" name="municipioActualiza" disabled="disabled">
+                                        <option value="0" selected="selected">Seleccione opción...
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+				                    <label for="aseguradoActualiza">Asegurado:</label>
+				                    <input class="form-control input_upper" type="text" id="aseguradoActualiza" name="aseguradoActualiza" />
+				                </div>
+				                <div class="form-group col-md-6">
+				                    <label for="cuvActualiza">Cuv:</label>
+				                    <input class="form-control text-uppercase" type="text" id="cuvActualiza" name="cuvActualiza" />
+				                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <button class="btn btn-primary float-right" id="btnActualizarCertificado" type="button">
+                                    <span style="padding: 5px"><i class="fas fa-save"></i></span>Actualizar
+                                </button>
+                                <!-- 
+								<button class="btn btn-danger float-right mr-3"
+									id="btnEliminarGrupoE" type="button">
+									<span style="padding: 5px"><i class="fas fa-trash"></i></span>Eliminar Censo
+								</button>
+								 -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCloseModal">Cerrar</button>
+                    </div>
+                	</form>
+                </div>
+
+            </div>
+        </div>
+        <!-- Modal Eliminar Grupo-->
+        <div id="EliminarGrupoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h3>
+							Eliminar Grupo <span id="idGrupoE"></span>
+						</h3>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-sm-12">
+                            <h4>¿Está seguro que desea eliminar el grupo?</h4>
+                            <p><strong>Id Grupo: </strong><span id="idGrupoB"></span> <strong>Nombre Grupo: </strong><span id="nombreGrupoB"></span></p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnEliminarGrupoB">Aceptar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCloseModal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

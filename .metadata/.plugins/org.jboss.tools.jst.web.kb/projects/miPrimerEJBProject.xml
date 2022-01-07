@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hsqldb.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jaxws-ext.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bcel.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/ejb3.deployer/jboss-ejb3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jaxb-impl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-monitoring.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-remoting-int.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/commons-httpclient.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-system.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/trove.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jaxrpc.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-xml-binding.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-ejb3-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-web.deployer/jsf-libs/jsf-impl.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-impl.jar/meta-inf/html_basic.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-impl.jar/meta-inf/jsf_core.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-impl.jar/meta-inf/mojarra_ext.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-remoting.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossts-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/pluggable-instrumentor.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-httpclient.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/xmlsec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/endorsed/xalan.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jettison.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-serialization.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/getopt.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-annotations-ejb3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-xml-binding.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/jrockit-pluggable-instrumentor.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jaxen.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/streambuffer.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-transaction.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxws-rt.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jsr77-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-spi.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-remoting.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/getopt.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/activation.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jnp-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/FastInfoset.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxb-impl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-aspect-jdk50-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-srp.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/commons-httpclient.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-collections.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/concurrent.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/log4j-boot.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/dom4j.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossall-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbosssx.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/policy.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-common-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-spi.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/el-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossmq-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/scheduler-plugin-example.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bsh.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/jboss-aop-jdk50.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-aop-jdk50-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-saaj.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/stax-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-j2ee.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jaxws-ext.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-deployment.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/properties-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jaxws.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/stax-ex.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-srp-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/cglib.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jaxrpc.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/wsdl4j.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossha-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-hibernate.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bsf.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-bsf.jar/meta-inf/taglib.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/mail.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossjmx-ant.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-saaj.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-serialization.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossmq.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-transaction-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/antlr.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-j2ee.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jaxws.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/wstx.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/ejb3-persistence.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/xmlentitymgr.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jnpserver.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-web.deployer/jsf-libs/jboss-faces.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/mail-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jmx-adaptor-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-iiop-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/mail.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-ejb3x.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbosscx-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxws-tools.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/scheduler-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-web.deployer/jsf-libs/jsf-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/antlr.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbosssx-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/trove.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jmx-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/log4j-snmp-appender.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-jboss42.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/servlet-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossjta.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-system-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/avalon-framework.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/ejb3-persistence.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hibernate-annotations.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-management.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/hibernate-annotations.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxb-xjc.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jsr88.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/quartz.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/log4j.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-ejb3x.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/joesnmp.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/hibernate-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-jboss42.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/logkit.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/commons-codec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/concurrent.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hibernate3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jacorb.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/jboss-aspect-library-jdk50.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/endorsed/xercesImpl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/scout.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bsh-deployer.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-framework.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/servlet-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/autonumber-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/javassist.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/activation.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jmx-invoker-adaptor-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jsp-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/log4j.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-iiop.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-vfs.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/ejb3.deployer/jboss-annotations-ejb3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-codec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jca.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-common-jdbc-wrapper.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-framework.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jsr77.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxb-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hsqldb-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossjta-integration.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/endorsed/serializer.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/javassist.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-jmx.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bindingservice-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/commons-codec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jaxb-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hibernate-entitymanager.jar"/>
+ </paths>
+ <validation>
+  <el/>
+ </validation>
+ <aliases/>
+ <includes/>
+ <uris/>
+</kb-project>

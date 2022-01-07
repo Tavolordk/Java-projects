@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="camposPerfilFragment" class="main-container">
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label for="nombrePerfil">Nombre perfil</label> <input
+					class="form-control text-uppercase" id="nombrePerfil"
+					name="nombrePerfil" maxlength="50">
+			</div>
+			<div class="table-responsive main-container background-tabla">
+				<table id="listaMenus"
+					class="table table-sm table-hover select table-bordered estiloTablas"
+					style="width: 100%">
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

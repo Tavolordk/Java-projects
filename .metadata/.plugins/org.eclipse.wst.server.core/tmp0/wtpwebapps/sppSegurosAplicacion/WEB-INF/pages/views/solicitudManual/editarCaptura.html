@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="clienteEditFragment" class="main-container">
+		<!-- Modal -->
+		<div class="modal fade" id="editarClienteModal" tabindex="-1"
+			role="dialog" aria-labelledby="editarClienteModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title titleEditCliente" id="editarClienteModalLabel"></h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formClienteEditar" enctype="multipart/form-data"
+							autocomplete="off" class="needs-validation" novalidate>
+							<div class="row">
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="nombre">Nombre:</label> <input
+										class="form-control text-uppercase" type="text"
+										id="nombreCliente" name="nombreCliente" />
+								</div>
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="nombre">Apellido Paterno:</label> <input
+										class="form-control text-uppercase" type="text"
+										id="apellidoPaterno" name="apellidoPaterno" />
+								</div>
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="apeMaterno">Apellido Materno:</label> <input
+										class="form-control text-uppercase" type="text"
+										id="apellidoMaterno" name="apellidoMaterno" />
+								</div>
+
+								<div class="form-group col-md-8 clienteMoralNuevo">
+									<label for="denominacionRazon">Denominación o Razón
+										Social:</label> <input class="form-control text-uppercase" type="text"
+										id="denominacion" name="denominacion" />
+								</div>
+
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+									<div class="input-group">
+										<input type="text" class="form-control date"
+											id="fechaNacimiento" name="fechaNacimiento"
+											data-mask="0000-00-00" placeholder="yyyy-mm-dd" /> <span
+											class="input-group-text"> <i
+											class="fas fa-calendar-alt"></i>
+										</span>
+									</div>
+								</div>
+
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<label for="fechaConstitucion">Fecha Constitución:</label>
+									<div class="input-group">
+										<input type="text" class="form-control date"
+											id="fechaConstitucion" name="fechaConstitucion"
+											data-date-end-date="0d" /> <span class="input-group-text">
+											<i class="fas fa-calendar-alt"></i>
+										</span>
+									</div>
+								</div>
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<label for="folio">Folio Mercantil:</label> <input
+										class="form-control numberClass" type="text"
+										id="folioMercantil" name="folioMercantil" />
+								</div>
+
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="paisNacimiento">País de Nacimiento:</label> <select
+										class="form-control pais" id="paisNacimiento"
+										name="paisNacimiento">
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="nacionalidad">País de Nacionalidad:</label> <select
+										class="form-control pais" id="nacionalidad"
+										name="nacionalidad">
+									</select>
+								</div>
+
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<label for="giroMercantil">Giro Mercantil:</label> <select
+										class="form-control giroMercantil" id="giroMercantil"
+										name="giroMercantil">
+										<option value="">Seleccione opción...</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<label for="Actividad">Actividad u Objeto Social:</label> <select
+										class="form-control" id="actividadObjeto"
+										name="actividadObjeto">
+										<option value="">Seleccione opción...</option>
+										<option value="1">Actividad</option>
+									</select>
+								</div>
+
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="ocupacion">Ocupación o Profesión:</label> <select
+										class="form-control" id="ocupacionProfesion"
+										name="ocupacionProfesion">
+										<option value="">Seleccione opción...</option>
+										<option value="1">Docente</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="telefono">Teléfono 1 con lada:</label>
+									<div class="row">
+										<div class="col-4 col-sm-3">
+											<input class="form-control numberClass" type="text"
+												id="telefono1Lada" name="telefono1Lada" maxlength="3"/>
+										</div>
+										<div class="col-8 col-sm-9">
+											<input class="form-control numberClass" type="text"
+												id="telefono1" maxlength="7" name="telefono1" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="telefono">Teléfono 2 con lada:</label>
+									<div class="row">
+										<div class="col-4 col-sm-3">
+											<input class="form-control numberClass" type="text"
+												id="telefono2Lada" name="telefono2Lada" maxlength="3"/>
+										</div>
+										<div class="col-8 col-sm-9">
+											<input class="form-control numberClass" type="text"
+												id="telefono2" name="telefono2" maxlength="7" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="correo">Correo Electrónico 1:</label> <input
+										class="form-control" type="email" id="correoElectronico1"
+										name="correoElectronico1" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="correo">Correo Electrónico 2:</label> <input
+										class="form-control" type="text" id="correoElectronico2"
+										name="correoElectronico2" />
+								</div>
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="curp">CURP:</label> <input
+										class="form-control text-uppercase" type="text" id="curp"
+										name="curp" maxlength="18" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="rfc">RFC:</label> <input
+										class="form-control text-uppercase" type="text" id="rfc"
+										name="rfc" maxlength="13" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="noFiel">Firma Electrónica Avanzada:</label> <input
+										class="form-control" type="text" id="firmaElectronicaAvanzada"
+										name="firmaElectronicaAvanzada" />
+								</div>
+							</div>
+
+							<h2 class="display-4">Domicilio</h2>
+							<div class="row">
+								<div class="form-group col-md-8">
+									<label for="calle">Calle:</label> <input
+										class="form-control text-uppercase" type="text" id="calle"
+										name="calle" />
+								</div>
+								<div class="form-group col-md-2">
+									<label for="noExterior">No. Exterior:</label> <input
+										class="form-control numberClass" type="text" id="numeroExterior"
+										name="numeroExterior" />
+								</div>
+								<div class="form-group col-md-2">
+									<label for="noInterior">No. Interior:</label> <input
+										class="form-control numberClass" type="text" id="numeroInterior"
+										name="numeroInterior" />
+								</div>
+								<div class="form-group col-md-4 ui-widget">
+									<label for="cp">Código Postal:</label> <input
+										class="form-control codigoPostal numberClass" id="codigoPostal" name="codigoPostal" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="estado">Estado:</label> <select
+										class="form-control estado" id="estado" name="estado"
+										disabled="disabled">
+										<option value="0" selected="selected">Seleccione
+											opción...</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="municipio">Municipio:</label> <select
+										class="form-control municipio" id="municipio" name="municipio"
+										disabled="disabled">
+										<option value="0" selected="selected">Seleccione
+											opción...</option>
+									</select>
+								</div>
+							</div>
+
+							<h2 class="display-4">Extras</h2>
+							<label for="nombre" class="clienteMoralNuevo">Nombre del
+								Representante Legal:</label>
+							<div class="row">
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<input class="form-control text-uppercase" type="text"
+										placeholder="Nombre(s)" id="nombreRepresentante"
+										name="nombreRepresentante" />
+								</div>
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<input class="form-control text-uppercase" type="text"
+										placeholder="Apellido Paterno"
+										id="apellidoPaternoRepresentante"
+										name="apellidoPaternoRepresentante" />
+								</div>
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<input class="form-control text-uppercase" type="text"
+										placeholder="Apellido Materno"
+										id="apellidoMaternoRepresentante"
+										name="apellidoMaternoRepresentante" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="tipoIde">Tipo de Identificación:</label> <select
+										class="form-control tipoIdentificacion"
+										id="tipoIdentificacion" name="tipoIdentificacion">
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="noIde">No. Identificación Oficial:</label> <input
+										class="form-control numberClass" type="text"
+										id="numeroIdentificacion" name="numeroIdentificacion" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="entidadEmisora">Entidad Emisora:</label> <select
+										class="form-control" id="entidadEmisora" name="entidadEmisora">
+										<option value="">Seleccione opción...</option>
+										<option value="Emisora">Emisora</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="rangoOpera">Rango de Operaciones:</label> <input
+										class="form-control" type="text" id="rangoOperaciones"
+										name="rangoOperaciones" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="numOpera">Numero de Operaciones:</label> <input
+										class="form-control numberClass" type="text"
+										id="numeroOperacion" name="numeroOperacion" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="montoMaximo">Monto Maximo:</label> <input
+										class="form-control numberClass" type="text" id="montoMaximo"
+										name="montoMaximo" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="frecuencia">Frecuencia:</label> <select
+										class="form-control" id="frecuencia" name="frecuencia">
+										<option value="">Seleccione opción...</option>
+										<option value="Frecuencia">Frecuencia</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="tipoMoneda">Tipo de Moneda:</label> <select
+										class="form-control tipoMoneda" id="tipoMoneda"
+										name="tipoMoneda">
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="metodoPago">Metodo Usual de Pago:</label> <select
+										class="form-control metodoUsualPago" id="metodoUsualPago"
+										name="metodoUsualPago">
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="origenRecursos">Origen de Recursos:</label> <select
+										class="form-control" id="origenRecursos" name="origenRecursos">
+										<option value="">Seleccione opción...</option>
+										<option value="Origen">Origen</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="destinoRecursos">Destino Recursos:</label> <input
+										class="form-control text-uppercase" type="text"
+										id="destinoRecursos" name="destinoRecursos" />
+								</div>
+								<div class="form-group col-md-4">
+									<label for="productoComponente">Producto Con Componente
+										de Inversión: </label> <input class="form-control" type="text"
+										id="productoInversion" name="productoInversion" />
+								</div>
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="pep">¿Es una PEP?:</label> <select
+										class="form-control" id="pep" name="pep">
+										<option value="">Seleccione opción...</option>
+										<option value="Si">Si</option>
+										<option value="No">No</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4 clienteFisicoNuevo">
+									<label for="cargo">Cargo que desempeña:</label> <select
+										class="form-control" id="cargo" name="cargo">
+										<option value="">Seleccione opción...</option>
+										<option value="Docente">Docente</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4 clienteMoralNuevo">
+									<label for="paginaWeb">Página web:</label> <input
+										class="form-control" id="paginaWeb" name="paginaWeb" />
+								</div>
+							</div>
+
+							<h2 class="display-4">Carga de Documentos</h2>
+							<div class="row">
+								<div class="form-group col-md-6 ">
+									<label for="" class="clienteFisicoNuevo">Identificación
+										Oficial: </label> <label for=""
+										class="clienteMoralNuevo">Identificación Oficial del
+										Representante: </label> <div class="_identificacionOficial"><input type="file" class="file"
+										id="_identificacionOficial" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="">Comprobante
+										Domicilio:</label> <div class="_comprobanteDomicilio"><input id="_comprobanteDomicilio" type="file"
+										class="file" name="file[]"></div>
+								</div>
+
+								<div class="form-group col-md-6 clienteMoralNuevo">
+									<label for="">Escritura
+										Constitutiva:</label> <div class="_escrituraConstitutiva"><input type="file" class="file"
+										id="_escrituraConstitutiva" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6 clienteMoralNuevo">
+									<label for="">Poder del
+										Representante Legal:</label> <div class="_porderRepresentanteLegal"><input type="file" class="file"
+										id="_porderRepresentanteLegal" name="file[]"></div>
+								</div>
+
+								<div class="form-group col-md-6 clienteFisicoNuevo ">
+									<label for="">CURP:</label> <div class="_curp"><input type="file"
+										class="file" id="_curp" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="">RFC:</label> <div class="_rfc"><input type="file" class="file"
+										id="_rfc" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="">Firma
+										Electrónica Avanzada:</label> <div class="_firmaElectronicaAvanzada"><input type="file" class="file"
+										id="_firmaElectronicaAvanzada" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6 clienteFisicoNuevo">
+									<label for="">Acreditación calidad
+										migratoria (solo extranjeros) :</label> <div class="_calidadMigratoria"><input type="file"
+										class="file" id="_calidadMigratoria" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for=""> Entrevista con el
+										cliente:</label> <div class="_entrevistaCliente"><input type="file" class="file"
+										id="_entrevistaCliente" name="file[]"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="">Resultado de
+										validación listas negras :</label> <div class="_validacionListaNegra"><input type="file" class="file"
+										id="_validacionListaNegra" name="file[]"></div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary text-truncate"
+							id="actualizarCliente">
+							<span class="mr-2"> <i class="fas fa-save"></i>
+							</span>Guardar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

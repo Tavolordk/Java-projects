@@ -1,0 +1,19 @@
+package figura;
+
+public class ReturnObject {
+	public static void main(String [] args)
+	{
+		
+	}
+
+}
+
+class Suma
+{
+	int a, b;
+	public Suma(int a, int b)
+	{
+		this.a = a;
+		this.b = b;
+	}
+}

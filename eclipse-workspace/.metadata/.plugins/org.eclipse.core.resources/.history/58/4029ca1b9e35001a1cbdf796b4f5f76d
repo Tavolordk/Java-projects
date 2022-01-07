@@ -1,0 +1,28 @@
+package figura;
+
+public class Aritmetica {
+	int a,b;
+	
+	public Aritmetica()
+	{
+		a=5;
+		b=4;
+		System.out.println("Ejecutando constructor vacío :D ");
+	}
+	
+	public Aritmetica(int arg1, int arg2)
+	{
+		System.out.println("Ejecutando constructor 2 ");
+		a=arg1;
+		b=arg2;
+	}
+
+	public int sumar()
+	{
+		return a+b;
+	}
+	public int restar()
+	{
+		return a-b;
+	}
+}

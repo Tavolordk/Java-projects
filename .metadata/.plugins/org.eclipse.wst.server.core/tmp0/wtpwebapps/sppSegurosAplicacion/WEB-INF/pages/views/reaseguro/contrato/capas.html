@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card card-content">
+		<div th:fragment="capasFormFragment">
+			<h2>Capas contrato</h2>
+			<div class="table-responsive main-container background-tabla">
+				<table id="capasTabla"
+					class="table table-sm table-hover table-bordered estiloTablas">
+				</table>
+			</div>
+			<form id="formReaseguroContratoCapas" autocomplete="off" class="needs-validation" novalidate>
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="capaContratoRR6">Contrato RR-6:</label>
+						<input class="form-control text-uppercase" id="capaContratoRR6" name="capaContratoRR6" maxlength="16"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="noCa">Número capa:</label>
+						<input class="form-control text-uppercase numberClass" id="noCa" name="noCa" maxlength="2"/>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="prioridad">Prioridad (Capacidad mínima contrato):</label>
+						<input class="form-control text-uppercase numberClass moneda" id="prioridadCapa" name="prioridad" maxlength="16"/>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<label for="capacidad">Capacidad (Monto que cubre):</label>
+						<input class="form-control text-uppercase numberClass moneda" id="capacidad" name="capacidad" maxlength="16"/>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<label for="capaTasaPrima">Tasa prima (%):</label>
+						<input class="form-control text-uppercase numberClass" id="capaTasaPrima" name="capaTasaPrima" maxlength="3"/>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<label for="numeroReinstalaciones">Número reinstalaciones:</label>
+						<input class="form-control text-uppercase numberClass" id="numeroReinstalaciones" name="numeroReinstalaciones" maxlength="2"/>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<label for="primaMinima">Prima mínima:</label>
+						<input class="form-control text-uppercase numberClass moneda" id="primaMinima" name="primaMinima" maxlength="16"/>
+					</div>
+					
+				</div>
+				<div class="row">
+
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="btnAgregaCapa">
+							<span class="mr-2">
+							</span>Agregar y capturar nuevo
+						</button>
+					</div>
+					
+				</div>
+				
+				<div class="row">
+
+					<div class="form-group col-md-12 d-flex justify-content-start">
+						<button  type="button" class="btn btn-primary text-truncate btnAnterior">
+							<span class="mr-2"><i class="fas fa-arrow-circle-left"></i>
+							</span>Anterior
+						</button>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/capasC.js" th:src="@{/resources/js/pages/reaseguro/capasC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/capas.js" th:src="@{/resources/js/pages/reaseguro/capas.js}"></script>
+</body>
+</html>

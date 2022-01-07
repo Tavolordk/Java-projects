@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteAgentesComisiones" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="e115bc59-fd0f-446b-a585-04725e27d7f0">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="fechaInicio" class="java.lang.String">
+		<parameterDescription><![CDATA[fechaInicio]]></parameterDescription>
+	</parameter>
+	<parameter name="fechaFin" class="java.lang.String">
+		<parameterDescription><![CDATA[fechaFin]]></parameterDescription>
+	</parameter>
+	<parameter name="nombreParametro" class="java.lang.String">
+		<parameterDescription><![CDATA[nombreParametro]]></parameterDescription>
+	</parameter>
+	<parameter name="valor" class="java.lang.String">
+		<parameterDescription><![CDATA[valor]]></parameterDescription>
+	</parameter>
+	<parameter name="idRamo" class="java.lang.Integer">
+		<parameterDescription><![CDATA[idRamo]]></parameterDescription>
+	</parameter>
+	<parameter name="cveMoneda" class="java.lang.Integer">
+		<parameterDescription><![CDATA[cveMoneda]]></parameterDescription>
+	</parameter>
+	<parameter name="idSucursal" class="java.lang.Integer">
+		<parameterDescription><![CDATA[idSucursal]]></parameterDescription>
+	</parameter>
+	<parameter name="paramLogo" class="java.lang.String">
+		<parameterDescription><![CDATA[paramLogo]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[execute SEL_REPORTE_ENDOSOS_SP  $P{nombreParametro}
+,$P{valor}
+,$P{fechaInicio},$P{fechaFin},$P{idRamo},$P{cveMoneda},$P{idSucursal}]]>
+	</queryString>
+	<field name="id_movimiento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_movimiento"/>
+	</field>
+	<field name="fecha_operacion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_operacion"/>
+	</field>
+	<field name="id_poliza" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_poliza"/>
+	</field>
+	<field name="numero_poliza" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="numero_poliza"/>
+	</field>
+	<field name="id_certificado" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_certificado"/>
+	</field>
+	<field name="tipo_endoso" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_endoso"/>
+	</field>
+	<field name="operacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="operacion"/>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+	</field>
+	<field name="id_certificado_original" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_certificado_original"/>
+	</field>
+	<field name="Contratante" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Contratante"/>
+	</field>
+	<field name="id_asegurado" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_asegurado"/>
+	</field>
+	<field name="Asegurado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Asegurado"/>
+	</field>
+	<field name="id_contratante" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_contratante"/>
+	</field>
+	<field name="suma_asegurada" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="suma_asegurada"/>
+	</field>
+	<field name="prima_neta_total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="prima_neta_total"/>
+	</field>
+	<field name="recargo_pago_fraccionado" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="recargo_pago_fraccionado"/>
+	</field>
+	<field name="derecho_poliza" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="derecho_poliza"/>
+	</field>
+	<field name="impuesto_total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="impuesto_total"/>
+	</field>
+	<field name="comision_prima" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="comision_prima"/>
+	</field>
+	<field name="comision_recargo" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="comision_recargo"/>
+	</field>
+	<group name="Group1" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{numero_poliza}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<textField>
+					<reportElement style="SubTitle" x="96" y="0" width="360" height="24" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" forecolor="#000000" uuid="8caf7870-b3f6-4e56-b258-6eaf7c7087bd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="90" height="24" uuid="85b4aa37-fe19-4cd4-9b98-cd0a7f06caba"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[No. Póliza:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{tipo_endoso}]]></groupExpression>
+		<groupHeader>
+			<band height="65">
+				<textField>
+					<reportElement style="SubTitle" x="110" y="2" width="298" height="20" uuid="67dd2651-1003-4186-84ce-82b11be52eb3"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo_endoso}]]></textFieldExpression>
+				</textField>
+				<frame>
+					<reportElement mode="Opaque" x="0" y="24" width="800" height="40" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" backcolor="#0070C0" uuid="35d90a9b-bb7e-4ec4-bfa2-68be1967d6b2"/>
+					<staticText>
+						<reportElement style="Column header" x="0" y="0" width="74" height="40" uuid="91fad5ea-b854-4854-9897-f5c70707438a">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d984f2f8-cb4f-4cf5-9d33-77186439c5a0"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<text><![CDATA[Certificado]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" x="74" y="0" width="156" height="40" uuid="711b67f5-c043-40f8-830c-8e9fdbc2960b">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f51f479-4c36-40dd-981a-ddf72ad81475"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<text><![CDATA[Operación]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" x="230" y="0" width="160" height="40" uuid="4403dbb7-60bc-4070-b9bd-32f9bac0a84f">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d7f4684-02f9-4b3e-a80d-3b6cbb81c309"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<text><![CDATA[Descripción]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" x="390" y="0" width="160" height="40" uuid="351d85e8-baae-4fc6-a9ca-adbd74d0cd65">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7d01b89-c3e7-4b9a-883f-1b6c41ddb1fc"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<text><![CDATA[Asegurado]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" x="563" y="0" width="137" height="40" uuid="cf844f2a-4ff1-4ea9-8de6-e0d904cfc9b7">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="42fbd8a5-ebbe-4899-bb0f-74c915ac6a16"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<text><![CDATA[Suma Asegurada]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="Column header" x="716" y="0" width="80" height="40" uuid="0abbe97a-7e07-433b-9797-431264fd8004">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="595d2aa6-e31f-456c-a7df-07ffa8e64ac9"/>
+						</reportElement>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font size="10"/>
+						</textElement>
+						<text><![CDATA[Prima Total]]></text>
+					</staticText>
+				</frame>
+				<staticText>
+					<reportElement x="0" y="0" width="110" height="24" uuid="6b1537b7-d8ac-4f78-8407-e18835b14ef3"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo Endoso:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band height="5" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="291" y="30" width="221" height="20" forecolor="#856429" uuid="df7543c5-3256-4bbe-ac68-516d92348e76"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Endosos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="0" width="324" height="30" isPrintInFirstWholeBand="true" forecolor="#0070C0" uuid="76f404bd-e0fa-4e4a-a038-139e2f3c41f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A. de C.V.]]></text>
+			</staticText>
+			<image scaleImage="FillFrame" vAlign="Middle">
+				<reportElement x="10" y="0" width="192" height="60" uuid="1bd972e4-4d9b-4a26-9446-d1095043d2a1"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="1" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="800" height="15" isRemoveLineWhenBlank="true" uuid="89a3da05-fdde-4ffe-965f-cc476f72e3ab"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="5" y="0" width="69" height="14" uuid="6340e135-3fad-46bc-97e4-97b454684525">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d984f2f8-cb4f-4cf5-9d33-77186439c5a0"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_certificado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="74" y="0" width="156" height="15" uuid="b3ace256-b730-4706-bccc-50351a37865c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f51f479-4c36-40dd-981a-ddf72ad81475"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{operacion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="230" y="2" width="160" height="15" uuid="e1859a10-afb5-4090-a532-a8f3953ff9bd">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d7f4684-02f9-4b3e-a80d-3b6cbb81c309"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="390" y="0" width="160" height="15" uuid="a4f284ed-08bc-4316-b4cf-cff18f1ac9ec">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e7d01b89-c3e7-4b9a-883f-1b6c41ddb1fc"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Asegurado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="563" y="-1" width="137" height="15" uuid="a9b35b17-3f7c-4d68-928d-5c07946db5cf">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="42fbd8a5-ebbe-4899-bb0f-74c915ac6a16"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{suma_asegurada}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="716" y="-1" width="80" height="15" uuid="5e15222b-4efa-4a9a-abfc-0d9712e06694">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="595d2aa6-e31f-456c-a7df-07ffa8e64ac9"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{prima_neta_total}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="799" height="1" uuid="e5f21b91-7f24-498e-97a1-0e93db9225a4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="600" y="0" width="100" height="30" uuid="f36a1265-eafe-4e9b-8213-1752e1540a9f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="700" y="0" width="100" height="30" uuid="5a2d8cf3-9a67-453e-befa-1010e349b55f"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

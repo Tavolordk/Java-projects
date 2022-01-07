@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Captura de proveedores</h4>
+			</div>
+		<div class="card-content">
+		<div th:fragment="formProveedores">
+			<form id="formProveedor" autocomplete="off" class="needs-validation" novalidate>
+				
+				<h2 class = "display-4">Proveedores</h2>
+				<div class = "row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="fisicaMoral">Física moral:</label>
+						<select	class="form-control text-uppercase" id="fisicaMoral" name="fisicaMoral">
+							<option value="F">FISICA</option>
+							<option value="M">MORAL</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4 siniestro">
+						<label class = "proveedorMoralNuevo" for="razonSocial">Razón social:</label>
+						<label class = "proveedorFisicoNuevo"for="razonSocial">Nombre:</label>
+						<input class="form-control text-uppercase" id="razonSocial" name="razonSocial" maxlength="150"/>
+					</div>
+					<div class="form-group col-md-4 proveedorFisicoNuevo">
+						<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaNacimiento"
+								name="fechaNacimiento" data-mask="0000-00-00" data-date-end-date="0d"
+								placeholder="yyyy-mm-dd" /> <span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-4 proveedorMoralNuevo">
+					<label for="fechaConstitucion">Fecha Constitución:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date"
+							id="fechaConstitucion" name="fechaConstitucion" data-date-end-date="0d"/> <span
+							class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+						</span>
+					</div>
+				</div>
+				<div class="form-group col-md-4 proveedorMoralNuevo">
+					<label for="folio">Folio Mercantil:</label>
+					 <input	class="form-control numberClass" type="text" id="folioMercantil" name="folioMercantil" maxlength="18"/>
+				</div>
+				<div class="form-group col-md-4 proveedorFisicoNuevo">
+					<label for="nacionalidad">Nacionalidad:</label> <select
+						class="form-control nacionalidad" id="nacionalidad" name="nacionalidad">
+						<option value="">Seleccione opción...</option>
+						<option value="SE DESCONOCE">SE DESCONOCE</option>
+						<option value="MEXICANA">MEXICANA</option>
+						<option value="EXTRANJERO">EXTRANJERO</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-4 proveedorMoralNuevo">
+					<label for="giroMercantil">Giro Mercantil:</label> 
+					<select class="form-control giroMercantil" id="giroMercantil" name="giroMercantil">
+					</select>
+				</div>
+ 				<div class="form-group col-md-4">
+					<label for="Actividad">Actividad economica:</label> 
+					<select	class="form-control actividadObjeto" id="actividadObjeto" name="actividadEconomica">
+					</select>
+				</div>
+					<div class="form-group col-md-4 siniestro">
+						<label for="tipoProveedor">Tipo proveedor:</label>
+						<select	class="form-control text-uppercase" id="tipoProveedor" name="tipoProveedor">
+							<option value="1">Contratista</option>
+							<option value="2">Ingeniería especializada</option>
+							<option value="3">Asesoría externa</option>
+							<option value="4">Asociaciones</option>
+							<option value="5">Ajustador</option>
+							<option value="6">Abogado</option>
+							<option value="7">Otro</option>
+						</select>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="tipoProveedorDesc">Otro tipo proveedor:</label>
+						<input class="form-control text-uppercase" id="tipoProveedorDesc" name="tipoProveedorDesc" maxlength="100" disabled>
+					</div>
+		
+					<div class="form-group col-md-4 siniestro">
+						<label for="fechaAlta">Fecha registro:</label>
+						<div class="input-group">
+								<input type="text" class="form-control date currentDate" id="fechaAlta" name="fechaAlta" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10" disabled />
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					<div class="form-group col-md-4 siniestro">
+						<label for="telefonoOficina">Teléfono oficina:</label>
+						<input class="form-control numberClass" id="telefonoOficina" name="telefonoOficina" maxlength="13">
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="telefonoCelular">Teléfono celular:</label>
+						<input class="form-control numberClass" id="telefonoCelular" name="telefonoCelular" maxlength="13"> 
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="correoElectronico1">Correo electrónico:</label>
+						<input class="form-control text-uppercase" id="correoElectronico1" name="correoElectronico1" maxlength="50"/>
+					</div>
+					<div class="form-group col-md-4 siniestro">
+						<label for="rFC text-uppercase">RFC:</label>
+						<input class="form-control text-uppercase" id="rFC" name="rFC" maxlength="13" />
+					</div>
+					<div class="form-group col-md-4">
+					<label for="noFiel">Firma Electrónica Avanzada:</label> <input
+						class="form-control firmaElectronicaAvanzada" type="text" id="firmaElectronica"
+						name="firmaElectronica" maxlength="50"/>
+					</div>
+					<div class="form-group col-md-4 siniestro">
+						<label for="nombreContacto text-uppercase">Nombre contacto:</label>
+						<input class="form-control text-uppercase" id="nombreContacto" name="nombreContacto" maxlength="150"> 
+					</div>
+					</div>
+					
+					<h2 class = "display-4" >Domicilio</h2>
+					<div class= "row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="calle text-uppercase">Calle:</label>
+						<input class="form-control text-uppercase" id="calle" name="calle" maxlength="100"/>
+					</div>
+					
+					<div class="form-group col-md-2 md-2">
+						<label for="numeroExterior">No. Exterior:</label> <input
+							class="form-control text-uppercase" type="text" id="numeroExterior" name="numeroExterior" maxlength="10"/>
+					</div>
+					<div class="form-group col-md-2 md-2">
+						<label for="numeroInterior">No. Interior:</label> <input
+							class="form-control text-uppercase" type="text" id="numeroInterior" name="numeroInterior"  maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="codigoPostal numberClass">CP:</label>
+						<input class="form-control codigoPostal numberClass" id="codigoPostal" name="codigoPostal" maxlength="5"> 
+					</div>
+					
+					<div class="form-group col-md-4">
+						<label for="colonia">Colonia:</label>
+						<input class="form-control colonia" type="text" id="colonia" name="colonia" disabled="disabled"/>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="estado">Estado:</label> 
+						<input class="form-control estado" type="text" id="estado" name="estado" disabled="disabled"/>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="municipio">Municipio:</label> 
+						<input class="form-control municipio" type="text" id="municipio" name="municipio" disabled="disabled"/>
+					</div>
+					
+<!-- 					<div class="form-group col-md-4 siniestro"> -->
+<!-- 						<label for="cve_Banco">Banco:</label> -->
+<!-- 						<select	class="form-control text-uppercase" id="cve_Banco" name="cve_Banco"> -->
+<!-- 							<option value="1">BANCO NACIONAL DE MEXICO CITY BANK</option> -->
+<!-- 							<option value="2">BBVA BANCOMER</option> -->
+<!-- 							<option value="3">Banco Santander (México) S.A., Institución de Banca Múltiple</option> -->
+<!-- 						</select> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="form-group col-md-4 siniestro"> -->
+<!-- 						<label for="cuentaClabe">Número de cuenta o CLABE:</label> -->
+<!-- 						<input class="form-control numberClass" id="cuentaClabe" name="cuentaClabe" maxlength="18"> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="form-group col-md-4 siniestro"> -->
+<!-- 						<label for="transferencia">Otro banco:</label> -->
+<!-- 						<input class="form-control numberClass" id="transferencia" name="transferencia" maxlength="20"> -->
+<!-- 					</div> -->
+					
+<!-- 					<div class="form-group col-md-12 siniestro"> -->
+<!-- 						<label for="transferencia">Comentarios:</label> -->
+<!-- 						<input class="form-control text-uppercase" id="comentario" name="comentario" maxlength="500"> -->
+<!-- 					</div> -->
+				</div>
+				
+				
+				<h2 class="display-4">Carga de Documentos</h2>
+				<div class="row">
+					<div class="form-group col-md-6 ">
+						<label for="_identificacionOficial" class="proveedorFisicoNuevo _identificacionOficial">Identificación
+							Oficial: </label> <label for="_identificacionOficial"
+							class="proveedorMoralNuevo _identificacionOficial">Identificación Oficial del
+							Representante: </label> <input type="file" class="file"
+							id="_identificacionOficial" name="file[]">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="_comprobanteDomicilio" class="_comprobanteDomicilio">Comprobante Domicilio:</label> <input
+							id="_comprobanteDomicilio" type="file" class="file" name="file[]">
+					</div>
+	
+					<div class="form-group col-md-6 proveedorMoralNuevo">
+						<label for="_escrituraConstitutiva" class="_escrituraConstitutiva">Escritura Constitutiva:</label>
+						<input type="file" class="file" id="_escrituraConstitutiva"
+							name="file[]">
+					</div>
+					<div class="form-group col-md-6 proveedorMoralNuevo">
+						<label for="_porderRepresentanteLegal" class="_porderRepresentanteLegal">Poder del
+							Representante Legal:</label> <input type="file" class="file"
+							id="_porderRepresentanteLegal" name="file[]">
+					</div>
+	
+					<div class="form-group col-md-6 proveedorFisicoNuevo">
+						<label for="_curp" class="_curp">CURP:</label> <input type="file" class="file"
+							id="_curp" name="file[]">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="_rfc" class="_rfc">RFC:</label> <input type="file" class="file"
+							id="_rfc" name="file[]">
+					</div>
+					<div class="form-group col-md-6 proveedorMoralNuevo">
+						<label for="_firmaElectronicaAvanzada" class="_firmaElectronicaAvanzada">Firma Electrónica
+							Avanzada:</label> <input type="file" class="file"
+							id="_firmaElectronicaAvanzada" name="file[]">
+					</div>
+					<div class="form-group col-md-6 proveedorFisicoNuevo">
+						<label for="_calidadMigratoria" class="_calidadMigratoria">Acreditación calidad
+							migratoria (solo extranjeros) :</label> <input type="file" class="file"
+							id="_calidadMigratoria" name="file[]">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="_validacionListaNegra" class="_validacionListaNegra">Resultado de validación
+							listas negras :</label> <input type="file" class="file"
+							id="_validacionListaNegra" name="file[]">
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="guardaProveedor">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Guardar
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/proveedor/proveedorC.js" th:src="@{/resources/js/pages/proveedor/proveedorC.js}"></script>
+	<script src="/resources/js/pages/proveedor/proveedor.js" th:src="@{/resources/js/pages/proveedor/proveedor.js}"></script>
+</body>
+</html>

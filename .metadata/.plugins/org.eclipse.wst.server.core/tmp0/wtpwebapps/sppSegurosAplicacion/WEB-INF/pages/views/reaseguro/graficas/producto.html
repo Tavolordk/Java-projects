@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card grey lighten-4 animated fadeIn">
+			<!-- Card content -->
+			<div class="card-body">
+
+				<!-- Title -->
+				<h4 class="card-title">
+					<a>Productos</a>
+				</h4>
+				<div class="table-responsive main-container z-depth-1 grey lighten-5" >
+				<table id="tablaProducto"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer "
+					style="width: 100%">
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal animated bounceInDown fast" id="modalSocial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title"><i class="fas fa-file-contract"></i> Contratos</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+
+      <!--Body-->
+		<div class="modal-body mb-0">
+		<div class="row">
+			<div class="list-group col-6">
+			  <button type="button" class="list-group-item list-group-item-action active disabled">
+			    Proporcionales
+			  </button>
+			  <div id="opcionesGrupoProporcional"></div>
+			  
+			</div>
+			<div class="list-group col-6">
+			  <button type="button" class="list-group-item list-group-item-action active disabled">
+			    No Proporcionales
+			  </button>
+			  <div id="opcionesGrupoNProporcional"></div>
+			</div>
+		</div>
+		</div>
+
+	</div>
+    <!--/.Content-->
+
+  </div>
+</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/productoC.js" th:src="@{/resources/js/pages/catalogos/productoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/internoC.js" th:src="@{/resources/js/pages/reaseguro/internoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/interno.js" th:src="@{/resources/js/pages/reaseguro/interno.js}"></script>

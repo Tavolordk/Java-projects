@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Coberturas</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="button" class="btn btn-primary col-md-2"
+				name="btnEnviar" data-toggle="modal"
+				data-target="#nuevaCoberturaModal">
+				<span style="margin-right: 5%"><i class="fas fa-plus-square"></i></span>Nueva
+				cobertura
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaCoberturas"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%" >
+				</table>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevaCoberturaModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevaCoberturaModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header"
+							style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+							<h5 class="modal-title" id="nuevaCoberturaModalLongTitle">Nueva	Cobertura</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="formCoberturasNuevo" autocomplete="off">
+								<div th:include="views/catalogos/formularioCoberturas :: formularioCoberturasFragment"></div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary"
+								id="btnGuardarCobertura">
+								<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+							</button>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div th:include="views/catalogos/editarCoberturas :: coberturasEditFragment" id="editarCoberturas"></div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/coberturasC.js"
+		th:src="@{/resources/js/pages/catalogos/coberturasC.js}"></script>
+	<script src="/resources/js/pages/catalogos/coberturas.js"
+		th:src="@{/resources/js/pages/catalogos/coberturas.js}"></script>
+
+	<script src="/resources/js/pages/catalogos/ramoC.js"
+		th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+
+	<script src="/resources/js/pages/catalogos/tarifasC.js"
+		th:src="@{/resources/js/pages/catalogos/tarifasC.js}"></script>
+		
+	<script src="/resources/js/pages/catalogos/productoC.js"
+		th:src="@{/resources/js/pages/catalogos/productoC.js}"></script>
+	
+</body>
+</html>

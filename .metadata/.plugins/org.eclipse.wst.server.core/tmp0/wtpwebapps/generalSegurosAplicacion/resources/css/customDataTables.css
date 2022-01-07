@@ -1,0 +1,12 @@
+.estiloTablas>thead {
+	background-color: rgb(39, 103, 166) !important;
+	color: #ffff;
+	font-size: 0.85em;
+	font-weight: normal;
+}
+
+.background-tabla {
+	background-color: rgb(255, 255, 255);
+	border-radius: 5px;
+	display:none;
+}

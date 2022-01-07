@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CG_APV1" pageWidth="595" pageHeight="842" columnWidth="573" leftMargin="11" rightMargin="11" topMargin="12" bottomMargin="12" uuid="70c75023-98a6-446e-9636-2f913d1b264f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<style name="NombreEmpresa" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="16" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="TipoDocumento" hTextAlign="Right" vTextAlign="Middle" markup="styled" fontSize="14" isBold="true">
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="pestanasazules" mode="Opaque" hTextAlign="Center" vTextAlign="Middle" markup="html" pattern="" fontName="SansSerif" fontSize="10" isBold="true"/>
+	<style name="texto" mode="Opaque" hTextAlign="Justified" vTextAlign="Top" markup="html" fontName="SansSerif" fontSize="10">
+		<paragraph leftIndent="8" rightIndent="8"/>
+	</style>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="no_Certificado" class="java.lang.String"/>
+	<parameter name="expedida_Nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT PRD.encabezado AS ENCABEZADO, numero_poliza, '' AS no_Certificado
+		,CASE CTE.fisico
+		WHEN 0 THEN UPPER(CTE.denominacion)
+		WHEN 1 THEN UPPER(CTE.nombre_cliente+' '+CTE.apellido_paterno+' '+CTE.apellido_materno)
+		END AS nombre_cliente
+		FROM POLIZAS
+		LEFT JOIN CLIENTES CTE ON CTE.id_cliente = id_contratante
+		LEFT JOIN PRODUCTOS PRD ON PRD.Cve_Producto = POLIZAS.cve_producto
+		WHERE id_poliza = $P{no_Poliza}]]>
+	</queryString>
+	<field name="numero_poliza" class="java.lang.String"/>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<field name="no_Certificado" class="java.lang.String"/>
+	<field name="ENCABEZADO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="-10" y="0" width="139" height="26" uuid="9f982b06-7d78-4512-86c2-c781f9e18dc0"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="NombreEmpresa" x="160" y="0" width="412" height="19" uuid="8f44b6ff-56ba-4044-bb7f-a181fd0e97e6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="26" width="139" height="9" uuid="9bb52336-64f7-4377-9682-298fadf24795"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="759" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="10" width="572" height="749" uuid="1aa28295-b993-4125-ab8b-7dbddfc159ca"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="0" y="10" width="572" height="53" uuid="ea4de12e-1b60-4854-94e0-11fdd34c514d"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="109" height="26" uuid="1d3d68e1-231b-4a75-889a-867d574c8dca"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No Póliza: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement positionType="Float" mode="Opaque" x="109" y="1" width="141" height="26" uuid="7eab17b3-d0b7-41ef-8bb7-b06650e027cc"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="250" y="1" width="152" height="26" uuid="6cacd64c-34a0-4992-8904-b2c30c2ac9f8"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11" isBold="false"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">No. de Certificado: </style>
+(En caso de colectivo)
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="402" y="1" width="170" height="26" uuid="2d46b1c2-0b1d-4fea-b36d-48f9ec349a1c"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{no_Certificado}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="27" width="140" height="26" uuid="f675c6d3-79e7-4f21-a248-864bbac7b542"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="11"/>
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#003366">Expedida a nombre de: </style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="140" y="27" width="432" height="26" uuid="d315ff5f-bfa4-4908-8fb0-b57374dd4e45"/>
+					<box>
+						<pen lineWidth="1.25" lineColor="#2767A6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="64" width="574" height="10" uuid="a47c742f-7ef3-43ce-aaf5-af8f91ee4a40"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="74" width="286" height="15" uuid="ba40154b-83e2-4f61-8b99-d7e32be267c4"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>OBJETO DEL SEGURO</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="89" width="286" height="101" uuid="a3a5288b-89b2-4837-9e52-1f038d81d362"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold' isItalic='true'>SPP Institución de Seguros, S.A. de C.V.</style>, denominada en adelante la Institución, pagará al beneficiario designado por el Asegurado para la cobertura por muerte accidental, la suma que se estipula como beneficio de dicha cobertura, de la manera y en los términos y condiciones que más adelante se establecen, inmediatamente después de que reciba las pruebas del hecho y de la causa del fallecimiento del Asegurado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="190" width="286" height="16" uuid="d23a1049-9cf3-4dc5-a42f-1540a327b02e"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>PERIODO DE COBERTURA</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="206" width="286" height="38" uuid="e9e363dd-cf8a-4b96-8cd0-6faa8680ec82"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[El inicio y fin del período de cobertura del seguro surtirá efecto a las 12 horas de los días especificados en la carátula de la póliza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="244" width="286" height="15" uuid="eb62cf34-a671-4d7e-bb9f-54258ec3febe"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>DEFINICIONES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="259" width="286" height="500" uuid="23124c09-9b8b-4265-99fd-1d44ce518427"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Accidente:</style> Acontecimiento provocado por una causa externa súbita, imprevista, fortuita, violenta e involuntaria.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Asegurado:</style> Es la persona física amparada por la póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Beneficiario:</style> Persona designada en la póliza por el Asegurado para recibir el beneficio del seguro.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Certificado Individual de Seguro:</style> La Compañía emitirá un certificado individual para cada miembro de la Colectividad Asegurada que entregará al Contratante, el cual contendrá cuando menos los siguientes datos:
+
+1) Nombre, teléfono y domicilio de La Compañía
+2) Firma del funcionario autorizado de La Compañía
+3) Operación de seguro, número de la póliza y del  Certificado
+4) Nombre del contratante
+5) Nombre y fecha de nacimiento o edad alcanzada  del Asegurado
+6) Fecha de vigencia de la póliza y del Certificado
+7) Suma asegurada o reglas para determinarla en  cada beneficio
+8) Nombre de los beneficiarios y en su caso, el  carácter de irrevocable de la designación
+9) Transcripción que corresponda, según el tipo de  seguro de que se trate, del texto del artículo 17 y 18  del Reglamento.
+10)En caso de que el seguro colectivo tenga por objeto el proporcionar una prestación laboral, se deberá transcribir, según corresponda de acuerdo al seguro de que se trate, el artículo 19 del Reglamento.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Colectividad Asegurable: </style> Integrantes de la colectividad sobre los que se hace la oferta del seguro y cuyas características se señalan en la carátula de la póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Colectividad Asegurada: </style> Son los integrantes de la Colectividad que han cumplido con los requisitos que se establecen en cada caso para quedar asegurados y que den su consentimiento expreso para ello.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Compañía:</style> Es la persona moral, constituida de acuerdo con las leyes mexicanas aplicables a la materia como institución de seguros, que asume el riesgo amparado por la póliza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="321" width="287" height="438" uuid="2e7a457e-5f71-4747-9faf-11637ff14c47"/>
+				<textElement verticalAlignment="Justified" markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Edad:</style> La edad cronológica que tiene un asegurado en una fecha determinada.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Enfermedad corporal:</style> Toda alteración en la salud del asegurado, debida a causas anormales, internas o externas, por las cuales amerite tratamiento médico o quirúrgico. 
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Exclusiones:</style> Situaciones, eventos o circunstancias que en caso de presentarse no estarán cubiertos por esta Póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Fecha de Inicio de Cobertura:</style> Es la fecha a partir de la cual cada uno de los Asegurados cuenta con la protección ofrecida en este Contrato de Seguro.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Fecha de Inicio de Vigencia:</style> Es la fecha a partir de la cual el Contrato de Seguro entra en vigor.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Fecha de Término de Vigencia:</style> Fecha en la cual concluye la protección de la Póliza, estipulada en la carátula de la Póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Invalidez Total y Permanente: </style> Se considerará invalidez total y permanente, la pérdida total de facultades o aptitudes del Asegurado a consecuencia de un accidente, que lo imposibilite para procurarse mediante su trabajo habitual una remuneración comprobable percibida de acuerdo con sus conocimientos, aptitudes y posición social.
+Se considera también como causa de Invalidez Total y Permanente la pérdida irreparable y absoluta de la vista en ambos ojos, la pérdida de ambas manos, ambos pies, de una mano y un pie, o de una mano y la vista de un ojo, o un pie y la vista de un ojo.
+Para efectos de dicha definición se entiende por (i) pérdida de un pie o una mano, la amputación quirúrgica o traumática de esa parte completa o su pérdida total y permanente de funcionamiento, (ii) pérdida de la vista, la pérdida completa y definitiva de la visión.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Lugar de Residencia:</style> Lugar donde el asegurado radica permanentemente, domicilio habitual. Sólo estarán protegidas bajo este seguro, las personas que radiquen
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="204" width="287" height="117" uuid="ddac51d5-7cb4-4569-a2f4-3bd5f40543c9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="styled">
+					<paragraph leftIndent="15" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[Este Contrato de Seguro está Constituido por:
+a. Las declaraciones del Solicitante Titular proporcionadas por escrito en la solicitud del seguro.
+b. La Póliza.
+c. Las cláusulas adicionales o endosos, los cuales son documentos que modifican o condicionan en cualquier sentido los alcances del contrato, sin que lo anterior se refiera a modificar el texto de las condiciones generales
+d. Las Condiciones Generales.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="74" width="287" height="130" uuid="5a75c487-0954-450a-bda5-8b1eac50ddc5"/>
+				<textElement verticalAlignment="Justified" markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Contratante:</style> Persona física o moral que es responsable ante la Compañía de la contratación y pago de la prima del seguro en su totalidad.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Contrato de Seguro:</style> Documento donde se establecen los términos y condiciones celebradas entre el Contratante y la Compañía, así como los derechos y obligaciones de las partes. Este documento está integrado por las condiciones generales, Póliza, la Solicitud de Seguro y Endosos que se agreguen, los cuales constituyen prueba del Contrato de Seguro.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="253" y="-15" width="319" height="13" uuid="fb2a8c6d-d24c-4eea-bc94-9dd3569c5fb2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b><font color=#856429> Condiciones Generales: " +$F{ENCABEZADO}+ " </font></b>"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="1" y="10" width="572" height="739" uuid="da6b8330-875b-47c8-8dd7-118a8e58b62b"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="10" uuid="0d61ce01-0b04-4475-8383-41616c3ae5a7"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="470" width="286" height="289" uuid="f357aa9b-9b22-4294-a80b-db6b6686f0c0"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="8"/>
+				</textElement>
+				<text><![CDATA[
+c) Endosos. - Documento generado por la Compañía, previo acuerdo entre las partes, que, al adicionarse a las condiciones generales, modifica alguno de los elementos contractuales, y que tiene por objeto señalar una característica específica, que, por el tipo de riesgo, el tipo de transferencia o la administración del contrato, es necesario diferenciar de lo establecido en los documentos generales para su adecuada aplicación. 
+Lo señalado por estos documentos prevalecerá sobre las condiciones generales en todo aquello que se contraponga. 
+
+d) Información para la orientación en caso de siniestro. - Texto(s) que describe(n) los pasos a seguir, ante la necesidad de uso de la condición de protección otorgada, y que resuelve las principales dudas que por esta situación se presentan.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>
+Recibo de Pago:</style> Es el documento emitido por la Compañía en el que se establece la Prima que deberá pagar el Contratante por el periodo de cobertura que en él se señala.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="250" width="287" height="26" uuid="931a9c7f-82ca-4a94-9c66-5ffa75617f2d"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>COBERTURAS
+1. MUERTE ACCIDENTAL</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="276" width="287" height="140" uuid="098b5b92-9b48-46f1-ac50-e7b366fd8867"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[Si como consecuencia de un accidente sufrido por el Asegurado durante el periodo de vigencia de esta póliza, y dentro de los 90 días naturales siguientes a la fecha del accidente sobreviniese su muerte, la Compañía pagará la Suma Asegurada especificada en la carátula de esta póliza. 
+Al ocurrir el fallecimiento de un miembro asegurado, únicamente se dará por terminada la vigencia del certificado respectivo, mientras que el contrato de seguro continuará vigente para los demás miembros de la colectividad asegurada.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="416" width="287" height="30" uuid="d02d9de4-3e93-45be-8827-ad311ffc154c"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>2. REEMBOLSO DE GASTOS MEDICOS 
+POR ACCIDENTE</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="446" width="287" height="142" uuid="e210ac3f-3422-4b8f-82d4-373dcc147dfe"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[SPP Seguros, le reembolsará al Asegurado los gastos en que incurra, hasta la suma asegurada contratada por esta cobertura indicada en la Póliza, si a consecuencia de un accidente y dentro de los 10 días siguientes a la fecha del accidente se viera obligado a someterse a tratamiento médico, hospitalizarse, consumir medicamentos. Solo se pagarán gastos y/o servicios médicos proporcionados por instituciones de salud y por personas legalmente autorizadas para el ejercicio de su profesión y que éstas no tengan parentesco de cualquier tipo y grado con el Asegurado y/o con el Contratante.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="588" width="287" height="28" uuid="ef581a39-a0d6-4dd2-b252-269529c0b8b6"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>3. INCAPACIDAD E INVALIDEZ TOTAL Y PERMANENTE POR ACCIDENTE </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="616" width="287" height="79" uuid="0fa62981-884b-4bed-a82e-df2c599d7ca7"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[Si como consecuencia de un accidente sufrido por el Asegurado durante el periodo de vigencia de esta póliza, y dentro de los 90 días naturales siguientes a la fecha del accidente sobreviniese un estado de Incapacidad o Invalidez Total y Permanente, la Compañía pagará la Suma Asegurada especificada en la carátula de esta póliza.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="708" width="287" height="51" uuid="1ff4f8e9-3060-45f9-82b1-05fa53568e5e"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>No es objeto de la presente póliza las muertes originadas por lo siguiente: </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="695" width="287" height="13" uuid="1b01d4bd-59ce-45da-8637-bf03aaf5da29"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>EXCLUSIONES GENERALES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="0" y="10" width="286" height="230" uuid="80b382a9-9255-4536-b03b-b7ac6f6716aa"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[permanentemente y que su domicilio habitual sea dentro de la República Mexicana.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Ocupación:</style> Actividad desempeñada por el Asegurado y de la cual percibe un salario de manera periódica.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Periodo al Descubierto:</style> Tiempo durante el cual la póliza no está vigente, cesando los efectos del contrato de seguro. Empieza al terminar el Período de Gracia y termina al momento de recibir el pago de las primas vencidas. Al momento de originarse un período al descubierto de 30 o más días, el o los asegurados que estén incluidos en la póliza pierden la antigüedad que hayan generado estando asegurados en la presente póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Póliza:</style> Conjunto de documentos que establecen los derechos y obligaciones de las partes involucradas por la transferencia del riesgo, así como los términos y condiciones específicos que se seguirán en este proceso y que en general se componen de:
+
+a) Carátula de Póliza. - Documento escrito que identifica claramente al emisor del documento y en el que señala:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="0" y="348" width="286" height="122" uuid="160ebb36-bcde-45f7-9fa2-a2d4709d6d88"/>
+				<textElement verticalAlignment="Justified" markup="styled"/>
+				<text><![CDATA[
+b) Condiciones Generales. - Conjunto de cláusulas donde se establece la descripción jurídica de las condiciones de cobertura, y que señalan detalladamente los términos y características que tiene la transferencia del riesgo, las obligaciones y derechos que cada parte tiene de acuerdo con las disposiciones legales y cuando es el caso por las convenidas lícitamente por los participantes para la correcta aplicación del contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="240" width="286" height="108" uuid="80aeeb19-78a3-47aa-b8f5-a40f070e03f3"/>
+				<textElement markup="styled">
+					<paragraph leftIndent="15" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[• Nombres y firmas de los representantes de la Compañía.
+• Nombre y domicilio del Contratante.
+• Nombre y fecha de nacimiento del Asegurado.
+• Nombre de los Beneficiarios.
+• Fecha de inicio y fin de la vigencia.
+• Monto de Suma Asegurada.
+• Cobertura Contratada.
+• Prima del seguro.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="10" width="287" height="240" uuid="843cdada-da32-49eb-b1e4-51e2f6f17b8e"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Reclamación:</style> Es el trámite que realiza el Beneficiario ante la Compañía, para obtener el beneficio del Contrato a consecuencia del fallecimiento del Asegurado por un Accidente.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Reembolso de Gastos Médicos:</style> Proceso mediante el cual se restituyen los gastos procedentes realizados como consecuencia de algún accidente o enfermedad cubierto por la póliza y liquidados directamente por el Asegurado al prestador de Servicio.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Solicitud:</style> Documento que comprende la voluntad del Contratante y Asegurado para adquirir un seguro y expresa la protección solicitada e información para la evaluación del riesgo. Este documento es indispensable para la emisión de la Póliza y deberá ser llenado y firmado por el Contratante y Asegurado.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Suma Asegurada:</style> Es el límite máximo de responsabilidad de la Compañía, convenido y especificado en la carátula de la Póliza.]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="1" y="5" width="569" height="735" uuid="677be466-1b32-45e7-9965-cdfc949a39c4"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="9993c32a-bd86-4727-b1d0-c53d45270dd9"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="625" width="286" height="42" uuid="6f94b9c6-fab8-467c-9eee-c21110929b2e"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>O.- Las enfermedades preexistentes del Titular que hayan sido objeto de tratamiento médico en los 30 días previos a la contratación de la póliza. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="667" width="286" height="92" uuid="48077043-d998-41fc-8e5b-9d7935220399"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>P.- Las enfermedades preexistentes o padecimientos congénitos del Titular que hayan sido objeto de tratamiento médico en los 30 días previos a la contratación de la póliza. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="559" width="286" height="66" uuid="b18144ec-c930-4ee4-a8cd-9b3e473e2d51"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>N.- Las lesiones que se originen por culpa grave del asegurado cuando se encuentre bajo el efecto del alcohol, drogas, enervantes o alucinógenos, así como fármacos no prescritos por un médico, o bien ingerir somníferos, barbitúricos, estupefacientes. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="489" width="286" height="42" uuid="9101e67e-ab1f-4669-b82a-e6c4413e2921"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>L.- Ser ocupante de algún automóvil o cualquier otro vehículo que participe en carreras, pruebas, o contiendas de seguridad, resistencia o velocidad. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="531" width="286" height="28" uuid="7a993a3a-8354-4f43-97bc-5cc840bd457f"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>M.- El uso de motocicletas, motonetas y otros vehículos similares de motor. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="5" width="286" height="28" uuid="629fdc9f-8b23-4919-bbc2-e755c39c788d"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>A.- Hechos del asegurado, si este padece enfermedad corporal o mental.  </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="33" width="286" height="28" uuid="164d31b7-5ef8-4e29-896b-cf3c4fca068f"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>B.- Infecciones con excepción de las que acontezcan como resultado de una lesión accidental. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="61" width="286" height="28" uuid="ff528a0b-b328-431c-840b-b0558318e1a5"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>C.- Tratamiento médico o quirúrgico cuando éste no sea necesario a consecuencia de un accidente. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="89" width="286" height="42" uuid="0f06b196-a2d8-4638-b3c3-c0a15be87b14"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>D.- Accidentes derivados del servicio militar de cualquier clase, actos de guerra, insurrección, rebelión, revolución. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="131" width="286" height="42" uuid="66252429-7b96-4cea-8a2c-eeae8e48b56b"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>E.- Accidentes derivados de riña y actos delictuosos en que participe directamente el Asegurado o sus beneficiarios y éste sea sujeto activo. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="173" width="286" height="28" uuid="e02a5489-04e0-40d9-9469-58846014bd23"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>F.- La muerte o lesiones sufridas a consecuencia de riesgos atómicos o nucleares de cualquier índole. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="201" width="286" height="66" uuid="3998a1f5-b444-4ddf-a9cb-daed75f9fc3b"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>G.- Homicidio cuando se derive de la participación directa del asegurado como sujeto activo en actos delictivos intencionales, suicidio o cualquier intento del mismo o mutilación voluntaria aun cuando se cometa en estado de enajenación mental. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="267" width="286" height="28" uuid="6fd11f7e-fa39-4148-9440-5541688337c1"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>H.- Envenenamientos de cualquier origen o naturaleza, excepto cuando se demuestra que es accidental.  </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="295" width="286" height="90" uuid="f836203f-6bbd-4460-872a-70f7b12467c0"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>I.- Las lesiones que sufra el Asegurado a consecuencia de la práctica de actividades de paracaidismo, buceo, alpinismo, box, charrería, velideltismo, esquí, jockey, tauromaquia, artes marciales, carreras de vehículos motorizados, lucha libre, lucha grecorromana, espeleología, equitación, rapel, u otras actividades deportivas o profesionales igualmente peligrosas. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="385" width="286" height="52" uuid="5efcbb1a-d54f-410d-ad92-2365aa70bf64"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>J.- El uso de taxis aéreos o aeronaves que no pertenezcan a una línea comercial legalmente establecida y autorizada para el servicio de transporte regular de pasajeros. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="437" width="286" height="52" uuid="543622c2-bc73-4513-aae8-e204710403c0"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>K.- Ser piloto y/o mecánico en vuelo y/o miembro de la tripulación de cualquier aeronave, fuera de las líneas comerciales autorizadas para la transportación regular de pasajeros. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" positionType="Float" x="286" y="5" width="286" height="754" uuid="9230a948-f5f4-4107-9b5a-da7c1bd4d964"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>No es objeto de la presente póliza la invalidez total y permanente si es resultado directo de: </style>
+
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>A. Lesiones que el Asegurado sufra en actos de guerra, rebelión, insurrección o revolución. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>B. Lesiones que el Asegurado sufra por participar activamente en riñas o en la comisión de actos delictivos intencionales. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>C. Lesiones o enfermedades que el Asegurado sufra a consecuencia de desempeñar actividades de tipo militar, de seguridad o vigilancia. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>D. Hechos o actos del Asegurado, si éste padece de enfermedad mental de cualquier clase. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>E. Lesiones que intencionalmente se cause a sí mismo el Asegurado o se produzcan con el consentimiento o participación de éste. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>F. Lesiones o enfermedades cuyos síntomas o signos se hayan manifestado con anterioridad a la fecha de contratación de la presente cláusula, que por su naturaleza no puedan pasar inadvertidos a los sentidos o que hayan sido diagnosticadas por un médico. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>G. Lesiones que se originen por culpa grave del Asegurado cuando se encuentre bajo los efectos del alcohol, o de estupefacientes o sicotrópicos, así como de fármacos no prescritos por un médico. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>H. Viajar en aeronaves que no pertenezcan a una línea comercial legalmente establecida y autorizada para el servicio de transporte aéreo de pasajeros, o en aeronaves que estén prestando servicios en vuelos especiales, fletados, de taxi aéreo, o en cualquier tipo de vuelo no regular. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>I. Viajar en motocicletas, motonetas, trimotos o cuatrimotos. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>J. Practicar paracaidismo, buceo, montañismo, velideltismo, lucha libre, lucha grecorromana, tauromaquia, box, hockey, esquí, espeleología, artes marciales, rapel, equitación, charrería, salto bungee, vuelo en aviones ultraligeros u otras actividades deportivas o profesionales igualmente peligrosas; salvo que el accidente ocurra con motivo de la práctica vacacional, siempre que no exista culpa grave o negligencia inexcusable por parte del Asegurado. </style>
+
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>No es objeto de la presente póliza el reembolso de gastos médicos si es resultado directo de: </style>
+
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>A. Los medicamentos especiales, aplicación de sustancias especiales, estudios para diagnóstico especiales, intervenciones y consultas médicas especiales requeridas por que el Asegurado padeciere infección oportunista o neoplasma maligno o Síndrome de Inmunodeficiencia Adquirida (SIDA) complejo sintomático relacionado con el SIDA (CRS) y todas las enfermedades causadas y/o relacionadas con el virus VIH Positivo o fuere cero-positivo al virus de Inmunodeficiencia humana (VIH). Para efectos de esta exclusión, las infecciones oportunistas incluirán la neumonía pneumocystis carinil, sarcoma de Kaposi y Linfoma del sistema nervioso central. </style>]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="5" width="571" height="753" uuid="ea307733-4be7-4e53-ac53-65992b3347c7"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="61837302-309c-4794-99a5-38415c686b5a"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="5" width="286" height="368" uuid="fd7dbe18-fdbe-4769-91d7-676b6e4073c3"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>B. Afecciones de la columna vertebral, salvo que resulten a consecuencia de un accidente. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>C. Tratamientos quiroprácticos o de acupuntura. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>D. Trastornos de enajenación mental, estados de depresión psíquico nerviosa, neurosis o psicosis, cualquiera que fuesen sus manifestaciones clínicas. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>E. Costo de reposición de aparatos ortopédicos y de prótesis. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>F. Gastos realizados por acompañantes de Asegurado durante su hospitalización. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>G. Anteojos, lentes de contacto y aparatos auditivos. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>H. Gastos Médicos por lesiones del Asegurado producidas por un ataque directo y premeditado en contra del Asegurado. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>I. Gastos Médicos por lesiones derivadas del secuestro del Asegurado, a menos que se haya presentado la denuncia por secuestro al ministerio público correspondiente. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>J. Complicaciones del embarazo (incluyendo enunciativamente intervenciones quirúrgicas realizadas con motivo de embarazos extrauterinos, estados de fiebre puerperal, estados de eclampsia y toxicosis gravídica, Mola Hidatiforme (Embarazo Molar)), operación cesárea y Aborto, salvo que cualquiera de los casos anteriores resulten necesarios a consecuencia de un Accidente. </style>
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>K. Tratamientos dentales, alveolares o gingivales, excepto los que resulten a consecuencia de un accidente. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="430" width="287" height="14" uuid="3c4818a5-8a3e-4129-ae82-9db358c9574b"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isItalic='true'>Muerte Accidental</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="390" width="287" height="40" uuid="94933549-abb0-4a07-98a5-9116ad7cc1e7"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font isItalic="false"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[
+Para el pago de la indemnización, es necesario que se presente a la Compañía los siguientes documentos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="374" width="286" height="15" uuid="996c0110-04f1-4da3-868b-54f1548b6b3f"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>PAGO DE SINIESTROS E INDEMNIZACIONES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="444" width="287" height="267" uuid="6c442239-43e4-443c-917b-e6c25d660842"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="15" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[1. Solicitud de reclamación de Beneficiario(s), requisitada en todos sus puntos.
+2. Acta de defunción (copia certificada).
+3. Acta de nacimiento del Asegurado (copia certificada).
+4. Acta de nacimiento de los beneficiarios (copia certificada).
+5. Si algún beneficiario ha fallecido, presentar acta de defunción correspondiente (copia certificada).
+6. Identificación del Asegurado y Beneficiarios (Original y copia de Credencial de elector, pasaporte o cédula profesional).
+7. Comprobante de domicilio vigente en el conste el domicilio del beneficiario de la cobertura por Muerte Accidental (no mayor a 3 meses, puede ser recibo del servicio telefónico, luz, agua, predial, etc.).
+8. Presentar actuaciones del Ministerio Público completas (carpeta de investigación, identificación del cadáver, autopsia o dispensa, resultado de los estudios químico toxicológicos y de alcoholemia, fotografías), parte de tránsito en caso de accidente en carretera y conclusiones (copias certificadas).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="5" width="286" height="84" uuid="d7b0b7d7-25c1-478e-ae73-a6bd314c452f"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="15" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[2. Comprobante de domicilio vigente (no mayor a 3 meses, puede ser recibo del servicio telefónico, luz, agua, predial, etc.).
+3. Informe médico firmado por el médico tratante.
+4 Facturas originales con requisitos fiscales vigentes.
+5. Recetas médicas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="89" width="286" height="20" uuid="cd8ea1e9-f96c-4a6e-a22a-24ad2ae5a547"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isItalic='true'>Invalidez Total y Permanente por Accidente:</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="109" width="286" height="380" uuid="4f200905-ccde-491e-9391-a93fb276bbe7"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font isItalic="false"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[1. Solicitud de reclamación requisitada por el Asegurado en todos sus puntos.
+2. Comprobante de domicilio vigente del Asegurado (no mayor a 3 meses, puede ser recibo del servicio telefónico, luz, agua, predial, etc.).
+3. Informe médico firmado por el médico tratante o en su defecto, resumen clínico completo y estudios por parte del médico tratante.
+4. Asegurados derechohabientes del sector salud deberán presentar el “Dictamen de Invalidez” que dichas instituciones emitan, la Compañía considera plenamente válido dicho Dictamen, siempre y cuando esté emitido bajo los formatos y cumpliendo con las formalidades que dichas
+Instituciones manejen en tanto corresponda a un “Dictamen de Invalidez Total y Permanente”.
+5. Asegurados no derechohabientes del Sector Salud, deberán presentar el “Dictamen de Invalidez Total y Permanente” que les haya emitido un médico especialista certificado por el Consejo de la Especialidad de Medicina del Trabajo, y siempre y cuando no sea emitido por un
+Profesional que tenga algún tipo de parentesco de cualquier tipo y grado con el Asegurado o Contratante.
+Dicho Dictamen será evaluado por el Médico Dictaminador de la Compañía, con el objeto de corroborar y acreditar el estado de Invalidez Total y Permanente originado por accidente.
+En caso de que la Compañía determinara la improcedencia de la reclamación, deberá hacerlo con base en un dictamen emitido por un especialista en la materia.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="489" width="286" height="270" uuid="e1450597-6641-40f1-af43-ccc43d34ee17"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[La Compañía se reserva el derecho a solicitar algún documento adicional o información sobre los hechos relacionados con el siniestro, de acuerdo a lo dispuesto en el artículo 69 de la Ley sobre el Contrato del Seguro.
+Que señala:
+Ley sobre el Contrato de Seguro, Artículo 69.- “La empresa aseguradora tendrá el derecho de exigir del asegurado o beneficiario toda clase de informaciones sobre los hechos relacionados con el siniestro y por los cuales puedan determinarse las circunstancias de su realización y las consecuencias del mismo.” 
+Asimismo, el artículo 71 de la misma ley señala:
+“El crédito que resulte del contrato de seguro vencerá treinta días después de la fecha en que la empresa haya recibido los documentos e informaciones que le permitan conocer el fundamento de la reclamación. 
+Será nula la cláusula en que se pacte que el crédito no podrá exigirse sino después de haber sido reconocido por la empresa o comprobado en juicio”.
+]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="6" width="571" height="744" uuid="1b95661e-4c23-49d3-9248-06825cad4c61"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="f7afa1a1-733c-419f-a1f9-cffcb379e554"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="298" width="286" height="242" uuid="d8b62663-ef79-4702-8bf3-5a4e307a2e2f"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Forma de Pago:</style> La prima especificada en la carátula de la póliza será pagada de manera anual.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Lugar de Pago:</style>Los pagos deberán efectuarse:
+Salvo que se establezca expresamente un lugar de pago diverso, las Primas estipuladas se pagarán con la periodicidad convenida, en las oficinas de la Compañía o se cargarán de forma automática en el instrumento bancario o financiero que al efecto autorice el Contratante, a cambio del Recibo de Pago correspondiente expedido por la Compañía, en este último caso el estado de cuenta en donde aparezca el cargo hará prueba plena del pago de las primas.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Rehabilitación:</style> En caso de que el Contrato de Seguro hubiere cesado por falta de pago de Primas, el Contratante podrá proponer la rehabilitación del Contrato, siempre y cuando el periodo comprendido entre el último Recibo de Pago de Primas que haya sido pagado y la solicitud de rehabilitación, no sea mayor a 90 (noventa) días naturales. Asimismo, se deberá cumplir con los siguientes requisitos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="0" y="6" width="286" height="14" uuid="fc18ae8d-8b31-4f16-9fa5-903a567d5a1b"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CLÁUSULAS GENERALES</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="20" width="286" height="278" uuid="e536cb69-f89e-4a07-9166-7473c88ab7ec"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Renovación:</style> Este Contrato se considerará renovado, por periodos de un año, si dentro de los últimos 30 días naturales de vigencia de cada periodo, el Contratante no da aviso por escrito o por cualquier otro medio pactado con la Compañía de su voluntad de no renovarlo. 
+El pago de prima acreditada mediante el recibo, extendido en las formas usuales de la Compañía, se tendrá como prueba suficiente de tal renovación.
+La renovación automática se otorgará, sin cumplir nuevos requisitos de asegurabilidad con base en el derecho de antigüedad, en la renovación no se podrán modificar en perjuicio del asegurado los límites de edad establecidos en la póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Primas (Monto de Primas):</style> La prima total de la póliza es la especificada en la carátula de la póliza, de acuerdo con la ocupación, sexo y edad alcanzada en la fecha de emisión del Asegurado. 
+A la renovación de la póliza, la prima se determinará con base en la suma asegurada, ocupación, edad alcanzada y sexo.
+Cualquier prima no pagada será deducida de cualquier indemnización.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="540" width="286" height="117" uuid="2fe38bd0-49e8-4873-b190-73fb871dc44f"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="15" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[a. El Contratante deberá presentar firmada una solicitud de rehabilitación, en el formato en que la Compañía tiene expresamente para este fin.
+b. El Asegurado deberá comprobar que reúne las condiciones necesarias de salud y de asegurabilidad establecidos por la Compañía, a la fecha de la solicitud de rehabilitación.
+c. El Contratante deberá cubrir el importe del costo de la rehabilitación establecido por la Compañía.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="657" width="286" height="102" uuid="682ff569-eaa0-4e33-859c-aac181d181c1"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[El Contrato se considerará nuevamente en vigor a partir del día en que la Compañía comunique por escrito al Contratante haber aceptado la propuesta de rehabilitación correspondiente.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Periodo de Gracia:</style> Plazo de 30 días a partir de la celebración del Contrato, que la Compañía otorga al Contratante para cubrir el monto de Prima, dentro del cual se otorga protección por el presente Contrato de Seguro,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="6" width="286" height="76" uuid="b0f86c47-ddd4-4467-a968-389c5ecd86a8"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[aún cuando no se hubiere pagado la Prima correspondiente. Si no hubiese sido pagada dicha prima, los efectos del Contrato de Seguro cesarán automáticamente a las 12:00 horas del último día de este plazo y por lo tanto la Compañía no estará obligada a pagar indemnización alguna en caso de siniestro posterior a dicho plazo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="82" width="286" height="15" uuid="8d2ced3c-715e-4d6c-bfbb-eafcc5f0526b"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CLÁUSULAS OPERATIVAS</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="97" width="286" height="662" uuid="38283625-892e-4e81-9ee5-b23639768906"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Administración: </style>El Contratante debe reportar a La Compañía los movimientos de alta, los de baja y los de aumento o disminución de beneficios, dentro de los 30 días siguientes a la fecha en que ocurran, salvo convenio específico.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Alta de Asegurados: </style>De conformidad con lo establecido en el Artículo 17 del Reglamento del Seguro de Grupo para la operación de Vida y del Seguro Colectivo para la Operación de Accidentes y Enfermedades.
+
+Las personas que ingresen a la Colectividad Asegurada con posterioridad a la celebración del Contrato de Seguro y que hayan dado su consentimiento para ser asegurados dentro de los treinta días naturales siguientes a su ingreso, quedarán aseguradas con las mismas condiciones en que fue contratada la póliza, desde el momento en que adquirieron las características para formar parte de la Colectividad de que se trate.
+Con independencia de lo previsto en el párrafo anterior, tratándose de personas que soliciten su ingreso a la Colectividad con posterioridad a la celebración del Contrato de Seguro y que hayan dado su consentimiento después de los treinta días naturales siguientes a la fecha en que hubieran adquirido el derecho de formar parte del mismo, La Compañía, dentro de los treinta días naturales siguientes a la fecha en que se le haya comunicado esa situación, podrá exigir requisitos médicos u otros para asegurarlas, si no lo hace quedarán aseguradas con las mismas condiciones en que fue contratada la Póliza.
+Cuando La Compañía exija requisitos médicos u otros para asegurar a las personas a que se refiere el párrafo anterior, contará con un plazo de treinta días naturales, contado a partir de la fecha en que se hayan cumplido dichos requisitos para resolver sobre la aceptación o no de asegurar a la persona, de no hacerlo se entenderá que la acepta con las mismas condiciones en que fue contratada la Póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Bajas: </style>De conformidad con lo establecido en el Artículo 18 del Reglamento del Seguro de Grupo para la operación de Vida y del Seguro Colectivo para la Operación de Accidentes y Enfermedades.
+Las personas que se separen definitivamente de la Colectividad Asegurada dejarán de estar aseguradas desde el momento de su separación, quedando sin validez alguna el Certificado individual expedido. En este caso, La Compañía devolverá la parte de la prima neta no devengada de dichos integrantes calculada en días exactos, a quienes la hayan aportado, en la proporción correspondiente.
+En caso de que a La Compañía le sea notificado como Baja la Colectividad completa, es decir que existiera una disolución completa de la Colectividad Asegurada, la póliza se dará por cancelada y se devolverán las proporciones del]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="-48" width="287" height="48" uuid="0539b7ea-1c5b-4ff8-80aa-b83ca3ea7ec7"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000' isItalic='true'>Reembolso de Gastos Médicos por Accidente:</style>
+1. Solicitud de reclamación requisitada en todos sus puntos.]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="6" width="571" height="744" uuid="7804847f-085a-48b7-a34c-63bde03d9260"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="20aed149-dac5-4289-adc2-320912fae5d8"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="5" width="286" height="208" uuid="893437ef-94d4-4148-af3c-6209f9add2c7"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[riesgo no corrido para cada uno de los integrantes.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Cambio en el Riesgo:</style> Es obligación del Asegurado comunicar a la Compañía de los cambios de la información proporcionada en la solicitud del seguro y de las agravaciones esenciales que tenga el riesgo durante el curso del seguro dentro de las 24 horas siguientes al momento en que conozca. La Compañía evaluará si dichos cambios afectan el riesgo contratado, y si procede modificará las condiciones del contrato, lo cual se notificará por escrito al Contratante y/o Asegurado. Si el Asegurado omitiere el aviso o si él provoca una agravación esencial del riesgo, cesarán de pleno derecho las obligaciones de la Compañía en lo sucesivo.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Cancelación:</style> Este Contrato será cancelado si el Contratante no paga la prima respectiva dentro del periodo de gracia.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="0" y="213" width="286" height="546" uuid="c5bacfd4-50d3-46b9-a02d-f5732964d39d"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[En caso de que el Contratante solicite por escrito la terminación anticipada del Contrato de la póliza, la Compañía devolverá el 60% de la parte no devengada de la prima de tarifa (prima cobrada sin incluir derechos de póliza ni impuestos). En un plazo máximo de diez días hábiles posteriores a la recepción de la solicitud. La devolución de la prima no devengada se realizará a través del mismo medio de cobro de la prima.
+El Contratante está obligado a declarar por escrito a la Compañía, de acuerdo con los cuestionarios relativos, todos los hechos importantes que se le pregunten para la apreciación del riesgo que puedan influir en las condiciones convenidas, tal como los conozca o deba conocer en el momento de la celebración del contrato. Con base en el artículo 47 de la Ley Sobre el Contrato de Seguro, la omisión o declaración inexacta de tales hechos a que se refieren los artículos 8,9 y 10 de la misma Ley,
+facultarán a la Compañía para considerar rescindido de pleno derecho el Contrato, aunque tales hechos no hayan influido en la realización del siniestro. 
+Para mayor referencia, se transcribe el contenido de los
+citados artículos, los cuales señalan:
+
+Artículo 47o.- Cualquier omisión o inexacta declaración de los hechos a que se refieren los artículos 8, 9 y 10 de la presente ley, facultará a la empresa aseguradora para considerar rescindido de pleno derecho el contrato, aunque no hayan influido en la realización del siniestro.
+
+Artículo 8o.- El proponente estará obligado a declarar por escrito a la empresa aseguradora, de acuerdo con el cuestionario relativo, todos los hechos importantes para la apreciación del riesgo que puedan influir en las condiciones convenidas, tales como los conozca o deba conocer en el momento de la celebración del contrato.
+
+Artículo 9o.- Si el contrato se celebra por un representante del asegurado, deberán declararse todos los hechos importantes que sean o deban ser conocidos del representante y del representado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="574" width="286" height="105" uuid="a5ae0337-d462-48c6-a18b-a78de805a9cc"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Notificaciones:</style> Cualquier comunicación o notificación relacionada con el presente Contrato de Seguro deberá hacerse a la Compañía por escrito, precisamente en su domicilio indicado en la carátula de la póliza, o en su caso, en el lugar que para estos efectos hubiera comunicado posteriormente la Compañía al Contratante o Asegurado, estando obligada la Compañía a expedir constancia de la recepción.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="5" width="286" height="568" uuid="730b0605-5441-4e3f-a652-05e1fe16fef1"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[Artículo 10o.- Cuando se proponga un seguro por cuenta de otro, el proponente deberá declarar todos los hechos importantes que sean o deban ser conocidos del tercero asegurado o de su intermediario.”
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Registro de Asegurados: </style>La Compañía formará un registro de Asegurados para cada póliza, el cual deberá contar con la siguiente información:
+
+I. Nombre, edad o fecha de nacimiento y sexo, de cada uno de los integrantes de la Colectividad
+II. Suma Asegurada o Regla para determinarla;
+III. Fecha de entrada en vigor del seguro de cada uno de los integrantes y fecha de terminación del mismo;
+IV. Plan de seguro;
+V. Número de Certificado Individual, y
+VI. Coberturas amparadas.
+
+A solicitud del Contratante, La Compañía deberá entregar copia de este registro.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Vigencia:</style> Periodo de validez del contrato que es de un año a partir de la fecha de inicio de vigencia que se estipula en la carátula de la póliza.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Terminación del Contrato:</style> Este contrato dejará de estar en vigor al ocurrir cualquiera de los siguientes eventos:
+
+1. Mediante petición por escrito del Asegurado o Contratante a la Compañía.
+2. Falta de pago, después de los 30 días naturales del periodo de gracia.
+3. Fallecimiento del Asegurado.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Modificaciones:</style> El Contrato sólo podrá modificarse previo acuerdo entre el Asegurado o el Contratante y la Compañía, y dichas modificaciones se registrarán de manera previa ante la Comisión Nacional de Seguros y Fianzas.
+
+En consecuencia, los agentes o cualquier otra persona no autorizada por la Compañía carecen de facultades para hacer modificaciones o concesiones. 
+
+Si el contenido de la póliza o sus modificaciones no concordaren con la oferta, el asegurado podrá pedir la rectificación correspondiente dentro de los treinta días que sigan al día en que reciba la póliza. Transcurrido este plazo se considerarán aceptadas las estipulaciones de la póliza o de sus modificaciones.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="pestanasazules" mode="Transparent" x="286" y="679" width="286" height="21" uuid="a22f9899-37e5-477c-8b90-38e68d456fe0"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CLÁUSULAS CONTRACTUALES</style>]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement key="" style="texto" x="0" y="6" width="571" height="744" uuid="9bee0a6b-b522-4a06-80bf-fd199eacabf7"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="texto" x="0" y="5" width="286" height="645" uuid="d4963d92-414b-4f9f-8ac1-ae4631c1287a"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[Consultas y Reclamaciones (Centro de Atención y Servicio a Asegurados) de la Institución o ante la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF), pudiendo a su elección, determinar la competencia por territorio, en razón del domicilio de cualquiera de sus delegaciones, en términos de los artículos 50 Bis y 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros y 277 de la Ley de Instituciones de Seguros y de Fianzas. Lo anterior dentro del término de dos años contados a partir de que se suscite el hecho que dio origen a la controversia de que se trate, o en su caso, a partir de la negativa de la Institución a satisfacer las pretensiones del reclamante, en términos del artículo 65 de la primera Ley citada.
+
+De no someterse las partes al arbitraje de la CONDUSEF, se dejarán a salvo los derechos del reclamante para que los haga valer ante los tribunales competentes del domicilio de dichas delegaciones. En todo caso, queda a elección del reclamante acudir ante las referidas instancias administrativas o directamente ante los citados tribunales.
+
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Prescripción:</style> Todas las acciones que se deriven de este Contrato de Seguro prescribirán en cinco años, tratándose de la cobertura de Fallecimiento en los seguros de vida y para cualquier otra cobertura, la prescripción será de dos años. En todos los casos los plazos serán contados desde la fecha del acontecimiento que les dio origen, en los
+términos del Artículo 81 de Ley sobre el Contrato de Seguro, salvo los casos de excepción consignados en el  Artículo 82 de la misma Ley. Dicho plazo no correrá en caso de omisión, falsas o inexactas declaraciones sobre el riesgo corrido, sino desde el día en que la empresa haya tenido conocimiento de él; y si se trata de la realización del siniestro, desde el día en que haya llegado a conocimiento de los interesados, quienes deberán demostrar que hasta entonces ignoraban dicha realización. Tratándose de terceros beneficiarios se necesitará además que éstos tengan conocimiento del derecho constituido a su favor, en términos de lo dispuesto por los artículos 81 y 82 de la Ley sobre el Contrato de Seguro.
+
+La prescripción se interrumpirá no sólo por las causas ordinarias, sino también por el nombramiento de peritos o por la iniciación del procedimiento conciliatorio señalado en el artículo 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros.
+
+Asimismo, la prescripción se suspenderá por la presentación de la reclamación ante la Unidad Especializada de atención de consultas y reclamaciones de esta Institución.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="0" y="650" width="286" height="107" uuid="d1ce00dd-90e8-4de8-9d6c-0adbd5fb6a30"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Moneda:</style> Todas las obligaciones de pago de este Contrato serán pagaderas en Moneda Nacional.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Revelación de Comisiones:</style> Durante la vigencia de la Póliza, el Contratante podrá solicitar por escrito a la institución le informe el porcentaje de la prima que, por concepto de comisión o compensación directa, corresponda al intermediario o persona moral por su intervención en la celebración de este Contrato. La institución proporcionará]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="5" width="286" height="567" uuid="9c1eefb4-dbf7-49bc-89e5-54c723ffcbcb"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[dicha información, por escrito o por medios electrónicos, en un plazo que no excederá de diez días hábiles posteriores a la fecha de recepción de la solicitud.
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Interés Moratorio:</style> En el caso de que la Compañía, no Obstante haber recibido los documentos e información que le permitan conocer el fundamento de la reclamación que le haya sido presentada, no cumpla con la obligación de pagar la cantidad procedente en los términos del artículo 71 de la Ley sobre el Contrato de Seguro, estará obligada a pagar una indemnización por mora de conformidad con lo dispuesto en el artículo 276 de la Ley de Instituciones de Seguros y de Fianzas.
+
+Ley sobre el Contrato de Seguro Artículo 71. - “El crédito que resulte del contrato de seguro vencerá treinta días después de la fecha en que la empresa haya recibido los documentos e informaciones que le permitan conocer el fundamento de la reclamación.
+Será nula la cláusula en que se pacte que el crédito no podrá exigirse sino después de haber sido reconocido por la empresa o comprobado en juicio.”
+Ley de Instituciones de Seguros y de Fianzas. Artículo 276.- “Si una Institución de Seguros no cumple con las obligaciones asumidas en el contrato de seguro dentro de los plazos con que cuente legalmente para su cumplimiento, deberá pagar al acreedor una indemnización por mora de acuerdo con lo siguiente:
+
+  I. Las obligaciones en moneda nacional se denominarán en Unidades de Inversión, al valor de éstas en la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y su pago se hará en moneda nacional, al valor que las Unidades de Inversión tengan a la fecha en que se efectúe el mismo, de conformidad con lo dispuesto en el párrafo segundo de la fracción VIII de este artículo. Además, la Institución de Seguros pagará un interés moratorio sobre la obligación denominada en Unidades de Inversión conforme a lo dispuesto en el párrafo anterior, el cual se capitalizará mensualmente y cuya tasa será igual al resultado de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en Unidades de Inversión de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" x="286" y="-59" width="286" height="58" uuid="a8ba0775-6283-461a-835d-f243f48f479b"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Competencia:</style> En caso de controversia, la persona podrá presentar su reclamación ante la Unidad Especializada de]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="46cdc004-01df-46b6-909a-df8833e3468a"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="286" y="572" width="286" height="185" uuid="b90646e7-7819-43d1-9905-5f47e0221912"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[II. Cuando la obligación principal se denomine en moneda extranjera, adicionalmente al pago de esa obligación, la Institución de Seguros estará obligada a pagar un interés moratorio el cual se capitalizará mensualmente y se calculará aplicando al monto de la propia obligación, el porcentaje que resulte de multiplicar por 1.25 el costo de captación a plazo de pasivos denominados en dólares de los Estados Unidos de América, de las instituciones de banca múltiple del país, publicado por el Banco de México en el Diario Oficial de la Federación, correspondiente a cada uno de los meses en que exista mora.
+III. En caso de que a la fecha en que se realice el cálculo no se hayan publicado las tasas de referencia para el cálculo del interés moratorio a que aluden las fracciones I y II de]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<staticText>
+				<reportElement style="texto" x="0" y="5" width="286" height="754" uuid="d23d0cc9-f34a-4322-ada5-30549dac3438"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[este artículo, se aplicará la del mes inmediato anterior y, para el caso de que no se publiquen dichas tasas, el interés moratorio se computará multiplicando por 1.25 la tasa que las sustituya, conforme a las disposiciones aplicables
+  IV. Los intereses moratorios a que se refiere este artículo se generarán por día, a partir de la fecha del vencimiento de los plazos referidos en la parte inicial de este artículo y hasta el día en que se efectúe el pago previsto en el párrafo segundo de la fracción VIII de este artículo. Para su cálculo, las tasas de referencia a que se refiere este artículo deberán dividirse entre trescientos sesenta y cinco y multiplicar el resultado por el número de días correspondientes a los meses en que persista el incumplimiento;
+V. En caso de reparación o reposición del objeto siniestrado, la indemnización por mora consistirá únicamente en el pago del interés correspondiente a la moneda en que se haya denominado la obligación principal conforme a las fracciones I y II de este artículo y se calculará sobre el importe del costo de la reparación o reposición;
+VI. Son irrenunciables los derechos del acreedor a las prestaciones indemnizatorias establecidas en este artículo.
+El pacto que pretenda extinguirlos o reducirlos no surtirá efecto legal alguno. Estos derechos surgirán por el solo transcurso del plazo establecido por la Ley para el pago de la obligación principal, aunque ésta no sea líquida en ese momento.
+Una vez fijado el monto de la obligación principal conforme a lo pactado por las partes o en la resolución definitiva dictada en juicio ante el juez o árbitro, las prestaciones indemnizatorias establecidas en este artículo deberán ser cubiertas por la Institución de Seguros sobre el monto de la obligación principal así determinado;
+VII. Si en el juicio respectivo resulta procedente la reclamación, aun cuando no se hubiere demandado el pago de la indemnización por mora establecida en este artículo, el juez o árbitro, además de la obligación principal, deberá condenar al deudor a que también cubra esas prestaciones conforme a las fracciones precedentes;
+VIII La indemnización por mora consistente en el sistema de actualización e intereses a que se refieren las fracciones I, II, III y IV del presente artículo será aplicable en todo tipo de seguros, salvo tratándose de seguros de caución que garanticen indemnizaciones relacionadas con el impago de créditos fiscales, en cuyo caso se estará a lo dispuesto por el Código Fiscal de la Federación.
+El pago que realice la Institución de Seguros se hará en una sola exhibición que comprenda el saldo total por los siguientes conceptos: 
+a) Los intereses moratorios;
+b) LA actualización a que se refiere el primer párrafo de la fracción I de este artículo, y
+c) La obligación principal.
+En caso de que la Institución de Seguros no pague en una sola exhibición la totalidad de los importes de las obligaciones asumidas en el contrato de seguros y la indemnización por mora, los pagos que realice se aplicarán a los conceptos señalados en el orden establecido en el párrafo anterior, por lo que la indemnización por mora se continuará generando en términos del presente artículo,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="278" width="286" height="481" uuid="f232497f-b674-478a-b9b7-d63a61dcc10c"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Beneficiarios:</style> El Asegurado debe designar a sus Beneficiarios en forma clara y precisa, para evitar cualquier incertidumbre sobre el particular. Cuando existan varios Beneficiarios, la parte del que fallezca antes que el Asegurado, acrecentará por partes iguales la de los demás, salvo estipulación en contrario.
+
+ADVERTENCIA: En el caso de que se desee nombrar Beneficiarios a menores de edad, no se debe señalar a un mayor de edad como representante de los menores para efecto de que, en su representación, cobre la indemnización.
+
+Lo anterior porque las legislaciones civiles previenen la forma en que deben designarse tutores, albaceas, representantes de herederos u otros cargos similares y no consideran al Contrato de Seguro como el instrumento adecuado para tales designaciones. 
+
+La designación que se hiciera de un mayor de edad como representante de menores Beneficiarios, durante la minoría de edad de ellos, legalmente puede implicar que se nombra Beneficiario al mayor de edad, quien en todo caso sólo tendrá una obligación moral, pues la designación que se hace de Beneficiarios en un Contrato de Seguro le concede el derecho incondicionado de disponer de la Suma Asegurada.
+
+Cuando no exista Beneficiario designado o si sólo se hubiera nombrado uno y éste fallece antes o al mismo tiempo que el Asegurado y no exista designación de otro Beneficiario, el importe del seguro se pagará a la sucesión del Asegurado.
+
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Cambio de Beneficiarios: </style>Siempre que no exista restricción legal en contrario el Asegurado podrá hacer designación de Beneficiarios mediante notificación por escrito a la Compañía. En el supuesto de que la notificación]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="a2807db6-0489-472b-b09c-1b5b622e2991"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="5" width="286" height="273" uuid="a28acf03-e191-4e42-b56a-f9c0511911ce"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[sobre el monto de la obligación principal no pagada, hasta en tanto se cubra en su totalidad.
+Cuando la Institución interponga un medio de defensa que suspenda el procedimiento de ejecución previsto en esta ley, y se dicte sentencia firme por la que queden subsistentes los actos impugnados, el pago o cobro correspondientes deberán incluir la indemnización por mora que hasta ese momento hubiere generado la obligación principal, y IX. Si la Institución de Seguros, dentro de los plazos y términos legales, no efectúa el pago de las indemnizaciones por mora, el juez o la Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros, según corresponda, le impondrán una multa de 1000 a 15000 Días de Salario. 
+En el caso del procedimiento administrativo de ejecución previsto en el artículo 278 de esta Ley, si la institución de seguros, dentro de los plazos o términos legales, no efectúan el pago de las indemnizaciones por mora, la Comisión le impondrá la multa señalada en esta fracción, a petición de la autoridad ejecutora que corresponda conforme a la fracción II de dicho artículo.”]]></text>
+			</staticText>
+		</band>
+		<band height="759">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="380" width="572" height="70" uuid="eaa657bf-072e-4fe8-9c59-492b2657806c"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>“En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, la documentación contractual y la nota técnica que integran este producto de seguro, quedaron registradas ante la Comisión Nacional de Seguros y Fianzas, a partir del día 20 de Junio de 2019, con el número CNSF-S0128-0269-2019/CONDUSEF-003855-01”. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="270" width="572" height="110" uuid="ce8df986-4417-4f4c-b446-b949a4c24141"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="10"/>
+					<paragraph leftIndent="8" rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>“Para cualquier aclaración o duda no resueltas en relación con su seguro, contacte a la Unidad Especializada de nuestra Compañía en la siguiente dirección Volcán 214, Lomas de Chapultepec, Primera Sección C.P. 11000, Alcaldía Miguel Hidalgo o a los teléfonos (01 800) 1010053 y (55) 3600 9600, en un horario de atención de lunes a jueves de 8 a 17 hrs. y viernes de 8 a 15 hrs., o visite www.sppseguros.com.mx; o bien comunicarse a CONDUSEF al teléfono (55) 5448 7000 en el D.F. y del interior de la República al 01 800 999 8080 o visite la página www.condusef.gob.mx con dirección en Insurgentes Sur #762, planta baja, Col. Del Valle, Del. Benito Juárez, C.P.03100, Ciudad de México". </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="0" width="574" height="5" uuid="4a85d016-3300-454d-a8ea-904d941977b9"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="0" y="5" width="286" height="234" uuid="1eea7b6c-1712-4b96-b190-3c8c58550e9e"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[de que se trata, no se reciba oportunamente y la Compañía pague el importe del seguro conforme a la última designación de Beneficiarios de que haya tenido conocimiento, será sin responsabilidad alguna para ésta.
+
+El Asegurado puede renunciar al derecho que tiene de cambiar de Beneficiario(s), si así lo desea, haciendo una designación irrevocable, y deberá comunicarlo al (los) Beneficiario(s) y a la Compañía por escrito, dicha renuncia deberá hacerse constar en la Póliza y esta circunstancia será el único medio de prueba admisible.
+
+<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Edad:</style> Para efectos de este Contrato de Seguro se entenderá como edad del Asegurado, el número de años cumplidos a la Fecha de Inicio de Vigencia del seguro. 
+Los límites de admisión fijados por la Compañía son de 12 (doce) años como mínimo y de 65 (sesenta y cinco) años como máximo, la de cancelación es de 80 (ochenta) años.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="texto" mode="Opaque" x="286" y="5" width="286" height="234" uuid="3f9f46a5-433c-4eac-9739-a55273d16334"/>
+				<textElement markup="styled"/>
+				<text><![CDATA[
+La edad declarada por el Asegurado deberá comprobarse legalmente y por una sola ocasión cuando la Compañía lo solicite, antes o después de su fallecimiento, y lo hará constar ya sea en la Póliza o en cualquier otro comprobante y no podrá exigir nuevas pruebas de edad.
+
+Si al hacer la comprobación de la edad del Asegurado, se encuentra que hubo inexactitud en la indicación de la misma y ésta se encuentra fuera de los límites de admisión fijados por la Compañía, esto será motivo de rescisión automática del Contrato de Seguro y SPP Institución de Seguros S.A. de C.V., reintegrará la prima no devengada correspondiente que se hubiere pagado dentro de los diez días hábiles siguientes a la comprobación; dicho reintegro se realizará en las oficinas de la Institución o se realizarán al mismo medio en que se haya cobrado la prima designado por el Contratante.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="279" height="23" uuid="c5e0e2a5-5b2b-409d-bd83-123df488c5ea"/>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="9"/>
+					<paragraph leftIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>SPP-FR-PD-03 </style>
+<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>Versión/Fecha: 01/13-08-19</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="428" y="0" width="80" height="22" uuid="afc3eade-1667-4ed9-b8fe-6bdbe12cd51b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA["<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'> Página " + $V{PAGE_NUMBER} +" </style> "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="510" y="0" width="62" height="22" uuid="dd0753e6-90df-4f36-abf5-2bcae4112911"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled"/>
+				<textFieldExpression><![CDATA["<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'> de " + $V{PAGE_NUMBER} +" </style> "]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

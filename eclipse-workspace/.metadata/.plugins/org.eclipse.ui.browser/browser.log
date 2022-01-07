@@ -1,0 +1,42 @@
+
+jun. 22, 2020 09:31:41.49 NEW SESSION
+jun. 22, 2020 09:31:41.58 [GFX1-]: shader-cache: Timed out before finishing loads
+jun. 22, 2020 09:31:41.59 [2020-06-22T14:31:41Z ERROR webrender_bindings::program_cache] shader-cache: Timed out before finishing loads
+jun. 22, 2020 09:48:13.35 [Parent 4508, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc, line 166
+jun. 22, 2020 09:48:13.36 [Parent 4508, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc, line 166
+jun. 22, 2020 09:48:14.73 
+jun. 22, 2020 09:48:14.73 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+jun. 22, 2020 09:48:14.73 
+jun. 22, 2020 11:45:11.37 [GFX1-]: shader-cache: Timed out before finishing loads
+jun. 22, 2020 11:45:11.41 [2020-06-22T16:45:11Z ERROR webrender_bindings::program_cache] shader-cache: Timed out before finishing loads
+jun. 22, 2020 12:14:18.99 [GFX1-]: WMF VPX video decoding is disabled due to a previous crash.
+jun. 22, 2020 12:14:19.01 [GFX1-]: WMF VPX video decoding is disabled due to a previous crash.
+
+jul. 10, 2020 21:16:40.88 NEW SESSION
+jul. 10, 2020 21:16:40.94 [Parent 19344, Gecko_IOThread] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc, line 166
+jul. 10, 2020 21:16:41.37 
+jul. 10, 2020 21:16:41.38 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+jul. 10, 2020 21:16:41.38 
+jul. 10, 2020 21:16:41.44 
+jul. 10, 2020 21:16:41.44 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+jul. 10, 2020 21:16:41.44 
+
+jul. 12, 2020 24:57:41.45 NEW SESSION
+jul. 12, 2020 24:57:42.32 
+jul. 12, 2020 24:57:42.37 ###!!! [Parent][MessageChannel] Error: (msgtype=0xB000D,name=PBackgroundIDBDatabase::Msg_Invalidate) Channel error: cannot send/recv
+jul. 12, 2020 24:57:42.37 
+jul. 12, 2020 24:57:42.37 
+jul. 12, 2020 24:57:42.38 ###!!! [Parent][MessageChannel] Error: (msgtype=0xB000E,name=PBackgroundIDBDatabase::Msg_CloseAfterInvalidationComplete) Channel error: cannot send/recv
+jul. 12, 2020 24:57:42.38 
+jul. 12, 2020 24:57:46.94 
+jul. 12, 2020 24:57:46.95 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+jul. 12, 2020 24:57:46.95 
+
+jul. 12, 2020 16:34:46.19 NEW SESSION
+jul. 12, 2020 16:34:46.29 [22692:24224:0712/163445.388:ERROR:socket_stream.cc(218)] Closing stream with result -2
+jul. 12, 2020 23:41:34.56 [22692:1912:0712/234134.562:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+jul. 12, 2020 23:41:36.96 [22692:1912:0712/234136.959:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+jul. 12, 2020 23:41:38.17 [22692:1912:0712/234138.176:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+jul. 12, 2020 23:41:41.36 [22692:1912:0712/234141.359:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+jul. 13, 2020 01:01:36.79 [22692:24224:0713/010136.796:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -7
+jul. 13, 2020 01:01:36.80 [22692:1912:0713/010136.798:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Conciliación de información</h4>
+			</div>
+		<div class="card-content">
+
+			<form enctype="multipart/form-data">
+				<div class="form-row">
+					<div class="form-group col-md-8">
+						<label for="fileInput">Subir archivo de actualización</label> <input
+							id="fileInputActualizaAgrupador" type="file" class="file"
+							name="file">
+						<div id="errorBlock" class="help-block"></div>
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/emision/agrupadoresC.js"
+		th:src="@{/resources/js/pages/emision/agrupadoresC.js}"></script>
+	<script src="/resources/js/pages/emision/agrupadores.js"
+		th:src="@{/resources/js/pages/emision/agrupadores.js}"></script>
+</body>
+</html>

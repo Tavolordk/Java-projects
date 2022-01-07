@@ -1,0 +1,11 @@
+package figura;
+
+public class Referencia {
+	String nombre;
+	
+	public String obtenerNombre()
+	{
+		return this.nombre;
+	}
+
+}

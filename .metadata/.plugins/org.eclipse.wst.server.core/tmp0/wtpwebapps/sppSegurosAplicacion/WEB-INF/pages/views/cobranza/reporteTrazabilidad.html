@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+			<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reporte de trazabilidad</h4>
+			</div>
+		<div class="card-content">
+	
+			<form id="formLiquidaciones" autocomplete="off">
+			<div align="left" style="margin: 10px 10px 40px; padding: 5px">
+			<div class=row>
+				  <div id="divReporteTrimestral" class="form-group col-md-4">
+			       <label for="tipoReporte">Tipo reporte</label>
+			       <select class="form-control" id="tipoReporte" name="tipoReporte">
+				      <option value="5">DAÑOS</option>
+				      <option value="1">AP</option>
+			       </select>
+			      </div>
+			      <div class="form-group col-md-4">
+			    	<label for="numeroPoliza">Póliza: </label>
+					<input 	type="text" class="form-control text-uppercase"	id="numeroPoliza" name="numeroPoliza" maxlength="8"/>
+				</div>
+			    <div class="form-group col-md-4">
+			    	<label id="lbCertificado" for="numeroPoliza">Certificado: </label>
+					<input type="text" class="form-control text-uppercase" id="numeroCertificado" name="numeroCertificado" maxlength="5"/>
+				</div>
+			
+			</div>
+			<br>
+			<div>
+				<button id="idReporteTraza" type="button" class="btn btn-primary active" aria-pressed="true">Generar Archivo</button>
+			</div>
+
+			</div>
+			</form>
+			
+			<form id="formReporteRecibosPend" autocomplete="off">
+			    
+			    <div id ="idTableTrazabilidad" class="table-responsive main-container background-tabla">
+			    	<h4 align="center" id="lbTrazabilidad" style="background: blue; color: white">Detalle Reporte</h4>
+			    	 <table id="tableTrazabilidad" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+			    </div>
+			</form>
+		</div>
+		</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/cobranza/reportesPagoC.js"	th:src="@{/resources/js/pages/cobranza/reportesPagoC.js}"></script>
+	<script src="/resources/js/pages/cobranza/reportesPago.js"	th:src="@{/resources/js/pages/cobranza/reportesPago.js}"></script>
+	</div>
+</body>
+</html>

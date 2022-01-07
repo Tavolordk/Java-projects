@@ -1,0 +1,38 @@
+body{
+	background: gold;
+	color:green;
+	font-family: "Century Gothic";
+	
+}
+body h1{
+	font-family: "Arial Black";
+	color:darkblue;
+}
+
+.uno
+{
+   background: blue;
+   color: white;
+   font-family: "Arial";
+   font-size: xx-large;
+   font-style: inherit;
+}
+
+.dos
+{
+	background: green;
+	color: aqua;
+	font-family: "Franklin Gothic Medium";
+	font-size: xx-large;
+	font-style: italic;
+}
+
+.tres
+{
+	background: orange;
+	color: blueviolet;
+	font-family: "Impact";
+	font-size: xx-large;
+	font-style: oblique;
+	font-weight: bold;
+}

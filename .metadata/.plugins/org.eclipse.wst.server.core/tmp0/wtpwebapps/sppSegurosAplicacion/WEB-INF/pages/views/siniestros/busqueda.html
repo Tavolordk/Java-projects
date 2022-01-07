@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Búsqueda de siniestros</h4>
+			</div>
+		<div class="card-content">
+			<form id="formSiniestrosBusqueda" autocomplete="off" class="needs-validation" novalidate>
+				<div class="row">
+				<div class="form-group col-md-3 siniestro">
+					<label for="ramo">Ramo:</label>
+					<select	class="form-control" id="ramo" name="ramo">
+						<option selected value="1">ACCIDENTES PERSONALES</option>
+						<option selected value="5">DANOS EXTENSION DE GARANTIA</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="txtSinXPol">Póliza:</label>
+					<input class="form-control numberClass" id="txtSinXPol" maxlength="8">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="endoso">Certificado/Endoso:</label>
+					<div class="input-group">
+						<input class="form-control numberClass" id="endoso" maxlength="8"> <span
+							class="input-group-btn">
+							<button id="buscaSinXPol" type="button"
+								class="btn btn-default">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-md-3">
+					<label for="txtSinXFechaOcurrido">Fecha de reporte:</label>
+					De <div class="input-group">
+						<input class="form-control text-uppercase date" data-mask="0000-00-00" placeholder="aaaa-mm-dd" id="txtSinXFechaOcurridoDe"> <span
+							class="input-group-btn">
+							<button id="buscaSinXFechaOcurridoDe" type="button"
+								class="btn btn-default">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				
+				<div class="form-group col-md-3">
+					<label for="txtSinXFechaOcurrido">Fecha de reporte:</label>
+				Hasta <div class="input-group">
+						<input class="form-control text-uppercase date" data-mask="0000-00-00" placeholder="aaaa-mm-dd" id="txtSinXFechaOcurridoHasta"> <span
+							class="input-group-btn">
+							<button id="buscaSinXFechaOcurridoHasta" type="button"
+								class="btn btn-default">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+					</div>
+				</div>	
+				</div>
+				<div class="row">
+				<div class="form-group col-md-6">
+					<label for="txtNombreAsegurado">Nombre asegurado:</label>
+					<div class="input-group">
+						<input class="form-control text-uppercase" id="txtNombreAsegurado" maxlength="18">
+						<span class="input-group-btn">
+							<button id="btnSinPorNombreAsegurado" type="button" class="btn btn-default">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				</div>
+				
+				<div class="table-responsive main-container background-tabla">
+					<table id="resultadoBusqueda"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<!-- JS Siniestros -->
+	<script src="/resources/js/pages/siniestros/siniestrosC.js" th:src="@{/resources/js/pages/siniestros/siniestrosC.js}"></script>
+	<script src="/resources/js/pages/siniestros/siniestros.js" th:src="@{/resources/js/pages/siniestros/siniestros.js}"></script>
+</body>
+</html>

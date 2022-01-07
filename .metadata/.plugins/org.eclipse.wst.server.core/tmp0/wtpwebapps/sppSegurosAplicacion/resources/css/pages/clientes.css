@@ -1,0 +1,20 @@
+#guardarCliente {
+	float: right;
+}
+
+.clienteMoralNuevo {
+	display: none;
+}
+
+.clienteMoralBusqueda {
+	display: none;
+}
+
+#editarClienteModal>.modal-lg{
+	max-width: 90% !important;
+}
+
+.popover-header{
+	background-color: rgb(39, 103, 166) !important;
+	color: #FFF !important;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment"></head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	
+	<div class="container main-container">
+		<div class="wizard-container">
+			<div class="card wizard-card" data-color="blue" id="wizard">
+				<div class="card-container">
+					<form id="nuevoContrato" enctype="multipart/form-data">
+						<h3 style = "border-bottom-style: solid">NUEVO CONTRATO REASEGURO</h3>
+						<div class="form-row" style = "margin-bottom: 50px;margin-top: 25px">
+							<div class = "form-group col-md-4">
+								<label for = "ramosCNSF">Ramos CNSF</label> 
+								  <select id = "ramosCNSF" name= "ramosCNSF" class="selectpicker ramos form-control" multiple>
+								</select>
+							</div>
+							<div class = "form-group col-md-4">
+								<label for = "negocioCubierto">Negocios Cubiertos</label> 
+								<input type = "text" class="form-control" id="negocioCubierto" name="negCubiertos" disabled>
+							</div>
+							<div class = "form-group col-md-4">
+								<label for = "ramosCNSF">Identificador Contrato</label> 
+								<input type = "text" class="form-control" id="negocioCubierto" name="identifContrato">
+							</div>
+							<div class = "form-group col-md-4 dropdown bootstrap-select show-tick show dropup">
+								<label  for = "moneda">Moneda</label> 
+								  <select id = "moneda" name= "moneda" class="selectpicker moneda form-control" multiple></select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="fechaVigencia">Inicio Vigencia:</label>
+								<div class="input-group">
+									<input type="text" class="form-control date currentDate fechaVigencia" id="fechaVigencia" name="inicioVig" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+									<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="fechaFinVigencia">Fin Vigencia:</label>
+								<div class="input-group">
+									<input type="text" class="form-control date currentDate fechaFinVigencia" id="fechaFinVigencia" name="finVig" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+									<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+								</div>
+								 <label class="checkbox-inline">
+								   	 <input id = "indefinido" type="checkbox" value="2500-01-01"> Indefinido
+								 </label>
+							</div>
+							<div class = "form-group col-md-4">
+								<label  for = "tipoContrato">Tipo Contrato</label> 
+								  <select id = "tipoContrato" name= "tipoContrato" class="form-control text-uppercase tipoContrato"></select>
+							</div>
+						</div>
+						<h3  style = "border-bottom-style: solid">DETALLE PROTECCION</h3>
+						<div class = "row" style = "margin-bottom: 50px;margin-top: 25px">
+								<div class = "form-group col-md-4">
+									<label for = "capasLinea">Capas Linea</label> 
+									<input type = "text" class ="form-control" id="capasLinea" name="capasLinea" >
+								</div>
+								<div class = "form-group col-md-4">
+									<label for = "retencionPrioridad">Retencion-Prioridad</label> 
+									<input type = "text" class="form-control" id="retencionPrioridad" name="retencionPrioridad" >
+								</div>
+								<div class = "form-group col-md-4">
+									<label for = "limiteRespons">Limite Responsabilidad</label> 
+									<input type = "text" class="form-control" id="limiteRespons" name="limiteResponsabilidad" >
+									 <label class="checkbox-inline">
+								     	 <input id = "sinLimites" type="checkbox" value="0"> Sin Limites
+								     </label>
+								</div>
+								<div class = "form-group col-md-4">
+									<label for = "comision">Comision</label> 
+									<input type = "text" class="form-control" id="comision" name="comision" >
+									<label class="checkbox-inline">
+								     	 <input id = "comisionCheck"  type="checkbox" value="0"> Sin Comision
+								     </label>
+								</div>
+								<div class = "form-group col-md-4">
+									<label for = "participacionUtil">Participacion Utilidades</label> 
+									<input type = "text" class="form-control" id="participacionUtil" name="participacionUtil" >
+									 <label class="checkbox-inline">
+								     	 <input id = "sinParticipacion" type="checkbox" value="0"> Sin Participacion
+								     </label>
+								</div>
+							</div>
+								<h3 style = "border-bottom-style: solid">DETALLE REASEGURADORES</h3>
+								<div id ="idReaseguradores" class="table-responsive main-container background-tabla " style = "margin-bottom: 50px;margin-top: 25px">
+				    	 			<table id="reaseguradores" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+				    	 				<div class="row"> 
+											<div class="form-group col-md-7"   style="margin: 5px; padding: 5px"></div>
+										    <div class="form-group col-md-2.5" style="margin: 5px; padding: 5px"></div>
+											<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+												<label><b style="font-size: 20px">Total %:</b></label>
+											</div>
+											<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+												<input type="text" class="form-control text-uppercase" id="totalParticipacion" disabled/>
+											</div>
+										</div>
+				    			</div>
+							<div class = "row">
+								<div class="form-group col-md-12 d-flex justify-content-end">
+									<button  id = "guardaContrato" type="button" class="btn btn-primary text-truncate">Guarda</button>
+							    </div>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div th:include="templates/layout :: footerFragment"></div>	
+		<script src="/resources/js/pages/reaseguro/reaseguroContratoC.js" th:src="@{/resources/js/pages/reaseguro/reaseguroContratoC.js}"></script>
+	    <script src="/resources/js/pages/reaseguro/reaseguroContrato.js"  th:src="@{/resources/js/pages/reaseguro/reaseguroContrato.js}"></script>
+</body>
+</html>

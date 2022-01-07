@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card card-content">
+		<div th:fragment="formReaseguroContratoSiniestros">
+			<form id="formReaseguroContratoSiniestros" autocomplete="off" class="needs-validation" novalidate>
+				
+				<h2>Distribución de siniestros</h2>
+				<div class="row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="sucursal">Sucursal:</label>
+						<input class="form-control numberClass" id="sucursal" name="sucursal" maxlength="3"/>
+					</div>
+				
+					<div class="form-group col-md-4 siniestro">
+						<label for="ramo">Ramo:</label>
+						<select	class="form-control" id="ramo" name="ramo">
+							<option selected value="1">ACCIDENTES PERSONALES</option>
+							<option selected value="5">DANOS EXTENSION DE GARANTIA</option>
+						</select>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="numeroSiniestro">Número siniestro:</label>
+						<input class="form-control text-uppercase" id="numeroSiniestro" name="numeroSiniestro" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="serie">Serie:</label>
+						<input class="form-control text-uppercase numberClass" id="serie" name="serie" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="coberturaAfectada">Cobertura afectada:</label>
+						<input class="form-control text-uppercase numberClass" id="coberturaAfectada" name="coberturaAfectada" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="tipoMovimiento">Tipo movimiento:</label>
+						<input class="form-control text-uppercase numberClass" id="tipoMovimiento" name="tipoMovimiento" maxlength="3"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="ramoPuro">Ramo puro:</label>
+						<input class="form-control text-uppercase numberClass" id="ramoPuro" name="ramoPuro" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="numeroContrato">Número contrato:</label>
+						<input class="form-control text-uppercase numberClass" id="numeroContrato" name="numeroContrato" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="tipoContrato">Tipo contrato:</label>
+						<input class="form-control text-uppercase numberClass" id="tipoContrato" name="tipoContrato" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="importe">Importe:</label>
+						<input class="form-control text-uppercase numberClass" id="importe" name="importe" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="fechaMovimiento">Fecha movimiento:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaMovimiento" name="fechaMovimiento" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="fechaDistribucion">Fecha distribución:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaDistribucion" name="fechaDistribucion" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="guardaDS">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Guardar
+						</button>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/contratosC.js" th:src="@{/resources/js/pages/reaseguro/contratosC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/contratos.js" th:src="@{/resources/js/pages/reaseguro/contratos.js}"></script>
+</body>
+</html>

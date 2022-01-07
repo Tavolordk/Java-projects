@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="headerFragment">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>General de Seguros SAB</title>
+	<link rel="icon" href="/resources/img/favicon-gs.png"
+		th:href="@{/resources/img/favicon-gs.png}" type="image/png"
+		sizes="16x16" />
+	<link th:href="@{/resources/css/application.css}" href="/resources/css/application.css" rel="stylesheet">
+	<!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
+    <!--[if IE 9]>
+        <link href="css/application-ie9-part2.css" rel="stylesheet">
+    <![endif]-->
+	<meta name="description" content="" />
+	<meta name="Light it" content="Light it">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+         chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+         https://code.google.com/p/chromium/issues/detail?id=332189
+         */
+    </script>
+</head>
+
+<body>
+	<div th:fragment="menuFragment">
+		<nav id="sidebar" class="sidebar" role="navigation">
+		    <!-- need this .js class to initiate slimscroll -->
+		    <div class="js-sidebar-content">
+				<header class="logo hidden-sm-down">
+		            <a th:href="@{/home}"><img src="/resources/img/gsLogoTrans.png" th:src="@{/resources/img/gsLogoTrans.png}" style="max-width:100%"></a>
+		        </header>
+		        <!-- seems like lots of recent admin template have this feature of user info in the sidebar.
+		             looks good, so adding it and enhancing with notifications -->
+		        <div class="sidebar-status hidden-md-up">
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                <span class="thumb-sm avatar pull-xs-right" style="width: 100px;">
+		                    <img  src="/resources/img/gsLogoTrans.png" th:src="@{/resources/img/gsLogoTrans.png}" alt="Logotipo General de Seguros">
+		                </span>
+		                <strong style="color:#6f9350">&nbsp;<span th:text="${usuario}"></span></strong>&nbsp;
+		                  
+		            </a>
+		            <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
+		        </div>
+		        <!-- main notification links are placed inside of .sidebar-nav -->
+		        <ul class="sidebar-nav">
+		            <li>
+		                <!-- an example of nested submenu. basic bootstrap collapse component -->
+		                <a class="collapsed" href="#sidebar-admin" data-toggle="collapse" data-parent="#sidebar">
+		                    <span class="icon">
+		                        <i class="fa fa-desktop"></i>
+		                    </span>
+		                    Administración
+		                    <i class="toggle fa fa-angle-down"></i>
+		                </a>
+		                <ul id="sidebar-admin" class="collapse">
+		                    <li><a th:href="@{administrarUsuarios}">Usuarios</a></li>
+		                    <li><a th:href="@{perfiles}">Perfiles</a></li>
+		                </ul>
+		            </li>
+		            
+		            <li>
+		                <a class="collapsed" href="#sidebar-levels" data-toggle="collapse" data-parent="#sidebar">
+		                    <span class="icon">
+		                        <i class="glyphicon glyphicon-hdd"></i>
+		                    </span>
+		                    Carga Inf.
+		                    <i class="toggle fa fa-angle-down"></i>
+		                </a>
+		                <ul id="sidebar-levels" class="collapse">
+		                    <li>
+		                    	<a th:href="@{cargaArchivos}">Anual / Mensual</a>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsA" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Análisis
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsA" class="collapse">
+		                        	<li>
+		                        		<a href=#>Transformación</a>
+		                        	</li>
+		                            <li>
+		                            	<a href=#>CNSF</a>
+		                            </li>
+		                         </ul>
+	                         </li>
+                        </ul>
+                    </li>
+		            <li>
+		                <a class="collapsed" href="#sidebar-levelsReservas" data-toggle="collapse" data-parent="#sidebar">
+		                    <span class="icon">
+		                        <i class="glyphicon glyphicon-star"></i>
+		                    </span>
+		                    Reservas
+		                    <i class="toggle fa fa-angle-down"></i>
+		                </a>
+		                <ul id="sidebar-levelsReservas" class="collapse">
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsAnalisis" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Análisis de inf.
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                   
+		                        <ul id="sidebar-sub-levelsAnalisis" class="collapse">
+		                                <li>
+		                                	<a href=#>Hipótesis del ejercicio</a>
+		                                </li>
+		                                <li>
+		                                	<a th:href="@{cargaArchivoZip}">Emisión</a>
+		                                </li>
+		                                <li>
+		                                	<a href=#>Siniestros</a>
+		                                </li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsFactores" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Fact. de siniestralidad
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsFactores" class="collapse">
+		                        	<li><a th:href="@{/vidaFacSin}">Vida</a></li>
+		                            <li>
+		                               
+		                                <a class="collapsed" href="#sidebar-sub-levelsIBNRn" data-toggle="collapse" data-parent="#sidebar-levels">
+		                                    A y E<i class="toggle fa fa-angle-down"></i>
+		                                </a>
+		                                <ul id="sidebar-sub-levelsIBNRn" class="collapse">
+		                                    <li><a th:href="@{/facSalud}">Salud</a></li>
+		                                    <li><a th:href="@{/facSinGasMed}">Gastos Médicos</a></li>
+		                                    <li><a href="#">Accidentes Personales</a></li>
+		                                </ul>
+		                                 <a class="collapsed" href="#sidebar-sub-levelsDanios" data-toggle="collapse" data-parent="#sidebar-levels">
+		                                    Daños<i class="toggle fa fa-angle-down"></i>
+		                                </a>
+		                                <ul id="sidebar-sub-levelsDanios" class="collapse">
+		                                    <li><a th:href="@{/autoFacSin}">Automóviles</a></li>
+		                                    <li><a href=#>Respon. Civil</a></li>
+		                                    <li><a href=#>Marítimo</a></li>
+		                                    <li><a href=#>Incendio</a></li>
+		                                    <li><a href=#>Agrícola y Animales</a></li>
+		                                    <li><a href=#>Riesgo Catastrófico</a></li>
+		                                    <li><a href=#>Diversos</a></li>
+		                                </ul>
+		                            </li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsCalculoRes" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Cálculo de reservas
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsCalculoRes" class="collapse">
+		                            <li><a href="#">Vida</a></li>
+		                            <li>
+										<a class="collapsed" href="#sidebar-sub-levelsIBNR" data-toggle="collapse" data-parent="#sidebar-levels">
+		                                    A y E<i class="toggle fa fa-angle-down"></i>
+		                                </a>
+		                                <ul id="sidebar-sub-levelsIBNR" class="collapse">
+		                                    <li><a th:href="@{/ayESalud}">Salud</a></li>
+		                                    <li><a th:href="@{/ayEgastosMedicos}">Gastos Médicos</a></li>
+		                                    <li><a th:href="@{/ayEaccidentesPersonales}">Accidentes Personales</a></li>
+		                                </ul>
+									</li>
+		                            <li><a th:href="@{/saludCalculoReservas}" >Daños</a></li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsRepoRegu" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Reportes regulatorios
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsRepoRegu" class="collapse">
+		                            <li><a href=#>RR3</a></li>
+		                            <li><a href=#>RR4</a></li>
+		                        </ul>
+		                    </li>
+		                </ul>
+		            </li>
+		            
+		            <li>
+		                <a class="collapsed" href="#sidebar-levelsReaseguro2" data-toggle="collapse" data-parent="#sidebar">
+		                    <span class="icon">
+		                        <i class="glyphicon glyphicon-leaf"></i>
+		                    </span>
+		                    Reaseguro
+		                    <i class="toggle fa fa-angle-down"></i>
+		                </a>
+		                <ul id="sidebar-levelsReaseguro2" class="collapse">
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsContratos" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Contratos
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsContratos" class="collapse">
+		                                <!-- <li><a th:href="@{/nuevoContratoReaseguro}">Nuevo</a></li>
+		                                <li><a th:href="@{/modificarContratoReaseguro}">Modificar</a></li>
+		                                <li><a th:href="@{/historicoContratoReaseguro}">Histórico</a></li> -->
+		                                <li><a th:href="@{/reaNuevoContrato}">Nuevo</a></li>
+		                                <li><a th:href="@{/contratosVigentes}">Modificar</a></li>
+		                                <li><a th:href="@{/historico}">Histórico</a></li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsInfRea" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Informe reasegurador
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsInfRea" class="collapse">
+		                            <li><a th:href="@{/edoDeCuenta}">Edo. cta.</a></li>
+		                            <li>
+		                                <a class="collapsed" href="#sidebar-sub-levelsBordereaux" data-toggle="collapse" data-parent="#sidebar-levels">
+		                                    Bordereaux<i class="toggle fa fa-angle-down"></i>
+		                                </a>
+		                                <ul id="sidebar-sub-levelsBordereaux" class="collapse">
+		                                    <li><a th:href="@{/reauxSiniestro}">Siniestros</a></li>
+		                                    <li><a th:href="@{/reauxPrima}">Primas</a></li>
+		                                </ul>
+		                            </li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsRepReg" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Reportes regulatorios
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsRepReg" class="collapse">
+		                            <li><a th:href="@{/rr6trime}">RR6TRIME</a></li>
+		                            <li><a th:href="@{/rr6trimd}">RR6TRIMD</a></li>
+		                            <li><a th:href="@{/rr6anual}">RR6 Anual</a></li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsContabilidad" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Contabilidad
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsContabilidad" class="collapse">
+		                            <li>
+		                                <a class="collapsed" href="#sidebar-sub-levelsPrimas" data-toggle="collapse" data-parent="#sidebar-levels">
+		                                    Cálculo de primas<i class="toggle fa fa-angle-down"></i>
+		                                </a>
+		                                <ul id="sidebar-sub-levelsPrimas" class="collapse">
+		                                    <li><a th:href="@{/prima_propor}">Proporcional</a></li>
+		                                    <li><a th:href="@{/prima_nopropor}">No proporcional</a></li>
+		                                </ul>
+		                            </li>
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsGraphics" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Gráficas
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsGraphics" class="collapse">
+		                            <li><a th:href="@{/control_interno}">Control interno</a></li>
+		                            <li><a th:href="@{/productos}">Productos</a></li>
+		                            <li><a th:href="@{/siniestros2}">Siniestros</a></li>
+		                        </ul>
+		                    </li>
+		                </ul>
+		            </li>
+                    
+		            <li>
+		                <a class="collapsed" href="#sidebar-levelsInfo" data-toggle="collapse" data-parent="#sidebar">
+		                    <span class="icon">
+		                        <i class="glyphicon glyphicon-signal"></i>
+		                    </span>
+		                    Info. Estadística
+		                    <i class="toggle fa fa-angle-down"></i>
+		                </a>
+		                <ul id="sidebar-levelsInfo" class="collapse">
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsTrimestral" data-toggle="collapse" data-parent="#sidebar-levels">
+		                            Reporte trimestral
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsTrimestral" class="collapse">
+		                        <li><a th:href="@{/infEstHipotesis}">Hipótesis</a></li>
+								<li><a th:href="@{/infEstReportes}">Reportes</a></li>
+		                           <!--  <li><a href=#>Hipotesis</a></li>
+		                            <li>
+		                                <a class="collapsed" href="#sidebar-sub-levels3" data-toggle="collapse" data-parent="#sidebar-levels3">
+		                                    Reportes <i class="toggle fa fa-angle-down"></i></a>
+		                                <ul id="sidebar-sub-levels3" class="collapse">
+		                                    <li><a href=#>Trimestral</a></li>
+		                                    <li><a href=#>Anual</a></li>
+		                                    <li><a href=#>Reporte RR4</a></li>
+		                                </ul>
+		                            </li>-->
+		                        </ul>
+		                    </li>
+		                    <li>
+		                        <a class="collapsed" href="#sidebar-sub-levelsAnual" data-toggle="collapse" data-parent="#sidebar-levels">
+		                           Reporte anual
+		                            <i class="toggle fa fa-angle-down"></i>
+		                        </a>
+		                        <ul id="sidebar-sub-levelsAnual" class="collapse">
+		                           <li><a th:href="@{/infEstRepAnuDanios}">Daños</a></li>
+		                            <li><a th:href="@{/infEstRepAnuAyE}">AyE</a></li>
+		                            <li><a th:href="@{/infEstRepAnuSalud}">Salud</a></li>
+		                            <li><a th:href="@{/infEstRepAnuVida}">Vida</a></li>
+		                        </ul>
+		                    </li>
+		                </ul>
+		            </li>
+		             <li>
+		                <!-- an example of nested submenu. basic bootstrap collapse component -->
+		                <a class="collapsed"th:href="@{/catalogos}">
+		                    <span class="icon">
+		                        <i class="fa fa-database"></i>
+		                    </span>
+		                    Catálogos
+		                </a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
+		<!-- This is the white navigation bar seen on the top. A bit enhanced BS navbar. See .page-controls in _base.scss. -->
+		<nav class="page-controls navbar navbar-dashboard">
+		    <div class="container-fluid">
+		        <!-- .navbar-header contains links seen on xs & sm screens -->
+		        <!-- .navbar-header contains links seen on xs & sm screens -->
+		        <div class="navbar-header">
+		            <ul class="nav navbar-nav">
+		                <li class="nav-item">
+		                    <!-- whether to automatically collapse sidebar on mouseleave. If activated acts more like usual admin templates -->
+		                    <a class="hidden-md-down nav-link" id="nav-state-toggle" href="#" data-toggle="tooltip" data-html="true" data-original-title="Mostrar/Ocultar<br>Menú" data-placement="bottom">
+		                        <i class="fa fa-bars fa-lg"></i>
+		                    </a>
+		                    <!-- shown on xs & sm screen. collapses and expands navigation -->
+		                    <a class="hidden-lg-up nav-link" id="nav-collapse-toggle" href="#" data-html="true" title="Mostrar/Ocultar<br>Menú" data-placement="bottom">
+		                        <span class="rounded rounded-lg bg-gray text-white hidden-md-up"><i class="fa fa-bars fa-lg"></i></span>
+		                        <i class="fa fa-bars fa-lg hidden-sm-down"></i>
+		                    </a>
+		                </li>
+		            </ul>
+		            <ul class="nav navbar-nav navbar-right hidden-md-up">
+		                <li>
+		                       <strong><span> &nbsp;<i class="glyphicon glyphicon-user"></i></span>&nbsp;<span th:text="${usuario}"></span></strong>&nbsp;
+		                </li>
+		            </ul>
+		            <!-- xs & sm screen logo -->
+		            <a class="navbar-brand hidden-md-up" th:href="@{/home}">
+		              General Seguros SAB
+		            </a>
+		        </div>
+				<div class="collapse navbar-collapse">
+		            <ul class="nav navbar-nav pull-xs-right">
+		                <li class="dropdown nav-item">
+		                    <a href="#" class="dropdown-toggle dropdown-toggle-notifications nav-link" id="notifications-dropdown-toggle" data-toggle="dropdown">
+		                        <strong><span> &nbsp;<i class="glyphicon glyphicon-user"></i></span>&nbsp;<span th:text="${usuario}"></span></strong>&nbsp;
+		                    </a>
+		                </li>
+		                <li class="dropdown nav-item">
+		                    <a href="/login" th:href="@{/login}" class="dropdown-toggle dropdown-toggle-notifications nav-link">
+		                        Cerrar Sesión &nbsp;<span><i class="fa fa-sign-out"></i></span> 
+		                    </a>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		</nav>
+	
+	</div>
+	
+
+	<div th:fragment="footerFragment">
+		<!-- The Loader. Is shown when pjax happens 
+		<div class="loader-wrap hiding hide" id="loadingModal" style="z-index: 9999;">
+		    <img alt="" th:src="@{/resources/img/GS.gif}" style="width: 200px;">
+		</div> -->
+		
+		<div class="modal" id="loadingModal" tabindex="-1"
+			role="dialog" aria-labelledby="loadingModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered justify-content-center" role="document" style="margin-top: 100px;text-align: center;">
+				<div>
+					<img th:src="@{/resources/img/turnOn.gif}" style="width: 200px;">
+					<div id="showProgress" style="display:none; width:200px; background-color:#FFFFFF; border-radius:25px; border:3px solid #73AD21; margin:auto;">
+                        <div>
+                            <progress id="progressPercentaje" value="24" max="100"></progress>
+                            <span id="progressPercentajeText">24%</span>
+                        </div>
+                        <span id="progressPercentajeExtraInfo"></span><!--  -->
+                    </div><!--  -->
+				</div>
+			</div>
+		</div>	
+	
+		<!-- common libraries. required for every page-->
+		<script th:src="@{/resources/js/dist/jquery.min.js}"></script>
+		<script th:src="@{/resources/js/jquery-pjax/jquery.pjax.js}"></script>
+		<script th:src="@{/resources/js/tether/dist/js/tether.js}" ></script>
+		<script th:src="@{/resources/js/bootstrap/js/dist/util.js}" ></script>
+		<script th:src="@{/resources/js/bootstrap/js/dist/collapse.js}" ></script>
+		<script th:src="@{/resources/js/bootstrap/js/dist/dropdown.js}" ></script>
+		<script th:src="@{/resources/js/bootstrap/js/dist/button.js}"></script>
+		<script th:src="@{/resources/js/bootstrap/js/dist/tooltip.js}"></script>
+		<script th:src="@{/resources/js/bootstrap/js/dist/alert.js}" ></script>
+		<script th:src="@{/resources/js/slimScroll/jquery.slimscroll.min.js}"></script>
+		<script th:src="@{/resources/js/widgster/widgster.js}" ></script>
+		<script th:src="@{/resources/js/pace.js/pace.js}" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
+		<script th:src="@{/resources/js/jquery-touchswipe/jquery.touchSwipe.js}"></script>
+		<script th:src="@{/resources/js/bootstrap-fix/button.js}"></script>
+	</div>
+	
+	<div th:fragment="footerLoginFragment">
+		<!-- common app js -->
+			<script th:src="@{/resources/js/settings.js}" src="/resources/js/settings.js"></script>
+			<script th:src="@{/resources/js/app.js}" src="/resources/js/app.js"></script>
+			<!-- page specific libs -->
+			<script th:src="@{/resources/js/shufflejs/dist/jquery.shuffle.modernizr.min.js}" src="/resources/js/shufflejs/dist/jquery.shuffle.modernizr.min.js"></script>
+			<script th:src="@{/resources/js/magnific-popup/dist/jquery.magnific-popup.min.js}" src="/resources/js/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+			<!-- page specific js -->
+			<script th:src="@{/resources/js/form-elements.js}" src="/resources/js/form-elements.js?v=1"></script>
+	</div>
+</body>
+
+</html>

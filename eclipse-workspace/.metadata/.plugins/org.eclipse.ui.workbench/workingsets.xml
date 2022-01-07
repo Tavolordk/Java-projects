@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1566461138950_0" label="Java Main Sources" name="Java Main Sources">
+<item elementID="=InclusionDinamica/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=InclusionEstatica/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ManejoJavaBeans/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=PruebaJEE/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ScriptlesJSP/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ejbs/src\/main\/resources=/maven.pomderived=/true=/" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=prueba2jee/src" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1566461138970_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1582100014370_4" label="ManejoJDBC4" name="ManejoJDBC4"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1589238568291_5" label="java" name="java">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ManejoJDBC3" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/HolaMundoJSP" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/FormularioConJavascript" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ManejoJavaBeans" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/parametros" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ok" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ManejoJDBC2" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tablas" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/EjemploExcelJSP" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/variables" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/InclusionDinamica" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/primary-source" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/FormularioHTML" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlet" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/desarrolloBegin" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ear" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/JDBC" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/logging" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ManejoJDBC4" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SumaJavascript" type="4"/>
+<item elementID="=ScriptlesJSP" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tarea1" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/JavascriptPrimerosPasos" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/figura" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ExpresionesJSP" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servidor" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/webapp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ManejoJDBC" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cliente" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/formularioServer" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ejbs" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/maven-compiler-plugin" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Ejercicio2Javascript" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/conexionDB" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mysql-connector-java" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/DeclaracionJSP" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cabecerosRespuesta" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/JSPX" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tavo" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/InclusionEstatica" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/frameHTML" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cosaDeMachos" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/servlets" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/primerstaticweb" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/holamundoWeb" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/HolaMundo.zip_expanded" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/carritoCompras" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/projects" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/JS3" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/project" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/almacenamientoHTML5" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/HolamundoJavaWeb" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/holamundow" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/CookieContador" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SelectConJavascript" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cabeceros" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/HttpSesion" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Ejemplos1.zip_expanded" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1566461141752_2" label="Window Working Set" name="Aggregate for window 1566461141752"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1581137126010_3" label="Multiple Working Sets" name="Aggregate:Java Main Sources:Java Test Sources:">
+<workingSet IMemento.internal.id="Java Main Sources"/>
+<workingSet IMemento.internal.id="Java Test Sources"/>
+</workingSet>
+<mruList name="java"/>
+</workingSetManager>

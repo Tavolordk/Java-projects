@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module name="webapp" path="C:/Users/Tavol/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/webapp" type="j2ee"/>
+  <module context="JSPX" name="JSPX" path="C:/Users/Tavol/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/JSPX" type="j2ee"/>
+</server>

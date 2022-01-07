@@ -1,0 +1,1300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recibo_AP2" pageWidth="612" pageHeight="1008" whenNoDataType="NoPages" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ad72f347-209d-4931-bfc9-691689ca9443">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<style name="pestanasazules" mode="Opaque" hTextAlign="Center" vTextAlign="Middle" markup="styled" pattern="" fontSize="10" isBold="true"/>
+	<style name="texto" mode="Opaque" hTextAlign="Right" vTextAlign="Middle" markup="styled" pattern="" fontSize="10">
+		<box>
+			<pen lineWidth="1.25" lineColor="#2767A6"/>
+		</box>
+		<paragraph rightIndent="10"/>
+	</style>
+	<style name="styleParametros" mode="Opaque" hTextAlign="Center" vTextAlign="Middle" markup="styled" fontSize="10">
+		<box>
+			<pen lineWidth="1.25" lineColor="#2767A6"/>
+			<topPen lineWidth="1.25" lineStyle="Solid" lineColor="#2767A6"/>
+			<leftPen lineWidth="1.25" lineStyle="Solid" lineColor="#2767A6"/>
+			<bottomPen lineWidth="1.25" lineStyle="Solid" lineColor="#2767A6"/>
+			<rightPen lineWidth="1.25" lineStyle="Solid" lineColor="#2767A6"/>
+		</box>
+	</style>
+	<parameter name="lugar" class="java.lang.String"/>
+	<parameter name="numero_recibo" class="java.lang.String"/>
+	<parameter name="vigencia_Amparo" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="serie" class="java.lang.String"/>
+	<parameter name="fecha_Vencimiento" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="no_Certificado" class="java.lang.String"/>
+	<parameter name="direccion_Contratante" class="java.lang.String"/>
+	<parameter name="nombre_Contratante" class="java.lang.String"/>
+	<parameter name="rfc_Contratante" class="java.lang.String"/>
+	<parameter name="nombre_Asegurado" class="java.lang.String"/>
+	<parameter name="direccion_Asegurado" class="java.lang.String"/>
+	<parameter name="rfc_Asegurado" class="java.lang.String"/>
+	<parameter name="neta" class="java.lang.String"/>
+	<parameter name="recargo" class="java.lang.String"/>
+	<parameter name="gastos_Expedicion" class="java.lang.String"/>
+	<parameter name="iva" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="nombre_Agente" class="java.lang.String"/>
+	<parameter name="clave_Agente" class="java.lang.String"/>
+	<parameter name="forma_Pago" class="java.lang.String"/>
+	<parameter name="instrumento_Cobro" class="java.lang.String"/>
+	<parameter name="moneda" class="java.lang.String"/>
+	<parameter name="convenio_Referencia" class="java.lang.String"/>
+	<parameter name="banco" class="java.lang.String"/>
+	<parameter name="rfc_Institucion" class="java.lang.String"/>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+CASE PLZ.cve_ramo
+WHEN 5 THEN '1 DE 1'
+WHEN 1 THEN CONVERT(VARCHAR,RECIBO) + ' DE '+(CASE sca.Frecuencia_Pago
+WHEN 'ANUAL' THEN '1'
+WHEN 'SEMESTRAL' THEN '2'
+WHEN 'TRIMESTRAL' THEN '4'
+WHEN 'MENSUAL' THEN '12'
+END)
+END AS SERIE
+--,CASE PLZ.cve_ramo
+--WHEN 5 THEN 'Garantía Hogar'
+--WHEN 1 THEN 'AP-SPP'
+--END AS RAMO
+,PRD.encabezado AS RAMO
+,'CDMX' AS LUGAR,RECIBO,FORMAT(INICIO_VIGENCIA,'dd/MM/yyyy') AS INICIO_VIGENCIA,FORMAT(FIN_VIGENCIA,'dd/MM/yyyy') AS FIN_VIGENCIA
+,FORMAT(RECIBOS.FECHA_EMISION,'dd/MM/yyyy') AS FECHA
+,CONVERT(VARCHAR,plz.numero_poliza) + ' - ' + CONVERT(VARCHAR,RECIBOS.ENDOSO) AS numero_poliza,'' AS ID_CERTIFICADO
+,CASE cte.fisico
+WHEN 0 THEN UPPER(cte.denominacion)
+WHEN 1 THEN UPPER(cte.nombre_cliente+' '+cte.apellido_paterno+' '+cte.apellido_materno)
+END AS CONTRATANTE
+,ISNULL(cte.rfc,'') AS RFC
+,ISNULL(UPPER(cte.calle+' '+cte.numero_exterior+', '+MNP.nombre_municipio+', '+EDO.nombre_estado),'') as DIRECCION
+--,AAP.nombre_asegurado+' '+AAP.apellido_paterno_asegurado+' '+AAP.apellido_materno_asegurado AS NOMBRE_ASE
+,ISNULL(crt.Asegurado,'') AS NOMBRE_ASE
+,ISNULL(UPPER(crt.calle+', '+crt.colonia+', '+MNP2.nombre_municipio+', '+EDO2.nombre_estado),'') AS DIRECCION_ASE
+,ISNULL(CONVERT(VARCHAR,CAST(RECIBOS.PRIMA_NETA AS MONEY),1),0) AS NETA,ISNULL(CONVERT(VARCHAR,CAST(RECARGO_PAGO_FRACC AS MONEY),1),0) AS RECARGO
+,ISNULL(CONVERT(VARCHAR,CAST(RECIBOS.DERECHO_POLIZA AS MONEY),1),0) AS GASTOS,ISNULL(CONVERT(VARCHAR,CAST(RECIBOS.IMPUESTO_TOTAL AS MONEY),1),0) AS IVA
+,ISNULL(CONVERT(VARCHAR,CAST(PRIMA_TOTAL AS MONEY),1),0) AS PRIMA_TOTAL
+,id_agente_1 AS CLAVEAGENTE , ISNULL(UPPER(agt.Nombre+' '+agt.Ape_Paterno+' '+ agt.Ape_Materno),'') as AGENTE
+,ISNULL(CT16_MONEDA,'') AS MONEDA
+,CASE PRD.tipo_producto
+	WHEN 2 THEN UPPER(sca.Frecuencia_Pago)
+	ELSE crt.forma_pago
+END AS FORMA_PAGO
+, UPPER(FPA.CT18_Descripcion) AS INSTRUMENTO_COBRO
+, ISNULL(REF_SANTANDER, '') AS REFERENCIA
+, 'SANTANDER' AS BANCO
+FROM RECIBOS
+LEFT JOIN POLIZAS plz ON plz.id_poliza = POLIZA
+LEFT JOIN CLIENTES cte ON cte.id_cliente = plz.Id_Contratante
+--LEFT JOIN CLIENTES cts ON cts.id_cliente = plz.id_asegurado
+LEFT JOIN CERTIFICADO crt ON crt.id_certificado = RECIBOS.ID_CERTIFICADO
+LEFT JOIN HABITABILIDAD hab ON hab.numero_credito =  crt.numero_credito
+LEFT JOIN CT13_AGENTES agt ON agt.Id_Agente = plz.id_agente_1
+LEFT JOIN CT16_MONEDAS ON CT16_Cve = ID_MONEDA
+LEFT JOIN SOLICITUD_CABECERA sca ON plz.numero_poliza = sca.numero_poliza AND SCA.TipoSolicitud = 'AP'
+LEFT JOIN PRODUCTOS PRD ON PRD.Cve_Producto = plz.cve_producto
+LEFT JOIN CT6_MUNICIPIOS MNP ON MNP.id_municipio = CTE.id_municipio
+LEFT JOIN CT5_ESTADOS EDO ON EDO.id_estado = CTE.id_estado
+LEFT JOIN CT6_MUNICIPIOS MNP2 ON MNP2.id_municipio = crt.id_municipio
+LEFT JOIN CT5_ESTADOS EDO2 ON EDO2.id_estado = crt.id_estado
+--INNER JOIN ASEGURADOS_AP AAP ON AAP.id_poliza = plz.id_poliza
+LEFT JOIN CT18_FORMASPAGO FPA ON FPA.CT18_Cve = cte.metodo_usual_pago
+WHERE RECIBOS.ID_RECIBO=$P{no_Poliza}]]>
+	</queryString>
+	<field name="LUGAR" class="java.lang.String"/>
+	<field name="RECIBO" class="java.lang.String"/>
+	<field name="INICIO_VIGENCIA" class="java.lang.String"/>
+	<field name="FIN_VIGENCIA" class="java.lang.String"/>
+	<field name="FECHA" class="java.lang.String"/>
+	<field name="SERIE" class="java.lang.String"/>
+	<field name="numero_poliza" class="java.lang.String"/>
+	<field name="ID_CERTIFICADO" class="java.lang.String"/>
+	<field name="CONTRATANTE" class="java.lang.String"/>
+	<field name="RFC" class="java.lang.String"/>
+	<field name="DIRECCION" class="java.lang.String"/>
+	<field name="NOMBRE_ASE" class="java.lang.String"/>
+	<field name="DIRECCION_ASE" class="java.lang.String"/>
+	<field name="NETA" class="java.lang.String"/>
+	<field name="RECARGO" class="java.lang.String"/>
+	<field name="GASTOS" class="java.lang.String"/>
+	<field name="IVA" class="java.lang.String"/>
+	<field name="PRIMA_TOTAL" class="java.lang.String"/>
+	<field name="CLAVEAGENTE" class="java.lang.String"/>
+	<field name="AGENTE" class="java.lang.String"/>
+	<field name="MONEDA" class="java.lang.String"/>
+	<field name="FORMA_PAGO" class="java.lang.String"/>
+	<field name="RAMO" class="java.lang.String"/>
+	<field name="INSTRUMENTO_COBRO" class="java.lang.String"/>
+	<field name="REFERENCIA" class="java.lang.String"/>
+	<field name="BANCO" class="java.lang.String"/>
+	<detail>
+		<band height="923" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="-3" y="0" width="560" height="809" uuid="91951973-57ea-4261-95ec-bb90a02a38aa"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="-3" y="0" width="560" height="285" uuid="c9b72409-2e33-46b6-9d44-4afd70038df5"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement style="texto" x="0" y="-1" width="560" height="26" uuid="761d4424-df72-4cab-a708-bf5e4389be8e"/>
+					<text><![CDATA[
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="0" y="25" width="60" height="13" uuid="39c9a5ac-cf12-4cd6-85d3-4736cecbd39b"/>
+					<text><![CDATA[<style forecolor="#00264d">Lugar: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="140" y="25" width="98" height="13" uuid="84020b18-5193-44e7-8b6b-a6c24c06f320"/>
+					<text><![CDATA[<style forecolor="#00264d">Número de recibo: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="318" y="25" width="160" height="13" uuid="23f2430f-a6c6-44c7-89ae-e457cd9217da"/>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Vigencia que ampara el recibo: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="0" y="38" width="60" height="13" uuid="1aa5b791-4ce9-4776-9a58-d6281bcf6dc3"/>
+					<text><![CDATA[<style forecolor="#00264d">Fecha:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="140" y="38" width="98" height="13" uuid="e939d757-fb73-4d4b-b17b-03db2a45cadc"/>
+					<text><![CDATA[<style forecolor="#00264d">Serie:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="318" y="38" width="160" height="13" uuid="543f1d9c-4105-4c2d-87e5-450244e6c0a2"/>
+					<text><![CDATA[<style forecolor="#00264d">Fecha de vencimiento del recibo:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="60" y="25" width="80" height="13" uuid="60db0704-1066-415b-a0ca-9c15ccb9572f"/>
+					<textFieldExpression><![CDATA[$F{LUGAR}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="238" y="25" width="80" height="13" uuid="2fca4ebb-2a58-434f-898b-e25a3476e4d7"/>
+					<textFieldExpression><![CDATA[$F{RECIBO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="478" y="25" width="82" height="13" uuid="2b608f5a-5c33-4769-81ec-50b3120e2176"/>
+					<textFieldExpression><![CDATA[$F{INICIO_VIGENCIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="60" y="38" width="80" height="13" uuid="5e31fc7b-2cdd-4e95-a2b9-7357b3b91ec6"/>
+					<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="238" y="38" width="80" height="13" uuid="6b02e296-d613-4b6c-96f3-18f12887f359"/>
+					<textFieldExpression><![CDATA[$F{SERIE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="478" y="38" width="82" height="13" uuid="c96843ae-65eb-4a92-896b-9c709e2f3296"/>
+					<textFieldExpression><![CDATA[$F{FIN_VIGENCIA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="52" width="558" height="3" uuid="eeaeb60f-4081-4719-9f5e-89c5269dd657"/>
+					<box>
+						<pen lineWidth="3.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="56" width="60" height="13" uuid="38fe250a-bdbd-44a1-8d3f-570af557d28d"/>
+					<text><![CDATA[<style forecolor="#00264d">No. Póliza:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="61" y="56" width="218" height="13" uuid="e5e736f5-1f3e-48d9-ac92-f30788d8b0eb"/>
+					<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="279" y="56" width="110" height="13" uuid="f8266d03-2d24-41e5-a916-8fb0bf7ff3dd"/>
+					<text><![CDATA[<style forecolor="#00264d">No. de Certificado:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="389" y="56" width="170" height="13" uuid="1fa8d86f-edf0-4c91-b5e5-04dc9e054a35"/>
+					<textFieldExpression><![CDATA[$F{ID_CERTIFICADO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="69" width="88" height="26" uuid="50702aba-42a5-4e71-8ef2-d410331b8762"/>
+					<text><![CDATA[<style forecolor="#00264d">CONTRATANTE</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="69" width="120" height="13" uuid="81333a4b-64db-467e-af2e-2f691b10d787"/>
+					<text><![CDATA[<style forecolor="#00264d">Nombre/ Razón social:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="82" width="74" height="13" uuid="cc9f5250-1f23-43f4-ac63-af8ea499be75"/>
+					<text><![CDATA[<style forecolor="#00264d">Dirección:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="440" y="69" width="37" height="13" uuid="42f59c83-7bfb-4710-8f52-d0c4d2e45641"/>
+					<text><![CDATA[<style forecolor="#00264d">RFC:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="163" y="82" width="396" height="13" uuid="3fd3b3b8-fa7f-498b-a719-3c2db1a4d696"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="209" y="69" width="231" height="13" uuid="b797c39d-58b4-4790-9afa-f5f0bbb8b9c0"/>
+					<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="69" width="82" height="13" uuid="1b4d6434-686c-4b70-849c-998503ffffd6"/>
+					<textFieldExpression><![CDATA[$F{RFC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="95" width="88" height="26" uuid="79609e25-192c-4eeb-af18-67d39b727a02"/>
+					<text><![CDATA[<style forecolor="#00264d">ASEGURADO</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="95" width="74" height="13" uuid="da02d360-cb61-4d2a-85e7-c83351c91295"/>
+					<text><![CDATA[<style forecolor="#00264d">Nombre:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="108" width="74" height="13" uuid="5369abda-8550-43ba-88f0-b4dee32eb47a"/>
+					<text><![CDATA[<style forecolor="#00264d">Dirección:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="440" y="95" width="37" height="13" uuid="2667b9dc-ac9f-4bb8-9768-c7b9819953dd"/>
+					<text><![CDATA[<style forecolor="#00264d">RFC:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="163" y="95" width="277" height="13" uuid="41e4bfdb-388d-4448-ab04-09c0cc787bc7"/>
+					<textFieldExpression><![CDATA[$F{NOMBRE_ASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="163" y="108" width="396" height="13" uuid="124b022a-ca27-4101-8b01-803f011bd264"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION_ASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="95" width="82" height="13" uuid="11c0e13e-6434-4647-988d-ffb583fc1c2b"/>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="121" width="88" height="13" uuid="7fd152ad-02d9-4591-bc5d-ac25411cab41"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d"></style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="89" y="121" width="60" height="13" uuid="0f40ec0b-4439-41b9-84f4-2f64029fafb0"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Neta</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="149" y="121" width="80" height="13" uuid="ee96b01c-d098-44a5-8005-01b06de5cd37"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Recargo</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="229" y="121" width="130" height="13" uuid="eac7e5d0-7db5-4be0-913b-c6146d533569"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Gastos de Expedición </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="359" y="121" width="80" height="13" uuid="03d220eb-4397-4cac-afd5-23894ebaa5f2"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">I.V.A</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="439" y="121" width="120" height="13" uuid="559d5947-e4e6-4413-a312-e9668fc8e26c"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Total</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="134" width="88" height="13" uuid="811df878-a5e0-43e4-bfec-f52903236117"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Prima:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement key="" style="styleParametros" x="89" y="134" width="60" height="13" uuid="a0900f65-546f-4e27-8f53-fba55b9d0a9b"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NETA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="149" y="134" width="80" height="13" uuid="c72abb26-2771-4627-a8ff-5b0a8f39267f"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{RECARGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="229" y="134" width="130" height="13" uuid="0ba0ab64-b6ae-4dea-b1f8-d09e5636978d"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GASTOS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="359" y="134" width="80" height="13" uuid="67c72a0f-6001-44ce-bba0-056e12549fbf"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{IVA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="439" y="134" width="120" height="13" uuid="cab533a0-1bff-4533-aeb8-c25035ec3dea"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{PRIMA_TOTAL}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="147" width="558" height="1" uuid="9f37b221-1106-4028-8e2d-d6abb8c35e7c"/>
+					<box>
+						<pen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="149" width="129" height="13" uuid="68d80c62-ab21-4c76-bd7d-ebcb389b89b7"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Nombre de Agente:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="350" y="149" width="127" height="13" uuid="f5fd1d80-4033-473b-a589-8ae3fd151b87"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Clave de Agente:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="130" y="149" width="220" height="13" uuid="b8e9b5bb-2293-4e63-badf-b1d00fbf794c"/>
+					<textFieldExpression><![CDATA[$F{AGENTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="149" width="82" height="13" uuid="321cfd2f-d1c1-4f26-bf3f-ff254fd64832"/>
+					<textFieldExpression><![CDATA[$F{CLAVEAGENTE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="162" width="88" height="13" uuid="8c3d1d0d-3fa2-429c-b385-15e8876accd3"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Moneda:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="149" y="163" width="80" height="13" uuid="d880d099-aa5a-4a01-bad6-952301413e60"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Forma de pago:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="350" y="162" width="127" height="13" uuid="0afe0374-f5f3-4bc1-a5d0-e99d2d9e90c5"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Instrumento de cobro:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="229" y="162" width="121" height="13" uuid="1161c26c-5932-41fc-8290-50a5aae936a7"/>
+					<textFieldExpression><![CDATA[$F{FORMA_PAGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="162" width="82" height="13" uuid="7df51af0-fcbb-4ce2-a38b-97e0eba1a3e2"/>
+					<textFieldExpression><![CDATA[$F{INSTRUMENTO_COBRO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="89" y="162" width="60" height="13" uuid="4d42c43a-3e65-4387-8c4a-54ca60678d2b"/>
+					<textFieldExpression><![CDATA[$F{MONEDA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="179" width="188" height="13" uuid="67fee87e-f629-429e-b0c8-5c7d9862148a"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Convenio / Referencia Bancaria</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="359" y="179" width="80" height="13" uuid="23798364-f2df-4bc9-89f2-03f42771db9d"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Banco:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="192" width="250" height="13" uuid="84906d6b-4b4d-4f80-99db-182c5c3974e6"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">RFC SPP Institución de seguros, S.A de C.V</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="189" y="179" width="170" height="13" uuid="201980ba-177d-4e7c-96d9-209b40975693"/>
+					<textFieldExpression><![CDATA[$F{REFERENCIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="439" y="179" width="120" height="13" uuid="411dc3e0-46f2-45d5-883d-ac5258d22567"/>
+					<textFieldExpression><![CDATA[$F{BANCO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="251" y="192" width="308" height="13" uuid="6f113dfb-61ac-4921-9d4a-fb342c53f5ea"/>
+					<textFieldExpression><![CDATA["SIS180816139"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="176" width="558" height="3" uuid="b67039a5-808b-4c86-92ac-aab39cbe137f"/>
+					<box>
+						<pen lineWidth="3.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="1" y="205" width="558" height="167" uuid="b230ba6c-34c9-432a-9214-46fa6d889b48"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Justified">
+						<font size="10"/>
+						<paragraph leftIndent="10" rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#000000">1. Recibo por el importe de la prima descrita, la cual cubre los días que se indican contados a partir de la fecha de vencimiento.
+2. La reproducción no autorizada de este comprobante constituye un delito en los términos de las disposiciones fiscales. Contribuyente autorizado para imprimir sus propios comprobantes
+3. Este documento no tiene validez fiscal.
+4. Debe efectuar oportunamente el pago de la póliza y así evitar su cancelación, en caso de que el recibo pertenezca a una serie, debe realizar el pago en orden consecutivo y no lo exime de adeudos anteriores.
+5. Si paga con cheque debe expedirse a nombre de SSP Institución de Seguros, S.A. de C.V. y será recibido salvo buen cobro de acuerdo con el Art. 7° de la Ley General de Títulos y Operaciones de Crédito. Al pagar con tarjeta de crédito, débito, cargo a cuenta de cheques o domiciliación se entenderá recibido cuando la Institución Bancaria acepte el cargo.
+6. Al realizar el pago recuerde conservar su comprobante de pago para futuras aclaraciones.
+7. La recepción del pago no implica la aceptación del riesgo, si el pago fue efectuado después del término establecido en las condiciones generales.
+</style>]]></text>
+				</staticText>
+				<image scaleImage="RetainShape" hAlign="Center" vAlign="Top" onErrorType="Blank">
+					<reportElement x="26" y="0" width="109" height="13" uuid="23a2c790-6f78-459f-a2b8-8f86e176acf1"/>
+					<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="162" y="-1" width="396" height="13" uuid="66c28c8d-64f5-4337-8b2c-c7ebdcda41d4"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="162" y="12" width="396" height="12" uuid="de6f8eb6-347e-492a-930f-34e1669406be"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA["<b><font color=#856429>Recibo de Pago " +$F{RAMO}+ " </font></b>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="11" y="14" width="139" height="9" uuid="794e58b6-0f9e-478b-8128-607bcbe705f9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="2" y="373" width="558" height="29" uuid="34086125-8e11-4965-a03f-9af8bb4ad143"/>
+					<box>
+						<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="10"/>
+						<paragraph leftIndent="7" rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d" pdfFontName="Helvetica-Bold" isBold="True">	 						            			        Copia para Asegurado</style>]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="-2" y="409" width="560" height="285" uuid="436b6098-8324-42c6-af4f-ece4f8b5cddb"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement style="texto" x="0" y="-1" width="560" height="26" uuid="b73e9480-cbc1-40e5-8d3e-64631b26f16e"/>
+					<text><![CDATA[
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="0" y="25" width="60" height="13" uuid="f956b808-52ed-4550-9eff-beced8369f98"/>
+					<text><![CDATA[<style forecolor="#00264d">Lugar: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="140" y="25" width="98" height="13" uuid="70f7fe46-9adc-41b1-8327-cadeca4eed68"/>
+					<text><![CDATA[<style forecolor="#00264d">Número de recibo: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="318" y="25" width="160" height="13" uuid="782d7d42-ac5f-48fa-a89d-639ee6b1c1cd"/>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Vigencia que ampara el recibo: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="0" y="38" width="60" height="13" uuid="edf61026-581a-4261-be2e-b77a9a19546a"/>
+					<text><![CDATA[<style forecolor="#00264d">Fecha:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="140" y="38" width="98" height="13" uuid="3970afa9-b7aa-4024-b65b-a2cdc5e30067"/>
+					<text><![CDATA[<style forecolor="#00264d">Serie:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="318" y="38" width="160" height="13" uuid="0c3e67f2-3098-4ae3-b9ab-8a59b6fe3a95"/>
+					<text><![CDATA[<style forecolor="#00264d">Fecha de vencimiento del recibo:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="60" y="25" width="80" height="13" uuid="86e5185e-bca2-4f3e-8771-4b1b674adad6"/>
+					<textFieldExpression><![CDATA[$F{LUGAR}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="238" y="25" width="80" height="13" uuid="dd4b6718-dfe7-4e09-bf11-34f1680e617d"/>
+					<textFieldExpression><![CDATA[$F{RECIBO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="478" y="25" width="82" height="13" uuid="78b4a44b-4455-4e74-b5a7-19b25095bdb8"/>
+					<textFieldExpression><![CDATA[$F{INICIO_VIGENCIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="60" y="38" width="80" height="13" uuid="6b6952e2-6302-42d1-b2d2-29f122744c8f"/>
+					<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="238" y="38" width="80" height="13" uuid="c67a84df-47f8-410c-a3b7-b664ac11dc64"/>
+					<textFieldExpression><![CDATA[$F{SERIE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="478" y="38" width="82" height="13" uuid="1f528294-7acd-4e9e-908e-dd435e78c0f9"/>
+					<textFieldExpression><![CDATA[$F{FIN_VIGENCIA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="52" width="558" height="3" uuid="2538ce8a-163d-4e2e-879d-b0e8283bf134"/>
+					<box>
+						<pen lineWidth="3.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="56" width="60" height="13" uuid="74ccd7e9-ab06-4cdf-b9b3-64d99b9d9b44"/>
+					<text><![CDATA[<style forecolor="#00264d">No. Póliza:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="61" y="56" width="218" height="13" uuid="53c22990-a06c-43d2-b37e-18fba9fd6c7a"/>
+					<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="279" y="56" width="110" height="13" uuid="f7ac3c18-d65c-4265-b037-d2e0c094d6f7"/>
+					<text><![CDATA[<style forecolor="#00264d">No. de Certificado:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="389" y="56" width="170" height="13" uuid="c0f52798-9dbe-4f37-b2d3-3388fc9c743f"/>
+					<textFieldExpression><![CDATA[$F{ID_CERTIFICADO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="69" width="88" height="26" uuid="3148f349-6d0d-42d6-8d29-380284327fec"/>
+					<text><![CDATA[<style forecolor="#00264d">CONTRATANTE</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="69" width="120" height="13" uuid="1a253b7a-93e8-4178-b45d-4eb74bec3541"/>
+					<text><![CDATA[<style forecolor="#00264d">Nombre/ Razón social:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="82" width="73" height="13" uuid="c6282d32-4e9e-422f-bc1d-e21a91dd3277"/>
+					<text><![CDATA[<style forecolor="#00264d">Dirección:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="438" y="69" width="39" height="13" uuid="716995df-46dd-4b6c-88c1-f1d0a15fc03f"/>
+					<text><![CDATA[<style forecolor="#00264d">RFC:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="162" y="82" width="397" height="13" uuid="ed0cfa50-932b-4bf2-98ea-4de10595e9c0"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="209" y="69" width="229" height="13" uuid="778f3d72-058d-4d58-8d63-ec22943f2f1e"/>
+					<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="69" width="82" height="13" uuid="595b99ce-2699-4215-9459-7d432a1ed5e0"/>
+					<textFieldExpression><![CDATA[$F{RFC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="95" width="88" height="26" uuid="801cbf1e-562d-4555-8ef4-4896eba820a8"/>
+					<text><![CDATA[<style forecolor="#00264d">ASEGURADO</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="95" width="73" height="13" uuid="ee4d15f4-30e8-49dd-97ae-4c43c6e3d25d"/>
+					<text><![CDATA[<style forecolor="#00264d">Nombre:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="89" y="108" width="73" height="13" uuid="5682256e-5b66-44af-9f35-223e0cfffaba"/>
+					<text><![CDATA[<style forecolor="#00264d">Dirección:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="438" y="95" width="39" height="13" uuid="76e6c351-f7d4-49e0-a514-167e3af1e8a5"/>
+					<text><![CDATA[<style forecolor="#00264d">RFC:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="162" y="95" width="276" height="13" uuid="ee220f29-32a6-4c05-ae4d-d899556f4a94"/>
+					<textFieldExpression><![CDATA[$F{NOMBRE_ASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="162" y="108" width="397" height="13" uuid="ee2ef156-bb2f-421c-bf7c-d0d8a6451ccb"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION_ASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="95" width="82" height="13" uuid="093f9fc0-6522-487f-b074-0f4be54880aa"/>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="121" width="88" height="13" uuid="790365ae-d06b-454d-9956-28221e075b0b"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d"></style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="89" y="121" width="60" height="13" uuid="43c05b8b-939b-4db8-aef7-88e3ef7db4ee"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Neta</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="149" y="121" width="80" height="13" uuid="51245785-00de-4342-a332-0a0dc8353d8b"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Recargo</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="229" y="121" width="130" height="13" uuid="3aa01b83-0f06-4a8b-b721-0cc381ded1a5"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Gastos de Expedición </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="359" y="121" width="80" height="13" uuid="4bc01fa2-f3f5-4c57-a669-161c4eace757"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">I.V.A</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="439" y="121" width="120" height="13" uuid="c6490ad8-251c-4274-9f0e-7a281ac4a9e1"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Total</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="134" width="88" height="13" uuid="ac9941df-3626-422e-8e0f-c25acf2660a7"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Prima:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement key="" style="styleParametros" x="89" y="134" width="60" height="13" uuid="529a44ab-3446-4cfa-92cd-b80d32b1572e"/>
+					<textElement>
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NETA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="149" y="134" width="80" height="13" uuid="43b1db09-ea03-4357-8723-61627674b15f"/>
+					<textElement>
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{RECARGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="229" y="134" width="130" height="13" uuid="e570c615-fddd-48aa-849e-70459509ac91"/>
+					<textElement>
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GASTOS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="359" y="134" width="80" height="13" uuid="892c6e6e-5095-45bc-a9c0-81a5bc2105a4"/>
+					<textElement>
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{IVA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="439" y="134" width="120" height="13" uuid="2bece98c-419f-4c1c-a9d6-974a0f43f0b0"/>
+					<textFieldExpression><![CDATA[$F{PRIMA_TOTAL}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="147" width="558" height="1" uuid="e4f54e75-29a1-4bdd-9b9c-59296120fa87"/>
+					<box>
+						<pen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="149" width="129" height="13" uuid="cda2d0ec-3f6b-41a8-b6b7-fc53ea5b24a0"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Nombre de Agente:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="350" y="149" width="127" height="13" uuid="f603e197-95da-4bff-aace-77846a9a8f66"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Clave de Agente:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="130" y="149" width="220" height="13" uuid="929e9d63-ac07-42bb-a1d8-35ed0424bb00"/>
+					<textFieldExpression><![CDATA[$F{AGENTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="149" width="82" height="13" uuid="3159003d-090d-43ae-8fee-a008dc07e41c"/>
+					<textFieldExpression><![CDATA[$F{CLAVEAGENTE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="162" width="88" height="13" uuid="9a45077c-6d98-411b-96c1-f8d33f428836"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Moneda:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="149" y="162" width="80" height="13" uuid="f8c730f9-8fee-4fc4-a28f-2fe8d4571c3c"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Forma de pago:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="350" y="162" width="127" height="13" uuid="689a2eb3-4213-45a3-8f82-e5754700b4cd"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Instrumento de cobro:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="229" y="162" width="121" height="13" uuid="d3602f61-fa92-4fdb-a271-d69be5631720"/>
+					<textFieldExpression><![CDATA[$F{FORMA_PAGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="162" width="82" height="13" uuid="43334969-3b27-4fa1-bfd0-f620d5123f00"/>
+					<textFieldExpression><![CDATA[$F{INSTRUMENTO_COBRO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="89" y="162" width="60" height="13" uuid="689a2410-ba5d-41ac-9ebd-4ebd9eb09a42"/>
+					<textFieldExpression><![CDATA[$F{MONEDA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="179" width="188" height="13" uuid="d8792bf4-a603-47c7-92c7-860d7a03e190"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Convenio / Referencia Bancaria</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="359" y="179" width="80" height="13" uuid="793af42c-d2d0-4f29-8779-72a8391ff58e"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Banco:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="192" width="250" height="13" uuid="52f49b12-f252-46d4-8fb4-cb9fa7c69292"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">RFC SPP Institución de seguros, S.A de C.V</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="189" y="179" width="170" height="13" uuid="b0c1b849-ec34-4fe6-a676-7696906c7042"/>
+					<textFieldExpression><![CDATA[$F{REFERENCIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="439" y="179" width="120" height="13" uuid="deb4fe50-37ea-4c38-a8fa-058ae427447b"/>
+					<textFieldExpression><![CDATA[$F{BANCO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="251" y="192" width="308" height="13" uuid="e7edd620-2f09-4b75-b431-24893babaf85"/>
+					<textFieldExpression><![CDATA["SIS180816139"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="176" width="558" height="3" uuid="27c281aa-401a-46fc-9b19-14337e74bd0c"/>
+					<box>
+						<pen lineWidth="3.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="1" y="205" width="558" height="165" uuid="fad62877-3ce1-4a81-b5fb-4f221f0567be"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Justified">
+						<font size="10"/>
+						<paragraph leftIndent="10" rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#000000">1. Recibo por el importe de la prima descrita, la cual cubre los días que se indican contados a partir de la fecha de vencimiento.
+2. La reproducción no autorizada de este comprobante constituye un delito en los términos de las disposiciones fiscales. Contribuyente autorizado para imprimir sus propios comprobantes
+3. Este documento no tiene validez fiscal.
+4. Debe efectuar oportunamente el pago de la póliza y así evitar su cancelación, en caso de que el recibo pertenezca a una serie, debe realizar el pago en orden consecutivo y no lo exime de adeudos anteriores.
+5. Si paga con cheque debe expedirse a nombre de SSP Institución de Seguros, S.A. de C.V. y será recibido salvo buen cobro de acuerdo con el Art. 7° de la Ley General de Títulos y Operaciones de Crédito. Al pagar con tarjeta de crédito, débito, cargo a cuenta de cheques o domiciliación se entenderá recibido cuando la Institución Bancaria acepte el cargo.
+6. Al realizar el pago recuerde conservar su comprobante de pago para futuras aclaraciones.
+7. La recepción del pago no implica la aceptación del riesgo, si el pago fue efectuado después del término establecido en las condiciones generales.
+</style>]]></text>
+				</staticText>
+				<image scaleImage="RetainShape" hAlign="Center" vAlign="Top" onErrorType="Blank">
+					<reportElement x="26" y="0" width="109" height="13" uuid="99171f00-6256-4f10-a052-960ce0651e35"/>
+					<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="162" y="-1" width="396" height="13" uuid="9fc53b5c-b3c1-4397-ac6b-ee4467257f02"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="162" y="12" width="396" height="12" uuid="5104d5b4-e8f8-49bf-a333-48154d4ce4f7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA["<b><font color=#856429>Recibo de Pago " +$F{RAMO}+ " </font></b>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="11" y="14" width="139" height="9" uuid="85d0f661-e0aa-4060-8d46-d9475a67b664"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="1" y="371" width="558" height="29" uuid="21cfc9fd-eda0-44b9-9222-4ae5ec459df9"/>
+					<box>
+						<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="10"/>
+						<paragraph leftIndent="7" rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d" pdfFontName="Helvetica-Bold" isBold="True">	 						             				Copia para Agente</style>]]></text>
+				</staticText>
+			</frame>
+		</band>
+		<band height="923">
+			<image scaleImage="FillFrame">
+				<reportElement x="-3" y="0" width="560" height="400" uuid="a87f9840-1243-4044-bee9-77bb5b444199"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="-2" y="1" width="560" height="399" uuid="c6785d87-872b-4360-b712-edecf1c9576e"/>
+				<box>
+					<pen lineWidth="2.5" lineColor="#2767A6"/>
+				</box>
+				<staticText>
+					<reportElement style="texto" x="0" y="-1" width="560" height="26" uuid="7dd1db94-3332-4c40-afdf-d6e42c8093f8"/>
+					<text><![CDATA[
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="0" y="25" width="60" height="13" uuid="66d818ad-58fd-4a5b-bec6-eafae0dd2cdf"/>
+					<text><![CDATA[<style forecolor="#00264d">Lugar: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="140" y="25" width="98" height="13" uuid="bae4974a-dc13-47f2-af5f-b2fd7e2ba3e3"/>
+					<text><![CDATA[<style forecolor="#00264d">Número de recibo: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="318" y="25" width="160" height="13" uuid="37e6515e-73ff-4770-a72d-905bffbf3243"/>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Vigencia que ampara el recibo: </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="0" y="38" width="60" height="13" uuid="c985e6f4-bebf-4bc3-b676-d34a5396b3a3"/>
+					<text><![CDATA[<style forecolor="#00264d">Fecha:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="140" y="38" width="98" height="13" uuid="53e8cedb-bda2-42c3-bacd-06c9e17865ba"/>
+					<text><![CDATA[<style forecolor="#00264d">Serie:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="318" y="38" width="160" height="13" uuid="2f39622e-937f-4b59-bfde-b718e425e572"/>
+					<text><![CDATA[<style forecolor="#00264d">Fecha de vencimiento del recibo:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="60" y="25" width="80" height="13" uuid="d372cb69-fcd8-44d2-b897-83f33262c778"/>
+					<textFieldExpression><![CDATA[$F{LUGAR}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="238" y="25" width="80" height="13" uuid="867e26b4-6cb0-4e42-8177-029b29164492"/>
+					<textFieldExpression><![CDATA[$F{RECIBO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="478" y="25" width="82" height="13" uuid="205dd27d-5281-47ea-9fcb-4a593a07e0c0"/>
+					<textFieldExpression><![CDATA[$F{INICIO_VIGENCIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="60" y="38" width="80" height="13" uuid="5b84d9cf-8031-4a8e-bd13-bb060334e5cc"/>
+					<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="238" y="38" width="80" height="13" uuid="1cb300c1-cc26-40da-b229-c7e2eab3b6d2"/>
+					<textFieldExpression><![CDATA[$F{SERIE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="478" y="38" width="82" height="13" uuid="709b392a-bfdd-4c88-9bc7-70b26374334b"/>
+					<textFieldExpression><![CDATA[$F{FIN_VIGENCIA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="52" width="558" height="3" uuid="1eadfdb0-a01b-4a22-8880-86f93789fb0a"/>
+					<box>
+						<pen lineWidth="3.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="56" width="60" height="13" uuid="37e22bbd-f403-49df-be5f-14e73130d05d"/>
+					<text><![CDATA[<style forecolor="#00264d">No. Póliza:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="61" y="56" width="218" height="13" uuid="bea639d7-807d-4c84-9161-675c5f819da9"/>
+					<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="279" y="56" width="110" height="13" uuid="70ded1c5-c04f-4093-ab80-f454b12e9d27"/>
+					<text><![CDATA[<style forecolor="#00264d">No. de Certificado:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="389" y="56" width="170" height="13" uuid="a64224e5-aba0-4f80-8e31-395730ef4616"/>
+					<textFieldExpression><![CDATA[$F{ID_CERTIFICADO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="69" width="89" height="26" uuid="90dc0fbb-b0e8-4bb0-89d2-f2e0a82b2663"/>
+					<text><![CDATA[<style forecolor="#00264d">CONTRATANTE</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="90" y="69" width="120" height="13" uuid="ba7c7772-29f6-4143-bac1-b3321ff589b6"/>
+					<text><![CDATA[<style forecolor="#00264d">Nombre/ Razón social:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="90" y="82" width="73" height="13" uuid="c689492c-c7a1-46ad-b0be-715a1ea2b961"/>
+					<text><![CDATA[<style forecolor="#00264d">Dirección:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="439" y="69" width="38" height="13" uuid="b9969f65-a249-4d64-89a0-202b35527f8d"/>
+					<text><![CDATA[<style forecolor="#00264d">RFC:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="163" y="82" width="396" height="13" uuid="02e111d3-8608-46c0-91c4-c0756dd521b6"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="210" y="69" width="229" height="13" uuid="0646c8f2-6994-40ea-9ddc-d91a772b2a89"/>
+					<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="69" width="82" height="13" uuid="7159d242-3fcb-4ccc-bf8c-2bdb90e11e60"/>
+					<textFieldExpression><![CDATA[$F{RFC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="95" width="89" height="26" uuid="2d6e7a10-3639-405d-8050-5614b858a35e"/>
+					<text><![CDATA[<style forecolor="#00264d">ASEGURADO</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="90" y="95" width="73" height="13" uuid="b34db75f-0ba2-4ede-ad60-a2be65e12f41"/>
+					<text><![CDATA[<style forecolor="#00264d">Nombre:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="90" y="108" width="73" height="13" uuid="5b02d6f6-d345-41a3-8bfa-dba3189492ba"/>
+					<text><![CDATA[<style forecolor="#00264d">Dirección:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="439" y="95" width="38" height="13" uuid="ce15474b-b8d2-4674-ae8d-4b829c3442f2"/>
+					<text><![CDATA[<style forecolor="#00264d">RFC:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="163" y="95" width="276" height="13" uuid="02fefac2-7003-44d7-804a-3647f7a59e76"/>
+					<textFieldExpression><![CDATA[$F{NOMBRE_ASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="163" y="108" width="396" height="13" uuid="d9a33405-12ad-4b59-8d11-afb92d3a17fa"/>
+					<textFieldExpression><![CDATA[$F{DIRECCION_ASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="95" width="82" height="13" uuid="bd3152c4-76ec-4b7d-9448-701279865cec"/>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="121" width="88" height="13" uuid="ebc62d82-f6ba-49ec-9640-e5e9f5a489b4"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d"></style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="89" y="121" width="60" height="13" uuid="2dafcbfd-07cb-4c34-be78-b8275a8335a3"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Neta</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="149" y="121" width="80" height="13" uuid="607d29ef-6464-4a83-9336-536ee6a50b5b"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Recargo</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="229" y="121" width="130" height="13" uuid="6a88a1e5-1aef-4c9f-9441-fad072fea837"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Gastos de Expedición </style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="359" y="121" width="80" height="13" uuid="1b73bbef-984a-4240-a363-e0d600d697aa"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">I.V.A</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="439" y="121" width="120" height="13" uuid="a8fcf15e-4967-42c0-87b0-4981ffb79d90"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Total</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="134" width="88" height="13" uuid="45993dae-0272-4d3e-b554-8e747daa382a"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Prima:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement key="" style="styleParametros" x="89" y="134" width="60" height="13" uuid="547a0b9c-77cc-4165-b9f3-4706a8c45f80"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NETA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="149" y="134" width="80" height="13" uuid="599c544f-034d-4484-b4d8-59d14f122d3c"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{RECARGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="229" y="134" width="130" height="13" uuid="1d5d5d7e-e82c-40c8-9af2-bd74f29c5f4b"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GASTOS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="359" y="134" width="80" height="13" uuid="5de664d6-9524-4db5-ab30-ce06db3c5d1a"/>
+					<textElement textAlignment="Center">
+						<paragraph leftIndent="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{IVA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement key="" style="styleParametros" x="439" y="134" width="120" height="13" uuid="9c5b7ce2-c903-431e-bbc2-6ab64dc2dbaf"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{PRIMA_TOTAL}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="147" width="558" height="1" uuid="c9898f82-7ba9-41ed-954c-3be6c4bd9127"/>
+					<box>
+						<pen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="149" width="129" height="13" uuid="5b9e40e8-5df2-4b59-b2c1-5a5a7dd6028a"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Nombre de Agente:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="350" y="149" width="127" height="13" uuid="885e44bd-a300-48a5-bbf2-cd8481bab7cc"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Clave de Agente:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="130" y="149" width="220" height="13" uuid="ca1e58c6-09cf-45a4-8e01-d980ece058bb"/>
+					<textFieldExpression><![CDATA[$F{AGENTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="149" width="82" height="13" uuid="23c4f36e-b601-4da6-9fec-f4e5aaeda577"/>
+					<textFieldExpression><![CDATA[$F{CLAVEAGENTE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="162" width="88" height="13" uuid="58a8e1f4-6f97-4e18-9042-af8e67b66f73"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Moneda:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="149" y="162" width="80" height="13" uuid="1d509839-65ea-4a91-935b-2a72420e392e"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Forma de pago:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="350" y="162" width="127" height="13" uuid="3a4f349b-8528-44d4-a803-6f22cbda5a39"/>
+					<textElement textAlignment="Center">
+						<paragraph rightIndent="0"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Instrumento de cobro:</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="229" y="162" width="121" height="13" uuid="ec83eecb-71fd-496e-b913-d5160323670d"/>
+					<textFieldExpression><![CDATA[$F{FORMA_PAGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="477" y="162" width="82" height="13" uuid="159bc517-f48c-4cff-95fc-3e9330809089"/>
+					<textFieldExpression><![CDATA[$F{INSTRUMENTO_COBRO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="89" y="162" width="60" height="13" uuid="b29b4798-bc95-4d14-9c87-27ee260efb9a"/>
+					<textFieldExpression><![CDATA[$F{MONEDA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="179" width="188" height="13" uuid="3cb21b15-5e41-4d25-b015-353c5bf36e77"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Convenio / Referencia Bancaria</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="359" y="179" width="80" height="13" uuid="ed4cf299-a0b9-4766-90e7-50e41243f28c"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">Banco:</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" mode="Transparent" x="1" y="192" width="250" height="13" uuid="27561c23-fac1-44b5-aaed-51a2a9c4afa4"/>
+					<textElement textAlignment="Right">
+						<paragraph rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#00264d">RFC SPP Institución de seguros, S.A de C.V</style>]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="styleParametros" x="189" y="179" width="170" height="13" uuid="7cb4ae81-cc4e-4972-89a6-f9dd2a980d21"/>
+					<textFieldExpression><![CDATA[$F{REFERENCIA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="439" y="179" width="120" height="13" uuid="e203eaaf-529a-4eb8-aa4a-b832649468e3"/>
+					<textFieldExpression><![CDATA[$F{BANCO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="styleParametros" x="251" y="192" width="308" height="13" uuid="5fca0776-677f-42e8-b950-787b61185f7d"/>
+					<textFieldExpression><![CDATA["SIS180816139"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="texto" x="1" y="176" width="558" height="3" uuid="da4a42b5-37c5-4377-829c-642418de3c26"/>
+					<box>
+						<pen lineWidth="3.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="texto" x="1" y="205" width="558" height="165" uuid="40615290-e65e-453f-b0be-a6f09b7887ba"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Justified">
+						<font size="10"/>
+						<paragraph leftIndent="10" rightIndent="10"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#000000">1. Recibo por el importe de la prima descrita, la cual cubre los días que se indican contados a partir de la fecha de vencimiento.
+2. La reproducción no autorizada de este comprobante constituye un delito en los términos de las disposiciones fiscales. Contribuyente autorizado para imprimir sus propios comprobantes
+3. Este documento no tiene validez fiscal.
+4. Debe efectuar oportunamente el pago de la póliza y así evitar su cancelación, en caso de que el recibo pertenezca a una serie, debe realizar el pago en orden consecutivo y no lo exime de adeudos anteriores.
+5. Si paga con cheque debe expedirse a nombre de SSP Institución de Seguros, S.A. de C.V. y será recibido salvo buen cobro de acuerdo con el Art. 7° de la Ley General de Títulos y Operaciones de Crédito. Al pagar con tarjeta de crédito, débito, cargo a cuenta de cheques o domiciliación se entenderá recibido cuando la Institución Bancaria acepte el cargo.
+6. Al realizar el pago recuerde conservar su comprobante de pago para futuras aclaraciones.
+7. La recepción del pago no implica la aceptación del riesgo, si el pago fue efectuado después del término establecido en las condiciones generales.
+</style>]]></text>
+				</staticText>
+				<image scaleImage="RetainShape" hAlign="Center" vAlign="Top" onErrorType="Blank">
+					<reportElement x="26" y="0" width="109" height="13" uuid="1b94aaf4-4a11-4605-be12-49c8a32b8963"/>
+					<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="162" y="-1" width="396" height="13" uuid="e99e3096-6535-4813-b012-25a8c37be38a"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>
+]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="162" y="12" width="396" height="12" uuid="e803fb21-958f-48bd-9c75-4b8d6779c0a0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA["<b><font color=#856429>Recibo de Pago " +$F{RAMO}+ " </font></b>"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="11" y="14" width="139" height="9" uuid="73e89d97-752b-49c5-acbe-6f0bf07e8623"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement style="texto" x="-1" y="371" width="558" height="29" uuid="3e78a6f9-a046-4c49-935c-d9eb09fce4c1"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+					<paragraph leftIndent="7" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#00264d" pdfFontName="Helvetica-Bold" isBold="True">	 						            			        Copia para Institución</style>]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

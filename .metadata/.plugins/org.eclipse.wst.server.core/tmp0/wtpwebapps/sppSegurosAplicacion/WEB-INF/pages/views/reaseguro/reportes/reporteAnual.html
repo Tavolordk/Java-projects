@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+<div class="container main-container">
+		<div class="jumbotron">
+		<div th:fragment="formRR6TRIMD">
+			<form id="RR6TRIMDform" autocomplete="off" class="needs-validation" novalidate>
+				
+				<h2>Reporte Anual</h2>
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="fecha">Año:</label>
+						<div class="input-group">
+								<input type="text" class="form-control dateYear" id="fecha" name="fecha" maxlength="10"/>
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="rr6AnualGenerar">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Generar archivo
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/reportesC.js" th:src="@{/resources/js/pages/reaseguro/reportesC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/reportes.js" th:src="@{/resources/js/pages/reaseguro/reportes.js}"></script>
+</body>
+</html>

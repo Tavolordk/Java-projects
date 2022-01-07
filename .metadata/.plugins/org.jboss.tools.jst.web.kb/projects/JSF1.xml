@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hsqldb.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jaxws-ext.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bcel.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/ejb3.deployer/jboss-ejb3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jaxb-impl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-monitoring.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-remoting-int.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-codec-1.3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/commons-httpclient.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-system.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/trove.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jaxrpc.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-xml-binding.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-ejb3-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-web.deployer/jsf-libs/jsf-impl.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-impl.jar/meta-inf/html_basic.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-impl.jar/meta-inf/jsf_core.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-impl.jar/meta-inf/mojarra_ext.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-remoting.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossts-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/pluggable-instrumentor.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-collections.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-httpclient.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/xmlsec.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/jsf-facelets-1.1.14.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-facelets-1.1.14.jar/meta-inf/faces-config.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-facelets-1.1.14.jar/meta-inf/jsf-core.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-facelets-1.1.14.jar/meta-inf/jsf-html.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-facelets-1.1.14.jar/meta-inf/jsf-ui.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-facelets-1.1.14.jar/meta-inf/jstl-core.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-facelets-1.1.14.jar/meta-inf/jstl-fn.taglib.xml" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/jsf-tlds.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-tlds.jar/meta-inf/html_basic.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-jsf-tlds.jar/meta-inf/jsf_core.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/lib/endorsed/xalan.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jettison.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-serialization.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/getopt.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-annotations-ejb3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-xml-binding.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/jrockit-pluggable-instrumentor.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-digester-1.8.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jaxen.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/streambuffer.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-transaction.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxws-rt.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jsr77-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-spi.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-remoting.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/getopt.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/activation.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jnp-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/FastInfoset.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxb-impl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-aspect-jdk50-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-srp.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/commons-httpclient.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-collections.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/concurrent.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/log4j-boot.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/dom4j.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossall-client.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-beanutils.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbosssx.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-dbcp-1.2.2.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/policy.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/jstl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-common-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-spi.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/richfaces-impl-3.3.2.SR1.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-impl-3.3.2.SR1.jar/meta-inf/faces-config.xml" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/el-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossmq-client.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/ojdbc6.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/scheduler-plugin-example.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-email-1.0.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/richfaces-ui-3.3.3.Final.jar">
+   <libraries>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/a4j.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/a4j.tld" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/ajax4jsf.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/ajax4jsf.tld" project="JSF1"/>
+    </library>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/faces-config.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/jsp.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/rich.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/rich.tld" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/richfaces.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.3.Final.jar/meta-inf/richfaces.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bsh.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/jboss-aop-jdk50.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-aop-jdk50-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-saaj.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/stax-api.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/richfaces-impl-3.3.3.Final.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-impl-3.3.3.Final.jar/meta-inf/faces-config.xml" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-j2ee.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jaxws-ext.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-deployment.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/properties-plugin.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/richfaces-impl-jsf2-3.3.3.Final.jar">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-impl-jsf2-3.3.3.Final.jar/meta-inf/ajax-context.faces-config.xml" project="JSF1"/>
+    </library>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-impl-jsf2-3.3.3.Final.jar/meta-inf/faces-config.xml" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jaxws.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/stax-ex.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-srp-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/cglib.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jaxrpc.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/wsdl4j.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-pool-1.3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossha-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-hibernate.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-collections-3.1.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bsf.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-bsf.jar/meta-inf/taglib.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/mail.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+  <path value="/JSF1/WebContent/WEB-INF/faces-config.xml">
+   <libraries>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/WEB-INF/faces-config.xml" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/client/jbossjmx-ant.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-saaj.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-serialization.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossmq.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-transaction-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/antlr.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-j2ee.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-validator-1.3.1.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-jaxws.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/wstx.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/ejb3-persistence.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/xmlentitymgr.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jnpserver.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-web.deployer/jsf-libs/jboss-faces.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/mail-plugin.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/standard.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/c-1_0-rt.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/c-1_0.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/c.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fmt-1_0-rt.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fmt-1_0.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fmt.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/fn.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/permittedtaglibs.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/scriptfree.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/sql-1_0-rt.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/sql-1_0.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/sql.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/x-1_0-rt.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/x-1_0.tld" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-standard.jar/meta-inf/x.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jmx-adaptor-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-iiop-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/mail.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-ejb3x.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbosscx-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxws-tools.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/scheduler-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-web.deployer/jsf-libs/jsf-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/antlr.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbosssx-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/trove.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jmx-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/log4j-snmp-appender.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-jboss42.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/servlet-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossjta.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-system-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/avalon-framework.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/ejb3-persistence.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hibernate-annotations.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-management.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/jsf-facelets-1.1.14-sources.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/hibernate-annotations.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxb-xjc.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-common.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jsr88.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/quartz.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/log4j.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-lang-2.1.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-ejb3x.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/joesnmp.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/hibernate-client.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-jboss42.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/logkit.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/commons-codec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/concurrent.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/richfaces-ui-3.3.2.SR1.jar">
+   <libraries>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/a4j.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/a4j.tld" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/ajax4jsf.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/ajax4jsf.tld" project="JSF1"/>
+    </library>
+    <library class="faces-config">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/faces-config.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/jsp.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/rich.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/rich.tld" project="JSF1"/>
+    </library>
+    <library class="facelet">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/richfaces.taglib.xml" project="JSF1"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-richfaces-ui-3.3.2.SR1.jar/meta-inf/richfaces.tld" project="JSF1"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hibernate3.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jacorb.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/jboss-aop-jdk50.deployer/jboss-aspect-library-jdk50.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/endorsed/xercesImpl.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/scout.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bsh-deployer.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-logging.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-framework.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/servlet-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/autonumber-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/javassist.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jbossws-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/activation.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jmx-invoker-adaptor-client.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jsp-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jboss-client.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/richfaces-api-3.3.3.Final.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-fileupload-1.0.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/log4j.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-iiop.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-vfs.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/deploy/ejb3.deployer/jboss-annotations-ejb3.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-digester.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/commons-codec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jca.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-common-jdbc-wrapper.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossws-framework.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jboss-jsr77.jar"/>
+  <path value="C:/jboss-4.2.3.GA/client/jaxb-api.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hsqldb-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/jbossjta-integration.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/endorsed/serializer.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/javassist.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jboss-jmx.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/bindingservice-plugin.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/commons-codec.jar"/>
+  <path value="C:/jboss-4.2.3.GA/lib/jaxb-api.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/common-annotations.jar"/>
+  <path value="C:/jboss-4.2.3.GA/server/default/lib/hibernate-entitymanager.jar"/>
+  <path value="C:/Users/Tavol/eclipse-2020-06/JSF1/WebContent/WEB-INF/lib/commons-el-1.0.jar"/>
+ </paths>
+ <validation>
+  <core validator-id="jsf-verification">
+   <linked-resource declaration="true"
+    name="%1;%2;%3;%4;%5;%6;%7;%8;%9;" path="%0"/>
+  </core>
+  <el>
+   <linked-el length="22" name="%10" offset="1003" path="%11"/>
+   <linked-el length="25" name="%10" offset="1112" path="%11"/>
+   <linked-el length="29" name="%10" offset="993" path="%12"/>
+   <linked-el length="32" name="%10" offset="1151" path="%12"/>
+   <linked-el length="22" name="%10" offset="996" path="%13"/>
+   <linked-el length="19" name="%14" offset="901" path="%12"/>
+   <linked-el length="20" name="%14" offset="794" path="%12"/>
+   <linked-el length="22" name="%15" offset="1003" path="%11"/>
+   <linked-el length="25" name="%15" offset="1112" path="%11"/>
+   <linked-el length="29" name="%15" offset="993" path="%12"/>
+   <linked-el length="32" name="%15" offset="1151" path="%12"/>
+   <linked-el length="22" name="%15" offset="996" path="%13"/>
+   <linked-el length="19" name="%16" offset="901" path="%12"/>
+   <linked-el length="20" name="%16" offset="794" path="%12"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="/JSF1/src/bean/ClaseBean.java" value="%10"/>
+  <alias path="\JSF1\WebContent\index.xhtml" value="%1"/>
+  <alias path="Message" value="%14"/>
+  <alias path="claseBean" value="%15"/>
+  <alias path="/JSF1/WebContent/index.xhtml" value="%12"/>
+  <alias path="\JSF1\src\bean\ClaseBean.java" value="%5"/>
+  <alias path="com.sun.facelets.FaceletViewHandler" value="%6"/>
+  <alias path="bean.ClaseBean" value="%7"/>
+  <alias path="/JSF1/src/properties/messages.properties" value="%16"/>
+  <alias path="\JSF1\WebContent\paginas\pagina1.xhtml" value="%8"/>
+  <alias path="\JSF1\WebContent\paginas\paginaFormulario.xhtml" value="%9"/>
+  <alias path="/JSF1/WebContent/paginas/paginaFormulario.xhtml" value="%11"/>
+  <alias path="/paginas/paginaFormulario.xhtml" value="%2"/>
+  <alias path="/JSF1/WebContent/WEB-INF/faces-config.xml" value="%0"/>
+  <alias path="/index.xhtml" value="%3"/>
+  <alias path="/paginas/pagina1.xhtml" value="%4"/>
+  <alias path="/JSF1/WebContent/paginas/pagina1.xhtml" value="%13"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://richfaces.ajax4jsf.org/rich">
+   <prefix>richfaces</prefix>
+  </uri>
+  <uri value="http://richfaces.org/rich">
+   <prefix>rich</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/core">
+   <prefix>f</prefix>
+  </uri>
+  <uri value="https://ajax4jsf.dev.java.net/ajax">
+   <prefix>ajax</prefix>
+  </uri>
+  <uri value="http://richfaces.org/a4j">
+   <prefix>a4j</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsf/html">
+   <prefix>h</prefix>
+  </uri>
+ </uris>
+</kb-project>

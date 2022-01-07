@@ -1,0 +1,11 @@
+package Polimorfismo;
+
+public class EjemploPolimorfismo {
+
+	public static void main(String [] args)
+	{
+		Empleado e1 = new Empleado("Tavo", 50000);
+		
+		Gerente g1 = new Gerente("Octavio", 45600, "IT");
+	}
+}

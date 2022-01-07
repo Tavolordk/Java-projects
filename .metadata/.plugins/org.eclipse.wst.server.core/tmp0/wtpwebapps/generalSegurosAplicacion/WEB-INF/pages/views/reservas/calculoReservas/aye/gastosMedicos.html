@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="content-wrap">
+		<main id="content" class="content" role="main">
+		<ol class="breadcrumb">
+			<li>Reservas</li>
+			<li>Cálculo de reservas</li>
+			<li>A y E</li>
+			<li class="active">Gastos médicos</li>
+		</ol>
+		<h1 class="page-title">
+			Reservas - <span class="fw-semi-bold">Gastos médicos</span>
+		</h1>
+		<br>
+		<div class="row mb-lg">
+			<div class="col-lg-12">
+				<div class="clearfix">
+					<ul class="nav nav-tabs pull-xs-left" id="myTab" role="tablist">
+						<li class="nav-item"><a class="nav-link active" id="home-tab"
+							data-toggle="tab" href="#basic" role="tab" aria-controls="basic"
+							aria-expanded="true">RRC</a></li>
+						<li class="nav-item"><a class="nav-link" id="profile-tab"
+							data-toggle="tab" href="#assumtion" role="tab"
+							aria-controls="assumtion" aria-expanded="false">IBNR</a></li>
+					</ul>
+				</div>
+				<div class="tab-content mb-lg" id="myTabContent">
+					<div role="tabpanel" class="tab-pane active in clearfix" id="basic"
+						aria-labelledby="basic-tab" aria-expanded="true">
+						<section class="widget">
+							<header style="margin-bottom: 15px;">
+								<h2 style="color: #2867ab">
+									<span class="fw-semi-bold">RRC</span>
+								</h2>
+							</header>
+							<div class="widget-body">
+							<form class="form-horizontal" role="form" enctype="multipart/form-data" id="formArchivoEmision" autocomplete="off">
+	                            <fieldset>
+	                                <div class="form-group row">
+											<div class="form-group col-md-6">
+													<label for="desde">Seleccionar fecha:</label>
+												<div class="">
+													<input type="date" class="form-control date" id="fechaRRC"
+														name="hasta" placeholder="yyyy-mm-dd" min="2018-01-01"
+														max="2050-12-31" required="true" /> <span
+														class="input-group-text"><i
+														class="fas fa-calendar-alt"></i></span> <span
+														class="input-group-btn"> </span>
+												</div>
+											</div>
+										
+											<div class="form-group col-md-6" style="margin-top: 33px;text-align: center;">
+												<button class="btn btn-primary" id="calcularRRC"
+													type="button">Calcular RRC</button>
+											</div>
+	                                </div>
+	                            </fieldset>
+	                        </form>
+							</div>
+						</section>
+						<section class="widget" id="tabRRCalert">
+							<header>
+								<h2 style="color:#2867ab">
+									Para poder visualizar los datos <span class="fw-semi-bold">RRC</span> ingrese una fecha para calcular
+								</h2>
+								
+							</header>
+						</section>
+						<section class="widget" id="tabRRC" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Tabla informativa <span class="fw-semi-bold">RRC</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tablesRRC"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th style="text-align: right">BEL Riesgo</th>
+												<th style="text-align: right">BEL Gastos</th>
+												<th class="no-sort hidden-sm-down" style="text-align: right">Emisión Anticipada </th>
+												<th class="hidden-sm-down" style="text-align: right">Margen de Riesgo RRC* </th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600;">
+											<tr>
+												<td sytle="font-">Total</td>
+												<td id="belRiesgoTotal" style="text-align: right"></td>
+												<td id="belGastoTotal" style="text-align: right"></td>
+												<td id="emiAntTotal" style="text-align: right"></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Individual </td>
+												<td id="belRiesgoInd" style="text-align: right"></td>
+												<td id="belGastosInd" style="text-align: right"></td>
+												<td id="emiInd" style="text-align: right"></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Colectivo</td>
+												<td id="belRiesgoCol" style="text-align: right"></td>
+												<td id="belGastosCol" style="text-align: right"></td>
+												<td id="emiCol" style="text-align: right"></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+				
+					</div>
+					<!-- SECCION ANUAL -->
+					<div class="tab-pane" id="assumtion" role="tabpanel"
+						aria-labelledby="assumtion-tab" aria-expanded="false">
+						<section class="widget" id="tabIBNRalert">
+							<header>
+								<h2 style="color:#2867ab">
+									Para poder visualizar los datos <span class="fw-semi-bold">IBNR</span> calcule una fecha en la seccion de RRC
+								</h2>
+								
+							</header>
+						</section>
+						<section class="widget" id="tabIBNR" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Tabla informativa <span class="fw-semi-bold">IBNR</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tables"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th style="text-align: right">BEL SONR</th>
+												<th style="text-align: right"> Margen de Riesgo SONR* </th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600;">
+											<tr>
+												<td style="font-w">Total</td>
+												<td id="totalBELSORN" style="text-align: right"></td>
+												<td id="margenTotal" style="text-align: right"></td>
+											</tr>
+											<tr>
+												<td style="font-w">Individual </td>
+												<td id="BELSORNInd" style="text-align: right;"></td>
+												<td style="text-align: right"></td>
+											</tr>
+											<tr>
+												<td style="font-w">Colectivo</td>
+												<td id="BELSORNCol" style="text-align: right;"></td>
+												<td style="text-align: right"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						<section class="widget" id="BELPrima" style="display: none">
+							<header>
+								<h2 style="color:#2867ab">
+									Tabla informativa <span class="fw-semi-bold">Prima devengada / BEL SONR</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tables"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>Año	</th>
+												<th id="anio5" style="text-align: right">Año 1</th>
+												<th id="anio4" style="text-align: right">Año 2</th>
+												<th id="anio3" style="text-align: right">Año 3</th>
+												<th id="anio2" style="text-align: right">Año 4</th>
+												<th id="anio1" style="text-align: right">Año 5</th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600">
+											<tr>
+												<td style="font-w">Prima devengada</td>
+												<th id="ptd5" style="text-align: right">Año 1</th>
+												<th id="ptd4" style="text-align: right">Año 2</th>
+												<th id="ptd3" style="text-align: right">Año 3</th>
+												<th id="ptd2" style="text-align: right">Año 4</th>
+												<th id="ptd1" style="text-align: right">Año 5</th>
+											</tr>
+											<tr>
+												<td style="font-w">BEL SONR </td>
+												<th id="bel5" style="text-align: right">Año 1</th>
+												<th id="bel4" style="text-align: right">Año 2</th>
+												<th id="bel3" style="text-align: right">Año 3</th>
+												<th id="bel2" style="text-align: right">Año 4</th>
+												<th id="bel1" style="text-align: right">Año 5</th>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						<section class="widget">
+						<div class="col-md-6">
+		                    <header>
+		                        <h2 style="color:#2867ab">
+		                            Gráfica de <span class="fw-semi-bold">Prima devengada</span>
+		                        </h2>
+		                        <div class="widget-controls">
+		                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+		                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+		                            
+		                        </div>
+		                    </header>
+		                    <div class="widget-body">
+		                        <div class="mt mb" id="flot-main" style="width: 450px; height: 260px;"></div>
+		                        <div class="chart-tooltip" id="flot-main-tooltip" style="opacity: 0"></div>
+		                    </div>
+		                    </div>
+		                    <div class="col-md-6">
+		                    <header>
+		                        <h2 style="color:#2867ab">
+		                            Gráfica de <span class="fw-semi-bold">BEL SONR</span>
+		                        </h2>
+		                        <div class="widget-controls">
+		                            <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+		                            <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+		                         </div>
+		                    </header>
+		                    <div class="widget-body">
+		                        <div class="mt mb" id="flot-mainBel" style="width: 450px; height: 260px;"></div>
+		                        <div class="chart-tooltip" id="flot-main-tooltipBel" style="opacity: 0"></div>
+		                    </div>
+		                    </div>
+		                </section>
+					</div>
+				</div>
+			</div>
+		</div>
+		</main>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- common app js -->
+	<script th:src="@{/resources/js/utils.js}"></script>
+	<script th:src="@{/resources/js/settings.js}"></script>
+	<script th:src="@{/resources/js/app.js}"></script>
+
+	
+	<!-- page specific Tablas -->
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script th:src="@{/resources/js/underscore/underscore-min.js}"></script>
+	<script th:src="@{/resources/js/backbone/backbone.js}"></script>
+	<script th:src="@{/resources/js/backbone.paginator/lib/backbone.paginator.min.js}"></script>
+	<script th:src="@{/resources/js/backgrid/lib/backgrid.js}"></script>
+	<script th:src="@{/resources/js/backgrid-paginator/backgrid-paginator.js}"></script>
+	<script th:src="@{/resources/js/datatables/media/js/jquery.dataTables.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/resources/js/tables-dynamic.js}"></script>
+	
+	<!-- page specific Gráficas -->
+	<script th:src="@{/resources/js/jquery.sparkline/index.js}"></script>
+	<script th:src="@{/resources/js/d3/d3.min.js}"></script>
+	<script th:src="@{/resources/js/rickshaw/rickshaw.min.js}"></script>
+	<script th:src="@{/resources/js/raphael/raphael-min.js}"></script>
+	<script th:src="@{/resources/js/flot.animator/jquery.flot.animator.min.js}"></script>
+	<script th:src="@{/resources/js/flot/jquery.flot.js}"></script>
+	<script th:src="@{/resources/js/flot-orderBars/js/jquery.flot.orderBars.js}"></script>
+	<script th:src="@{/resources/js/flot/jquery.flot.selection.js}"></script>
+	<script th:src="@{/resources/js/flot/jquery.flot.time.js}"></script>
+	
+	<script th:src="@{/resources/js/nvd3/build/nv.d3.min.js}"></script>
+	<script th:src="@{/resources/js/morris.js/morris.min.js}"></script>
+	<script th:src="@{/resources/js/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js}"></script>
+	
+	<!-- page specific js -->
+	
+	<!-- Js muy particulares-->
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-fix/collapse.js}"></script>
+	<script th:src="@{/resources/js/ui-tabs-accordion.js}"></script>
+	<script th:src="@{/resources/js/bootstrap/js/dist/tab.js}"></script>
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+	
+	<script th:src="@{/resources/js/pages/reservas/calculoReservas/aye/gastosMedicos/gastosMedicos.js}"></script>
+	<script th:src="@{/resources/js/pages/reservas/calculoReservas/aye/gastosMedicos/gastosMedicosC.js}"></script>
+</body>
+</html>

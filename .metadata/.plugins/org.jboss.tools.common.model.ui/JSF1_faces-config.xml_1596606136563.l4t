@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout resource="/JSF1/WebContent/WEB-INF/faces-config.xml">
+ <TreeFormPage>
+  <Memento type="FacesConfig12">
+   <Memento collapsed="false" type="Factories"/>
+   <Memento collapsed="false" type="Lifecycle"/>
+  </Memento>
+  <Memento type="%No text%">
+   <Memento collapsed="false" type="Navigation Rules"/>
+   <Memento collapsed="false" type="Managed Beans"/>
+  </Memento>
+  <Memento type="JSFNavigationRule">
+   <Memento collapsed="false" type="Navigation Rule"/>
+   <Memento collapsed="false" type="Navigation Cases"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="JSFNavigationCase">
+   <Memento collapsed="false" type="Navigation Case"/>
+   <Memento collapsed="false" type="Advanced"/>
+  </Memento>
+  <Memento type="JSFManagedBean">
+   <Memento type="Managed Bean"/>
+   <Memento type="Properties"/>
+   <Memento type="Advanced"/>
+  </Memento>
+ </TreeFormPage>
+</Layout>

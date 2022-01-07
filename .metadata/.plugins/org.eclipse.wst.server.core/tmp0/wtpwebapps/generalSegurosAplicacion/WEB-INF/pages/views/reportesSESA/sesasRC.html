@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+    <div class="container main-container">
+    	<div class="row">
+    		<div class="col-md-6">
+		    	<div class="float-center">
+		    		<h1 >SESAS(RR8)</h1>	 
+		    	</div>
+	    	</div>
+    	</div>
+    	<div th:include="views/reportesSESA/tabsRC :: tabsRCFragment" id="tabsRC"></div>        
+    </div>    
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+	<script src="/resources/js/pages/reportes/analisisC.js" th:src="@{/resources/js/pages/reportes/analisisC.js}"></script>
+	<script src="/resources/js/pages/reportes/analisis.js"  th:src="@{/resources/js/pages/reportes/analisis.js}"></script>
+	<script src="/resources/js/pages/reportes/reportesSesaAnualC.js" th:src="@{/resources/js/pages/reportes/reportesSesaAnualC.js}"></script>
+	<script src="/resources/js/pages/reportes/reportesSesaAnual.js"  th:src="@{/resources/js/pages/reportes/reportesSesaAnual.js}"></script>
+</body>
+
+</html>

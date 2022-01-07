@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	
+	<div class="content-wrap">
+		<main id="content" class="content" role="main">
+		<ol class="breadcrumb">
+			<li>Reaseguro</li>
+			<li>Informe al Reasegurador</li>
+			<li class="active">Bordereaux Siniestros</li>	
+		</ol>
+		<h1 class="page-title">
+			Reaseguro - <span class="fw-semi-bold">Bordereaux Siniestros</span>
+		</h1>
+			<section class="widget">
+				<header>
+					<div class="form-group row">
+						<div class="col-md-6">
+							<label class="col-md-12 control-label" for="default-select">
+								Contratos:
+							</label>
+							<select data-placeholder="Seleccione un contrato" class="select2 form-control" id="default-select">
+								<option value="Magellanic" disabled selected>Seleccione un contrato...</option>
+								<option value="Andromeda">PRUEBA</option>
+							</select>
+						</div>
+						
+						<div class="form-group col-md-3">
+							<label for="ocurridos">Siniestros ocurridos de:</label>
+								<div class="">
+									<input type="date" class="form-control date" id="fecDesde" name="desde" placeholder="yyy-mm-d" min="2018-01-01"
+									max="2050-12-31" required="true" /><span
+									class="input-group-text"><i
+									class="fas fa-calendar-alt"></i></span>
+									<span
+									class="input-group-btn"></span>
+								</div>
+						</div>
+						
+						<div class="form-group col-md-3">
+							<label for="hasta">Hasta:</label>
+								<div class="">
+									<input type="date" class="form-control date" id="fecHasta" name="hasta" placeholder="yyy-mm-d" min="2018-01-01"
+									max="2050-12-31" required="true" /><span
+									class="input-group-text"><i
+									class="fas fa-calendar-alt"></i></span>
+									<span
+									class="input-group-btn"></span>
+								</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12"><br>
+								<button class="btn btn-primary" id="btnCalcularS"
+								type="button">Calcular</button>
+							</div>
+						</div>
+					</div>
+				</header>
+<div class="table-responsive">
+    <table id="resultadoBusqueda" class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer" role="grid" style="width: 1510px;">
+	<thead>
+	<tr role="row">
+	<th class="success" rowspan="1" colspan="1" >Ramo</th>
+	<th class="success" rowspan="1" colspan="1">Agrupador</th>
+	<th class="success" rowspan="1" colspan="1">Contratante</th>
+	<th class="success" rowspan="1" colspan="1" >Num. Póliza</th>
+	<th class="success" rowspan="1" colspan="1" >Asegurado</th>
+	<th class="success" rowspan="1" colspan="1" >Contrato</th>
+	<th class="success" rowspan="1" colspan="1" >Fec. Siniestro</th>
+	<th class="success" rowspan="1" colspan="1" >Fec. Registro</th>
+	<th class="success" rowspan="1" colspan="1" >Siniestro</th>
+	<th class="success" rowspan="1" colspan="1" >Causa Siniestro</th>
+	<th class="success" rowspan="1" colspan="1" >Descripción Cobertura</th>
+	<th class="success" rowspan="1" colspan="1" >Estatus al corte</th>
+	<th class="success" rowspan="1" colspan="1" >Saldo Inicial</th>
+	<th class="success" rowspan="1" colspan="1" >Suma aseg.</th>
+	<th class="success" rowspan="1" colspan="1" >Ajustes (+)</th>
+	<th class="success" rowspan="1" colspan="1" >Ajustes (-)</th>
+	<th class="success" rowspan="1" colspan="1" >Pago Total</th>
+	<th class="success" rowspan="1" colspan="1" >Saldo Actual</th>
+	<th class="success" rowspan="1" colspan="1" >Recuperación</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr role="row" class="odd">
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>$0.00</td>
+	<td></td>
+	<td></td>
+	</tr><tr role="row" class="even">
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>$0.00</td>
+	<td></td>
+	<td></td>
+	</tr><tr role="row" class="odd">
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>$0.00</td>
+	<td></td>
+	<td></td>
+	</tr>
+	</tbody>
+	</table>
+</div>
+
+<div class="dataTables_paginate paging_simple_numbers" id="resultadoBusqueda_paginate">
+<ul class="pagination"><li class="paginate_button page-item previous disabled" id="resultadoBusqueda_previous"><a href="#" aria-controls="resultadoBusqueda" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+<li class="paginate_button page-item active"><a href="#" aria-controls="resultadoBusqueda" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+<li class="paginate_button page-item next disabled" id="resultadoBusqueda_next"><a href="#" aria-controls="resultadoBusqueda" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
+</ul></div>
+			</section>
+		</main>
+	</div>
+
+
+<div th:include="templates/layout :: footerFragment"></div>
+
+	<script th:src="@{/resources/js/settings.js}"></script>
+	<script th:src="@{/resources/js/app.js}"></script>
+	
+	<script th:src="@{/resources/js/charts.js}"></script>
+	<script src="/resources/js/utils.js" th:src="@{/resources/js/utils.js}"></script>
+	
+	<!-- page specific libs -->
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/resources/js/jquery-autosize/jquery.autosize.min.js}"></script>
+	<script th:src="@{/resources/js/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js}"></script>
+	<script th:src="@{/resources/js/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js}"></script>
+	<script th:src="@{/resources/js/select2/select2.min.js}"></script>
+	<script th:src="@{/resources/js/switchery/dist/switchery.min.js}"></script>
+	<script th:src="@{/resources/js/moment/min/moment.min.js}"></script>
+	<script th:src="@{/resources/js/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js}"></script>
+	<script th:src="@{/resources/js/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}"></script>
+	<script th:src="@{/resources/js/jasny-bootstrap/js/inputmask.js}"></script>
+	<script th:src="@{/resources/js/jasny-bootstrap/js/fileinput.js}"></script>
+	<script th:src="@{/resources/js/holderjs/holder.js}"></script>
+	<script th:src="@{/resources/js/dropzone/dist/min/dropzone.min.js}"></script>
+	<script th:src="@{/resources/js/markdown/lib/markdown.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-markdown/js/bootstrap-markdown.js}"></script>
+	<script th:src="@{/resources/js/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js}"></script>
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-fix/collapse.js}"></script>
+	<script th:src="@{/resources/js/ui-tabs-accordion.js}"></script>
+	<script th:src="@{/resources/js/bootstrap/js/dist/tab.js}"></script>
+	<script th:src="@{/resources/js/underscore/underscore-min.js}"></script>
+	<script th:src="@{/resources/js/backgrid/lib/backgrid.js}"></script>
+	<script th:src="@{/resources/js/backgrid-paginator/backgrid-paginator.js}"></script>
+	<script th:src="@{/resources/js/datatables/media/js/jquery.dataTables.js}"></script>
+	
+</body>
+</html>

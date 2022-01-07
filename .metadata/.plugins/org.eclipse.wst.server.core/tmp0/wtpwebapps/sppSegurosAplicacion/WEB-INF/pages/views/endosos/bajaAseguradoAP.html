@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Baja de asegurado AP</h4>
+			</div>
+		<div class="card-content">
+
+			<form id="formBajaAsegurado">
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="numeroPoliza">Número de póliza</label> <input
+							class="form-control numberClass" id="numeroPoliza"
+							name="numeroPoliza">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="grupo">Grupo</label> <input
+							class="form-control text-uppercase" id="grupo" name="grupo">
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary"
+					id="btnBuscarAsegurados">Buscar</button>
+
+				<div class="table-responsive main-container background-tabla">
+					<table id="tablaAseguradosAP"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="bajaAseguradoModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="background-color: #dc3545 !important; color: #ffff;">
+					<h5 class="modal-title" id="exampleModalLongTitle">Cancelar
+						asegurado</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">¿Está seguro de dar de baja el
+					asegurado?</div>
+				<div class="form-group col-md-6">
+					<label for="fecha">Fecha efectividad:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date-endosos" id="fechaEfectividad"
+							name="fechaEmision" data-mask="0000-00-00"
+							placeholder="aaaa-mm-dd" maxlength="10" /> <span class="input-group-text"><i
+							class="fas fa-calendar-alt"></i></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">No</button>
+					<button type="button" class="btn btn-danger" id="btnAceptar">Sí</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/parentescoC.js"
+		th:src="@{/resources/js/pages/catalogos/parentescoC.js}"></script>
+	<script src="/resources/js/pages/endosos/endososAPC.js"
+		th:src="@{/resources/js/pages/endosos/endososAPC.js}"></script>
+	<script src="/resources/js/pages/endosos/endososAP.js"
+		th:src="@{/resources/js/pages/endosos/endososAP.js}"></script>
+</body>
+
+</html>

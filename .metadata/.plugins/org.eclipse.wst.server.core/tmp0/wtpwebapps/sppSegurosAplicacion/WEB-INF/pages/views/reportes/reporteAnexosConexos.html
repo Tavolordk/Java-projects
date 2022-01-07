@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-4">Reporte de Análogos y Conexos</h1>
+
+			<form id="conexos">
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="idRamo">Ramo</label> <select class="form-control ramo" id="idRamo" name="idRamo"></select>
+					</div>
+					<div class="form-group col-md-3">
+					<label for="tipoReporte">Tipo cobertura</label> <select class="form-control tipoReporte coberturas" id="tipoReporte" name="tipoReporte"></select>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="txtFechaRegistroDe">Fecha inicio</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" data-mask="0000-00-00"
+								data-date-end-date="0d" placeholder="aaaa-mm-dd" id="fechaIni"> <span
+								class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="txtFechaRegistroHasta">Fecha fin</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" data-mask="0000-00-00"
+								data-date-end-date="0d" placeholder="aaaa-mm-dd" id="fechaFin"> <span
+								class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary" id="btnBuscarReporte">Buscar</button>
+
+				<div class="table-responsive main-container background-tabla">
+					<table id="reportePreview"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/ramoC.js"
+		th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+	<script src="/resources/js/pages/reportesExcel/reporteExcel.js"
+		th:src="@{/resources/js/pages/reportesExcel/reporteExcel.js}"></script>
+	<script src="/resources/js/pages/reportesExcel/reporteExcelC.js"
+		th:src="@{/resources/js/pages/reportesExcel/reporteExcelC.js}"></script>
+</body>
+</html>

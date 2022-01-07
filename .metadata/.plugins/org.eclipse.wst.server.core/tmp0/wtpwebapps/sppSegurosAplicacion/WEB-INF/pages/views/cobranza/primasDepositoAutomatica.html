@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+			<div class="card wizard-card">
+		<div class="card-header">
+				<h4 id="pantalla">Primas en depósito automático</h4>
+			</div>
+		<div class="card-content">
+
+		<div class="jumbotron" style="margin: 5px; padding: 10px">
+<!-- 			<div class="row" style="margin: 0px; padding: 5px"> -->
+<!-- 				<div class="form-group col-md-2.4" style="margin: 5px; padding: 5px"> -->
+<!-- 					<button id="idLimpiar" type="button" class="btn btn-primary"> -->
+<!-- 						<span class="mr-2"> <i class="fas fa-redo-alt"></i> -->
+<!-- 						</span>Nueva Captura -->
+<!-- 					</button> --> 
+<!-- 				</div> -->
+<!-- 			</div> -->
+	
+			<div align="left" style="margin: 10px 10px 40px; padding: 5px">
+				<button id="idBuscarPrimasDep" type="button" class="btn btn-primary active"
+					aria-pressed="true">Buscar Primas</button>
+	
+			</div>
+			<form id="formPrimasDeposito" autocomplete="off">
+				<div class="row">
+
+					<div class="form-group col-md-4">
+						<label for="sucursal">Número Sucursal: </label>
+						<div class="input-group">
+							<select id="sucursal" class="form-control input-group lstSucursal" name="sucursal" required disabled></select>
+							 <span class="input-group-text">
+							  <i class="fas fa-briefcase"></i>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="tipoLiq">Tipo Liquidación: </label>
+						<div class="input-group">
+							<select id="tipoLiquidacion" class="form-control " name="tipoLiquidacion" required disabled>
+								<option value="" selected disabled></option>
+								<option>INGRESO</option>
+								<option>EGRESO</option>
+							</select> <span class="input-group-text"> <i
+								class="fas fa-file-invoice-dollar"></i>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="numLiq">Número Liquidación: </label> <input
+							type="text" class="form-control text-uppercase"
+							id="numeroLiquidacion" name="numeroLiquidacion" disabled>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="fecha">Fecha Captura: </label>
+						<div class="input-group">
+							<input type="text" class="form-control date currentDate" disabled
+								id="fechaLiquidacion" name="fechaCaptura"
+								placeholder="aaaa-mm-dd" /> <span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="conductoCobro">Conducto Cobro: </label> 
+						<select	class="form-control lstConductos" id="conductoCobro" name="conductoCobro" required disabled>
+						</select>
+					</div>
+					
+					<div class="form-group col-md-4">
+						<label for="numLiq">Estatus Liquidación: </label><input
+							type="text" class="form-control text-uppercase" 
+							id="estatusLiquidacion" name="estatusLiquidacion" disabled>
+					</div>
+				</div>
+
+				<div class="row" style="margin: 5px; padding: 5px">
+					<div class="form-group col-md-2.4" style="margin: 5px; padding: 5px">
+						<button id="idGuardar" type="button" class="btn btn-primary">
+							<span class="mr-2"> <i class="fas fa-save"></i>
+							</span>Guardar
+						</button>
+
+					</div>
+				</div>
+				
+					<!-- ******************************************************* -->
+					<!-- ****** TABLAS EDITABLES PARA CAPTURA DE MOVIMIENTOS *** -->
+					<!-- ******************************************************* -->
+			    <div id ="idEditMovimientos" class="table-responsive main-container background-tabla">
+			    <h4 align="center" id="lbEditMovimientos" style="background: blue; color: white">Movimientos</h4>
+			    	 <table id="editMovimiento" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+					  	<div class="row"> 
+							<div class="form-group col-md-7" style="margin: 5px; padding: 5px"></div>
+						    <div class="form-group col-md-2.5" style="margin: 5px; padding: 5px"></div>
+							<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+								<label><b style="font-size: 20px">Total:</b></label>
+							</div>
+							<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+								<input type="text" class="form-control text-uppercase" id="totalMovimientos" disabled/>
+							</div>
+						</div>
+				  	
+				    	 <div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<button id="btnGuardarEditMov" type="button" class="btn btn-primary">
+								<span class="mr-2"> <i class="fas fa-save"></i></span>Guardar
+							</button>
+						</div>
+			    </div>
+			    
+			     <!-- ******************************************************* -->
+					<!-- **** TABLAS PARA MOSTRAR HISTORIAL DE MOVIMIENTOS ***** -->
+					<!-- ******************************************************* -->
+				<div id="idHistMovimientos" class="table-responsive main-container background-tabla">
+					<h4 align="center" id="lbMovimientos" style="background: blue; color: white ">Movimientos</h4>
+					<table id="tableMovimientos" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+					
+ 					<div class="row"> 
+						<div class="form-group col-md-7" style="margin: 5px; padding: 5px"></div>
+					    <div class="form-group col-md-2.5" style="margin: 5px; padding: 5px"></div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<label><b style="font-size: 20px">Total:</b></label>
+						</div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<input type="text" class="form-control text-uppercase" id="totalMovimientosHist" disabled/>
+						</div>
+					</div>
+				</div>
+				
+					<!-- ******************************************************* -->
+					<!-- **** TABLAS PARA MOSTRAR HISTORIAL DE FORMAS DE PAGO ** -->
+					<!-- ******************************************************* -->
+				<div id="idHistFormaPago" class="table-responsive main-container background-tabla">
+					<h4 align="center" id="lbFormasPago" style="background: blue; color: white">Formas de Pago</h4>
+					<table id="tablaFormasPago" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+					
+					 <div class="row"> 	
+						<div class="form-group col-md-7" style="margin: 5px; padding: 5px"></div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px"></div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<label><b style="font-size: 20px">Total:</b></label>
+						</div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<input type="text" class="form-control text-uppercase" id="totalFormaPagoHist"  disabled/>
+						</div>
+					 </div>
+				</div>
+			    
+					<!-- ******************************************************* -->
+					<!-- ****** TABLAS EDITABLES PARA CAPTURA FORMAS DE PAGO *** -->
+					<!-- ******************************************************* -->
+				<div id="idEditFormaPago" class="table-responsive main-container background-tabla">
+				  <h4 align="center" id="lbEditFormasPago" style="background: blue; color: white">Formas de Pago</h4>
+					<table id="tablaEditFormasPago"class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+					 <div class="row"> 	
+						<div class="form-group col-md-7" style="margin: 5px; padding: 5px"></div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px"></div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<label><b style="font-size: 20px">Total:</b></label>
+						</div>
+						<div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<input type="text" class="form-control text-uppercase" id="totalFormaPago"  disabled/>
+						</div>
+					 </div>
+					 <div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<button id="btnGuardarEditPago" type="button" class="btn btn-primary">
+								<span class="mr-2"> <i class="fas fa-save"></i></span>Guardar</button>
+					 </div>
+					
+				</div>
+				
+					<!-- **************************************************** -->
+					<!-- ****** TABLAS PARA MOSTRAR PRIMAS EN DEPOSITO  ***** -->
+					<!-- **************************************************** -->
+			    <div id ="idTablePrimasDeposito" class="table-responsive main-container background-tabla">
+			    	<h4 align="center" id="lbPrimasDeposito" style="background: blue; color: white">Primas en Deposito</h4>
+			    	 <table id="tablePrimasDeposito" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+			    	 <div class="form-group col-md-2.5" style="margin: 5px; padding: 5px">
+							<button id="btnAplicaPrimas" type="button" class="btn btn-primary">Aplicar Primas</button>
+					 </div>
+			    </div>
+			</form>
+		</div>
+		
+		
+		<!-- 		************************************************** -->
+		<!-- 		****** SECCION PARA CARGAR ARCHIVO DE PAGOS ****** -->
+		<!-- 		************************************************** -->
+			<form enctype="multipart/form-data" id="formArchivoPagos" autocomplete="off" style ="display:none">
+			    <div id="cargaPagos" class="main-container">
+					<h4 align="center" id="lbArchivoPagos" style="background: blue; color: white">Carga Archivo de Pagos</h4>
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<h5>Subir archivo Pagos</h5> 
+							<input id="fileInputPagos" type="file" class="file" name="file">
+							<div id="errorBlock" class="help-block"></div>
+							<div id="msg" class="form-group mt-1 p-0 col-md-8"></div>
+						</div>
+					</div>
+					<div class = "form-group col-md-12" >
+						<button class="btn btn-primary" id="idCargarPagos" type="button">Cargar Archivo</button>
+					</div>
+				</div>    
+			</form>
+		</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/cobranza/cobranzaC.js"
+		th:src="@{/resources/js/pages/cobranza/cobranzaC.js}"></script>
+	<script src="/resources/js/pages/cobranza/cobranza.js"
+		th:src="@{/resources/js/pages/cobranza/cobranza.js}"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+<div th:include="templates/layout :: menuFragment"></div>
+
+<div class="container main-container">
+		<div class="card wizard-card">
+			<div class="card-header">
+				<h4>Impresión de documentos</h4>
+			</div>
+			<div class="card-content">
+			<div class="list-group">
+			<!-- POLIZAS -->
+				<a href="#" th:href="@{/caratula_poliza_maestra}" class="list-group-item">Carátula de Póliza Maestra</a>
+				<a href="#" th:href="@{/caratula_poliza_gh}" class="list-group-item">Carátula de Póliza GH</a>
+				<a href="#" th:href="@{/caratula_poliza_ap}" class="list-group-item">Carátula de Póliza AP</a>
+				
+			<!-- CERTIFICADOS -->	
+	  			<a href="#" th:href="@{/caratula_poliza}" class="list-group-item">Carátula de Certificado GH</a>
+	  			<a href="#" th:href="@{/caratula_certificado_ap}" class="list-group-item">Carátula de Certificado AP</a>
+	  			
+	  		<!-- RECIBOS -->
+	  			<a href="#" th:href="@{/recibo_danos}" class="list-group-item">Recibos</a>
+	  			
+	  		<!-- ENDOSOS -->	
+	  			<a href="#" th:href="@{/endosoBeneficiarioPreferente}" class="list-group-item">Endoso Beneficiario Preferente</a>
+	  			<a href="#" th:href="@{/endoso_cancelacion_poliza}" class="list-group-item">Endoso de Cancelación de Póliza</a>
+	  			<a href="#" th:href="@{/endoso_cancelacion_certificado}" class="list-group-item">Endoso de Cancelación de Certificado</a>
+	  			<a href="#" th:href="@{/endoso_nueva_casa}" class="list-group-item">Endoso Nueva Casa</a>
+	  			<a href="#" th:href="@{/endoso_aumento_suma}" class="list-group-item">Endoso de Aumento de Suma Asegurada</a>
+	  			<a href="#" th:href="@{/endoso_disminucion_suma_asegurado}" class="list-group-item">Endoso de Disminución de Suma Asegurada</a>
+	  			<a href="#" th:href="@{/endoso_cambio_asegurado_danios}" class="list-group-item">Endoso de Cambio de Asegurado Daños</a>
+	  			<a href="#" th:href="@{/endoso_Nuevo_Asegurado_AP}" class="list-group-item">Endoso Nuevo Asegurado AP</a>
+				<a href="#" th:href="@{/endoso_baja_asegurado_ap}" class="list-group-item">Endoso Baja Asegurado AP</a>
+				<a href="#" th:href="@{/endoso_cambio_beneficiario}" class="list-group-item">Endoso de Cambio de Beneficiario</a>
+	  			
+	  		<!-- CARTAS DE BIENVENIDA -->	
+	  			<a href="#" th:href="@{/carta_bienvenida_apspp}" class="list-group-item">Carta de Bienvenida AP</a>
+			  	<a href="#" th:href="@{/carta_bienvenida_danios}" class="list-group-item">Carta de Bienvenida Daños</a>
+			  	
+			<!-- CONDICIONES GENERALES -->	
+			  	<a href="#" th:href="@{/condiciones_infonavit}" class="list-group-item">Condiciones Generales</a>
+			  	
+<!--   				<a href="#" th:href="@{/condiciones_generalesgh}" class="list-group-item">Condiciones Generales GH V1</a> -->			  	
+<!-- 			  	<a href="#" th:href="@{/endoso_correcion_nombre_asegurado}" class="list-group-item">Endoso de Corrección de Nombre Asegurado V1</a> -->			 
+<!-- 				<a href="#" th:href="@{/recibo_ap}" class="list-group-item">Recibo de AP</a> -->
+<!-- 			  	<a href="#" th:href="@{/condiciones_noinfonavit}" class="list-group-item">Condiciones Generales No Infonavit</a>  -->
+			</div>
+			</div>
+		</div>
+</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+</body>
+</html>

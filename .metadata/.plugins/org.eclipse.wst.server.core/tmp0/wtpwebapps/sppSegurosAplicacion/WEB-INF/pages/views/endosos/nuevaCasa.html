@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Nueva Casa</h4>
+			</div>
+		<div class="card-content">
+
+			<form id="nuevoCertificado">
+				<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="idRamo">Ramo</label> <select class="form-control ramo" id="idRamo" name="idRamo"></select>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="numeroPoliza">Número de póliza</label> <input class="form-control numberClass"
+							id="numeroPoliza" name="numeroPoliza">
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary" id="btnBuscarPoliza">Buscar</button>
+
+				<div class="capturarCertificado d-none">
+					<div class="form-row">
+						<div class="form-group col-md-3">
+							<label for="nombreAsegurado">Nombre asegurado</label> <input
+								class="form-control text-uppercase" id="nombreAsegurado" name="nombreAsegurado"
+								maxlength="50">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="nssAsegurado">NSS</label> <input class="form-control" id="nssAsegurado"
+								name="nssAsegurado">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="sumaAsegurada">Suma asegurada</label> <input class="form-control moneda"
+								id="sumaAsegurada" name="sumaAsegurada">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="fecha">Fecha habitabilidad:</label>
+							<div class="input-group">
+									<input type="text" class="form-control date-endosos" id="fecha" name="fechaEscritura" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+									<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<label for="calle">Calle</label> <input class="form-control text-uppercase" id="calle" name="calle">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="noExterior">N° Exterior</label> <input class="form-control text-uppercase" id="noExterior"
+								name="noExterior">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="noInterior">N° Interior</label> <input class="form-control text-uppercase" id="noInterior"
+								name="noInterior">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="codigoPostal">Código postal</label> <input class="form-control numberClass" id="codigoPostal"
+								name="codigoPostal" maxlength="5">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="colonia">Colonia</label> <input class="form-control text-uppercase" id="colonia" name="colonia"
+								disabled="disabled">
+						</div>
+						<div class="form-group col-md-3">
+							<label for="estado">Estado</label> <select class="form-control estado" id="estado"
+								name="estado" disabled="disabled"></select>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="municipio">Municipio</label> <select class="form-control municipio"
+								id="municipio" name="municipio" disabled="disabled"></select>
+						</div>
+					</div>
+
+					<button type="button" class="btn btn-primary" id="btnGuardarCertificado">Guardar</button>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/endosos/endososC.js"
+		th:src="@{/resources/js/pages/endosos/endososC.js}"></script>
+	<script src="/resources/js/pages/endosos/endosos.js"
+		th:src="@{/resources/js/pages/endosos/endosos.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramoC.js"
+		th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+</body>
+
+</html>

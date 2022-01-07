@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="wizard-container">
+
+			<div th:fragment="validacionesFormFragment">
+				<div class="card-container">
+
+					<form id="hipotesisForm" enctype="multipart/form-data"
+						autocomplete="off">
+
+						<div id="cargaPagos" class="main-container">
+							<h3 style="border-bottom-style: solid">Validaciones Comision</h3>
+							<div class="row" style="margin-bottom: 50px; margin-top: 25px">
+								<div class="form-group col-md-4">
+								<label for="ejercicio"><a>Lista Ejercicios</a></label> <select
+									class="form-control lstAniosReporte" id="ejercicioSaludNulo"></select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="sesa"><a>Tipo de Documento</a></label> <select
+									class="form-control" id="tipoValidacionNulo">
+									<option value="0" disabled selected>Selecciona Tipo</option>
+									<option value="1">Datos Generales</option>
+									<option value="2">Eventos Hospitalarios</option>
+									<option value="3">Eventos No Hospitalarios</option>
+								</select>
+							</div>
+
+							<div class="form-group col-md-12">
+								<button id="validacionesComision" type="button"
+									class="btn btn-primary">
+									Ejecutar Validaciones <span class="badge"></span>
+								</button>
+							</div>
+							</div>
+						</div>
+
+						
+						
+
+
+
+						
+
+
+
+					
+
+
+					
+					</form>
+
+<!-- 					<form action="#" data-th-action="@{/ReportesSesaC/pdf/2019/1}" -->
+<!-- 						data-th-object="${model}" method="get"> -->
+<!-- 						<button type="submit" class="btn btn-primary"> PDF validaciones <span class="badge"></span> </button> -->
+<!-- 					</form> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/reportes/analisisSALUDC.js"
+		th:src="@{/resources/js/pages/reportes/analisisSALUDC.js}"></script>
+	<script src="/resources/js/pages/reportes/analisisSALUD.js"
+		th:src="@{/resources/js/pages/reportes/analisisSALUD.js}"></script>
+</body>
+</html>

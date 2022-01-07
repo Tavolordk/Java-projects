@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;PersonaBean.nombre&apos; in &apos;PersonaBean&apos;&#x0D;&#x0A;- Original project: &apos;FormularioDeComponentes&apos;&#x0D;&#x0A;- Original element: &apos;PersonaBean.nombre&apos;&#x0D;&#x0A;- Getter method name: &apos;getNombre&apos;&#x0D;&#x0A;- Setter method name: &apos;setNombre&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;nombre&apos;" flags="589830" getter="getNombre" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;{PersonaBean.java[PersonaBean^nombre" insertion="-1" setter="setNombre" stamp="1597458676888" version="1.0" visibility="1"/>
+</session>

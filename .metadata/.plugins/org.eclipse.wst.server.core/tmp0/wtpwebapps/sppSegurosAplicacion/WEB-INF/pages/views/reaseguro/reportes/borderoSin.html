@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Bordereaux de siniestros por cobertura</h4>
+			</div>
+		<div class="card-content">
+		<div th:fragment="formProveedores">
+			<form id="formContabilidad" autocomplete="off" class="needs-validation" novalidate>
+				
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label>Contratos:</label>
+						<select	class="form-control text-uppercase" id="contratosSiniestros" name="contratosSiniestros">
+						</select>
+					</div>
+				
+					<div class="form-group col-md-3">
+						<label for="fechaDe">Siniestros ocurridos de:</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" id="fechaDe" data-mask="0000-00-00" placeholder="aaaa-mm-dd" data-date-end-date="0d"/>
+							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-3">
+						<label for="fechaHasta">Hasta:</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" data-mask="0000-00-00" placeholder="aaaa-mm-dd" id="fechaHasta" data-date-end-date="0d">
+							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+			  			</div>
+		  			</div>
+		  			
+		  			<div class="form-group col-md-3">
+		  				<label></label>
+		  				<div class="input-group">
+							<button id="btnBorderoSin" type="button" class="btn btn-primary text-truncate">
+							<span class="mr-2"><i class="fas fa-calculator" style="color: #ffff"></i></span>Calcular
+							</button>
+			  			</div>
+		  			</div>
+				</div>	
+					
+				<div class="table-responsive main-container background-tabla">
+					<table id="resultadoBusqueda"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+				<div><button type="button" id="btnExportar" class="btn btn-secondary" style="display: none;">Exportar</button></div>
+				<div id="tablaEjemplo" class="table-responsive main-container ">
+				</div>
+			</form>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/reportesC.js" th:src="@{/resources/js/pages/reaseguro/reportesC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/reportes.js" th:src="@{/resources/js/pages/reaseguro/reportes.js}"></script>
+	
+	<script src="/resources/js/exportToFile/Blob.min.js" th:src="@{/resources/js/exportToFile/Blob.min.js}"></script>
+	<script src="/resources/js/exportToFile/FileSaver.min.js" th:src="@{/resources/js/exportToFile/FileSaver.min.js}"></script>
+	<script src="/resources/js/exportToFile/tableexport.js" th:src="@{/resources/js/exportToFile/tableexport.js}"></script>
+	<script src="/resources/js/exportToFile/xls.core.min.js" th:src="@{/resources/js/exportToFile/xls.core.min.js}"></script>
+</body>
+</html>

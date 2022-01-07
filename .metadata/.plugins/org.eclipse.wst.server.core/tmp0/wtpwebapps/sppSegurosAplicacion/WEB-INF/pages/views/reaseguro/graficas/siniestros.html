@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card grey lighten-4 animated fadeIn">
+			<!-- Card content -->
+			<div class="card-body">
+
+				<!-- Title -->
+				<h4 class="card-title">
+					<a>Siniestros</a>
+				</h4>
+				<div class="col-6">
+					<form class="text-center">
+
+						
+					</form>
+				</div>
+				
+				<div class="row">
+				<div class="d-flex justify-content-center z-depth-1 col-6 mb-2">
+					<div id="siniestros1" class="blue-grey lighten-5" style="width: 100%"></div>				
+				</div>
+				
+				<div class="d-flex justify-content-center z-depth-1 col-6 mb-2">
+					<div id="siniestros2" class="blue-grey lighten-5" style="width: 100%"></div>				
+				</div>
+				
+				<div class="d-flex justify-content-center z-depth-1 col-6">
+					<div id="siniestros3" class="blue-grey lighten-5" style="width: 100%"></div>				
+				</div>
+				
+				<div class="d-flex justify-content-center z-depth-1 col-6">
+					<div id="siniestros4" class="blue-grey lighten-5" style="width: 100%"></div>				
+				</div>
+				</div>
+				
+			</div>
+
+		</div>
+
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/ramoC.js" th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/internoC.js" th:src="@{/resources/js/pages/reaseguro/internoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/interno.js" th:src="@{/resources/js/pages/reaseguro/interno.js}"></script>

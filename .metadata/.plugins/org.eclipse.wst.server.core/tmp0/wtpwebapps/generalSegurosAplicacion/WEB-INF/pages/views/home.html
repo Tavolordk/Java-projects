@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="content-wrap">
+    <main id="content" class="content" role="main">
+        <ol class="breadcrumb">
+            <li>BIENVENIDO</li>
+            <li class="active">GENERAL DE SEGUROS</li>
+        </ol>
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center">
+                  <img style="width:500px" src="/resources/img/gsLogoTrans.png" th:src="@{/resources/img/gsLogoTrans.png}">
+            </div>
+        </div>
+    </main>
+	</div>
+	
+
+	<div th:include="templates/layout :: footerFragment"></div>
+</body>
+<!-- page specific libs -->
+			<script th:src="@{/resources/js/settings.js}" src="/resources/js/settings.js"></script>
+			<script th:src="@{/resources/js/app.js}" src="/resources/js/app.js"></script>
+			<script th:src="@{/resources/js/shufflejs/dist/jquery.shuffle.modernizr.min.js}" src="/resources/shufflejs/dist/jquery.shuffle.modernizr.min.js"></script>
+			<script th:src="@{/resources/js/magnific-popup/dist/jquery.magnific-popup.min.js}" src="/resources/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+			
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="jumbotron">
+		<h3 class="display-4">Consulta de movimientos</h3>
+			<form id="formMovConsulta" autocomplete="off" class="needs-validation" novalidate>
+				<div class="row">
+				<div class="form-group col-md-6">
+					<label for="txtBusca">Número siniestro: </label>
+					<div class="input-group">
+						<input class="form-control" id="txtBusca"> <span
+							class="input-group-btn">
+							<button id="buscaMovimientosPorSiniestro" type="button"	class="btn btn-default">Buscar</button>
+							<button id="generaExcelMov" type="button" class="btn btn-default">Generar Excel</button>
+						</span>
+					</div>
+				</div>
+				</div>
+				
+				<div class="table-responsive main-container background-tabla">
+					<table id="resultadoBusqueda"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<!-- JS Siniestros -->
+	<script src="/resources/js/pages/siniestros/siniestrosC.js" th:src="@{/resources/js/pages/siniestros/siniestrosC.js}"></script>
+	<script src="/resources/js/pages/siniestros/siniestros.js" th:src="@{/resources/js/pages/siniestros/siniestros.js}"></script>
+</body>
+</html>

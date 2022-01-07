@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="formaPagoEditFragment" class="main-container">
+		<div class="modal fade" id="editarFormaPagoModal" tabindex="-1"
+			role="dialog" aria-labelledby="editarFormaPagoModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="editarFormaPagoModalLabel" align="center" style="background: blue; color: white">EDITAR FORMA PAGO</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formEditarFormaPago" enctype="multipart/form-data" autocomplete="off" class="needs-validation" novalidate>
+							  <div class="row">
+							  		<div class="form-group col-md-4 ">
+										 <label for="nombre">Forma Pago:</label>
+										 <select id= 'formaDePago' class= 'form-control lstFormaPago' name='formaPago' required></select>
+									</div>
+							  
+									<div class="form-group col-md-4 ">
+										 <label for="nombre">Guía:</label>
+										 <select id='guia' class='form-control text-uppercase lstBancos' name='guia' required></select>
+									</div>
+									
+									<div class="form-group col-md-4 ">
+										 <label for="nombre">Num Recibo:</label>
+										 <select id='idRecibo' class='form-control text-uppercase lstRecibos' name='idRecibo' required></select>
+									</div>
+									
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Sub Guía:</label>
+										 <input	class="form-control text-uppercase" type="text" id="subGuia" name="subGuia" maxlength="20"/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Referencia:</label>
+										 <input	class="form-control text-uppercase" type="text" id="referencia" name="referencia" maxlength="20"/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Concepto:</label>
+										 <input	class="form-control text-uppercase" type="text" id="concepto" name="concepto" maxlength="20"/>
+									</div>
+									<div class="form-group col-md-4 ">
+										<label for="nombre">Importe:</label>
+										 <input	class="form-control text-uppercase" type="text" id="importe" name="importe" maxlength="12"/>
+									</div>
+							  </div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"	data-dismiss="modal">
+							<span class="mr-2"> <i class="fas fa-ban"></i></span>
+							Cancelar
+						</button>
+						<button type="button" class="btn btn-primary text-truncate" id="actualizaFormaPago">
+							<span class="mr-2"> <i class="fas fa-save"></i></span>
+							Guardar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

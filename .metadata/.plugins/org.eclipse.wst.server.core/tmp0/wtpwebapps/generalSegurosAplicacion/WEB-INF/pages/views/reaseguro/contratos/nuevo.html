@@ -1,0 +1,158 @@
+﻿<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> -->
+		<div class="clearfix">
+			<ul class="nav nav-tabs pull-xs-left" id="myTab" role="tablist">
+				<li class="nav-item"><a class="nav-link active" id="tipo-contrato-tab"
+					data-toggle="tab" href="#basic" role="tab" aria-controls="basic"
+					aria-expanded="true">Tipo contrato</a></li>
+				<li class="nav-item"><a class="nav-link" id="contrato-tab"
+					data-toggle="tab" href="#tabContrato" role="tab"
+					aria-controls="assumtion" aria-expanded="false">Contrato</a></li>
+				<li class="nav-item"><a class="nav-link" id="reasegurador-tab"
+					data-toggle="tab" href="#tabReasegurador" role="tab"
+					aria-controls="assumtionCont" aria-expanded="false">Reaseguradores</a></li>
+				<li class="nav-item"><a class="nav-link" id="capas-tab"
+					data-toggle="tab" href="#tabCapas" role="tab"
+					aria-controls="assumtionCont" aria-expanded="false">Capas</a></li> 
+			</ul>
+		</div>
+		<div class="tab-content mb-lg" id="myPlantillaTabContent">
+			<div role="tabpanel" class="tab-pane active in clearfix" id="basic"
+				aria-labelledby="basic-tab" aria-expanded="true">
+				<section class="widget">
+					<header style="margin-bottom: 15px;">
+						<h2 style="color: #2867ab">
+							<span class="fw-semi-bold">Tipo de contrato</span>
+						</h2>
+					</header>
+					<div class="widget-body">
+						<div class="form-group col-md-4">
+							<label id="tipo_contrato" class="col-md-12 control-label" for="default-select">
+								Tipo contrato:
+							</label> 
+							<select data-placeholder="Seleccione tipo de contrato" class="select2 form-control" id="tipo_contrato" required="required">
+								<option value="0">Seleccione un tipo de contrato</option>
+								<option value="1">CUOTA PARTE</option>
+								<option value="2">CUOTA PARTE FACULTATIVO</option>
+								<option value="3">EXCEDENTE FACULTATIVO</option>
+								<option value="4">EXCEDENTE</option>
+								<option value="5">MIXTO FACULTATIVO</option>
+								<option value="6">MIXTO</option>
+								<option value="7">EXCESO DE PERDIDA - PRIMA</option>
+								<option value="8">EXCESO DE PERDIDA - SUMA ASEGURADA</option>
+								<option value="9">WORKING COVER</option>
+								<option value="10">MIXTO WC Y XL</option>
+								<option value="11">XL CAT</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label id="tipo_reaseguro" class="col-md-12 control-label" for="default-select">
+								Tipo reaseguro:
+							</label> 
+							<select data-placeholder="Seleccione tipo de reaseguro" class="select2 form-control" id="tipo_reaseguro" required="required">
+								<option value="0">Seleccione un tipo de reaseguro</option>
+								<option value="1">PROPORCIONAL</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label id="tipo_cobertura" class="col-md-12 control-label" for="default-select">
+								Tipo cobertura:
+							</label> 
+							<select data-placeholder="Seleccione tipo de cobertura" class="select2 form-control" id="tipo_cobertura" required="required">
+								<option value="0">Seleccione un tipo de cobertura</option>
+								<option value="1">AUTOMATICO</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label id="tipo_proteccion" class="col-md-12 control-label" for="default-select">
+								Tipo protección:
+							</label> 
+							<select data-placeholder="Seleccione tipo de protección" class="select2 form-control" id="tipo_proteccion" required="required">
+								<option value="0">Seleccione un tipo de protección</option>
+								<option value="1">RIESGO</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label id="ramo" class="col-md-12 control-label" for="default-select">
+								Ramo:
+							</label> 
+							<select data-placeholder="Seleccione ramo" class="select2 form-control" id="ramo" required="required">
+								<option value="0">Seleccione ramo</option>
+								<option value="1">VIDA</option>
+								<option value="2">DAÑOS EXTENSION DE GARANTIA</option>
+								<option value="3">DAÑOS</option>
+								<option value="4">PRUEBA</option>
+								<option value="5">VIDA GRUPO</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label id="producto" class="col-md-12 control-label" for="default-select">
+								Producto:
+							</label> 
+							<select data-placeholder="Seleccione producto" class="select2 form-control" id="producto" required="required">
+								<option value="0">Seleccione producto</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<button class="btn btn-primary" id="btnSiguienteTipoContrato"
+								type="button">Siguiente</button>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="tabContrato"
+				aria-labelledby="assumtion-tab" aria-expanded="true" disabled>
+				<section class="widget">
+					<header style="margin-bottom: 15px;">
+						<h2 style="color: #2867ab">
+							<span class="fw-semi-bold">Contrato</span>
+						</h2>
+					</header>
+					<div class="widget-body">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button class="btn btn-primary" id="btnSiguienteContrato"
+									type="button">Siguiente2</button>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="tabReasegurador"
+				aria-labelledby="assumtion-tab" aria-expanded="true" disabled>
+				<section class="widget">
+					<header style="margin-bottom: 15px;">
+						<h2 style="color: #2867ab">
+							<span class="fw-semi-bold">Reaseguradores</span>
+						</h2>
+					</header>
+					<div class="widget-body">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button class="btn btn-primary" id="btnSiguienteReasegurador"
+									type="button">Siguiente3</button>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="tabCapas"
+				aria-labelledby="assumtion-tab" aria-expanded="true" disabled>
+				<section class="widget">
+					<header style="margin-bottom: 15px;">
+						<h2 style="color: #2867ab">
+							<span class="fw-semi-bold">Capas</span>
+						</h2>
+					</header>
+					<div class="widget-body">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button class="btn btn-primary" id="btnFinalizar"
+									type="button">Finalizar</button>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>

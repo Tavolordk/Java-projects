@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8" />
+</head>
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-8">JOURNAL DE GASTOS</h1>
+			<form enctype="multipart/form-data" id="formJournalGastos"
+				autocomplete="off">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="desde">Fecha de solicitud:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="fechaSolicitud"
+								name="fechaSolicitud" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="desde">Descripción:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="descripcion"
+								name="descripcion" />
+						</div>
+					</div>
+					
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="desde">Fecha desde:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="fechaDesde"
+								name="fechaDesde" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="desde">Fecha hasta:</label>
+						<div class="input-group">
+							<input type="date" class="form-control date" id="fechaHasta"
+								name="fechaHasta" placeholder="yyyy-mm-dd" /> <span
+								class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+							<span class="input-group-btn"> </span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="tipoJournal">Tipo de Journal:</label> <select
+							class="form-control" id="tipoJournal"
+							name="tipoJournal">
+							<option selected="" disabled="">Seleccionar Journal</option>
+							<option clave="2018">50</option>
+							<option clave="2019">100</option>
+							<option clave="2020">150</option>
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="tipoJournal">Tipo de Cuenta:</label> <select
+							class="form-control" id="tipoCuenta"
+							name="tipoCuenta">
+							<option selected="" disabled="">Seleccionar Cuenta</option>
+							<option clave="2018">50</option>
+							<option clave="2019">100</option>
+							<option clave="2020">150</option>
+						</select>
+					</div>
+					<div class="form-group col-md-12 text-center">
+						<button class="btn btn-primary" id="btnBuscarJournalGastos" style="margin-top:32px"
+							type="button">Buscar</button>
+					</div>
+				</div>
+			</form>
+			<!-- TABLA -->
+			<div class="form-group col-md-12">
+				<div class="card-content">
+					<div class="table-responsive main-container"
+						style="background-color: #ffff;">
+						<table id="tabalJournalHistorico"
+							class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+							style="width: 100%">
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/reservas/journalGastos.js"
+		th:src="@{/resources/js/pages/reservas/journalGastos.js}"></script>
+	<script src="/resources/js/pages/reservas/journalGastosC.js"
+		th:src="@{/resources/js/pages/reservas/journalGastosC.js}"></script>
+</body>
+
+</html>

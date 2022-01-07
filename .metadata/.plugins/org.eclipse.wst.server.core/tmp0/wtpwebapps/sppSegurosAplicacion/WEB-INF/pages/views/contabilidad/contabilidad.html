@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Contabilidad</h4>
+			</div>
+		<div class="card-content">
+			<form id="formContabilidad" autocomplete="off" class="needs-validation" novalidate>
+				
+				<div class="row">
+					<input type="hidden" th:value="${modulo}" id="modulo">
+					<div class="form-group col-md-4 siniestro">
+						<label for="fecha">Fecha:</label>
+						<div class="input-group">
+								<input type="text" class="form-control date" id="fecha" name="fecha" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"
+								 data-date-end-date="0d"/>
+								<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="generarContabilidad">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Generar contabilidad
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/contabilidad/contabilidadC.js" th:src="@{/resources/js/pages/contabilidad/contabilidadC.js}"></script>
+	<script src="/resources/js/pages/contabilidad/contabilidad.js" th:src="@{/resources/js/pages/contabilidad/contabilidad.js}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8"/></head>
+</head>
+
+<body>
+    <div th:include="templates/layout :: menuFragment"></div>
+    
+    <div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-4">SALUD</h1>
+			<br>
+			<form enctype="multipart/form-data" id="formArchivoEmision" autocomplete="off">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="fileInput">Carga archivos emisión </label> 
+							<input id="fileInput" type="file" class="file" name="file">
+						<div id="errorBlock" class="help-block"></div>
+						<div id="msg" class="form-group mt-1 p-0 col-md-8"></div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<button class="btn btn-primary" id="btnCargaArchivoEmision" type="button">Cargar
+							archivo</button>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+	</div>    
+    <div th:include="templates/layout :: footerFragment"></div>
+	<!-- JS -->
+	<script src="/resources/js/pages/reservas/cargaEmision.js" th:src="@{/resources/js/pages/reservas/cargaEmision.js}"></script>
+	<script src="/resources/js/pages/reservas/cargaEmisionC.js"  th:src="@{/resources/js/pages/reservas/cargaEmisionC.js}"></script>
+</body>
+
+</html>

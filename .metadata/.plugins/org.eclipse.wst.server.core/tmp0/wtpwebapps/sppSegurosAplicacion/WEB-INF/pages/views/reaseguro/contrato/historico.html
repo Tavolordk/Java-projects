@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="jumbotron">
+			<div th:fragment="contratoFormFragment">
+				<form autocomplete="off" class="needs-validation" id="formContrato"
+					novalidate>
+
+					<h2>Histórico</h2>
+
+					<div id = "tablaHistorico" class="table-responsive main-container background-tabla">
+						<table id="historico"
+							class="table table-sm table-hover table-bordered estiloTablas"></table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/historicoC.js"
+		th:src="@{/resources/js/pages/reaseguro/historicoC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/historico.js"
+		th:src="@{/resources/js/pages/reaseguro/historico.js}"></script>
+
+</body>
+</html>

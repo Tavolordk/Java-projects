@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="content-wrap">
+		<main id="content" class="content" role="main">
+			<ol class="breadcrumb">
+				<li class="active">Catálogos</li>
+			</ol>
+			<h1 class="page-title">
+				Carga - <span class="fw-semi-bold">Catálogos</span>
+			</h1>
+			<div class="row mb-lg">
+				<div class="col-lg-12">
+					<div class="tab-content mb-lg" id="myTabCatalogos">
+						<div role="tabpanel" class="tab-pane active in clearfix"
+										id="basic" aria-labelledby="basic-tab" aria-expanded="true">
+							<section class="widget">
+								<header style="margin-bottom: 15px;">
+									<h2 style="color: #2867ab">
+										Carga de <span class="fw-semi-bold">Cátalogos</span>
+									</h2>
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i></a>
+			
+									</div>
+								</header>
+								<div class="widget-body">
+									<form class="form-horizontal" role="form"
+										enctype="multipart/form-data" id="formArchivoEmision"
+										autocomplete="off">
+										<fieldset>
+											<div class="form-group ">
+												<div class="col-md-6">
+													<div id="datosEspecificos" class="from-goup">
+														<label id="lblTipoInsercion" class="col-md-12 control-label"
+															for="default-select">Seleccionar Catálogo </label> <select
+															data-placeholder="Selecciona tipo de inserción"
+															class="select2 form-control" id="insercionM"
+															required="required">
+															<option value="1">Seleccione un tipo de inserción</option>
+															<option value="2">CATALOGO 1</option>
+															<option value="3">CATALOGO 2</option>
+															<option value="4">CATALOGO 3</option>
+															<option value="5">CATALOGO 4</option>
+															<option value="6">CATALOGO 5</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6"
+													style="text-align: center; margin-top: 28px;">
+													<div class="form-group col-md-12">
+														<button class="btn btn-primary" id="btnCargaArchivo"
+															type="button">Buscar Catálogo</button>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group" style="margin-top: 28px;">
+														<div id="datosEspecificos" class="from-goup">
+															<div class="form-group">
+																<label class="control-label col-md-12 text-md-right"
+																	for="fileInput"> Cargar archivo catálogo </label> <select
+																	data-placeholder="Selecciona tipo de inserción"
+																	class="select2 form-control" id="insercionM"
+																	required="required">
+																	<option value="0">Seleccione un tipo de inserción</option>
+																	<option value="AI">Agregar Información</option>
+																	<option value="SI">Sobrescribir Información</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6" style="margin-top: 28px;">
+													<label class="control-label col-md-12 text-md-right"
+														for="fileInput"> Cargar archivo catálogo </label>
+													<div class="fileinput fileinput-new input-group"
+														data-provides="fileinput">
+														<div class="form-control" data-trigger="fileinput">
+															<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
+																class="fileinput-filename"></span>
+														</div>
+														<span class="input-group-addon btn btn-secondary btn-file">
+															<span class="fileinput-new">Seleccionar archivo</span> <span
+															class="fileinput-exists">Cambiar</span> <input
+															id="fileInput" type="file">
+														</span> <a href="#"
+															class="input-group-addon btn btn-secondary fileinput-exists"
+															data-dismiss="fileinput">Quitar</a>
+													</div>
+													<!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+												</div>
+												<div class="form-row ">
+													<div class="form-group col-md-12">
+														<button class="btn btn-primary" id="btnCargaArchivo"
+															type="button">Cargar catálogo</button>
+													</div>
+												</div>
+			
+											</div>
+										</fieldset>
+									</form>
+								</div>
+							</section>
+							<!-- Sección de la tabla de catálogo -->
+							<section class="widget" id="myTabContentCarga">
+								<header>
+									<h2 style="color: #003489;">Tabla de información<span class="fw-semi-bold"> Catálogos</span> </h2>
+										<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+								</header>
+								<div class="widget-body">
+									<p align="center">HISTORICO AÑO 2020</p>
+									<div class="mt">
+										<table id="datatable-table"
+											class="table table-striped table-hover">
+											<thead>
+												<tr>
+													<th>ARCHIVO</th>
+													<th>Columan 1</th>
+													<th>Columan 2</th>
+													<th>Columan 3</th>
+													<th>Columan 4</th>
+													<th>Columan 5</th>
+													<th>Columan 6</th>
+													<th>Columan 7</th>
+													<th>Columan 8</th>
+													<th>Columan 9</th>
+													<th>Columan 10</th>
+													<th>Columan 11</th>
+													<th>Columan 12</th>
+													<!--<th class="no-sort hidden-sm-down">Info</th>
+														<th class="hidden-sm-down">Description</th>
+														<th class="hidden-sm-down">Date</th>
+														<th class="no-sort">Status</th>-->
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>RR7EFITSalud</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+												</tr>
+												<tr>
+													<td>RR7EFITSeguros</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+												</tr>
+												<tr>
+													<td>Ejercicios Almacenados</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: green; font-weight: bold;">OK</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+													<td style="color: red; font-weight: bold;">NO</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- common app js -->
+	<script th:src="@{/resources/js/utils.js}"></script>
+	<script th:src="@{js/settings.js}"></script>
+	<script th:src="@{js/app.js}"></script>
+
+	<!-- page specific libs -->
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script
+		th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	<script
+		th:src="@{/resources/js/jquery-autosize/jquery.autosize.min.js}"></script>
+	<script
+		th:src="@{/resources/js/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js}"></script>
+	<script
+		th:src="@{/resources/js/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js}"></script>
+	<script th:src="@{/resources/js/select2/select2.min.js}"></script>
+	<script th:src="@{/resources/js/switchery/dist/switchery.min.js}"></script>
+	<script th:src="@{/resources/js/moment/min/moment.min.js}"></script>
+	<script
+		th:src="@{/resources/js/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js}"></script>
+	<script
+		th:src="@{/resources/js/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js}"></script>
+	<script th:src="@{/resources/js/jasny-bootstrap/js/inputmask.js}"></script>
+	<script th:src="@{/resources/js/jasny-bootstrap/js/fileinput.js}"></script>
+	<script th:src="@{/resources/js/holderjs/holder.js}"></script>
+	<script th:src="@{/resources/js/dropzone/dist/min/dropzone.min.js}"></script>
+	<script th:src="@{/resources/js/markdown/lib/markdown.js}"></script>
+	<script
+		th:src="@{/resources/js/bootstrap-markdown/js/bootstrap-markdown.js}"></script>
+	<script
+		th:src="@{/resources/js/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js}"></script>
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-fix/collapse.js}"></script>
+	<script th:src="@{/resources/js/ui-tabs-accordion.js}"></script>
+	<script th:src="@{/resources/js/bootstrap/js/dist/tab.js}"></script>
+
+	<!-- <script th:src="@{/resources/js/fileupload/fileinput.min.js}"></script> -->
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+	<script th:src="@{/resources/js/fileinputConfig.js}"></script>
+	<script
+		th:src="@{/resources/js/pages/cargaInformacion/cargaArchivos.js}"></script>
+	<script
+		th:src="@{/resources/js/pages/cargaInformacion/cargaArchivosC.js}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-4">Perfil de usuario</h1>
+			<div id="perfilUsuario"></div>
+			<form id="formPerfilUsuario">
+				<div
+					th:include="views/accesos/formularioUsuario :: camposUsuarioFragment">
+				</div>
+				<button type="button" class="btn btn-primary text-truncate"
+							id="btnActualizarUsuario">
+							<span class="mr-2"> <i class="fa fa-save"></i>
+							</span>Guardar
+						</button>
+			</form>
+		</div>
+	</div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- page specific libs validación formularios -->
+
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+	<script th:src="@{/resources/js/pages/accesos/usuariosC.js}"></script>
+	<script th:src="@{/resources/js/pages/accesos/usuarios.js}"></script>
+	<script th:src="@{/resources/js/pages/accesos/perfilC.js}"></script>
+</body>
+
+</html>

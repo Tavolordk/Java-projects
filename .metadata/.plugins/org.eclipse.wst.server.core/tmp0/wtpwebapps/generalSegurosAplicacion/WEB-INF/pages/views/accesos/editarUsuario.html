@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:fragment="usuarioEditFragment" class="main-container">
+		<!-- Modal -->
+		<div class="modal fade" id="editarUsuarioModal" tabindex="-1"
+			role="dialog" aria-labelledby="editarUsuarioModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content" style="text-align: left;">
+					<div class="modal-header" style="background-color: #2767a6; color: #ffff">
+						<h5 class="modal-title titleEditUsuario"
+							id="editarUsuarioModalLabel"></h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+						<form id="formUsuarioEditar" autocomplete="off"
+							class="needs-validation" novalidate>
+							<div
+								th:include="views/accesos/formularioUsuario :: camposUsuarioFragment"></div>
+						</form>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary text-truncate"
+							id="btnGuardarUsuario">
+							<span class="mr-2"> <i class="fa fa-save"></i>
+							</span>Guardar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

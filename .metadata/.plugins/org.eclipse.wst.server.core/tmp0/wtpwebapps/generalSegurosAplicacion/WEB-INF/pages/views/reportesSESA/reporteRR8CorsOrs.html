@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+	<div class="float-right">
+   	</div>
+		<div class="wizard-container">
+			<h3 align="center">REPORTES RR8 CORS/ORS</h3>		 
+		    <div class="card wizard-card" data-color="blue" id="wizard"> 
+		    	<div class="card-container">
+		    		<form id="formReportesRR8" enctype="multipart/form-data">
+		    			<div class="form-row">
+		    			  <div class="form-group col-md-4">
+						    <label for="tipoReporte">Tipo Reporte: </label>
+						     <select class="form-control" id="tipoReporte" name="tipoReporte">
+							    <option value="1">RR8 CORS</option>
+							    <option value="2">RR8 ORS</option>
+						    </select>
+					      </div>
+					      
+                          <div id="divReporteTrimestral" class="form-group col-md-4">
+						    <label for="tipoReporte">Trimestre:</label>
+						       <select class="form-control" id="numTrimestre" name="tipoReporte">
+							      <option value="1">1ER TRIMESTRE</option>
+							      <option value="2">2DO TRIMESTRE</option>
+							      <option value="3">3ER TRIMESTRE</option>
+							      <option value="4">4TO TRIMESTRE</option>
+						       </select>
+					      </div>
+					       <div id="divReporteTrimestral" class="form-group col-md-4">
+						    <label for="tipoReporte">Ejercicio:</label>
+						       <select class="form-control lstAniosReporte" id="ejercicio" name="ejercicio"></select>
+					      </div>								
+		    			</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button class="btn btn-primary float-left" id="btnRR8"
+									type="button">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Generar Reporte
+								</button>
+			                </div>			
+						</div>									
+					</form>
+		    	</div> 		    	
+		    </div>
+		</div>
+	</div>	
+	
+	<div th:include="templates/layout :: footerFragment"></div>	
+
+	<script src="/resources/js/pages/reportes/reportesSesaC.js" th:src="@{/resources/js/pages/reportes/reportesSesaC.js}"></script>
+	<script src="/resources/js/pages/reportes/reportesSesa.js"  th:src="@{/resources/js/pages/reportes/reportesSesa.js}"></script>
+</body>
+
+</html>

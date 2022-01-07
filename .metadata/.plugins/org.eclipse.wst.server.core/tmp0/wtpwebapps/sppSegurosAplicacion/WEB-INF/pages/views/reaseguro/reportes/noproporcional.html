@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Cálculo de primas: contrato no proporcional</h4>
+			</div>
+		<div class="card-content">
+		<div th:fragment="formProveedores">
+			<form id="formContabilidad" autocomplete="off" class="needs-validation" novalidate>
+				
+				<div class="row">
+				
+					<div class="form-group col-md-4">
+						<label>Contratos:</label>
+						<select	class="form-control text-uppercase" id="contratosNP" name="contratosNP">
+						</select>
+					</div>
+					
+					<div class="form-group col-md-3">
+						<label for="fechaDe">De:</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" id="fechaDe" data-mask="0000-00-00" placeholder="aaaa-mm-dd" data-date-end-date="0d"/>
+							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-3">
+						<label for="fechaHasta">Hasta:</label>
+						<div class="input-group">
+							<input class="form-control text-uppercase date" data-mask="0000-00-00" placeholder="aaaa-mm-dd" id="fechaHasta" data-date-end-date="0d">
+							<span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+			  			</div>
+		  			</div>
+		  			
+		  			<div class="form-group col-md-3">
+		  				<label></label>
+		  				<div class="input-group">
+							<button id="btnCalcularNoProp" type="button" class="btn btn-primary text-truncate">
+							<span class="mr-2"><i class="fas fa-calculator" style="color: #ffff"></i></span>Calcular
+							</button>
+			  			</div>
+		  			</div>
+		  			
+		  			<div class="form-group col-md-3">
+		  				<label></label>
+		  				<div class="input-group">
+							<button id="btnContabilidadNoP" type="button" class="btn btn-primary text-truncate" disabled>
+							<span class="mr-2"><i class="fas fa-calculator" style="color: #ffff"></i></span>Contabilidad
+							</button>
+			  			</div>
+		  			</div>
+				</div>
+				
+				<div class="row">
+				
+				<div class="form-group col-md-4 siniestro">
+					<label for="pmd">PMD:</label>
+					<input class="form-control text-uppercase moneda" type="text" id="pmd" name="pmd" disabled />
+				</div>
+				
+				<div class="form-group col-md-4 siniestro">
+					<label for="factorAjuste">Factor de ajuste (%):</label>
+					<input class="form-control text-uppercase" type="text" id="factorAjuste" name="factorAjuste" disabled/>
+				</div>
+				
+<!-- 				<div class="form-group col-md-4 siniestro"> -->
+<!-- 					<label for="montoRetencion">Monto retencion:</label> -->
+<!-- 					<input class="form-control text-uppercase" type="text" id="montoRetencion" name="montoRetencion" disabled/> -->
+<!-- 				</div> -->
+				
+				<div class="form-group col-md-4 siniestro">
+					<label for="primaAjuste">Prima ajuste:</label>
+					<input class="form-control text-uppercase moneda" type="text" id="primaAjuste" name="primaAjuste" disabled/>
+				</div>
+				
+				<div class="form-group col-md-4 siniestro">
+					<label for="primasRetenidas">Primas retenidas:</label>
+					<input class="form-control text-uppercase" type="text" id="primasRetenidas" name="primasRetenidas" disabled/>
+				</div>
+				
+				<div class="form-group col-md-4 siniestro">
+					<label for="primaAjustada">Prima ajustada a contabilizar:</label>
+					<input class="form-control text-uppercase moneda" type="text" id="primaAjustada" name="primaAjustada" disabled />
+				</div>
+				
+				</div>
+				
+			</form>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/reportesC.js" th:src="@{/resources/js/pages/reaseguro/reportesC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/reportes.js" th:src="@{/resources/js/pages/reaseguro/reportes.js}"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Terceros afectados</h4>
+			</div>
+		<div class="card-content">
+			<form id="fromTercero" autocomplete="off" class="needs-validation" novalidate>
+				<div class="row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="noSiniestro">Número de Siniestro:</label>
+						<div class="input-group">
+						<input class="form-control text-uppercase" type="text" id="idSiniestro" name="idSiniestro" /><span class="input-group-btn">
+							<button id="btnCargaTerceros" type="button" class="btn btn-default">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+						</div>
+					</div>
+				</div>
+				
+				<h2>Tercero</h2>
+				<div class="row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="reportaNombre">Nombre:</label>
+						<input class="form-control text-uppercase" type="text" id="nombre" name="nombre" />
+					</div>
+
+					<div class="form-group col-md-4 siniestro">
+						<label for="reportaTelefono">Telefono o celular:</label>
+						<div class="row">
+								<div class="col-4 col-sm-3">
+									<input class="form-control numberClass" type="text" id="lada" name="lada" />
+								</div>
+								<div class="col-8 col-sm-9">
+									<input class="form-control numberClass" type="text" id="telefono" name="telefono" maxlength="10" />
+								</div>
+						</div>
+					</div>
+
+					<div class="form-group col-md-4 siniestro">
+						<label for="reportaCorreo">Correo electrónico:</label>
+						<input class="form-control text-uppercase" type="text" id="correo" name="correo" />
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="reportaNarracion">RFC:</label>
+						<input class="form-control text-uppercase" type="text" id="rfc" name="rfc" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<button type="button" class="btn btn-primary text-truncate" id="guardaTercero">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Grabar 3ero
+						</button>
+						<button type="button" class="btn btn-primary text-truncate" id="">
+							<span class="mr-2">
+								<i class="fas fa-eraser"></i>
+							</span>Limpiar
+						</button>
+					</div>
+				</div>
+				<div class="table-responsive main-container background-tabla">
+					<table id="resultadoBusqueda" class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<script src="/resources/js/pages/polizas/polizasC.js" th:src="@{/resources/js/pages/siniestros/siniestrosC.js}"></script>
+	<script src="/resources/js/pages/polizas/polizas.js" th:src="@{/resources/js/pages/siniestros/siniestros.js}"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kb-project>
+ <depends-on-projects/>
+ <used-by-projects/>
+ <paths>
+  <path value="C:/Users/Tavol/.m2/repository/org/apache/commons/commons-dbcp2/2.7.0/commons-dbcp2-2.7.0.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/org/glassfish/web/javax.servlet.jsp.jstl/1.2.4/javax.servlet.jsp.jstl-1.2.4.jar">
+   <libraries>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/c-1_0-rt.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/c-1_0.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/c.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/fmt-1_0-rt.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/fmt-1_0.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/fmt.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/fn.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/permittedtaglibs.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/scriptfree.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/sql-1_0-rt.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/sql-1_0.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/sql.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/x-1_0-rt.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/x-1_0.tld" project="ControlClientes2"/>
+    </library>
+    <library class="tld">
+     <id class="model-object"
+      path="FileSystems/lib-javax.servlet.jsp.jstl-1.2.4.jar/meta-inf/x.tld" project="ControlClientes2"/>
+    </library>
+   </libraries>
+  </path>
+  <path value="C:/Users/Tavol/eclipse-2020-06/ControlClientes2/lib/mysql-connector-java-5.1.49.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/jsp/jstl/jstl-api/1.2/jstl-api-1.2.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/mysql/mysql-connector-java/5.1.49/mysql-connector-java-5.1.49.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+  <path value="C:/Users/Tavol/.m2/repository/javax/servlet/jsp/javax.servlet.jsp-api/2.3.1/javax.servlet.jsp-api-2.3.1.jar"/>
+ </paths>
+ <validation>
+  <el>
+   <linked-el length="18" name="%0" offset="2257" path="%1"/>
+   <linked-el length="16" name="%2" offset="2679" path="%3"/>
+   <linked-el length="61" name="%4" offset="35" path="%5"/>
+   <linked-el length="118" name="%4" offset="686" path="%1"/>
+   <linked-el length="122" name="%4" offset="598" path="%6"/>
+   <linked-el length="90" name="%4" offset="430" path="%7"/>
+   <linked-el length="144" name="%4" offset="1410" path="%3"/>
+   <linked-el length="16" name="%8" offset="2293" path="%3"/>
+   <linked-el length="21" name="%9" offset="2570" path="%1"/>
+   <linked-el length="17" name="%10" offset="1170" path="%3"/>
+   <linked-el length="19" name="%10" offset="1633" path="%1"/>
+   <linked-el length="61" name="%11" offset="35" path="%5"/>
+   <linked-el length="118" name="%11" offset="686" path="%1"/>
+   <linked-el length="122" name="%11" offset="598" path="%6"/>
+   <linked-el length="90" name="%11" offset="430" path="%7"/>
+   <linked-el length="144" name="%11" offset="1410" path="%3"/>
+   <linked-el length="19" name="%12" offset="1278" path="%3"/>
+   <linked-el length="21" name="%12" offset="1948" path="%1"/>
+   <linked-el length="118" name="%12" offset="686" path="%1"/>
+   <linked-el length="21" name="%12" offset="2570" path="%1"/>
+   <linked-el length="122" name="%12" offset="598" path="%6"/>
+   <linked-el length="19" name="%12" offset="1188" path="%3"/>
+   <linked-el length="17" name="%12" offset="1170" path="%3"/>
+   <linked-el length="144" name="%12" offset="1410" path="%3"/>
+   <linked-el length="19" name="%12" offset="2880" path="%1"/>
+   <linked-el length="19" name="%12" offset="1633" path="%1"/>
+   <linked-el length="18" name="%12" offset="2257" path="%1"/>
+   <linked-el length="15" name="%13" offset="1109" path="%3"/>
+   <linked-el length="118" name="%14" offset="686" path="%1"/>
+   <linked-el length="122" name="%14" offset="598" path="%6"/>
+   <linked-el length="144" name="%14" offset="1410" path="%3"/>
+   <linked-el length="21" name="%15" offset="1948" path="%1"/>
+   <linked-el length="19" name="%15" offset="1188" path="%3"/>
+   <linked-el length="61" name="%16" offset="35" path="%5"/>
+   <linked-el length="118" name="%16" offset="686" path="%1"/>
+   <linked-el length="122" name="%16" offset="598" path="%6"/>
+   <linked-el length="90" name="%16" offset="430" path="%7"/>
+   <linked-el length="144" name="%16" offset="1410" path="%3"/>
+   <linked-el length="14" name="%17" offset="997" path="%3"/>
+   <linked-el length="19" name="%18" offset="1278" path="%3"/>
+   <linked-el length="19" name="%18" offset="2880" path="%1"/>
+   <linked-el length="15" name="%19" offset="1109" path="%3"/>
+  </el>
+ </validation>
+ <aliases>
+  <alias path="cliente.email" value="%0"/>
+  <alias
+   path="/ControlClientes2/src/main/webapp/WEB-INF/paginas/cliente/listadoClientes.jsp" value="%3"/>
+  <alias path="totalClientes" value="%2"/>
+  <alias
+   path="/ControlClientes2/src/main/webapp/WEB-INF/paginas/cliente/editarCliente.jsp" value="%1"/>
+  <alias path="pageContext.request" value="%4"/>
+  <alias path="/ControlClientes2/src/main/webapp/index.jsp" value="%5"/>
+  <alias
+   path="/ControlClientes2/src/main/webapp/WEB-INF/paginas/cliente/agregarCliente.jsp" value="%7"/>
+  <alias path="saldoTotal" value="%8"/>
+  <alias path="cliente.telefono" value="%9"/>
+  <alias path="cliente.nombre" value="%10"/>
+  <alias path="pageContext" value="%11"/>
+  <alias path="cliente" value="%12"/>
+  <alias path="status.count" value="%13"/>
+  <alias path="cliente.idCliente" value="%14"/>
+  <alias path="cliente.apellido" value="%15"/>
+  <alias path="pageContext.request.contextPath" value="%16"/>
+  <alias path="clientes" value="%17"/>
+  <alias
+   path="/ControlClientes2/src/main/webapp/WEB-INF/paginas/comunes/botonesNavegacionEdicion.jsp" value="%6"/>
+  <alias path="cliente.saldo" value="%18"/>
+  <alias path="status" value="%19"/>
+ </aliases>
+ <includes/>
+ <uris>
+  <uri value="http://java.sun.com/jsp/jstl/core">
+   <prefix>c</prefix>
+  </uri>
+  <uri value="http://java.sun.com/jsp/jstl/fmt">
+   <prefix>fmt</prefix>
+  </uri>
+ </uris>
+</kb-project>

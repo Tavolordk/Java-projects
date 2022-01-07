@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="endosoCancelacionCertificado" pageWidth="595" pageHeight="842" columnWidth="469" leftMargin="63" rightMargin="63" topMargin="11" bottomMargin="11" uuid="afa38fdd-aaba-468c-b6f0-ae7f6ba7cb68">
+	<property name="com.jaspersoft.studio.unit." value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="cm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="cm"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="firma" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT  POL.numero_poliza AS POLIZA, CERT.numero_credito AS CERTIFICADO, MOV.tipo_endoso AS TIPO_ENDOSO, ISNULL(UPPER(CERT.Asegurado),'') AS A_NOMBRE_DE
+, REC.INICIO_VIGENCIA AS INICIO_VIGENCIA,(SELECT REC.INICIO_VIGENCIA FROM RECIBOS REC WHERE MOV.id_certificado = REC.id_certificado AND REC.PRIMA_TOTAL LIKE '%-%' ) AS FECHA_EFECTIVIDAD
+--, (SELECT CERTI.endoso FROM CERTIFICADO CERTI WHERE CERTI.id_certificado = MOV.id_certificado) AS ENDOSO_ACT
+, REC.ENDOSO AS ENDOSO_ACT
+, MOV.operacion AS MOVIMIENTO
+, MOV.descripcion AS DESCRIPCION
+,PRD.autorizaciones AS REGISTRO
+,FORMAT(PRD.fecha_registro,'dd/MM/yyyy') AS FECHA_REG
+,CASE PRD.tipo_producto
+WHEN 0 THEN 'SPP-FR-PD-17'
+WHEN 1 THEN 'SPP-FR-PD-25'
+END AS CODIGO
+,PRD.version_fecha AS VERSION_FEC
+FROM MOVIMIENTOS_ENDOSO MOV
+INNER JOIN CERTIFICADO CERT ON MOV.id_certificado = CERT.id_certificado
+LEFT JOIN RECIBOS REC ON MOV.id_recibo = REC.ID_RECIBO
+INNER JOIN POLIZAS POL ON MOV.id_poliza = POL.id_poliza AND POL.endoso = 0
+LEFT JOIN PRODUCTOS PRD ON PRD.Cve_Producto = POL.cve_producto
+WHERE MOV.id_certificado = $P{no_Poliza} AND REC.PRIMA_TOTAL LIKE'%-%' AND MOV.tipo_endoso = 'D']]>
+	</queryString>
+	<field name="POLIZA" class="java.lang.String"/>
+	<field name="CERTIFICADO" class="java.lang.String"/>
+	<field name="TIPO_ENDOSO" class="java.lang.String"/>
+	<field name="A_NOMBRE_DE" class="java.lang.String"/>
+	<field name="INICIO_VIGENCIA" class="java.lang.String"/>
+	<field name="FECHA_EFECTIVIDAD" class="java.lang.String"/>
+	<field name="ENDOSO_ACT" class="java.lang.String"/>
+	<field name="REGISTRO" class="java.lang.String"/>
+	<field name="FECHA_REG" class="java.lang.String"/>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="-30" y="1" width="139" height="26" uuid="75412688-4436-4e89-a223-f0afe78d758f"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-30" y="27" width="139" height="9" uuid="fccb398f-7395-4dc8-a438-11efa9d4075b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="748" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="477" width="467" height="35" uuid="548ba988-bae7-4351-81e8-2fd428a25014"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>ATENTAMENTE </style>"]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="60" width="140" height="181" uuid="d761a362-b6e5-4064-9d19-37935631fd04"/>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="86" width="140" height="26" uuid="1a7d6a1d-e63a-45d5-9dde-ee94330303aa"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CERTIFICADO: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="86" width="250" height="26" uuid="bf043e58-33bc-4b72-b53f-a626d5866bfd"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CERTIFICADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="140" height="26" uuid="a88cf636-b203-4412-9fb8-c40c5009c04b"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>PÓLIZA: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="60" width="250" height="26" uuid="d03ce2af-4736-4725-a917-e3d0ddd3a6e2"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POLIZA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="112" width="140" height="26" uuid="1a5ed414-a710-4a19-844e-0f7afb539748"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>TIPO DE ENDOSO: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="112" width="250" height="26" uuid="734eeb25-05ff-4ee4-a5fe-ef706996f321"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Modificatorio de Condición Particular"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="138" width="140" height="26" uuid="ec74945c-b8c7-4337-bff9-21427f84c31e"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>EXPEDIDA A NOMBRE 
+DE: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="138" width="250" height="26" uuid="4d748f3b-ae0e-4b47-8fbd-22c857a42b75"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{A_NOMBRE_DE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="164" width="140" height="26" uuid="66284a47-2e40-44be-8bd2-d194616fa359"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CON VIGENCIA A PARTIR DE LAS 12 HRS. DEL DÍA: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="164" width="250" height="26" uuid="2365996e-b699-449a-bb63-67ceff28056e"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INICIO_VIGENCIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="512" width="467" height="52" uuid="a8ca9698-6c20-463d-a338-183d2a673167"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="190" width="140" height="26" uuid="9ab40483-83b4-420a-8b80-fd37e05d362f"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>CON FECHA DE EFECTIVIDAD: </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="216" width="140" height="26" uuid="84ab1a88-de62-4e30-bcb3-2000a38306cd"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>ENDOSO DE ACTUALIZACION: </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="216" width="250" height="26" uuid="9787f017-8bbe-48e3-abfb-4ae206c737a4"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENDOSO_ACT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="190" width="250" height="26" uuid="5c1040bd-ecd1-42ed-a76a-639b84da656a"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_EFECTIVIDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="361" width="280" height="24" uuid="d1a43db3-b6dd-4115-8857-5764b2ccf392"/>
+				<box>
+					<pen lineWidth="0.8" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="12"/>
+					<paragraph leftIndent="8" rightIndent="0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="167" y="512" width="139" height="28" uuid="c676d3f4-f0af-4e9e-b3ce-cef7726a2e3b"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="564" width="467" height="30" uuid="4d7419be-c009-402c-bc39-42f8ec79580a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#A6A6A6' isBold='true' pdfFontName='Helvetica-Bold'>Apoderado Legal SPP Institución de Seguros, S.A. de C.V. </style>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="-35" width="319" height="20" uuid="cfdb7fa1-e275-4fca-ad9e-03c81f4c2c85"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="14"/>
+					<paragraph rightIndent="8"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="150" y="-15" width="319" height="16" uuid="f2996d45-6d61-4bbc-b322-eb620249436e"/>
+				<textElement textAlignment="Right" markup="styled">
+					<font size="12"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#856429" pdfFontName="Helvetica-Bold">Endoso Modificatorio</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="290" width="468" height="52" uuid="e9d0e730-b7e7-4662-9788-fa4afdb5bc4e"/>
+				<textElement textAlignment="Left" markup="styled">
+					<font size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#003366' pdfFontName='Helvetica'>Por  el  presente  ENDOSO  se  hace  constar  que  la  “Compañía”  ha  efectuado  el  movimiento siguiente: </style> "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="415" width="468" height="44" uuid="82474223-3420-415e-902c-c9d5a86aa1e1"/>
+				<textElement textAlignment="Left" markup="styled">
+					<font size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#003366' pdfFontName='Helvetica'>Todos los términos y condiciones de la póliza  continúan sin cambio alguno, salvo lo estipulado en el presente. </style>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="631" width="468" height="79" uuid="f0de2b25-dbf6-4a61-963e-36ebf5364031"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="Arial" size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Oblique'>En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, la documentación contractual y la nota técnica que integran este producto de Seguro, quedaron registradas ante la Comisión Nacional de Seguros y Fianzas, a partir del día "+$F{FECHA_REG}+", con el número " +$F{REGISTRO}+ ".</style>"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="361" width="164" height="23" uuid="5327f4d7-f12d-4051-bb3f-0dfb548dec64"/>
+				<textElement textAlignment="Left" markup="styled">
+					<font size="12"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>Cancelación de Certificado</style>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="369" y="-3" width="100" height="16" uuid="b47cfc72-b354-4daf-b0f8-a52fb4c5c82b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>Página 1 de 1 </style>]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

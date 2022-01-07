@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+			<div class="card-header">
+				<h4>Archivos agrupadores</h4>
+			</div>
+		<div class="card-content">
+			<form enctype="multipart/form-data" id="formArchivoAgrupador" autocomplete="off">
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="claveAgrupador">Clave de agrupador:</label> <select class="form-control agrupador"
+							id="claveAgrupador" name="claveAgrupador">
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="desarrollador">Buscar desarrollador:</label> <input id="desarrollador"
+							class="form-control desarrollador text-uppercase">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="claveProducto">Producto:</label> <select class="form-control producto"
+							id="claveProducto" name="claveProducto">
+						</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="agente">Buscar agente:</label> <input id="agente"
+							class="form-control agente text-uppercase">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-8">
+						<label for="fileInput">Subir archivo agrupador</label> <input id="fileInput" type="file"
+							class="file" name="file">
+						<div id="errorBlock" class="help-block"></div>
+						<div id="msg" class="form-group mt-1 p-0 col-md-8"></div>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<button class="btn btn-primary" id="btnCargarArchivoAgrupador" type="button">Cargar
+							archivo</button>
+					</div>
+				</div>
+
+				<div class="table-responsive main-container background-tabla" id="tablaDuplicados">
+					<h3>Duplicados</h3>
+					<table id="resultadoDuplicados" class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+
+				<div class="table-responsive main-container background-tabla">
+					<h3>Cargados</h3>
+					<table id="resultadoCargaAgrupador"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+
+			</form>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/emision/agrupadoresC.js"
+		th:src="@{/resources/js/pages/emision/agrupadoresC.js}"></script>
+	<script src="/resources/js/pages/emision/agrupadores.js"
+		th:src="@{/resources/js/pages/emision/agrupadores.js}"></script>
+	<script src="/resources/js/pages/catalogos/productoC.js"
+		th:src="@{/resources/js/pages/catalogos/productoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/agrupadorC.js"
+		th:src="@{/resources/js/pages/catalogos/agrupadorC.js}"></script>
+</body>
+</html>

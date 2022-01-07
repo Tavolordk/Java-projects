@@ -1,0 +1,15 @@
+package figura;
+
+public class Aritmetica {
+	
+	public Aritmetica()
+	{
+		System.out.println("Ejecutando constructor vacío :D ");
+	}
+
+	public int sumar(int a, int b)
+	{
+		int resultado = a + b;
+		return resultado;
+	}
+}

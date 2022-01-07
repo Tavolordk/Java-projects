@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Estatus</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="button" class="btn btn-primary col-md-2"
+				name="btnEnviarEstatus" data-toggle="modal"
+				data-target="#nuevoEstatusModal">
+				<span style="padding: 5px"><i class="fas fa-plus-square"></i></span>Nuevo
+				Estatus
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaEstatus"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevoEstatusModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoEstatusModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="formEstatusNuevo" autocomplete="off">
+							<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title" id="nuevoEstatusModalLongTitle">Nuevo
+									Estatus</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+									<div th:include="views/catalogos/formularioEstatus :: camposEstatusFragment"></div>
+
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-primary"
+									id="btnGuardarEstatus">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+								</button>
+							</div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:include="views/catalogos/editarEstatus :: estatusEditFragment" id="editarEstatus"></div>
+		</div>
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/estatusC.js"
+		th:src="@{/resources/js/pages/catalogos/estatusC.js}"></script>
+	<script src="/resources/js/pages/catalogos/estatus.js"
+		th:src="@{/resources/js/pages/catalogos/estatus.js}"></script>
+</body>
+
+</html>

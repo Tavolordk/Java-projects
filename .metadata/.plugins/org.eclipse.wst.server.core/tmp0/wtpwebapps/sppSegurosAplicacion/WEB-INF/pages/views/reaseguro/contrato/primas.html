@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card card-content">
+		<div th:fragment="formReaseguroContratoPrimas">
+			<form id="formReaseguroContratoPrimas" autocomplete="off" class="needs-validation" novalidate>
+				
+				<h2>Distribución de primas</h2>
+				<div class="row">
+					<div class="form-group col-md-4 siniestro">
+						<label for="sucursal">Sucursal:</label>
+						<input class="form-control numberClass" id="sucursal" name="sucursal" maxlength="3"/>
+					</div>
+				
+					<div class="form-group col-md-4 siniestro">
+						<label for="ramo">Ramo:</label>
+						<select	class="form-control" id="ramo" name="ramo">
+							<option selected value="1">ACCIDENTES PERSONALES</option>
+							<option selected value="5">DANOS EXTENSION DE GARANTIA</option>
+						</select>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="poliza">Póliza:</label>
+						<input class="form-control text-uppercase" id="poliza" name="poliza" maxlength="8"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="tipoEndoso">Tipo Endoso:</label>
+						<input class="form-control text-uppercase numberClass" id="tipoEndoso" name="tipoEndoso" maxlength="1"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="endoso">Endoso:</label>
+						<input class="form-control text-uppercase numberClass" id="endoso" name="endoso" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="ramoPuro">Ramo puro:</label>
+						<input class="form-control text-uppercase numberClass" id="ramoPuro" name="ramoPuro" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="numeroContrato">Número contrato:</label>
+						<input class="form-control text-uppercase numberClass" id="numeroContrato" name="numeroContrato" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="tipoContrato">Tipo contrato:</label>
+						<input class="form-control text-uppercase numberClass" id="tipoContrato" name="tipoContrato" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="porcentajePrima">Porcentaje prima:</label>
+						<input class="form-control text-uppercase numberClass" id="porcentajePrima" name="porcentajePrima" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="porcentajeSumaAsegurada">Porcentaje suma asegurada:</label>
+						<input class="form-control text-uppercase numberClass" id="porcentajeSumaAsegurada" name="porcentajeSumaAsegurada" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="importePrima">Importe prima:</label>
+						<input class="form-control text-uppercase numberClass" id="importePrima" name="importePrima" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="importeSumaAsegurada">Importe suma asegurada:</label>
+						<input class="form-control text-uppercase numberClass" id="importeSumaAsegurada" name="importeSumaAsegurada" maxlength="10"/>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="inicioVigencia">Inicio vigencia:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="inicioVigencia" name="inicioVigencia" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="terminoVigencia">Término vigencia:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="terminoVigencia" name="terminoVigencia" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="fechaEmision">Fecha emisión:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaEmision" name="fechaEmision" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-4 siniestro">
+						<label for="fechaDistribucion">Fecha distribución:</label>
+						<div class="input-group">
+							<input type="text" class="form-control date" id="fechaDistribucion" name="fechaDistribucion" data-mask="0000-00-00" placeholder="aaaa-mm-dd" maxlength="10"/>
+							<span class="input-group-text">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+
+					<div class="form-group col-md-12">
+						<button  type="button" class="btn btn-primary text-truncate" id="guardaDP">
+							<span class="mr-2">
+								<i class="fas fa-save"></i>
+							</span>Guardar
+						</button>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/distribucionPC.js" th:src="@{/resources/js/pages/reaseguro/distribucionPC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/distribucion.js" th:src="@{/resources/js/pages/reaseguro/distribucion.js}"></script>
+</body>
+</html>

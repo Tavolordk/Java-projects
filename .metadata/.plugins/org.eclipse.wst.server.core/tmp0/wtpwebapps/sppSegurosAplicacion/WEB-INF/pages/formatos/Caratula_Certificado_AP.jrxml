@@ -1,0 +1,1466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Caratula_Poliza_AP" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="573" leftMargin="11" rightMargin="11" topMargin="11" bottomMargin="11" uuid="e7808f0d-21da-4066-8439-dfa61d8bafc3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="styleParams" hTextAlign="Center" vTextAlign="Middle" markup="styled" fontSize="11">
+		<box>
+			<pen lineWidth="1.25" lineColor="#2767A6"/>
+			<topPen lineWidth="1.0"/>
+			<leftPen lineWidth="1.0"/>
+			<bottomPen lineWidth="1.0"/>
+			<rightPen lineWidth="1.0"/>
+		</box>
+	</style>
+	<style name="styleLabel" mode="Opaque" backcolor="#FFFFFF" scaleImage="Clip" hTextAlign="Center" vTextAlign="Middle" markup="styled" fontSize="11"/>
+	<parameter name="paramLogo" class="java.lang.String"/>
+	<parameter name="paramFondo" class="java.lang.String"/>
+	<parameter name="no_Poliza" class="java.lang.String"/>
+	<parameter name="firma" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT N.ENCABEZADO, N.POLIZA, N.FECHA_EMISION, N.CERTIFICADO, UPPER(N.TIPO) AS TIPO, FORMAT(N.FECHA_INICIO_VIG,'dd/MM/yyyy') AS FECHA_INICIO_VIG
+, FORMAT(N.FECHA_FIN_VIG,'dd/MM/yyyy') AS FECHA_FIN_VIG, N.CONTRATANTE, N.RFC, N.DIRECCION, UPPER(N.ENTIDAD) AS ENTIDAD, N.CP
+, FORMAT(N.FECHA_NACIMIENTO,'dd/MM/yyyy') AS FECHA_NACIMIENTO, N.AGENTE, N.PLAZOSEGURO, UPPER(N.MONEDA) AS MONEDA
+, N.FORMA_PAGO, UPPER(N.ASEGURADO) AS ASEGURADO, FORMAT(N.FECHA_NACIMIENTO_AP,'dd/MM/yyyy') AS FECHA_NACIMIENTO_AP, N.EDAD, N.SEXO
+, RTRIM(STRING_AGG(UPPER(N.COBERTURA),CHAR(13))) AS COBERTURA
+, RTRIM(STRING_AGG(N.SUMA_ASEGURADA,CHAR(13))) AS SUMA_ASEGURADA
+, N.BENEFICIARIO1, N.BENEFICIARIO2, N.BENEFICIARIO3, N.BENEFICIARIO4, N.BENEFICIARIO5
+, N.PARENTEZCO1, N.PARENTEZCO2, N.PARENTEZCO3, N.PARENTEZCO4, N.PARENTEZCO5
+, N.PORCENTAJE1, N.PORCENTAJE2, N.PORCENTAJE3, N.PORCENTAJE4, N.PORCENTAJE5
+--, N.NETA/CONTADOR AS NETA , N.RECARGO, N.GASTOS, N.IVA, N.TOTAL
+,CONVERT(VARCHAR,CAST(N.NETA/CONTADOR AS MONEY),1) AS NETA
+,CONVERT(VARCHAR,CAST(N.RECARGO/CONTADOR AS MONEY),1) AS RECARGO
+,CONVERT(VARCHAR,CAST(N.GASTOS/CONTADOR AS MONEY),1) AS GASTOS
+,CONVERT(VARCHAR,CAST(N.IVA/CONTADOR AS MONEY),1) AS IVA
+,CONVERT(VARCHAR,CAST(N.TOTAL/CONTADOR AS MONEY),1) AS TOTAL
+, N.REGISTRO, N.FECHA_REG
+, RTRIM(STRING_AGG(N.TIPO_COB,CHAR(13)) WITHIN GROUP (ORDER BY CVE_COBERTURA ASC))  AS TIPO_COB
+, RTRIM(STRING_AGG(N.CVE_COBERTURA,CHAR(13)) WITHIN GROUP (ORDER BY CVE_COBERTURA ASC))  AS CVE_COBERTURA
+FROM
+(SELECT PRD.encabezado AS ENCABEZADO, PZA.numero_poliza AS POLIZA, FORMAT(PZA.fecha_emision,'dd/MM/yyyy') AS FECHA_EMISION
+,AAP.num_Asegurado AS CERTIFICADO 
+,(select count(*) from ASEGURADOS_AP where id_poliza = $P{no_Poliza}) AS CONTADOR
+,CASE poliza_nueva_renovacion
+WHEN 0 THEN 'Inicial'
+when 1 then 'Renovaciòn'
+END AS TIPO
+,fecha_inicio_vigencia AS FECHA_INICIO_VIG,fecha_fin_vigencia AS FECHA_FIN_VIG
+,CASE CTE.fisico
+WHEN 0 THEN UPPER(CTE.denominacion)
+WHEN 1 THEN CTE.nombre_cliente+' '+CTE.apellido_paterno+' '+CTE.apellido_materno
+END AS CONTRATANTE 
+,CTE.rfc AS RFC, CTE.calle+' '+CTE.numero_exterior AS DIRECCION, EDO.nombre_estado AS ENTIDAD,CTE.codigo_postal AS CP
+,CASE CTE.fisico
+WHEN 0 THEN CTE.fecha_constitucion
+WHEN 1 THEN CTE.fecha_nacimiento
+END AS FECHA_NACIMIENTO
+, AGT.Nombre+' '+AGT.Ape_Paterno+' '+AGT.Ape_Materno AS AGENTE,'1 AÑO' AS PLAZOSEGURO, MON.CT16_Moneda AS MONEDA
+,UPPER(SCA.Frecuencia_Pago) AS FORMA_PAGO,AAP.nombre_asegurado+' '+AAP.apellido_paterno_asegurado+' '+AAP.apellido_materno_asegurado AS ASEGURADO
+,AAP.fecha_nacimiento AS FECHA_NACIMIENTO_AP, (cast(datediff(dd,AAP.fecha_nacimiento,GETDATE()) / 365.25 as int)) AS EDAD
+,CASE AAP.sexo 
+WHEN 'F' THEN 'FEMENINO'
+WHEN 'M' THEN 'MASCULINO'
+ELSE ''
+END AS SEXO
+, RTRIM(STRING_AGG(CT.CT10_Descripcion,CHAR(13))) AS COBERTURA
+,CASE
+WHEN CT.CT10_descripcion LIKE '%ASISTENCIA%' THEN  'AMPARADA'
+ELSE RTRIM(ISNULL(CONVERT(VARCHAR,CAST(COB.suma_asegurada_minima AS MONEY),1),0))
+END AS SUMA_ASEGURADA
+,UPPER(AAP.nombre_beneficiario_1) AS BENEFICIARIO1
+,UPPER(AAP.nombre_beneficiario_2) AS BENEFICIARIO2
+,UPPER(AAP.nombre_beneficiario_3) AS BENEFICIARIO3
+,UPPER(AAP.nombre_beneficiario_4) AS BENEFICIARIO4
+,UPPER(AAP.nombre_beneficiario_5) AS BENEFICIARIO5
+,CASE WHEN AAP.parentesco_1 IS NULL THEN '' WHEN AAP.porcentaje_1 = 0 THEN '' ELSE PAR.descripcion END AS PARENTEZCO1
+,CASE WHEN AAP.parentesco_2 IS NULL THEN '' WHEN AAP.porcentaje_2 = 0 THEN '' ELSE PAR2.descripcion END AS PARENTEZCO2
+,CASE WHEN AAP.parentesco_3 IS NULL THEN '' WHEN AAP.porcentaje_3 = 0 THEN '' ELSE PAR3.descripcion END AS PARENTEZCO3
+,CASE WHEN AAP.parentesco_4 IS NULL THEN '' WHEN AAP.porcentaje_4 = 0 THEN '' ELSE PAR4.descripcion END AS PARENTEZCO4
+,CASE WHEN AAP.parentesco_5 IS NULL THEN '' WHEN AAP.porcentaje_5 = 0 THEN '' ELSE PAR5.descripcion END AS PARENTEZCO5
+,CASE WHEN AAP.porcentaje_1 = 0 THEN NULL ELSE AAP.porcentaje_1 END AS PORCENTAJE1
+,CASE WHEN AAP.porcentaje_2 = 0 THEN NULL ELSE AAP.porcentaje_2 END AS PORCENTAJE2
+,CASE WHEN AAP.porcentaje_3 = 0 THEN NULL ELSE AAP.porcentaje_3 END AS PORCENTAJE3
+,CASE WHEN AAP.porcentaje_4 = 0 THEN NULL ELSE AAP.porcentaje_4 END AS PORCENTAJE4
+,CASE WHEN AAP.porcentaje_5 = 0 THEN NULL ELSE AAP.porcentaje_5 END AS PORCENTAJE5
+,ISNULL(SCA.Prima_Neta,0) AS NETA
+,ISNULL(SCA.Recargo_PagoFraccionado,0) AS RECARGO
+,ISNULL(SCA.derechoPoliza,0) AS GASTOS
+,ISNULL(SCA.Impuesto_Total,0) AS IVA
+,ISNULL(SCA.Prima_CobroTotal,0) AS TOTAL
+,PRD.autorizaciones AS REGISTRO
+,FORMAT(PRD.fecha_registro,'dd/MM/yyyy') AS FECHA_REG
+,CT.id_tipo_cobertura AS TIPO_COB, CT.Cve_Cobertura AS CVE_COBERTURA
+FROM POLIZAS PZA
+INNER JOIN ASEGURADOS_AP AAP ON AAP.id_poliza = PZA.id_poliza
+LEFT JOIN CLIENTES CTE ON CTE.id_cliente = PZA.id_contratante
+LEFT JOIN CT5_ESTADOS EDO ON EDO.id_estado = CTE.id_estado
+LEFT JOIN CT13_AGENTES AGT ON AGT.Id_Agente = id_agente_1
+LEFT JOIN CT16_MONEDAS MON ON MON.CT16_Cve = cve_moneda_ct16
+LEFT JOIN COBERTURAS_PRODUCTO  COB ON PZA.cve_producto = COB.id_producto
+LEFT JOIN SOLICITUD_CABECERA SCA ON PZA.numero_poliza = SCA.numero_poliza AND SCA.TipoSolicitud = 'AP'
+LEFT JOIN CT10_COBERTURAS CT ON CT.Cve_Cobertura = COB.id_cobertura
+LEFT JOIN CT26_PARENTESCO PAR ON PAR.id_parentesco = AAP.parentesco_1
+LEFT JOIN CT26_PARENTESCO PAR2 ON PAR2.id_parentesco = AAP.parentesco_2
+LEFT JOIN CT26_PARENTESCO PAR3 ON PAR3.id_parentesco = AAP.parentesco_3
+LEFT JOIN CT26_PARENTESCO PAR4 ON PAR4.id_parentesco = AAP.parentesco_4
+LEFT JOIN CT26_PARENTESCO PAR5 ON PAR5.id_parentesco = AAP.parentesco_5
+LEFT JOIN PRODUCTOS PRD ON PRD.Cve_Producto = PZA.cve_producto
+WHERE PZA.Id_poliza= $P{no_Poliza}
+GROUP BY PRD.encabezado,PZA.numero_poliza,PZA.fecha_emision,AAP.num_Asegurado,poliza_nueva_renovacion,fecha_inicio_vigencia,fecha_fin_vigencia,CTE.nombre_cliente
+,CTE.apellido_paterno,CTE.apellido_materno,CTE.rfc,CTE.calle,CTE.numero_exterior,EDO.nombre_estado,CTE.codigo_postal,CTE.fecha_constitucion
+,CTE.fecha_nacimiento,AGT.Nombre,AGT.Ape_Paterno,AGT.Ape_Materno,MON.CT16_Moneda,prima_neta_total,recargo_pago_fraccionado
+,PZA.derecho_poliza,PZA.impuesto_total,CTE.fisico,CTE.denominacion,fecha_constitucion,SCA.Frecuencia_Pago,AAP.nombre_asegurado,AAP.apellido_paterno_asegurado
+,AAP.apellido_materno_asegurado,AAP.fecha_nacimiento,AAP.sexo
+,AAP.nombre_beneficiario_1,AAP.nombre_beneficiario_2,AAP.nombre_beneficiario_3,AAP.nombre_beneficiario_4,AAP.nombre_beneficiario_5
+,AAP.parentesco_1,AAP.parentesco_2,AAP.parentesco_3,AAP.parentesco_4,AAP.parentesco_5
+,AAP.porcentaje_1,AAP.porcentaje_2,AAP.porcentaje_3,AAP.porcentaje_4,AAP.porcentaje_5
+,SCA.Prima_Neta,SCA.Recargo_PagoFraccionado,SCA.derechoPoliza,SCA.Impuesto_Total
+,PAR.descripcion,PAR2.descripcion,PAR3.descripcion,PAR4.descripcion,PAR5.descripcion,SCA.Prima_CobroTotal,PZA.Id_poliza,CT.CT10_Descripcion
+,COB.suma_asegurada_minima,PRD.autorizaciones,PRD.fecha_registro,CT.Cve_Cobertura,CT.id_tipo_cobertura)
+AS N
+GROUP BY 
+N.ENCABEZADO, N.POLIZA, N.FECHA_EMISION, N.CERTIFICADO, N.TIPO, N.FECHA_INICIO_VIG, N.FECHA_FIN_VIG, N.CONTRATANTE, N.RFC, N.DIRECCION, N.ENTIDAD, N.CP, N.FECHA_NACIMIENTO
+, N.AGENTE, N.PLAZOSEGURO, N.MONEDA, N.FORMA_PAGO, N.ASEGURADO, N.FECHA_NACIMIENTO_AP, N.EDAD, N.SEXO
+, N.BENEFICIARIO1, N.BENEFICIARIO2, N.BENEFICIARIO3, N.BENEFICIARIO4, N.BENEFICIARIO5
+, N.PARENTEZCO1, N.PARENTEZCO2, N.PARENTEZCO3, N.PARENTEZCO4, N.PARENTEZCO5
+, N.PORCENTAJE1, N.PORCENTAJE2, N.PORCENTAJE3, N.PORCENTAJE4, N.PORCENTAJE5
+, N.NETA , N.RECARGO, N.GASTOS, N.IVA, N.TOTAL, N.CONTADOR, N.REGISTRO, N.FECHA_REG]]>
+	</queryString>
+	<field name="POLIZA" class="java.lang.String"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<field name="FECHA_INICIO_VIG" class="java.lang.String"/>
+	<field name="FECHA_FIN_VIG" class="java.lang.String"/>
+	<field name="CONTRATANTE" class="java.lang.String"/>
+	<field name="RFC" class="java.lang.String"/>
+	<field name="DIRECCION" class="java.lang.String"/>
+	<field name="ENTIDAD" class="java.lang.String"/>
+	<field name="CP" class="java.lang.String"/>
+	<field name="FECHA_NACIMIENTO" class="java.lang.String"/>
+	<field name="AGENTE" class="java.lang.String"/>
+	<field name="MONEDA" class="java.lang.String"/>
+	<field name="COBERTURA" class="java.lang.String"/>
+	<field name="SUMA_ASEGURADA" class="java.lang.String"/>
+	<field name="CERTIFICADO" class="java.lang.String"/>
+	<field name="PLAZOSEGURO" class="java.lang.String"/>
+	<field name="FORMA_PAGO" class="java.lang.String"/>
+	<field name="ASEGURADO" class="java.lang.String"/>
+	<field name="FECHA_NACIMIENTO_AP" class="java.lang.String"/>
+	<field name="EDAD" class="java.lang.String"/>
+	<field name="SEXO" class="java.lang.String"/>
+	<field name="BENEFICIARIO1" class="java.lang.String"/>
+	<field name="PARENTEZCO1" class="java.lang.String"/>
+	<field name="PORCENTAJE1" class="java.lang.String"/>
+	<field name="BENEFICIARIO2" class="java.lang.String"/>
+	<field name="BENEFICIARIO3" class="java.lang.String"/>
+	<field name="PARENTEZCO2" class="java.lang.String"/>
+	<field name="PARENTEZCO3" class="java.lang.String"/>
+	<field name="PORCENTAJE2" class="java.lang.String"/>
+	<field name="PORCENTAJE3" class="java.lang.String"/>
+	<field name="BENEFICIARIO4" class="java.lang.String"/>
+	<field name="BENEFICIARIO5" class="java.lang.String"/>
+	<field name="PARENTEZCO4" class="java.lang.String"/>
+	<field name="PARENTEZCO5" class="java.lang.String"/>
+	<field name="PORCENTAJE4" class="java.lang.String"/>
+	<field name="PORCENTAJE5" class="java.lang.String"/>
+	<field name="NETA" class="java.lang.String"/>
+	<field name="RECARGO" class="java.lang.String"/>
+	<field name="GASTOS" class="java.lang.String"/>
+	<field name="IVA" class="java.lang.String"/>
+	<field name="TOTAL" class="java.lang.String"/>
+	<field name="ENCABEZADO" class="java.lang.String"/>
+	<field name="FECHA_REG" class="java.lang.String"/>
+	<field name="REGISTRO" class="java.lang.String"/>
+	<field name="FECHA_EMISION" class="java.lang.String"/>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="32" y="0" width="139" height="26" uuid="10343fd5-ed19-4b81-98e7-861c86e23124"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{paramLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="32" y="26" width="139" height="9" uuid="d79d828f-1631-42ed-82c0-a3a6a2ed512d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SPP Institución de Seguros, S.A de C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="253" y="0" width="319" height="22" uuid="fb6156b8-58e6-4ba6-a681-c05f40d763da"/>
+				<textElement textAlignment="Right" markup="styled">
+					<font size="14"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#0070C0" pdfFontName="Helvetica-Bold" isBold="True">SPP Institución de Seguros, S.A. de C.V.</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="253" y="22" width="319" height="13" uuid="76b61904-0e4d-4e7f-ba19-12cb0c3bf6ab"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b><font color=#856429> Certificado: " +$F{ENCABEZADO}+ " </font></b>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="748" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="1" width="572" height="747" uuid="92587c57-7506-47d4-a360-6dca04125c9b"/>
+				<box>
+					<pen lineWidth="2.0" lineColor="#2767A6"/>
+				</box>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="1" width="80" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="0878c149-7302-4bd4-925e-970d3cb86240"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">No. Póliza:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="80" y="1" width="123" height="15" uuid="7ef887d8-152c-464a-a473-e943cc352e85"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{POLIZA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="365" y="1" width="93" height="15" backcolor="#FFFFFF" uuid="04e9d44f-deab-4205-aded-77b2522e856e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">No. de Certificado:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="458" y="1" width="114" height="15" uuid="6077d8f9-e622-458a-8fe5-be0f078a76d4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CERTIFICADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="16" width="80" height="28" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="e00a9d0e-7c97-426d-8fbc-285e0c0ee590"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Operación de Seguro:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="80" y="16" width="122" height="28" uuid="de503585-1d26-44f9-bffd-aa0be1dff7b5"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="202" y="16" width="127" height="28" backcolor="#FFFFFF" uuid="6e314342-516e-4688-9e19-f71fca667cfb"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Vigencia de la póliza:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="329" y="16" width="243" height="14" uuid="608eeedd-a4bc-4629-94e8-ccfd8be10a1d"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Inicia a las 12hrs. del día: "+$F{FECHA_INICIO_VIG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="329" y="30" width="243" height="14" uuid="63cef911-578d-4f7d-bce8-e0ec80d34f57"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Termina a las 12hrs. del día: "+$F{FECHA_FIN_VIG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="44" width="572" height="26" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="aa65b7d2-38ea-4e2c-9a32-0a33d0f42dcf"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#0070C0'  isBold='true' isItalic='true' pdfFontName='Helvetica-Bold'>SPP Institución de Seguros, S.A. de C.V.</style><style forecolor='#000000'>, en adelante mencionada como “SPP”, asegura de acuerdo con las condiciones generales de esta póliza a la persona física o moral denominada en adelante “El Asegurado”.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="70" width="120" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="6ecb6ffb-9fa5-4855-86c2-acc58cd57ce5"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Nombre del Contratante:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="120" y="70" width="270" height="15" uuid="4a011464-49d1-46d1-a12a-5687b33bf3f4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONTRATANTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="390" y="70" width="60" height="15" backcolor="#FFFFFF" uuid="8626d448-8378-4d27-8435-dcc851e876e2"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10"/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">RFC:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="450" y="70" width="122" height="15" uuid="9f2f3129-7bd3-447c-9c6c-4a96c2149555"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RFC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="85" width="110" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="027f7fa9-d4d6-4a19-a9e6-ee04d46b6889"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<topPen lineWidth="1.0" lineColor="#2767A6"/>
+					<leftPen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Domicilio:</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="100" width="110" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="c8c9e43d-5df9-4825-afc8-6ec867f42346"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Entidad:</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="115" width="120" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="b4437b1e-2469-46d8-b5bd-58b774e64d89"/>
+				<box>
+					<pen lineWidth="3.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Fecha de nacimiento:</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="370" y="100" width="60" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="48615397-684e-4338-8aa3-4abf34046695"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">C.P.:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="110" y="85" width="462" height="15" uuid="1c94b005-0380-43fc-b004-5f3ebddbc048"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<topPen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="110" y="100" width="260" height="15" uuid="f82dbe83-21ad-45a6-9895-adfbbaa86025"/>
+				<box>
+					<pen lineWidth="0.0" lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ENTIDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="120" y="115" width="452" height="15" uuid="c6bffb0c-56c3-46f4-82cf-1c4427b464c4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_NACIMIENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="430" y="100" width="142" height="15" uuid="21aa053d-efad-4734-a71e-37598abc727e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<rightPen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="130" width="70" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="dfa7a6dd-73c3-43db-99ff-798240877cde"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Agente:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="70" y="130" width="502" height="15" uuid="f07e5026-6107-4373-976d-b1b0ffbba539"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AGENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="145" width="120" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="cb61161e-3d4f-4538-bf6b-163cb8d0bee0"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Plazo del seguro:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="120" y="145" width="452" height="15" uuid="52afe63f-33bc-41a4-9aaf-43b5dead64fc"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PLAZOSEGURO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="160" width="80" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="8c5aade9-76f1-4738-bc9b-c02f6201de0f"/>
+				<box>
+					<pen lineWidth="3.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Moneda:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="80" y="160" width="220" height="15" uuid="2169e4de-6651-4054-aab4-c7ba25fdd584"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MONEDA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="300" y="160" width="90" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="43520129-d15f-4b18-ae41-4675e53bb7aa"/>
+				<box>
+					<pen lineWidth="3.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Forma de pago:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="390" y="160" width="182" height="15" uuid="02c42e63-4e14-4f6c-a597-732006d29d2e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FORMA_PAGO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="175" width="120" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="92c90eae-fdb8-4fad-98ef-ee99b348bf4b"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Nombre del Asegurado:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="120" y="175" width="452" height="15" uuid="6859c091-4c37-4d77-b3af-694a2e9a25cc"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ASEGURADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="190" width="130" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="513f92b4-16e8-4292-ac54-53a89eeb2307"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Fecha de nacimiento:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="130" y="190" width="112" height="15" uuid="91c62790-6652-4539-b2bc-491e4a1a166b"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_NACIMIENTO_AP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="242" y="190" width="58" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="30141482-c388-414b-993a-b97143c570d2"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Edad:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="300" y="190" width="100" height="15" uuid="e0aa0315-9bbd-417a-9580-91e7dd0602ba"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EDAD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="400" y="190" width="58" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="9642b430-bc78-4a4a-97ac-38494d97e53f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Sexo:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="458" y="190" width="114" height="15" uuid="c3edee7e-da83-43c4-b467-46adb91be74f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SEXO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="205" width="300" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="0a52732f-37ee-4cee-9d97-76359bbc98bd"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Cobertura</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="300" y="205" width="272" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="1500eb9d-f4bb-48d0-8955-85c32b987319"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Suma asegurada</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="220" width="300" height="64" uuid="20d8ac18-298a-4627-b9ff-0e1166e21945"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COBERTURA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement mode="Opaque" x="300" y="220" width="272" height="64" uuid="5b028a87-d952-470f-86cb-d0e8553c019b"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10"/>
+					<paragraph lineSpacing="AtLeast" leftIndent="0" rightIndent="100"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUMA_ASEGURADA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="284" width="572" height="13" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="c9ca2a15-6581-4c2d-b162-ca9211b359a6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Endosos Adicionales</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="297" width="572" height="3" uuid="6196414a-c096-4b9b-a9c1-47a5212b22a5"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="300" width="279" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="5cd7f375-a24f-4ca9-bf9d-00fb5b44cac0"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Beneficiario</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="279" y="300" width="179" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="a5537060-8e00-4a3a-a0a5-89dea7ecd583"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Parentesco</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="458" y="300" width="114" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="3a7613bb-27b3-4e39-bcc1-90973fe3c598"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Justified" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">%</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="315" width="279" height="13" uuid="e06e5d2c-224c-4262-91ee-c31f0267c9aa"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENEFICIARIO1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="279" y="315" width="179" height="13" uuid="efdfe059-7b10-46b8-a484-c326d140a3d6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARENTEZCO1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="458" y="315" width="114" height="13" uuid="7bedded6-6d78-4dec-94ec-6f39860cdfa7"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PORCENTAJE1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="379" width="58" height="15" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="2987943e-478e-4d4e-adb1-d246c46ce43d"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="4.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000"></style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="0" y="394" width="58" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="4e469bc2-0bfe-4fc7-97f2-4d78742294d9"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Prima:</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="58" y="379" width="92" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="2fff070a-fa9a-470e-baa5-3120d172780e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="4.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Neta</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="styleParams" mode="Opaque" x="58" y="394" width="92" height="15" uuid="5ea1bff3-bb7a-4003-90f0-b1be3a540e02"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NETA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="150" y="379" width="86" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="93248989-fc6a-4363-9077-8f5e2a6206f9"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="4.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Recargo</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="styleParams" mode="Opaque" x="150" y="394" width="86" height="15" uuid="59156e39-6a9c-4ad8-bf7c-2e13a69dea52"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RECARGO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="236" y="379" width="120" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="ec0c740e-f5e4-4c67-b229-d88814d7a415"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="4.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Gastos de Expedición </style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="styleParams" mode="Opaque" x="236" y="394" width="120" height="15" uuid="b859bb8b-0e40-46d9-962a-a2be357dc39d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GASTOS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="356" y="379" width="94" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="a59443a0-95f7-4eb4-85df-1e882a9e4e83"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="4.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">I.V.A</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="styleParams" mode="Opaque" x="356" y="394" width="94" height="15" uuid="1a79bd4f-ae1c-4d75-b068-d04d05da4086"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IVA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="450" y="379" width="122" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="d31fbe86-1599-4e17-aa10-ee7abe9fe6e4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="4.0" lineStyle="Solid"/>
+					<bottomPen lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Total</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="styleParams" mode="Opaque" x="450" y="394" width="122" height="15" uuid="600a5d17-9736-405b-8f09-a72eb92fc26c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="409" width="571" height="103" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="058fb5c4-c123-4a6d-ba66-5fed07f0607d"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'><style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>El Asegurado y SPP</style>, declaran expresamente que el presente contrato de seguro es un contrato por adhesión.
+Las Condiciones Generales que contienen las coberturas,<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>EXCLUSIONES GENERALES y PARTICULARES</style> y de la póliza se encuentran disponibles para consulta en el sitio <style forecolor='#0070C0' isBold='true' pdfFontName='Helvetica-Bold' isUnderline='true'>www.sppseguros.com.mx</style> La Documentación Contractual será entregada en un plazo no mayor a 30 días naturales, contados a partir de la contratación, a través del medio elegido por el Contratante y/o Asegurado.
+<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>AVISO DE PRIVACIDAD:</style> Declaro bajo protesta de decir a verdad, que previo al llenado de este documento ha sido puesto a mi disposición el Aviso de Privacidad de SPP Institución de Seguros, S.A. de C.V., mismo que se ha indicado se encuentra disponible para consultas posteriores en el sitio <style forecolor='#0070C0' isBold='true' pdfFontName='Helvetica-Bold' isUnderline='true'>www.sppseguros.com.mx</style></style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="512" width="571" height="14" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="d7455bc0-e277-493b-ba8e-30898184ef23"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366" isBold="true">CONDUSEF</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="526" width="572" height="26" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="e4267749-dd7c-4292-8e15-e3acfcf209ea"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'>Insurgentes Sur 762, colonia Del Valle, C.P. 03100, Benito Juárez, Ciudad de México.
+Teléfono: (55) 5340 0999 y (01 800) 999 8080 Correo Electrónico: <style forecolor='#0070C0'  isBold='true' isItalic='true' pdfFontName='Helvetica-Bold'>asesoria@condusef.gob.mx</style></style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="567" width="572" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="525c92c9-fcfd-4f9e-85ae-51993b0c35e9"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'>Ciudad de México, Volcán 214, Lomas de Chapultepec, Primera Sección C.P. 11000</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="552" width="572" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="d5753b7e-8be0-408e-8634-4df17c2a1ed4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Center" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366" isBold="true">Unidad Especializada de Atención de Consultas y Reclamaciones</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="581" width="286" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="ec5fb1cf-657d-4218-a98b-2bc5a23a3d5b"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'>Teléfono: (01 800) 1010053  y   (55) 3600 9600</style>
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="286" y="581" width="286" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="919f88a7-3233-447a-9b02-d3b3254fac09"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'>Correo electrónico:<style forecolor='#0070C0'  isBold='true' isItalic='true' ame='Helvetica-Bold'>      une@sppseguros.com.mx</style></style>
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="624" width="572" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="a4902336-4827-472b-ad66-da24198611e4"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="641" width="140" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="2034ca6c-18e4-432a-a68e-aa5ded6b2a37"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="432" y="641" width="140" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="851aae89-be3a-41d4-a1d7-24cc8e9bd8f1"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="328" width="279" height="13" uuid="dab506e3-ad88-49ae-96d0-a256e3c65045"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENEFICIARIO2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="341" width="279" height="13" uuid="522f659a-ba48-42c7-8422-6048823b3096"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENEFICIARIO3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="279" y="328" width="179" height="13" uuid="7bd46ebb-4498-47e2-af43-ed124266adc7"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARENTEZCO2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement mode="Opaque" x="279" y="341" width="179" height="13" uuid="537cc62a-19cc-4618-8399-7102bed5770e"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARENTEZCO3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="458" y="328" width="114" height="13" uuid="262fbd20-c3ff-4290-bb36-d24f24df04b6"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PORCENTAJE2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="458" y="341" width="114" height="13" uuid="1168581f-6c1c-42b0-a784-205092bf7cf9"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PORCENTAJE3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="354" width="279" height="13" uuid="60c393f8-edc3-4f49-921c-ac35a99d1bfb"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENEFICIARIO4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="367" width="279" height="13" uuid="2a0709df-f224-4dc7-a4d4-38902ccc022f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BENEFICIARIO5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement mode="Opaque" x="279" y="354" width="179" height="13" uuid="9ded758a-a091-46ea-ada1-1309e0fbbc89"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARENTEZCO4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement mode="Opaque" x="279" y="367" width="179" height="13" uuid="7af90dbf-62c1-424b-849d-95296de6a765"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARENTEZCO5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="458" y="354" width="114" height="13" uuid="c94dcb7b-f581-4c2e-98d9-482f1aeecd6f"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PORCENTAJE4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="458" y="367" width="114" height="13" uuid="551b7d81-b4c9-4c83-9802-49d23f5bf863"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+					<paragraph leftIndent="0" rightIndent="50"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PORCENTAJE5}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="209" y="623" width="139" height="17" uuid="46784797-b9ff-47d0-af0c-eeee599596c7"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[$P{firma}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="140" y="641" width="292" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="0bfe0365-21f9-43e2-9468-cb16e4937aaf"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'>Apoderado Legal SPP Institución de Seguros, S.A. de C.V.</style>
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleParams" positionType="Float" mode="Transparent" x="0" y="609" width="572" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="bebd7303-da21-4a8f-8a9d-e4831894613a"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000">Este documento no acredita el pago de la Póliza, por lo que es indispensable solicite el comprobante correspondiente.</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="0" y="595" width="572" height="14" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="21b8be9e-ad3c-4709-897b-2a2fc31746cb"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph leftIndent="10" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'>Horario de Atención: Lunes a Jueves 8 a 17 hrs, Viernes 8 a 15 hrs </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="1" y="655" width="571" height="23" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="de82e4c6-5901-4165-ad9d-80c1ae54cecd"/>
+				<box>
+					<pen lineWidth="2.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="styled">
+					<font size="9" isBold="true" pdfEncoding=""/>
+					<paragraph lineSpacing="Single" leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000">SPP Institución de Seguros S.A. de C.V. pagará la suma asegurada cuando los eventos y/o siniestros cubiertos ocurran dentro de la vigencia de la póliza. </style>
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="styleLabel" positionType="Float" mode="Opaque" x="1" y="678" width="571" height="35" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="65a6afe0-760b-4c0b-afba-f0dabcf3678c"/>
+				<box>
+					<pen lineWidth="2.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="styled">
+					<font size="9" isBold="true" pdfEncoding=""/>
+					<paragraph lineSpacing="Single" leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#000000">Artículo 25 de la Ley Sobre el Contrato de Seguro:” Si el contenido de la póliza o sus modificaciones no concordaren con la oferta, el asegurado podrá pedir la rectificación correspondiente dentro de los treinta días que sigan al día en que reciba la póliza. Transcurrido este plazo se considerarán aceptadas las estipulaciones de la póliza o de sus modificaciones”.</style>
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="1" y="713" width="571" height="35" uuid="f0f19727-1d0f-4e34-8b10-3ed53165e9d4"/>
+				<textElement textAlignment="Justified" markup="styled">
+					<font fontName="SansSerif" size="9"/>
+					<paragraph leftIndent="0" rightIndent="0"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<style forecolor='#000000' isBold='true' pdfFontName='Helvetica-Bold'>En cumplimiento a lo dispuesto en el artículo 202 de la Ley de Instituciones de Seguros y de Fianzas, la documentación contractual y la nota técnica que integran este producto de seguro, quedaron registradas ante la Comisión Nacional de Seguros y Fianzas, a partir del día "+$F{FECHA_REG}+", con el número "+$F{REGISTRO}+".</style>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="styleLabel" mode="Transparent" x="203" y="1" width="94" height="15" backcolor="#FFFFFF" uuid="2db60460-1961-457e-b7e2-78f9af1663c1"/>
+				<box>
+					<pen lineWidth="1.25" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0" lineColor="#2767A6"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[<style forecolor="#003366">Fecha de Emisión:</style>]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="styleParams" mode="Opaque" x="298" y="1" width="66" height="15" uuid="86a2f17b-fda9-4b72-b8e9-9d4b031ea21f"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0" lineColor="#2767A6"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_EMISION}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="748">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="20" width="572" height="690" uuid="26f48fb4-5555-4ef2-94af-b7f47073e151"/>
+				<box>
+					<pen lineWidth="2.0" lineColor="#2767A6"/>
+				</box>
+				<imageExpression><![CDATA[$P{paramFondo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="20" width="571" height="15" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="eb278897-577f-4cfe-bd21-e0730e06b268"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph lineSpacing="Proportional" leftIndent="10" rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'><style forecolor='#000000' pdfFontName='Helvetica-Bold'>Principales Cláusulas del Seguro de Accidentes Personales Colectivo. </style>
+</style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="100" width="572" height="610" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="db09660f-e946-4a45-a0ab-faaab4746703"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph lineSpacing="Proportional" leftIndent="10" rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'><style forecolor='#000000' pdfFontName='Helvetica-Bold'>*Reembolso de Gastos Médicos por Accidente: </style> SPP Seguros, le reembolsará al Asegurado los gastos en que incurra, hasta la suma asegurada contratada por esta cobertura indicada en la Póliza, si a consecuencia de un accidente y dentro de los 10 días siguientes a la fecha del accidente, se viera obligado a someterse a tratamiento médico, hospitalizarse, consumir medicamentos. Sólo se pagarán gastos y/o servicios médicos proporcionados por instituciones de salud y por personas legalmente autorizadas para el ejercicio de su profesión y que éstas no tengan parentesco de cualquier tipo y grado con el Asegurado y/o con el Contratante.
+<style forecolor='#000000' pdfFontName='Helvetica-Bold'>*Incapacidad e Invalides Total y Permanente por Accidente: </style> Si como consecuencia de un accidente sufrido por el Asegurado durante el periodo de vigencia de esta póliza, y dentro de los 90 días naturales siguientes a la fecha del accidente sobreviniese un estado de Incapacidad o Invalidez Total y Permanente, la Compañía pagará al Asegurado la Suma Asegurada especificada en la carátula de esta póliza
+<style forecolor='#000000' pdfFontName='Helvetica-Bold'>*Estas Coberturas tienen Exclusiones, las cuales se encuentran en las Condiciones Generales.  </style>
+
+<style forecolor='#000000' pdfFontName='Helvetica-Bold'>Prescripción: </style>Todas las acciones que se deriven de este Contrato de Seguro prescribirán en cinco años, tratándose de la cobertura de Fallecimiento en los seguros de vida y para cualquier otra cobertura, la prescripción será de dos años. En todos los casos los plazos serán contados desde la fecha del acontecimiento que les dio origen, en los términos del Artículo 81 de Ley sobre el Contrato de Seguro, salvo los casos de excepción consignados en el Artículo 82 de la misma Ley. Dicho plazo no correrá en caso de omisión, falsas o inexactas declaraciones sobre el riesgo corrido, sino desde el día en que la empresa haya tenido conocimiento de él; y si se trata de la realización del siniestro, desde el día en que haya llegado a conocimiento de los interesados, quienes deberán demostrar que hasta entonces ignoraban dicha realización. Tratándose de terceros beneficiarios se necesitará además que éstos tengan conocimiento del derecho constituido a su favor, en términos de lo dispuesto por los artículos 81 y 82 de la Ley sobre el Contrato de Seguro. La prescripción se interrumpirá no sólo por las causas ordinarias, sino también por el nombramiento de peritos o por la iniciación del procedimiento conciliatorio señalado en el artículo 68 de la Ley de Protección y Defensa al Usuario de Servicios Financieros. Asimismo, la prescripción se suspenderá por la presentación de la reclamación ante la Unidad Especializada de atención de consultas y reclamaciones de esta Institución.
+Transcripción de Artículos del Reglamento del Seguro de Grupo para la operación de Vida y del Seguro Colectivo para la Operación de Accidentes y Enfermedades.
+
+<style forecolor='#000000' pdfFontName='Helvetica-Bold'>Artículo 17.- </style>Las personas que ingresen al Grupo o Colectividad asegurado con posterioridad a la celebración del contrato y que hayan dado su consentimiento para ser asegurados dentro de los treinta días naturales siguientes a su ingreso, quedarán aseguradas con las mismas condiciones en que fue contratada la póliza, desde el momento en que adquirieron las características para formar parte del Grupo o Colectividad de que se trate.
+Con independencia de lo previsto en el párrafo anterior, tratándose de personas que soliciten su ingreso al Grupo o Colectividad asegurado con posterioridad a la celebración del contrato y que hayan dado su consentimiento después de los treinta días naturales siguientes a la fecha en que hubieran adquirido el derecho de formar parte del mismo, la Aseguradora, dentro de los treinta días naturales siguientes a la fecha en que se le haya comunicado esa situación, podrá exigir requisitos médicos u otros para asegurarlas, si no lo hace quedarán aseguradas con las mismas condiciones en que fue contratada la póliza.
+Cuando la Aseguradora exija requisitos médicos u otros para asegurar a las personas a que se refiere el párrafo anterior, contará con un plazo de treinta días naturales, contado a partir de la fecha en que se hayan cumplido dichos requisitos para resolver sobre la aceptación o no de asegurar a la persona, de no hacerlo se entenderá que la acepta con las mismas condiciones en que fue contratada la póliza.
+
+<style forecolor='#000000' pdfFontName='Helvetica-Bold'>Artículo 18.- </style>Las personas que se separen definitivamente del Grupo o Colectividad asegurado, dejarán de estar aseguradas desde el momento de su separación, quedando sin validez alguna el Certificado individual expedido. En este caso, la Aseguradora restituirá la parte de la prima neta no devengada de dichos Integrantes calculada en días exactos, a quienes la hayan aportado, en la proporción correspondiente. </style>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="35" width="571" height="65" forecolor="#FFFFFF" backcolor="rgba(39, 103, 166, 0.33333334)" uuid="298e6878-de4f-450c-be36-7ce50ea0921a"/>
+				<box>
+					<pen lineWidth="1.0" lineColor="#2767A6"/>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="styled">
+					<font size="10" pdfEncoding=""/>
+					<paragraph lineSpacing="Proportional" leftIndent="10" rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#000000'><style forecolor='#000000' pdfFontName='Helvetica-Bold'>Coberturas:  </style>
+<style forecolor='#000000' pdfFontName='Helvetica-Bold'> *Muerte Accidental: </style> Si como consecuencia de un accidente sufrido por el Asegurado durante el periodo de vigencia de esta póliza, y dentro de los 90 días naturales siguientes a la fecha del accidente sobreviniese su muerte, la Compañía pagará la Suma Asegurada especificada en la carátula de esta póliza. Una vez que fallece el asegurado, se dará por terminado este contrato.  </style>]]></text>
+			</staticText>
+		</band>
+		<band height="748"/>
+	</detail>
+	<columnFooter>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="472" y="2" width="100" height="28" uuid="6cd13cb4-01aa-499d-a5f8-248523f9e785"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[<style forecolor='#003366' isBold='true' pdfFontName='Helvetica-Bold'>Página 1 de 1</style>]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

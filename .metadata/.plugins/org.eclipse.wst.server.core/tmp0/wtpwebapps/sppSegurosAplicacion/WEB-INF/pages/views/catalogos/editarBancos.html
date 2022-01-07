@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="bancosEditFragment" class="main-container">
+		<!-- Modal -->
+		<div class="modal fade" id="editarBancosModal" tabindex="-1" role="dialog" aria-labelledby="editarBancosModalLabel"	aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+									
+					<div class="modal-header" style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+						<h5 class="modal-title titleEditBancos" id="editarBancosModalLabel"></h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<form id="formBancosEditar" enctype="multipart/form-data"
+							autocomplete="off" class="needs-validation" novalidate>
+							<div class="row">
+																		
+									<div class="form-group col-md-6">
+										<label for="nombreBanco">Nombre:</label> <input
+											class="form-control" type="text" id="nombre"	
+											name="nombre" maxlength="80"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="nombreCorto">Nombre Corto:</label> <input
+											class="form-control" type="text" id="nombreCorto"
+											name="nombreCorto" maxlength="40"/>
+									</div>
+
+									<div class="form-group col-md-6">
+										<label for="siglas">Siglas:</label> <input
+											class="form-control" type="text" id="siglas"
+											name="siglas" maxlength="20" />
+									</div>	
+
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary text-truncate" id="btnEditBanco">
+							<span class="mr-2"> <i class="fas fa-save"></i>
+							</span>Actualizar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

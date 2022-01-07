@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="detalleQeQFragment" class="main-container">
+		<div class="modal fade" id="detalleQeQModal" tabindex="-1" role="dialog" aria-labelledby="detalleQeQModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header" align="center" style="background: blue">
+						<h5 class="modal-title" id="detalleQeQModalLabel" align="center" style="color: white">CONSULTA QeQ</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formDetalleQeQ" enctype="multipart/form-data" autocomplete="off" class="needs-validation" novalidate>
+							  <div class="jumbotron">
+								  <div class="table-responsive main-container background-tabla">
+									   <table id="resultadoConsultaQeQ" class="table table-sm table-hover table-bordered estiloTablas"></table>
+								  </div>
+							  </div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"	data-dismiss="modal">
+							<span class="mr-2"> <i class="fas fa-ban"></i></span>
+							Cerrar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

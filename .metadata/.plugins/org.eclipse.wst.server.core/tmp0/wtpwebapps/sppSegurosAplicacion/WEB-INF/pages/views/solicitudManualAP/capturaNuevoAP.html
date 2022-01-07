@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="capturaNuevoAPFragment" class="main-container">
+
+        <form id="formCapturaNuevo" name="formCapturaNuevo" >
+            
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="idSucursal">Sucursal:</label>
+                    <select class="form-control" id="idSucursal" name="idSucursal">
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="idRamo">Ramo:</label>
+                    <select class="form-control" id="idRamo" name="idRamo">
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="producto">Producto:</label>
+                    <select class="form-control" id="producto" name="producto">
+                        <option value="0">Seleccione Producto...</option>
+                    </select>
+
+                </div>
+                
+
+            </div>
+
+            <div class="form-row">
+            
+            	<div class="form-group col-md-4">
+
+                    <label for="contratante">Cliente:</label>
+                    <input class="form-control contratante autocomplete required" id="contratante" name="contratante" />
+                </div>
+                                
+
+                <div class="form-group col-md-4">
+                	<div class="form-row">
+                	<div class="form-group col-md-6">
+                    <label for="choose-type">Póliza Renovada</label>
+	                    <div id="choose-type" class="col-sm-8 div-inline">
+	                        <label class="radio-inline">
+	                            <input type="radio" class="radio-inline" name="user-type" id="writer" value="Si"> Si
+	                        </label>
+	                        <label class="radio-inline">
+	                            <input type="radio" class="radio-inline" name="user-type" id="enabler" value="No"> No
+	                        </label>
+	                    </div>
+                    </div>
+                    <div class=" form-group  col-md-6">
+                    	<label for="polizaNuevaRenovacion"></label>
+                    	<input class="form-control" id="polizaNuevaRenovacion" type="hidden" name="polizaNuevaRenovacion" />
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label for="cveMoneda">Moneda:</label>
+                    <select class="form-control cveMoneda" id="cveMoneda" name="cveMoneda">
+                        <option value="0">Seleccione Moneda...</option>
+                    </select>
+
+                </div>
+                
+                
+
+            </div>
+
+            <div class="form-row">
+            
+            <div class="form-group col-md-8">
+                    <label for="fechaIniVigencia">Vigencia de la Póliza con plazo de <span id="plazoProducto"></span> anios</label>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <div class="input-group">
+                                <input class="form-control date" type="text" id="fechaIniVigencia" name="fechaIniVigencia" data-mask="0000-00-00" data-date-start-date="-15d" data-date-end-date="+30d" placeholder="yyyy-mm-dd" />
+                                <span class="input-group-text">
+											<i class="fas fa-calendar-alt"></i>
+										</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2" style="text-align: center;">
+                            <label for="fechaFinVigencia" style="vertical-align: middle;">Hasta:</label>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <div class="input-group">
+                                <input class="form-control date" type="text" id=fechaFinVigencia name="fechaFinVigencia" data-mask="0000-00-00" data-date-end-date="0d" placeholder="yyyy-mm-dd" disabled/>
+                                <span class="input-group-text">
+										<i class="fas fa-calendar-alt"></i>
+									</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <label for="frecuenciaPago">Frecuencia de Pago:</label>
+                    <select class="form-control" id="idFrecuenciaPago" name="frecuenciaPago">
+                    	<option value="0">Seleccione Frecuencia de Pago...</option>
+                    	<option value="Anual">Anual</option>
+                    	<option value="Mensual">Mensual</option>
+                    	<option value="Trimestral">Trimestral</option>
+                    	<option value="Semestral">Semestral</option>
+                    </select>
+                </div>
+                
+                <!-- <div class="form-group col-md-4">
+                    <label for="idFormaPago">Forma de Pago:</label>
+                    <select class="form-control idFormaPago" id="idFormaPago" name="idFormaPago">
+                    </select>
+                </div> -->
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="agente1">Agente 1:</label>
+                    <input class="form-control agente1 autocomplete required" id="agente1" name="agente1" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="porcentajeComision">Participación:</label>
+                    <div class="input-group">
+						  <input class="form-control numberClass" type="text" id="porcentajeComision" name="porcentajeComision" /> 
+						  <div class="input-group-append">
+						    <span class="input-group-text">%</span>
+						  </div>
+					</div>
+                    <!-- <input class="form-control numberClass" type="text" id="porcentajeComision" name="porcentajeComision" /> -->
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="agente2">Agente 2:</label>
+                    <input class="form-control agente2 autocomplete"  id="agente2" name="agente2" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="porcentajeComision2">Participación:</label>
+                    <div class="input-group">
+						  <input class="form-control numberClass" type="text" id="porcentajeComision2" name="porcentajeComision2" /> 
+						  <div class="input-group-append">
+						    <span class="input-group-text">%</span>
+						  </div>
+					</div>
+                    <!-- <input class="form-control numberClass" type="text" id="porcentajeComision2" name="porcentajeComision2" /> -->
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="agente3">Agente 3:</label>
+                    <input class="form-control agente3 autocomplete"  id="agente3" name="agente3" />
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="porcentajeComision3">% de Participación:</label>
+                    <div class="input-group">
+						  <input class="form-control numberClass" type="text" id="porcentajeComision3" name="porcentajeComision3" /> 
+						  <div class="input-group-append">
+						    <span class="input-group-text">%</span>
+						  </div>
+					</div>
+                    <!-- <input class="form-control numberClass" type="text" id="porcentajeComision3" name="porcentajeComision3" /> -->
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="fechaEmision">Fecha de Emisión:</label>
+                    <div class="input-group">
+                        <input class="form-control date" type="text" id="fechaEmision" name="fechaEmision" data-mask="0000-00-00" data-date-end-date="0d" placeholder="yyyy-mm-dd" />
+                        <span class="input-group-text">
+									<i class="fas fa-calendar-alt"></i>
+								</span>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    
+                </div>
+                <div class="form-group col-md-4" style="display:none;">
+                    <label for="idAgrupador">Clave de Agrupador:</label>
+                    <select class="form-control agrupador" id="idAgrupador" name="idAgrupador">
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="primaNeta">Prima Neta:</label>
+                    <input class="form-control numberClass" type="text" id="primaNeta" name="primaNeta" disabled/>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="recargoPagoFraccionado">Recargo por Cargo Fraccionado:</label>
+                    <input class="form-control numberClass" type="text" id="recargoPagoFraccionado" name="recargoPagoFraccionado" disabled/>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="derechoPoliza">Derecho Póliza:</label>
+                    <input class="form-control numberClass" type="text" id="derechoPoliza" name="derechoPoliza"  disabled/>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="impuestoTotal">Impuesto Total:</label>
+                    <input class="form-control numberClass" type="text" id="impuestoTotal" name="impuestoTotal"  disabled/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="primaCobroTotal">Prima Cobro Total:</label>
+                    <input class="form-control numberClass" type="text" id="primaCobroTotal" name="primaCobroTotal" disabled/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="comisionPrima">Comisión Prima:</label>
+                    <input class="form-control numberClass" type="text" id="comisionPrima" name="comisionPrima"  disabled/>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="comisionRecargo">Comisión Recargo:</label>
+                    <input class="form-control numberClass" type="text" id="comisionRecargo" name="comisionRecargo"  disabled/>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <button class="btn btn-primary float-right" id="btnGuardarSolicitudCabecera" type="button">Guardar</button>
+                    <button class="btn btn-success float-right mr-3" id="btnGenerarPoliza" type="button"
+                    	th:if="${#arrays.contains(menu.permisos, 'generarPoliza')}">Generar Póliza</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

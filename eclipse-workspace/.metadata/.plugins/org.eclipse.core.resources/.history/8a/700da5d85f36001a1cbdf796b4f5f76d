@@ -1,0 +1,9 @@
+package figura;
+
+public class PruebaCaja {
+
+	public static void main(String [] args)
+	{
+		
+	}
+}

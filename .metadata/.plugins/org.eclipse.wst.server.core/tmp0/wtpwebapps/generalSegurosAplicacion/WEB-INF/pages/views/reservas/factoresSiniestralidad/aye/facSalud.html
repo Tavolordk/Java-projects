@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="content-wrap">
+		<main id="content" class="content" role="main">
+		<ol class="breadcrumb">
+			<li>Reservas</li>
+			<li>Factores de siniestralidad</li>
+			<li>A y E</li>
+			<li class="active">Salud</li>
+		</ol>
+		<h1 class="page-title">
+			Reservas - <span class="fw-semi-bold">Salud</span>
+		</h1>
+		<br>
+		<div class="row mb-lg">
+			<div class="col-lg-12">
+				<div class="clearfix">
+					<ul class="nav nav-tabs pull-xs-left" id="myTab" role="tablist">
+						<li class="nav-item"><a class="nav-link active" id="home-tab"
+							data-toggle="tab" href="#basic" role="tab" aria-controls="basic"
+							aria-expanded="true">Análisis del factor</a></li>
+						<li class="nav-item"><a class="nav-link" id="profile-tab"
+							data-toggle="tab" href="#assumtion" role="tab"
+							aria-controls="assumtion" aria-expanded="false">Backtesting</a></li>
+					</ul>
+				</div>
+				<div class="tab-content mb-lg" id="myTabContent">
+					<div role="tabpanel" class="tab-pane active in clearfix" id="basic"
+						aria-labelledby="basic-tab" aria-expanded="true">
+						<section class="widget">
+							<header style="margin-bottom: 15px;">
+								<h2 style="color: #2867ab">
+									Carga de archivos <span class="fw-semi-bold">Inflación</span>
+									<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+								</h2>
+							</header>
+							<div class="widget-body">
+							<form class="form-horizontal" role="form" enctype="multipart/form-data" id="formArchivoEmision" autocomplete="off">
+	                            <fieldset>
+	                                <div class="form-group row">
+	                                    <label class="control-label col-md-2 text-md-right" for="fileInput">
+	                                        Cargar archivo
+	                                    </label>
+	                                    <div class="col-md-10">
+	                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+	                                            <div class="form-control" data-trigger="fileinput">
+	                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+	                                                <span class="fileinput-filename"></span>
+	                                            </div>
+	                                            <span class="input-group-addon btn btn-secondary btn-file">
+	                                                <span class="fileinput-new">Seleccionar archivo</span>
+	                                                <span class="fileinput-exists">Cambiar</span>
+	                                                <input id="fileInput" type="file">
+	                                            </span>
+	                                            <a href="#" class="input-group-addon btn btn-secondary fileinput-exists" data-dismiss="fileinput">Quitar</a>
+	                                        </div>
+	                                        <!-- <span class="help-block">Se aceptan archivos solo con extención txt</span> -->
+	                                    </div>
+										<div class="form-row" style="text-align: right;">
+											<div class="form-group col-md-12" style="margin-top: 15px;">
+												<button class="btn btn-primary" id="btnExcelInflacion"
+													type="button">Descargar archivo inflación</button>
+											
+												<button class="btn btn-primary" id="btnCargaArchivo"
+													type="button">Cargar archivo</button>
+											</div>
+										</div>
+	                                </div>
+	                            </fieldset>
+	                        </form>
+							</div>
+						</section>
+						<section class="widget">
+							<header style="margin-bottom: 15px;">
+								<h2 style="color: #2867ab">
+									Cálculos de triángulos <span class="fw-semi-bold">Salud</span>
+									<div class="widget-controls">
+										<a data-widgster="expand" title="Expand" href="#"><i
+											class="glyphicon glyphicon-chevron-up"></i></a> <a
+											data-widgster="collapse" title="Collapse" href="#"><i
+											class="glyphicon glyphicon-chevron-down"></i>
+										</a>
+									</div>
+								</h2>
+							</header>
+							<div class="widget-body">
+							<form class="form-horizontal" role="form" enctype="multipart/form-data" id="formArchivoEmision" autocomplete="off">
+	                            <fieldset>
+	                                <div class="form-group row">
+											<div class="form-group col-md-6">
+													<label for="desde">Seleccionar fecha:</label>
+												<div class="">
+													<input type="date" class="form-control date" id="fecha"
+														name="hasta" placeholder="yyyy-mm-dd" min="2018-01-01"
+														max="2050-12-31" required="true" /> <span
+														class="input-group-text"><i
+														class="fas fa-calendar-alt"></i></span> <span
+														class="input-group-btn"> </span>
+												</div>
+											</div>
+										
+											<div class="form-group col-md-6" style="margin-top: 33px;text-align: right">
+												<button class="btn btn-primary" id="obtTriSalFac"
+													type="button">Calcular</button>
+												<button class="btn btn-primary" id="desPhiM"
+													type="button">Descargar cálculo Phi m
+												</button>
+											</div>
+											
+	                                </div>
+	                            </fieldset>
+	                        </form>
+							</div>
+						</section>
+						<section class="widget" id="tabRRC" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Vector de  <span class="fw-semi-bold">primas</span>
+								</h2>
+								<!-- <div class="form-group col-md-12" style="margin-top: 20px; text-align: right;">
+							        <button type="button" class="btn btn-primary" >Exportar tabla</button>
+							     
+								</div>-->
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-vecPrimas"
+										class="table table-striped table-hover" style="text-align: center">
+										<thead style="text-align: center">
+											<tr>
+												<th >Años</th>
+												<th >Salud Individual</th>
+												<th >Salud Colectivo</th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600">
+											<tr>
+												<td id="a1"></td>
+												<td id="PIndividual10"></td>
+												<td id="PColectivo10"></td>
+											</tr>
+											<tr>
+											<td id="a2"></td>
+												<td id="PIndividual9"></td>
+												<td id="PColectivo9"></td>
+											</tr>
+											<tr>
+											<td id="a3"></td>
+												<td id="PIndividual8"></td>
+												<td id="PColectivo8"></td>
+											</tr>
+											<tr>
+											<td id="a4"></td>
+												<td id="PIndividual7"></td>
+												<td id="PColectivo7"></td>
+											</tr>
+											<tr>
+											<td id="a5"></td>
+												<td id="PIndividual6"></td>
+												<td id="PColectivo6"></td>
+											</tr>
+											<tr>
+											<td id="a6"></td>
+												<td id="PIndividual5"></td>
+												<td id="PColectivo5"></td>
+											</tr>
+											<tr>
+											<td id="a7"></td>
+												<td id="PIndividual4"></td>
+												<td id="PColectivo4"></td>
+											</tr>
+											<tr>
+											<td id="a8"></td>
+												<td id="PIndividual3"></td>
+												<td id="PColectivo3"></td>
+											</tr>
+											<tr>
+											<td id="a9"></td>
+												<td id="PIndividual2"></td>
+												<td id="PColectivo2"></td>
+											</tr>
+											<tr>
+											<td id="a10"></td>
+												<td id="PIndividual1"></td>
+												<td id="PColectivo1"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						
+						<section class="widget" id="indRrc" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Triángulo de desarrollo <span class="fw-semi-bold">salud individual RRC</span>
+								</h2>
+								<!--  <div class="form-group col-md-12" style="margin-top: 20px; text-align: right;">
+							        <button type="button" class="btn btn-primary" >Exportar triángulo</button>
+							        <button type="button" class="btn btn-primary">Desarrollo con triángulo</button>
+							      	<button type="button" class="btn btn-primary">Exportar simulación</button>
+							     
+								</div>-->
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+								<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-TrianRRCIndividual"
+										class="table table-striped table-hover" style="text-align: center;">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th colspan="5" style="text-align: center">Año desarrollo</th>
+												<th rowspan="2" style="text-align: center">Total</th>
+												
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600; text-align: right">
+											<tr style="text-align: center">
+												<td >Año Origen</td>
+												<td id="origenInd1">0</td>
+												<td id="origenInd1">1</td>
+												<td id="origenInd1">2</td>
+												<td id="origenInd1">3</td>
+												<td id="origenInd1">4</td>
+												<td id="">--</td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">1</td>
+												<td id="Individual10" style="background-color: #a8c2e6"></td>
+												<td id="Individual11" style="background-color: #a8c2e6"></td>
+												<td id="Individual12" style="background-color: #a8c2e6"></td>
+												<td id="Individual13" style="background-color: #a8c2e6"></td>
+												<td id="Individual14" style="background-color: #a8c2e6"></td>
+												<td id="sumOR1r"></td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">2</td>
+												<td id="Individual20" style="background-color: #a8c2e6"></td>
+												<td id="Individual21" style="background-color: #a8c2e6"></td>
+												<td id="Individual22" style="background-color: #a8c2e6"></td>
+												<td id="Individual23" style="background-color: #a8c2e6"></td>
+												<td id="Individual24" style="background-color: #a8c2e6"></td>
+												<td id="sumOR2r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">3</td>
+												<td id="Individual30" style="background-color: #a8c2e6"></td>
+												<td id="Individual31" style="background-color: #a8c2e6"></td>
+												<td id="Individual32" style="background-color: #a8c2e6"></td>
+												<td id="Individual33" style="background-color: #a8c2e6"></td>
+												<td id="Individual34" style="background-color: #a8c2e6"></td>
+												<td id="sumOR3r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">4</td>
+												<td id="Individual40" style="background-color: #a8c2e6"></td>
+												<td id="Individual41" style="background-color: #a8c2e6"></td>
+												<td id="Individual42" style="background-color: #a8c2e6"></td>
+												<td id="Individual43" style="background-color: #a8c2e6"></td>
+												<td id="Individual44" style="background-color: #a8c2e6"></td>
+												<td id="sumOR4r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">5</td>
+												<td id="Individual50" style="background-color: #a8c2e6"></td>
+												<td id="Individual51" style="background-color: #a8c2e6"></td>
+												<td id="Individual52" style="background-color: #a8c2e6"></td>
+												<td id="Individual53" style="background-color: #a8c2e6"></td>
+												<td id="Individual54" style="background-color: #a8c2e6"></td>
+												<td id="sumOR5r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">6</td>
+												<td id="Individual60" style="background-color: #a8c2e6"></td>
+												<td id="Individual61" style="background-color: #a8c2e6"></td>
+												<td id="Individual62" style="background-color: #a8c2e6"></td>
+												<td id="Individual63" style="background-color: #a8c2e6"></td>
+												<td id="Individual64" style="background-color: #a8c2e6"></td>
+												<td id="sumOR6r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">7</td>
+												<td id="Individual70" style="background-color: #a8c2e6"></td>
+												<td id="Individual71" style="background-color: #a8c2e6"></td>
+												<td id="Individual72" style="background-color: #a8c2e6"></td>
+												<td id="Individual73" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td id="sumOR7r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">8</td>
+												<td id="Individual80" style="background-color: #a8c2e6"></td>
+												<td id="Individual81" style="background-color: #a8c2e6"></td>
+												<td id="Individual82" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR8r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">9</td>
+												<td id="Individual90" style="background-color: #a8c2e6"></td>
+												<td id="Individual91" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR9r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">10</td>
+												<td id="IndividualxIn" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR10r"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">Total</td>
+												<td id="sumDR0r"></td>
+												<td id="sumDR1r"></td>
+												<td id="sumDR2r"></td>
+												<td id="sumDR3r"></td>
+												<td id="sumDR4r"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						
+						<section class="widget" id="indIbnr" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Triángulo de desarrollo <span class="fw-semi-bold">salud individual IBNR</span>
+								</h2>
+								<!-- <div class="form-group col-md-12" style="margin-top: 20px; text-align: right;">
+							        <button type="button" class="btn btn-primary" >Exportar triángulo</button>
+							        <button type="button" class="btn btn-primary">Desarrollo con triángulo</button>
+							      	<button type="button" class="btn btn-primary">Exportar simulación</button>
+							     
+								</div>-->
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+								<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tablesTriaINBRIndi"
+										class="table table-striped table-hover" style="text-align: center;">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th colspan="5" style="text-align: center">Año desarrollo</th>
+												<th rowspan="2" style="text-align: center">Total</th>
+												
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600; text-align:right">
+											<tr style="text-align: center">
+												<td >Año Origen</td>
+												<td id="origenInd1">0</td>
+												<td id="origenInd1">1</td>
+												<td id="origenInd1">2</td>
+												<td id="origenInd1">3</td>
+												<td id="origenInd1">4</td>
+												<td id="">--</td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">1</td>
+												<td id="IBNRIndividual10" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual11" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual12" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual13" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual14" style="background-color: #a8c2e6"></td>
+												<td id="sumOR1rIBNR"></td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">2</td>
+												<td id="IBNRIndividual20" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual21" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual22" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual23" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual24" style="background-color: #a8c2e6"></td>
+												<td id="sumOR2rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">3</td>
+												<td id="IBNRIndividual30" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual31" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual32" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual33" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual34" style="background-color: #a8c2e6"></td>
+												<td id="sumOR3rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">4</td>
+												<td id="IBNRIndividual40" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual41" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual42" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual43" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual44" style="background-color: #a8c2e6"></td>
+												<td id="sumOR4rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">5</td>
+												<td id="IBNRIndividual50" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual51" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual52" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual53" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual54" style="background-color: #a8c2e6"></td>
+												<td id="sumOR5rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">6</td>
+												<td id="IBNRIndividual60" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual61" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual62" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual63" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual64" style="background-color: #a8c2e6"></td>
+												<td id="sumOR6rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">7</td>
+												<td id="IBNRIndividual70" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual71" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual72" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual73" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td id="sumOR7rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">8</td>
+												<td id="IBNRIndividual80" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual81" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual82" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR8rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">9</td>
+												<td id="IBNRIndividual90" style="background-color: #a8c2e6"></td>
+												<td id="IBNRIndividual91" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR9rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">10</td>
+												<td id="IBNRIndividualxIBNR0" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR10rIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">Total</td>
+												<!-- Suma desarrollo -->
+												<td id="sumDR0rIBNR"></td>
+												<td id="sumDR1rIBNR"></td>
+												<td id="sumDR2rIBNR"></td>
+												<td id="sumDR3rIBNR"></td>
+												<td id="sumDR4rIBNR"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						<section class="widget" id="colecRrc" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Triángulo de desarrollo <span class="fw-semi-bold">salud colectivo RRC</span>
+								</h2>
+								<!-- <div class="form-group col-md-12" style="margin-top: 20px; text-align: right;">
+							        <button type="button" class="btn btn-primary" >Exportar triángulo</button>
+							        <button type="button" class="btn btn-primary">Desarrollo con triángulo</button>
+							      	<button type="button" class="btn btn-primary">Exportar simulación</button>
+							     
+								</div>-->
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+								<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tablesTriColRRC"
+										class="table table-striped table-hover" style="text-align: center;">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th colspan="5" style="text-align: center">Año desarrollo</th>
+												<th rowspan="2" style="text-align: center">Total</th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600; text-align: right;">
+											<tr style="text-align: center">
+												<td >Año Origen</td>
+												<td id="">0</td>
+												<td id="">1</td>
+												<td id="">2</td>
+												<td id="">3</td>
+												<td id="">4</td>
+												<td id="">--</td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">1</td>
+												<td id="Colectivo10" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo11" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo12" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo13" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo14" style="background-color: #a8c2e6"></td>
+												<td id="sumOR1t"></td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">2</td>
+												<td id="Colectivo20" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo21" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo22" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo23" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo24" style="background-color: #a8c2e6"></td>
+												<td id="sumOR2t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">3</td>
+												<td id="Colectivo30" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo31" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo32" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo33" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo34" style="background-color: #a8c2e6"></td>
+												<td id="sumOR3t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">4</td>
+												<td id="Colectivo40" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo41" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo42" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo43" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo44" style="background-color: #a8c2e6"></td>
+												<td id="sumOR4t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">5</td>
+												<td id="Colectivo50" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo51" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo52" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo53" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo54" style="background-color: #a8c2e6"></td>
+												<td id="sumOR5t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">6</td>
+												<td id="Colectivo60" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo61" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo62" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo63" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo64" style="background-color: #a8c2e6"></td>
+												<td id="sumOR6t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">7</td>
+												<td id="Colectivo70" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo71" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo72" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo73" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td id="sumOR7t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">8</td>
+												<td id="Colectivo80" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo81" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo82" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR8t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">9</td>
+												<td id="Colectivo90" style="background-color: #a8c2e6"></td>
+												<td id="Colectivo91" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR9t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">10</td>
+												<td id="ColectivoxIn" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR10t"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">Total</td>
+												<td id="sumDR0t"></td>
+												<td id="sumDR1t"></td>
+												<td id="sumDR2t"></td>
+												<td id="sumDR3t"></td>
+												<td id="sumDR4t"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						
+						<section class="widget" id="colecIbnr" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Triángulo de desarrollo <span class="fw-semi-bold">salud colectivo IBNR</span>
+								</h2>
+								<!-- <div class="form-group col-md-12" style="margin-top: 20px; text-align: right;">
+							        <button type="button" class="btn btn-primary" >Exportar triángulo</button>
+							        <button type="button" class="btn btn-primary">Desarrollo con triángulo</button>
+							      	<button type="button" class="btn btn-primary">Exportar simulación</button>
+							     
+								</div>-->
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+								<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tablesTriaColIBNR"
+										class="table table-striped table-hover" style="text-align: center;">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th colspan="5" style="text-align: center">Año desarrollo</th>
+												<th rowspan="2" style="text-align: center">Total</th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600; text-align: right">
+											<tr style="text-align: center">
+												<td >Año Origen</td>
+												<td id="">0</td>
+												<td id="">1</td>
+												<td id="">2</td>
+												<td id="">3</td>
+												<td id="">4</td>
+												<td id="">--</td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">1</td>
+												<td id="IBNRColectivo10" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo11" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo12" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo13" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo14" style="background-color: #a8c2e6"></td>
+												<td id="sumOR1tIBNR"></td>
+											</tr>
+											<tr>
+												<td id="" style="text-align: center">2</td>
+												<td id="IBNRColectivo20" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo21" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo22" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo23" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo24" style="background-color: #a8c2e6"></td>
+												<td id="sumOR2tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">3</td>
+												<td id="IBNRColectivo30" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo31" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo32" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo33" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo34" style="background-color: #a8c2e6"></td>
+												<td id="sumOR3tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">4</td>
+												<td id="IBNRColectivo40" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo41" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo42" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo43" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo44" style="background-color: #a8c2e6"></td>
+												<td id="sumOR4tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">5</td>
+												<td id="IBNRColectivo50" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo51" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo52" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo53" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo54" style="background-color: #a8c2e6"></td>
+												<td id="sumOR5tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">6</td>
+												<td id="IBNRColectivo60" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo61" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo62" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo63" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo64" style="background-color: #a8c2e6"></td>
+												<td id="sumOR6tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">7</td>
+												<td id="IBNRColectivo70" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo71" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo72" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo73" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td id="sumOR7tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">8</td>
+												<td id="IBNRColectivo80" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo81" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo82" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR8tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">9</td>
+												<td id="IBNRColectivo90" style="background-color: #a8c2e6"></td>
+												<td id="IBNRColectivo91" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR9tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">10</td>
+												<td id="IBNRColectivoxIBNR" style="background-color: #a8c2e6"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td id="sumOR10tIBNR"></td>
+											</tr>
+											<tr>
+												<td style="text-align: center">Total</td>
+												<td id="sumDR0tIBNR"></td>
+												<td id="sumDR1tIBNR"></td>
+												<td id="sumDR2tIBNR"></td>
+												<td id="sumDR3tIBNR"></td>
+												<td id="sumDR4tIBNR"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						<section class="widget" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Factores de <span class="fw-semi-bold">Siniestralidad</span>
+								</h2>
+								<!-- <div class="form-group col-md-12" style="margin-top: 20px; text-align: right;">
+							        <button type="button" class="btn btn-primary" >Exportar tabla</button>
+							     
+								</div>-->
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+								<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tablesFacSin"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th colspan="3">Salud Individual</th>
+												<th rowspan="2">Salud Colectivo</th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600;">
+											<tr>
+												<td ></td>
+												<td >RRC</td>
+												<td >IBNR</td>
+												<td >RRC</td>
+												<td >IBNR</td>
+											</tr>
+											<tr>
+												<td>Media</td>
+												<td id=""></td>
+												<td id=""></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>99.5</td>
+												<td id=""></td>
+												<td id="belGastosCol"></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						<section class="widget" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Pólizas<span class="fw-semi-bold"> vigentes:</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+								<div class="widget-body">
+								<h2 style="color:#2867ab">
+									RRC:<span class="fw-semi-bold">#</span>
+								</h2><br>
+								<h2 style="color:#2867ab">
+									IBNR:<span class="fw-semi-bold">#</span>
+								</h2>
+							</div>
+						</section>
+					</div>
+					<!-- SECCION ANUAL -->
+					<div class="tab-pane" id="assumtion" role="tabpanel"
+						aria-labelledby="assumtion-tab" aria-expanded="false">
+						<section class="widget" id="tabIBNRalert">
+							<header>
+								<h2 style="color:#2867ab">
+									Backtesting <span class="fw-semi-bold">IBNR</span> calcule una fecha en la seccion de RRC
+								</h2>
+								
+							</header>
+						</section>
+						<section class="widget" id="tabIBNR" style="display:none">
+							<header>
+								<h2 style="color:#2867ab">
+									Tabla informativa <span class="fw-semi-bold">IBNR</span>
+								</h2>
+								<div class="widget-controls">
+									<a data-widgster="expand" title="Expand" href="#"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a
+										data-widgster="collapse" title="Collapse" href="#"><i
+										class="glyphicon glyphicon-chevron-down"></i></a>
+								</div>
+							</header>
+							<div class="widget-body">
+								<div class="mt">
+									<table id="datatable-tables"
+										class="table table-striped table-hover">
+										<thead>
+											<tr>
+												<th>---</th>
+												<th>BEL SONR</th>
+												<th> Margen de Riesgo SONR* </th>
+											</tr>
+										</thead>
+										<tbody style="font-weight: 600;">
+											<tr>
+												<td>Total</td>
+												<td id="totalBELSORN"></td>
+												<td id="margenTotal"></td>
+											</tr>
+											<tr>
+												<td>Individual </td>
+												<td id="BELSORNInd"></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Colectivo</td>
+												<td id="BELSORNCol"></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</section>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		</main>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<!-- common app js -->
+	<script th:src="@{/resources/js/utils.js}"></script>
+	<script th:src="@{js/settings.js}"></script>
+	<script th:src="@{js/app.js}"></script>
+
+	
+	<!-- page specific Tablas -->
+	<script th:src="@{/resources/js/bootstrap/js/dist/modal.js}"></script>
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+	<script th:src="@{/resources/js/underscore/underscore-min.js}"></script>
+	<script th:src="@{/resources/js/backbone/backbone.js}"></script>
+	<script th:src="@{/resources/js/backbone.paginator/lib/backbone.paginator.min.js}"></script>
+	<script th:src="@{/resources/js/backgrid/lib/backgrid.js}"></script>
+	<script th:src="@{/resources/js/backgrid-paginator/backgrid-paginator.js}"></script>
+	<script th:src="@{/resources/js/datatables/media/js/jquery.dataTables.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/resources/js/tables-dynamic.js}"></script>
+	
+	<!-- Js muy particulares-->
+		<script th:src="@{/resources/js/jasny-bootstrap/js/fileinput.js}"></script>
+	<script th:src="@{/resources/js/form-elements.js}"></script>
+	<script th:src="@{/resources/js/bootstrap-fix/collapse.js}"></script>
+	<script th:src="@{/resources/js/ui-tabs-accordion.js}"></script>
+	<script th:src="@{/resources/js/bootstrap/js/dist/tab.js}"></script>
+	<script th:src="@{/resources/js/mensajesConfig.js}"></script>
+	<script th:src="@{/resources/js/fileinputConfig.js}"></script>
+	<!-- <script th:src="@{/resources/js/pages/cargaInformacion/cargaArchivos.js}"></script>
+	<script th:src="@{/resources/js/pages/cargaInformacion/cargaArchivosC.js}"></script>-->
+	<script th:src="@{/resources/js/pages/funcionesAjax.js}"></script>
+	
+	<script th:src="@{/resources/js/pages/reservas/factoresSiniestralidad/aye/salud/facSalud.js}"></script>
+	<script th:src="@{/resources/js/pages/reservas/factoresSiniestralidad/aye/salud/facSaludC.js}"></script>
+	<script th:src="@{/resources/js/descargaTablas/FileSaver.min.js}"></script>
+	
+
+
+		
+	<script th:src="@{/resources/js/descargaTablas/Blob.min.js}"></script> 	
+	<script th:src="@{/resources/js/descargaTablas/xls.core.min.js}"></script>
+	<script th:src="@{/resources/js/descargaTablas/tableexport.js}"></script>
+</body>
+</html>

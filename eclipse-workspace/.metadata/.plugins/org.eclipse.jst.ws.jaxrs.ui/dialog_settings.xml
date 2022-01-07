@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.jst.ws.jaxrs.ui.jaxrsFacetInstall">
+		<item key="servletName" value="JAX-RS Servlet"/>
+		<item key="org.eclipse.glassfish.tools.jaxrsLibraryproviderIDservletClassname" value="com.sun.jersey.spi.container.servlet.ServletContainer"/>
+		<section name="urlMappings">
+			<list key="pattern">
+				<item value="/jaxrs/*"/>
+			</list>
+		</section>
+	</section>
+</section>

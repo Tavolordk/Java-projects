@@ -1,0 +1,146 @@
+.main-container {
+	margin-top: 20px;
+}
+
+.background {
+	background-image: url("../img/Isotipo.jpg");
+	background-repeat: repeat;
+	background-size: 200px;
+	z-index: -1;
+}
+
+.btn, .btn-primary {
+	background-color: rgb(39, 103, 166) !important;
+}
+
+.navbar {
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.25, rgb(200, 200, 200)),
+	color-stop(0.45, rgb(220, 220, 220)),
+	color-stop(0.85, rgb(190, 190, 190))
+);
+background-image: -o-linear-gradient(bottom, rgb(200, 200, 200) 25%, rgb(220, 220, 220) 45%, rgb(190, 190, 190) 85%);
+background-image: -moz-linear-gradient(bottom, rgb(200, 200, 200) 25%, rgb(220, 220, 220) 45%, rgb(190, 190, 190) 85%);
+background-image: -webkit-linear-gradient(bottom, rgb(200, 200, 200) 25%, rgb(220, 220, 220) 45%, rgb(190, 190, 190) 85%);
+background-image: -ms-linear-gradient(bottom, rgb(200, 200, 200) 25%, rgb(220, 220, 220) 45%, rgb(190, 190, 190) 85%);
+background-image: linear-gradient(to bottom, rgb(200, 200, 200) 25%, rgb(220, 220, 220) 45%, rgb(190, 190, 190) 85%);
+}
+
+.nav-link {
+	color: #000 !important;
+}
+
+.nav-link:hover {
+	/*background-color: rgb(200, 180, 106) !important;*/
+	/*background-color: rgb(237, 112, 20) !important;*/
+	/*color: #ffff !important;*/
+	font-weight: bold;
+}
+
+.dropdown-item {
+	/*background-color: rgb(39, 103, 166) !important;*/
+	/*background-color: rgb(208, 79, 64) !important;*/
+	/*background-color: rgb(247, 247, 247) !important;*/
+	color: #000 !important;
+}
+
+.dropdown-item:hover {
+	/*background-color: rgb(200, 180, 106) !important;*/
+	/*background-color: rgb(237, 112, 20) !important;*/
+	/*background-color: rgb(237, 112, 20, 0.6) !important;*/
+	/*color: #ffff !important;*/
+	background-color: #C9C9C9 !important;
+}
+
+.dropdown-item.active, .dropdown-item:active{
+	/*background-color: rgb(218, 218, 218) !important;*/
+}
+
+.navbar-brand {
+	color: rgb(200, 180, 106) !important;
+	background-color: transparent	 !important;
+}
+
+.btn-danger {
+	background-color: #dc3545 !important;
+}
+
+.btn-warning {
+	background-color: #fff3cd !important;
+}
+
+.btn-success {
+	background-color: #d4edda !important;
+	color: #155724 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+   *color: rgb(64, 64, 64);
+}
+.btco-menu li > a {
+    padding: 10px 15px;
+    color: #000;
+
+}
+
+.btco-menu .active a:focus,
+.btco-menu li a:focus ,
+.navbar > .show > a:focus{
+    background: transparent;
+    outline: 0;
+}
+
+.modal-bigger {
+	max-width: 1024px;
+}
+
+.fullwidth {
+	width: 100% !important;
+}
+
+
+.dropdown-menu .show > .dropdown-toggle::after{
+    transform: rotate(-90deg);
+}
+
+.navbar-brand{
+	width: 5% !important;
+}
+
+.logo-brand{
+	width: 100% !important;
+}
+
+.popover-body{
+	border: 3px solid rgb(23, 162, 184, .5) !important;
+}
+
+.card-content{
+	padding: 1% 1% 1% 1%;
+}
+
+.navbar-nav .dropdown-menu{
+	/*background-color: rgb(208, 79, 64) !important;*/
+}
+
+.card-header{
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.25, rgb(245, 245, 245)),
+	color-stop(0.5, rgb(227, 227, 227))
+);
+background-image: -o-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -moz-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -webkit-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: -ms-linear-gradient(top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+background-image: linear-gradient(to top, rgb(245, 245, 245) 25%, rgb(227, 227, 227) 50%);
+}
+
+.greenIco{
+	color: green !important;
+}

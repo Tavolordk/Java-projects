@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Ramo</h4>
+			</div>
+		<div class="card-content">
+
+			<button type="button" class="btn btn-primary col-md-2"
+				name="btnEnviarRamo" data-toggle="modal"
+				data-target="#nuevoRamoModal">
+				<span style="padding: 5px"><i class="fas fa-plus-square"></i></span>Nuevo
+				Ramo
+			</button>
+
+			<div class="table-responsive main-container"
+				style="background-color: #ffff;">
+				<table id="tablaRamo"
+					class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+					style="width: 100%">
+				</table>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="nuevoRamoModal" tabindex="-1"
+				role="dialog" aria-labelledby="nuevoRamoModalLongTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form id="formRamoNuevo" autocomplete="off">
+							<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title" id="nuevoRamoModalLongTitle">Nuevo
+									Ramo</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+
+								<div class="row">
+
+
+
+									<div class="form-group col-md-6">
+										<label for="descripcion">Descripción:</label> <input
+											class="form-control text-uppercase" type="text" id="descripcion"
+											name="cT8Descripcion" maxlength="50"/>
+									</div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-primary"
+									id="btnGuardarRamo">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Guardar
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div th:include="views/catalogos/editarRamo :: ramoEditFragment" id="editarRamo"></div>
+		</div>
+
+
+	</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/catalogos/ramoC.js"
+		th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramo.js"
+		th:src="@{/resources/js/pages/catalogos/ramo.js}"></script>
+</body>
+
+</html>

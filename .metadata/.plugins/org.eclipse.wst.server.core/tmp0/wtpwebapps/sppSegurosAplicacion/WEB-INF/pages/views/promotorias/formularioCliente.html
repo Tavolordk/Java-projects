@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<div th:fragment="camposClienteFragment" class="main-container">
+		<div class="row">
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="nombre">Nombre:</label> <input
+						class="form-control text-uppercase" type="text" id="nombreCliente"
+						name="nombreCliente" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="nombre">Apellido Paterno:</label> <input
+						class="form-control text-uppercase" type="text"
+						id="apellidoPaterno" name="apellidoPaterno" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="apeMaterno">Apellido Materno:</label> <input
+						class="form-control text-uppercase" type="text"
+						id="apellidoMaterno" name="apellidoMaterno" maxlength="100"/>
+				</div>
+
+				<div class="form-group col-md-8 clienteMoralNuevo">
+					<label for="denominacionRazon">Denominación o Razón Social:</label>
+					<input class="form-control text-uppercase" type="text"
+						id="denominacion" name="denominacion" maxlength="100"/>
+				</div>
+
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date" id="fechaNacimiento"
+							name="fechaNacimiento" data-mask="0000-00-00" data-date-end-date="0d"
+							placeholder="yyyy-mm-dd" /> <span class="input-group-text">
+							<i class="fas fa-calendar-alt"></i>
+						</span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<label for="fechaConstitucion">Fecha Constitución:</label>
+					<div class="input-group">
+						<input type="text" class="form-control date"
+							id="fechaConstitucion" name="fechaConstitucion" data-date-end-date="0d"/> <span
+							class="input-group-text"> <i class="fas fa-calendar-alt"></i>
+						</span>
+					</div>
+				</div>
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<label for="folio">Folio Mercantil:</label> <input
+						class="form-control numberClass" type="text" id="folioMercantil"
+						name="folioMercantil" maxlength="18"/>
+				</div>
+
+<!-- 				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="paisNacimiento">País de Nacimiento:</label> <select
+						class="form-control pais" id="paisNacimiento" name="paisNacimiento">
+					</select>
+				</div> -->
+				<div class="form-group col-md-4">
+					<label for="nacionalidad">Nacionalidad:</label> <select
+						class="form-control nacionalidad" id="nacionalidad" name="nacionalidad">
+						<option value="">Seleccione opción...</option>
+						<option value="SE DESCONOCE">SE DESCONOCE</option>
+						<option value="MEXICANA">MEXICANA</option>
+						<option value="EXTRANJERO">EXTRANJERO</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<label for="giroMercantil">Giro Mercantil:</label> <select
+						class="form-control giroMercantil" id="giroMercantil" name="giroMercantil">
+						<option value="">Seleccione opción...</option>
+					</select>
+				</div>
+ 				<div class="form-group col-md-4">
+					<label for="Actividad">Actividad economica:</label> <select
+						class="form-control actividadObjeto" id="actividadObjeto" name="actividadObjeto">
+						<option value="">Seleccione opción...</option>
+						<option value="1">Actividad</option>
+					</select>
+				</div>
+
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="ocupacion">Ocupación o Profesión:</label> <select
+						class="form-control ocupacion" id="ocupacionProfesion"
+						name="ocupacionProfesion"></select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="telefono">Teléfono 1 con lada:</label>
+					<div class="row">
+						<div class="col-4 col-sm-3">
+							<input class="form-control numberClass" type="text"
+								id="telefono1Lada" name="telefono1Lada" maxlength="3"/>
+						</div>
+						<div class="col-8 col-sm-9">
+							<input class="form-control numberClass" type="text"
+								id="telefono1" maxlength="10" name="telefono1"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="telefono">Teléfono 2 con lada:</label>
+					<div class="row">
+						<div class="col-4 col-sm-3">
+							<input class="form-control numberClass" type="text"
+								id="telefono2Lada" name="telefono2Lada" maxlength="3"/>
+						</div>
+						<div class="col-8 col-sm-9">
+							<input class="form-control numberClass" type="text"
+								id="telefono2" name="telefono2" maxlength="10" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="correo">Correo Electrónico 1:</label> <input
+						class="form-control" type="email" id="correoElectronico1"
+						name="correoElectronico1" maxlength="60"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="correo">Correo Electrónico 2:</label> <input
+						class="form-control" type="text" id="correoElectronico2"
+						name="correoElectronico2" maxlength="60"/>
+				</div>
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="curp">CURP:</label> <input
+						class="form-control text-uppercase" type="text" id="curp"
+						name="curp" maxlength="18" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="rfc">RFC:</label> <input
+						class="form-control text-uppercase" type="text" id="rfc"
+						name="rfc" maxlength="13" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="noFiel">Firma Electrónica Avanzada:</label> <input
+						class="form-control firmaElectronicaAvanzada" type="text" id="firmaElectronicaAvanzada"
+						name="firmaElectronicaAvanzada" maxlength="50"/>
+				</div>
+			</div>
+
+			<h2 class="display-4">Domicilio</h2>
+			<div class="row">
+				<div class="form-group col-md-8">
+					<label for="calle">Calle:</label> <input
+						class="form-control text-uppercase" type="text" id="calle"
+						name="calle" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="noExterior">No. Exterior:</label> <input
+						class="form-control" type="text" id="numeroExterior"
+						name="numeroExterior" maxlength="10"/>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="noInterior">No. Interior:</label> <input
+						class="form-control" type="text" id="numeroInterior"
+						name="numeroInterior" maxlength="10"/>
+				</div>
+				<div class="form-group col-md-4 ui-widget">
+					<label for="cp">Código Postal:</label> <input class="form-control codigoPostal numberClass"
+						id="codigoPostal" name="codigoPostal" maxlength="5"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="estado">Estado:</label> <select class="form-control estado"
+						id="estado" name="estado" disabled="disabled">
+						<option value="0" selected="selected">Seleccione
+							opción...</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="municipio">Municipio:</label> <select
+						class="form-control municipio" id="municipio" name="municipio"
+						disabled="disabled">
+						<option value="0" selected="selected">Seleccione
+							opción...</option>
+					</select>
+				</div>
+			</div>
+
+			<h2 class="display-4">Perfil Transaccional</h2>
+			<label for="nombre" class="clienteMoralNuevo">Nombre del Representante Legal:</label>
+			<div class="row">
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<input class="form-control text-uppercase" type="text"
+						placeholder="Nombre(s)" id="nombreRepresentante"
+						name="nombreRepresentante" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<input class="form-control text-uppercase" type="text"
+						placeholder="Apellido Paterno" id="apellidoPaternoRepresentante"
+						name="apellidoPaternoRepresentante" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<input class="form-control text-uppercase" type="text"
+						placeholder="Apellido Materno" id="apellidoMaternoRepresentante"
+						name="apellidoMaternoRepresentante" maxlength="100"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="tipoIde">Tipo de Identificación:</label> <select
+						class="form-control tipoIdentificacion" id="tipoIdentificacion"
+						name="tipoIdentificacion">
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="noIde">No. Identificación Oficial:</label> <input
+						class="form-control numberClass" type="text"
+						id="numeroIdentificacion" name="numeroIdentificacion" maxlength="18"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="entidadEmisora">Entidad Emisora:</label> <select
+						class="form-control" id="entidadEmisora" name="entidadEmisora">
+						<option value="">Seleccione opción...</option>
+						<option value="1">INSTITUTO NACIONAL ELECTORAL</option>
+						<option value="2">SECRETARIA DE RELACIONES EXTERIORES</option>
+						<option value="3">DIRECCION GENERAL DE PROFESIONES</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="rangoOpera">Rango de Operaciones:</label> <select
+						class="form-control rangoOperacion" id="rangoOperaciones"
+						name="rangoOperaciones">
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="numOpera">Numero de Operaciones:</label> <input
+						class="form-control numberClass" type="text" id="numeroOperacion"
+						name="numeroOperacion" maxlength="18"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="montoMaximo">Monto Maximo:</label> <input
+						class="form-control moneda" type="text" id="montoMaximo"
+						name="montoMaximo" maxlength="18"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="frecuencia">Frecuencia:</label> <select
+						class="form-control" id="frecuencia" name="frecuencia">
+						<option value="">Seleccione opción...</option>
+						<option value="ANUAL">ANUAL</option>
+						<option value="SEMESTRAL">SEMESTRAL</option>
+						<option value="TRIMESTRAL">TRIMESTRAL</option>
+						<option value="MENSUAL">MENSUAL</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="tipoMoneda">Tipo de Moneda:</label> <select
+						class="form-control tipoMoneda" id="tipoMoneda" name="tipoMoneda">
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="metodoPago">Metodo Usual de Pago:</label> <select
+						class="form-control metodoUsualPago" id="metodoUsualPago" name="metodoUsualPago">
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="origenRecursos">Origen de Recursos:</label> <select
+						class="form-control" id="origenRecursos" name="origenRecursos">
+						<option value="">Seleccione opción...</option>
+						<option value="RECURSOS PROPIOS">RECURSOS PROPIOS</option>
+						<option value="RECURSOS A TRÁVES DE TERCEROS">RECURSOS A TRÁVES DE TERCEROS</option>
+						<option value="RECURSOS A TRÁVES DE SOCIOS">RECURSOS A TRÁVES DE SOCIOS</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="destinoRecursos">Destino Recursos:</label> <input
+						class="form-control text-uppercase" type="text"
+						id="destinoRecursos" name="destinoRecursos" maxlength="100"/>
+				</div>
+			<div class="form-group col-md-4">
+				<label for="productoComponente">Producto Con Componente de
+					Inversión: </label><select class="form-control" id="productoInversion"
+					name="productoInversion">
+					<option value="">Seleccione opción...</option>
+					<option value="SI">SI</option>
+					<option value="NO">NO</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="pep">¿Es un PEP?:</label> <select class="form-control pep"
+						id="pep" name="pep">
+						<option value="">Seleccione opción...</option>
+						<option value="SI">SI</option>
+						<option value="NO">NO</option>
+					</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="frecuencia">Nivel de Riesgo:</label> <select
+					class="form-control nivelRiesgo" id="nivelRiesgo" name="nivelRiesgo">
+					<option value="">Seleccione opción...</option>
+					<option value="ALTO">ALTO</option>
+					<option value="BAJO">BAJO</option>
+				</select>
+			</div>
+				<div class="form-group col-md-4 clienteFisicoNuevo">
+					<label for="cargo">Cargo que desempeña:</label> <select
+						class="form-control cargo" id="cargo" name="cargo">
+						<option value="">Seleccione opción...</option>
+						<option value="DOCENTE">DOCENTE</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4 clienteMoralNuevo">
+					<label for="paginaWeb">Página web:</label> <input
+						class="form-control" id="paginaWeb" name="paginaWeb" maxlength="50"/>
+				</div>
+			</div>
+
+			<h2 class="display-4">Carga de Documentos</h2>
+			<div class="row">
+				<div class="form-group col-md-6 ">
+					<label for="_identificacionOficial" class="clienteFisicoNuevo _identificacionOficial">Identificación
+						Oficial: </label> <label for="_identificacionOficial"
+						class="clienteMoralNuevo _identificacionOficial">Identificación Oficial del
+						Representante: </label> <input type="file" class="file"
+						id="_identificacionOficial" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_comprobanteDomicilio" class="_comprobanteDomicilio">Comprobante Domicilio:</label> <input
+						id="_comprobanteDomicilio" type="file" class="file" name="file[]">
+				</div>
+
+				<div class="form-group col-md-6 clienteMoralNuevo">
+					<label for="_escrituraConstitutiva" class="_escrituraConstitutiva">Escritura Constitutiva:</label>
+					<input type="file" class="file" id="_escrituraConstitutiva"
+						name="file[]">
+				</div>
+				<div class="form-group col-md-6 clienteMoralNuevo">
+					<label for="_porderRepresentanteLegal" class="_porderRepresentanteLegal">Poder del
+						Representante Legal:</label> <input type="file" class="file"
+						id="_porderRepresentanteLegal" name="file[]">
+				</div>
+
+				<div class="form-group col-md-6 clienteFisicoNuevo">
+					<label for="_curp" class="_curp">CURP:</label> <input type="file" class="file"
+						id="_curp" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_rfc" class="_rfc">RFC:</label> <input type="file" class="file"
+						id="_rfc" name="file[]">
+				</div>
+				<div class="form-group col-md-6 _firmaElectronicaAvanzadaDoc">
+					<label for="_firmaElectronicaAvanzada" class="_firmaElectronicaAvanzada">Firma Electrónica
+						Avanzada:</label> <input type="file" class="file"
+						id="_firmaElectronicaAvanzada" name="file[]">
+				</div>
+				<div class="form-group col-md-6 clienteFisicoNuevo">
+					<label for="_calidadMigratoria" class="_calidadMigratoria">Acreditación calidad
+						migratoria (solo extranjeros) :</label> <input type="file" class="file"
+						id="_calidadMigratoria" name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_entrevistaCliente" class="_entrevistaCliente"> Entrevista con el cliente:</label>
+					<input type="file" class="file" id="_entrevistaCliente"
+						name="file[]">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="_validacionListaNegra" class="_validacionListaNegra">Resultado de validación
+						listas negras :</label> <input type="file" class="file"
+						id="_validacionListaNegra" name="file[]">
+				</div>
+			</div>
+	</div>
+</body>
+</html>

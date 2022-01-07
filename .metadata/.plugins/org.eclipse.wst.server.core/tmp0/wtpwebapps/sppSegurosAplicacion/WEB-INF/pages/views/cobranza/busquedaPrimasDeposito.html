@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+			<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reporte de primas en depósito</h4>
+			</div>
+		<div class="card-content">
+<!-- 			<div class="row" style="margin: 0px; padding: 5px"> -->
+<!-- 				<div class="form-group col-md-2.4" style="margin: 5px; padding: 5px"> -->
+<!-- 					<button id="idLimpiar" type="button" class="btn btn-primary"> -->
+<!-- 						<span class="mr-2"> <i class="fas fa-redo-alt"></i> -->
+<!-- 						</span>Nueva Captura -->
+<!-- 					</button> --> 
+<!-- 				</div> -->
+<!-- 			</div> -->
+	
+			<div align="left" style="margin: 10px 10px 40px; padding: 5px">
+			<div>
+				<button id="idBuscarPrimasDep" type="button" class="btn btn-primary active"	aria-pressed="true">Buscar Primas</button>
+			</div>
+
+			</div>
+			<form id="formReportePrimasDeposito" autocomplete="off">
+			    
+					<!-- **************************************************** -->
+					<!-- ****** TABLAS PARA MOSTRAR PRIMAS EN DEPOSITO  ***** -->
+					<!-- **************************************************** -->
+			    <div id ="idTablePrimasDeposito" class="table-responsive main-container background-tabla">
+			    	<h4 align="center" id="lbPrimasDeposito" style="background: blue; color: white">Primas en Depósito</h4>
+			    	 <table id="tablePrimasDeposito" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+			    </div>
+			</form>
+		</div>
+		
+				<!-- 		************************************************** -->
+		<!-- 		****** SECCION PARA CARGAR ARCHIVO DE PAGOS ****** -->
+		<!-- 		************************************************** -->
+			<form enctype="multipart/form-data" id="formArchivoPagos" autocomplete="off" style ="display:none">
+			    <div id="cargaPagos" class="main-container">
+					<h4 align="center" id="lbArchivoPagos" style="background: blue; color: white">Carga Archivo de Pagos</h4>
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<h5>Subir archivo Pagos</h5> 
+							<input id="fileInputPagos" type="file" class="file" name="file">
+							<div id="errorBlock" class="help-block"></div>
+							<div id="msg" class="form-group mt-1 p-0 col-md-8"></div>
+						</div>
+					</div>
+					<div class = "form-group col-md-12" >
+						<button class="btn btn-primary" id="idCargarPagos" type="button">Cargar Archivo</button>
+					</div>
+				</div>    
+			</form>
+		</div>
+
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/cobranza/primasC.js"	th:src="@{/resources/js/pages/cobranza/primasC.js}"></script>
+	<script src="/resources/js/pages/cobranza/primas.js"	th:src="@{/resources/js/pages/cobranza/primas.js}"></script>
+	</div>
+</body>
+</html>

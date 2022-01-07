@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Registro de usuarios</h4>
+			</div>
+		<div class="card-content">
+
+			<form id="formNuevoUsuario">
+				<button type="button" class="btn btn-primary col-md-2"
+					data-toggle="modal" id="nuevoUsuarioModal">
+					<span style="padding: 5px"><i class="fas fa-plus-square"></i></span>Nuevo
+					usuario
+				</button>
+				<div class="table-responsive main-container"
+					style="background-color: #ffff;">
+					<table id="tablaUsuarios"
+						class="table table-sm table-hover table-bordered estiloTablas dataTable no-footer"
+						style="width: 100%">
+					</table>
+				</div>
+			</form>
+			<div th:include="views/accesos/editarUsuario :: usuarioEditFragment"
+				id="editarUsuario"></div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="bajaUsuarioModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="color: #ffff;">
+					<h5 class="modal-title" id="cancelarUsuarioTitle"></h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">¿Quiere continuar con la cancelación de usuario?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-danger" id="btnAceptar">Continuar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal recuperar contra-->
+	<div class="modal fade" id="recuperarContraModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="color: #ffff; background-color: #2767a6">
+					<h5 class="modal-title recuperarContraTitle" id="recuperarContraTitle"></h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				<form id="recuperarContraForm">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nombreUsuario">Nueva contraseña</label> <input
+								class="form-control" id="nuevaContra"
+								name="nuevaContra" maxlength="15" type="password">
+								<div class="feed"></div>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="apePaterno">Confirmar contraseña</label> <input
+								class="form-control text-uppercase" id="confirmarContra"
+								name="confirmarContra" maxlength="15" type="password">
+								<div class="feedConfirm"></div>
+						</div>
+					</div>
+					</form>
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"
+					data-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary" id="btnRecuperarContra">Guardar</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/accesos/usuariosC.js"
+		th:src="@{/resources/js/pages/accesos/usuariosC.js}"></script>
+	<script src="/resources/js/pages/accesos/usuarios.js"
+		th:src="@{/resources/js/pages/accesos/usuarios.js}"></script>
+	<script src="/resources/js/pages/accesos/perfilC.js"
+		th:src="@{/resources/js/pages/accesos/perfilC.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="tabsRCFragment" class="main-container">
+<div class="container main-container">
+        <div class="wizard-container">
+            <div class="card wizard-card" data-color="blue" id="wizard">
+                <div class="wizard-navigation">
+                    <ul id="tabs" class="nav nav-tabs">
+                        <li class="nav-item"><a href="#hipotesisTab" data-toggle="tab" class="styleTab tabActive" id="tabhipotesis">Hipotesis</a></li>
+                        <li class="nav-item"><a href="#analisisTab" data-toggle ="tab" class="styleTab tabActive tabActive" id="tabanalisis">Analisis</a></li>
+                        <li class="nav-item"><a href="#resultadosTab" data-toggle="tab" class="styleTab tabActive tabActive" id="tabresultados">Resultado</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane" id="hipotesisTab">
+                        <div th:include="views/reportesSESA/hipotesisRC:: hipotesisFormFragment" id="hipotesisRCTab"></div>
+                    </div>
+                    <div class="tab-pane" id="analisisTab">
+                        <div th:include="views/reportesSESA/analisisRC:: analisisFormFragment" id="analisisRCTab"></div>
+                    </div>
+                    <div class="tab-pane" id="resultadosTab">
+                        <div th:include="views/reportesSESA/reportesAnual:: resultadoFormFragment" id="resultadoRCTab"></div>
+                    </div>
+                </div>
+            </div>
+	    	</div>
+        </div>
+        </div>
+        </body>
+
+</html>

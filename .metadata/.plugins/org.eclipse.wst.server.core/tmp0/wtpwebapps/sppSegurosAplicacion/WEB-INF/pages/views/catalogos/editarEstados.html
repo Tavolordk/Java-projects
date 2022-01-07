@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="estadosEditFragment" class="main-container">
+		<!-- Modal -->
+		<div class="modal fade" id="editarEstadosModal" tabindex="-1" role="dialog" aria-labelledby="editarEstadosModalLabel"	aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+									
+					<div class="modal-header" style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+						<h5 class="modal-title titleEditEstados" id="editarEstadosModalLabel"></h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<form id="formEstadosEditar" enctype="multipart/form-data"
+							autocomplete="off" class="needs-validation" novalidate>
+							<div class="row">
+																		
+									<div class="form-group col-md-6">
+										<label for="nombreEstado">Nombre Estado:</label> <input
+											class="form-control" type="text" id="nombreEstado"
+											name="nombreEstado" maxlength="40" required>
+  										
+									</div>
+
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary text-truncate" id="btnEditEstados">
+							<span class="mr-2"> <i class="fas fa-save"></i>
+							</span>Actualizar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

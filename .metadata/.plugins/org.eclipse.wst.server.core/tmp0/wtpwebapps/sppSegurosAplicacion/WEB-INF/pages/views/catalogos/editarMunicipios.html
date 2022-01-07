@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="municipiosEditFragment" class="main-container">
+		<!-- Modal -->
+		<div class="modal fade" id="editarMunicipiosModal" tabindex="-1" role="dialog" aria-labelledby="editarMunicipiosModalLabel"	aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+									
+					<div class="modal-header" style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+						<h5 class="modal-title titleEditMunicipios" id="editarMunicipiosModalLabel">Editar Municipio</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+					</div>
+					<div class="modal-body">
+						<form id="formMunicipiosEditar" enctype="multipart/form-data"
+							autocomplete="off" class="needs-validation" novalidate>
+							<div class="row">
+							
+								<div class="form-group col-md-6">
+									<label for="claveMunicipio">Clave de Municipio:</label> 
+										<input id="claveMunicipio" name="claveMunicipio" type="text" class="form-control" />
+								</div>
+									
+								<div class="form-group col-md-6">
+									<label for="nameMunicipio">Nombre de Municipio:</label> 
+										<input id="municipio" name="nombreMunicipio" type="text" class="form-control text-uppercase" />
+								</div>
+									
+								<div class="form-group col-md-6">
+									<label for="estado">Estado:</label> 
+										<select	class="form-control estado" id="estado" name="estado">
+										</select>
+								</div>
+									
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary text-truncate"	id="btnEditMunicipio">
+							<span class="mr-2"> <i class="fas fa-save"></i>
+							</span>Actualizar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

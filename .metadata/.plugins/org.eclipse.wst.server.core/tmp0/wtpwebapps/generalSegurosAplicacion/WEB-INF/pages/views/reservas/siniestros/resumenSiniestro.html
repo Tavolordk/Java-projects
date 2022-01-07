@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="UTF-8"/></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+
+	<div class="container main-container">
+		<div class="jumbotron">
+			<h1 class="display-4">RESUMEN DE SINIESTROS</h1>
+			<br>
+			<!-- Grafica -->
+			<div class="card-content">
+			<div class="form-row">
+					<div class="form-group col-md-6">
+					<form enctype="multipart/form-data" id="formSeveridadPoliza" autocomplete="off">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<b><label>Severidad por póliza</label></b>
+							</div>
+							<div class="form-group col-md-5">
+								<label for="tipoReporte">Moneda:</label> 
+								<select	class="form-control" id="monedaSeveridadMoneda" name="monedaSeveridadMoneda">
+								<option selected="" disabled="">Seleccionar Moneda</option>
+								<option clave="2018">50</option>
+								<option clave="2019">100</option>
+								<option clave="2020">150</option>
+								</select>
+							</div>
+							<div class="form-group col-md-5">
+								<label for="tipoReporte">Ramo:</label> 
+								<select	class="form-control" id="ramoSeveridadPoliza" name="ramoSeveridadPoliza">
+								<option selected="" disabled="">Seleccionar Ramo</option>
+								<option clave="2018">1</option>
+								<option clave="2019">2</option>
+								<option clave="2020">3</option>
+								</select>
+							</div>
+							<div class="form-group col-md-1">
+								<button class="btn btn-primary" id="btnBuscarPolizaSeveridad" style="margin-top:32px"
+									type="button">Buscar</button>
+							</div>
+							<div class="form-group col-md-12">
+								<div id="chart_div" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						</form>
+					</div>
+					<div class="form-group col-md-6">
+					<form enctype="multipart/form-data" id="formSeveridadRamo" autocomplete="off">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<b><label>Severidad por ramo</label></b>
+							</div>
+							<div class="form-group col-md-10">
+								<label for="tipoRamo">Ramo:</label> 
+								<select	class="form-control" id="ramoSeveridadRamo" name="ramoSeveridadRamo">
+								<option selected="" disabled="">Seleccionar Ramo</option>
+								<option clave="2018">1</option>
+								<option clave="2019">2</option>
+								<option clave="2020">3</option>
+								</select>
+							</div>
+							<div class="form-group col-md-1">
+								<button class="btn btn-primary" id="btnBuscarRamoSeveridad" style="margin-top:32px"
+									type="button">Buscar</button>
+							</div>
+							<div class="form-group col-md-12">
+								<div id="chart_divB" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						</form>
+					</div>
+					<div class="form-group col-md-6">
+					<form enctype="multipart/form-data" id="formDispersionSiniestros" autocomplete="off">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<b><label>Dispresión de siniestros</label></b>
+							</div>
+							
+								<div class="form-group col-md-6">
+									<label for="desde">Monto desde:</label>
+									<div class="input-group">
+										<input type="text" class="form-control date" id="MontoDesde"
+											name="MontoDesde"/>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="desde">Monto hasta:</label>
+									<div class="input-group">
+										<input type="text" class="form-control date" id="MontoHasta"
+											name="MontoHasta"/>
+									</div>
+								</div>
+							
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="desde">Fecha desde:</label>
+									<div class="input-group">
+										<input type="date" class="form-control date" id="MontoDesde"
+											name="MontoDesde" placeholder="yyyy-mm-dd" /> <span
+											class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+										<span class="input-group-btn"> </span>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="desde">Fecha hasta:</label>
+									<div class="input-group">
+										<input type="date" class="form-control date" id="MontoHasta"
+											name="MontoHasta" placeholder="yyyy-mm-dd" /> <span
+											class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+										<span class="input-group-btn"> </span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-md-12 text-center">
+								<button class="btn btn-primary" id="btnBuscarRamoSeveridad" style="margin-top:32px"
+									type="button">Buscar</button>
+							</div>
+							<div class="form-group col-md-12">
+								<div id="chart_divC" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+						</form>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<b><label>Siniestros por Estados</label></b>
+							</div>
+							<div class="form-group col-md-12">
+								<div id="chart_divD" style="width: 100%; height: 500px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+		
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	<script src="/resources/js/pages/reservas/googleCharts.js"
+		th:src="@{/resources/js/pages/reservas/googleCharts.js}"></script>
+	<script src="/resources/js/pages/reservas/resumenDanios.js"
+		th:src="@{/resources/js/pages/reservas/resumenDanios.js}"></script>
+	<script src="/resources/js/pages/reservas/resumenDaniosC.js"
+		th:src="@{/resources/js/pages/reservas/resumenDaniosC.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:richfaces="http://richfaces.ajax4jsf.org/rich"
+      xmlns:ajax="https://ajax4jsf.dev.java.net/ajax">
+<f:loadBundle var="Message" basename="properties.messages"/>
+<h:form>
+<center>
+       <rich:panel>
+          <f:facet name="header">
+               <h:outputText value="JSF saludos cosas chingonas ya" />
+          </f:facet>
+          <h1>
+          <h:outputText value="#{Message.titulo}" />
+          </h1>
+          <br></br>
+          <b>
+          <h:outputText value="#{Message.texto}" />
+          </b>
+          <br></br>
+          <h:commandLink action="#{claseBean.llamarPagina1}" value="Llamada desde un JavaBean" />
+          <rich:spacer style="width:30px;"></rich:spacer>
+          <h:commandLink action="#{claseBean.paginaFormulario}" value="Ir al formulario" />
+       </rich:panel>
+       </center>
+</h:form>
+
+</html>

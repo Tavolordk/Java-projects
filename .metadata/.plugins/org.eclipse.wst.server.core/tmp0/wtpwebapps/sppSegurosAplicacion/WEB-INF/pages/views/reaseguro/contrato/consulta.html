@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+	<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Consulta de contratos</h4>
+			</div>
+		<div class="card-content">
+		
+		<div class="table-responsive main-container background-tabla">
+			<table id="resultadoBusqueda"
+				class="table table-sm table-hover table-bordered estiloTablas">
+			</table>
+		</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="contratoModal" tabindex="-1" role="dialog" aria-labelledby="contratoModalLabel" aria-hidden="true" style="overflow-y: auto;">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title" id="historialComentriosModalLabel">Contrato</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+					</div>
+					<div class="modal-body">
+						<div th:include="views/reaseguro/contrato/tabs :: contratoTabsFragment" id="contratoTabsFragment"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cerrar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal Cancelar Contrato -->
+		<div class="modal fade" id="cancelarContratoModal" tabindex="-1" role="dialog" aria-labelledby="cancelarContratoModal" aria-hidden="true" style="overflow-y: auto;">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header"
+								style="background-color: rgb(39, 103, 166) !important; color: #ffff;">
+								<h5 class="modal-title">Cancelar contrato</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+					</div>
+					<div class="modal-body">
+						<div class="modal-body">¿Quiere continuar con la cancelación de contrato?</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-danger" id="btnAceptarBajaContrato">Continuar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<!-- JS -->
+	<script src="/resources/js/pages/reaseguro/contratosC.js" th:src="@{/resources/js/pages/reaseguro/contratosC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/contratos.js" th:src="@{/resources/js/pages/reaseguro/contratos.js}"></script>
+	<script src="/resources/js/pages/reaseguro/contratosConsulta.js" th:src="@{/resources/js/pages/reaseguro/contratosConsulta.js}"></script>
+</body>
+</html>

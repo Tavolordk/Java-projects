@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+      <title>CodeMäin</title>
+</h:head> 
+<body> 
+
+    <f:view>
+        <h1>Ingrese sus datos</h1>
+        <h:form>
+            <h:panelGrid columns="2" border="2">
+            <h:outputLabel for="nombre" value="Nombre:" />
+            <h:inputText id="nombre" value="#{personaBean.nombre1}" required="true" label="No procesado"/>
+            
+            
+            <h:outputLabel for="apellidos" value="Apellidos:" />
+            <h:inputText id="apellidos" value="#{personaBean.apellidos}" required="true" label="No procesado"/>
+            
+            
+            <h:outputLabel value="Teléfono:" for="telefono"/>
+            <h:inputText value="#{personaBean.telefono}" id="telefono" required="true" label="No procesado"> 
+               <f:validateLength minimum="1" maximum="10"></f:validateLength>
+            </h:inputText>
+            
+            
+            <h:outputLabel value="Edad:" for="edad"/>  
+            <h:inputText value="#{personaBean.edad}" id="edad" required="true" label="No procesado">
+                 <f:validateLongRange for="edad" minimum="1" maximum="120"></f:validateLongRange>
+             </h:inputText>
+            
+            
+            
+            </h:panelGrid>
+              <h:messages style="color:red"/>
+            <br></br>
+            <h:commandButton action="bienvenida"  value="Enviar" />
+            <br></br>
+        </h:form>
+    </f:view>
+</body> 
+</html>

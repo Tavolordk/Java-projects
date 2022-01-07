@@ -1,0 +1,88 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+			<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Reporte de operaciones</h4>
+			</div>
+		<div class="card-content">
+<!-- 			<div class="row" style="margin: 0px; padding: 5px"> -->
+<!-- 				<div class="form-group col-md-2.4" style="margin: 5px; padding: 5px"> -->
+<!-- 					<button id="idBuscarRecibos" type="button" class="btn btn-primary"> -->
+<!-- 						<span class="mr-2"> <i class="fas fa-redo-alt"></i> -->
+<!-- 						</span>Busca Recibos -->
+<!-- 					</button>  -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+	
+			<div align="left" style="margin: 10px 10px 40px; padding: 5px">
+			<div class="row">
+				<div class="form-group col-md-4 ">
+					 <label for="nombre">Reporte:</label>
+					 <select class="form-control text-uppercase" id="reporte" name="reporte">
+					 <option value="1" >OPERACIONES RELEVANTES</option>
+					 <option value="2" >OPERACIONES INUSUALES</option>
+					 </select>
+			    </div>
+			</div>
+			<div class="row">
+			   <div id="divPoliza" style="display:none" class="form-group col-md-4 ">
+			   		<label for="nombre">Póliza:</label>
+					<div  class="input-group">
+						<input 	type="text" class="form-control text-uppercase clnCampos"	id="numeroPoliza" maxlength="8"/>
+<!-- 						<button id="btnBuscaPoliza" type="button" class="btn btn-default"> -->
+<!-- 							<i class="fas fa-search" style="color: #ffff"></i> -->
+<!-- 						</button> -->
+					</div>
+			   </div>
+			   <div id="divRamo" style="display:none" class="form-group col-md-4 ">
+						<label for="nombre" >Ramo:</label>
+					    <select class="form-control text-uppercase ramo" id="ramo"></select>
+				 </div>
+<!-- 				<div id="divCliente" style="display:none" class="form-group col-md-4"> -->
+<!-- 					<label id="lbCliente" >Cliente: </label> -->
+<!-- 					<input 	type="text" class="form-control text-uppercase"	id="cliente" name="cliente" disabled> -->
+<!-- 				</div> -->
+			 </div>
+			 <div class="row">
+			 	<div id="divDescOperacion" style="display:none" class="form-group col-md-4">
+					<label id="lbRazon">Descripción Operación: </label>
+					<textarea class="form-control text-uppercase clnCampos" id="descOperacion" name="descOperacion" style="width: 100%"></textarea>
+				</div>
+				<div id="divRazon" style="display:none" class="form-group col-md-4">
+					<label id="lbRazon">Razón: </label>
+					<textarea class="form-control text-uppercase clnCampos" id="razon" name="razon" style="width: 100%"></textarea>
+				</div>
+			 </div>
+			 <div class="row">
+				 <div class="form-group col-md-4">
+					<button id="btnBuscaOperaciones" type="button" class="btn btn-primary">Detectar</button>
+				 </div>
+				 <div class="form-group col-md-4">
+					<button id="btnReporteOperaciones" type="button" class="btn btn-primary" disabled>Genera Reporte</button>
+				 </div>
+				</div>
+			</div>
+
+				<!-- TABLE PARA MOSTRAR DATOS RELEVANTES -->
+		<div id ="idTablerOperaciones" class="table-responsive main-container background-tabla">
+		   	<h4 align="center" id="lbReporteOperaiones" style="background: blue; color: white">Reportes Operaciones</h4>
+		    <table id="tableReporteOperaciones" class="table table-striped table-hover table-bordered table-condensed estiloTablas"></table>
+		</div>
+	</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+
+	<script src="/resources/js/pages/cobranza/reportesOperacionesC.js"	th:src="@{/resources/js/pages/cobranza/reportesOperacionesC.js}"></script>
+	<script src="/resources/js/pages/cobranza/reportesOperaciones.js"	th:src="@{/resources/js/pages/cobranza/reportesOperaciones.js}"></script>
+	<script src="/resources/js/pages/catalogos/ramoC.js"  				th:src="@{/resources/js/pages/catalogos/ramoC.js}"></script>
+  
+  </div>
+</body>
+</html>

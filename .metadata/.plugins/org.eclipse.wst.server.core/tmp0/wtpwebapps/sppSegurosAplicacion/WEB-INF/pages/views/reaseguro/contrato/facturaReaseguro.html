@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment"></head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+	<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Facturas de reaseguro</h4>
+			</div>
+		<div class="card-content">
+	<div class="float-right">
+    		<h2>	 
+    			<span id="numSolicitud" class="badge"></span>
+    		</h2>	 
+    	</div>
+		    		<form id="formReportesRR8" enctype="multipart/form-data">
+		    			<div class="form-row">
+		    			  <div class="form-group col-md-4">
+						    <label for="idRamo">Contratos: </label>
+						     <select class="form-control" id="contratos" name="contratos"></select>
+					      </div>
+                          <div id="divReporteTrimestral" class="form-group col-md-4">
+						    <label for="tipoReporte">Trimestre:</label>
+						       <select class="form-control" id="numTrimestre" name="tipoReporte">
+							      <option value="1">1ER TRIMESTRE</option>
+							      <option value="2">2DO TRIMESTRE</option>
+							      <option value="3">3ER TRIMESTRE</option>
+							      <option value="4">4TO TRIMESTRE</option>
+						       </select>
+					      </div>
+					       <div id="divReporteTrimestral" class="form-group col-md-4">
+						    <label for="tipoReporte">Ejercicio:</label>
+						       <select class="form-control lstAniosReporte" id="ejercicio" name="ejercicio"></select>
+					      </div>								
+		    			</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<button class="btn btn-primary float-left" id="btnFactura"
+									type="button">
+									<span style="padding: 5px"><i class="fas fa-save"></i></span>Generar
+								</button>
+			                </div>			
+						</div>									
+					</form>
+		    	</div> 		    	
+		    </div>
+	</div>	
+	
+	<div th:include="templates/layout :: footerFragment"></div>	
+
+	<script src="/resources/js/pages/reaseguro/facturaReaseguroC.js" th:src="@{/resources/js/pages/reaseguro/facturaReaseguroC.js}"></script>
+	<script src="/resources/js/pages/reaseguro/facturaReaseguro.js" th:src="@{/resources/js/pages/reaseguro/facturaReaseguro.js}"></script>
+</body>
+
+</html>

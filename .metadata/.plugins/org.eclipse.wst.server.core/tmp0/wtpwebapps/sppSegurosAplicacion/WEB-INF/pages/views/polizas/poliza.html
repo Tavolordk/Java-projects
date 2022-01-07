@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="templates/layout :: headerFragment">
+</head>
+
+<body>
+	<div th:include="templates/layout :: menuFragment"></div>
+	<div class="container main-container">
+		<div class="card wizard-card">
+		<div class="card-header">
+				<h4>Consulta de póliza</h4>
+			</div>
+		<div class="card-content">
+			<form id="formPoliza" autocomplete="off" class="needs-validation" novalidate>
+				<div class="row">
+				<div class="form-group col-md-6">
+					<label for="txtBusca">Nombre o RFC: </label>
+					<div class="input-group">
+						<input class="form-control text-uppercase" id="txtBusca"> <span
+							class="input-group-btn">
+							<button id="btnBusca" type="button"
+								class="btn btn-default">
+								<i class="fas fa-search" style="color: #ffff"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				</div>
+				
+				<div class="table-responsive main-container background-tabla">
+					<table id="resultadoBusqueda"
+						class="table table-sm table-hover table-bordered estiloTablas">
+					</table>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<div th:include="templates/layout :: footerFragment"></div>
+	
+	<script src="/resources/js/pages/polizas/polizasC.js" th:src="@{/resources/js/pages/polizas/polizasC.js}"></script>
+	<script src="/resources/js/pages/polizas/polizas.js" th:src="@{/resources/js/pages/polizas/polizas.js}"></script>
+</body>
+</html>

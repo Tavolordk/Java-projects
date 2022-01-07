@@ -1,0 +1,6 @@
+package Gus66.HttpSesion;
+
+@WebServlet("/Resultado")
+public class SesionesServlet {
+
+}

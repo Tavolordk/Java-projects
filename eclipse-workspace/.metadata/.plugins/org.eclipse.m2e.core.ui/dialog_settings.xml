@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\Tavol\eclipse-workspace\DeclaracionJSP"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\ExpresionesJSP"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\carritoCompras"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\webapp"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\formularioServer"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\cabeceros"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\parametros"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\ok"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\FormularioConJavascript"/>
+			<item value="C:\Users\Tavol\eclipse-workspace\conexionDB"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="531"/>
+		<item key="x" value="698"/>
+		<item key="y" value="74"/>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="ManejoJDBC4"/>
+			<item value="ManejoJDBC5"/>
+			<item value="org.apache.commons"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="ManejoJDBC4"/>
+			<item value="ManejoJDBC5"/>
+			<item value="commons-dbcp2"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+			<item value="1.0"/>
+			<item value="2.7.0"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.editor.dialogs.ManageDependenciesDialog">
+		<item key="width" value="613"/>
+		<item key="height" value="450"/>
+		<item key="x" value="377"/>
+		<item key="y" value="64"/>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.EditDependencyDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="450"/>
+		<item key="x" value="443"/>
+		<item key="y" value="64"/>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="tavo"/>
+			<item value="jdbc.com.mx"/>
+			<item value="mave"/>
+			<item value="commons"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.wizards.CustomArchetypeDialog">
+		<list key="archetypeGroupId">
+			<item value="org.codehaus.mojo.archetypes"/>
+		</list>
+		<list key="archetypeArtifactId">
+			<item value="webapp-j2ee14"/>
+		</list>
+		<list key="archetypeVersion">
+			<item value="1.3"/>
+		</list>
+		<list key="repositoryUrl">
+			<item value="http://repo.maven.apache.org/maven2"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.preferences.RemoteArchetypeCatalogDialog">
+		<list key="catalogUrl">
+			<item value="https://maven.apache.org/archetype/maven-archetype-plugin/specification/archetype-catalog.html."/>
+		</list>
+	</section>
+</section>

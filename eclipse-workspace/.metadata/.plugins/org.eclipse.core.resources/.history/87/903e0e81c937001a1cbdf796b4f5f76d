@@ -1,0 +1,28 @@
+package figura;
+
+public class PalabraThis {
+
+	public static void main(String [] args)
+	{
+		
+	}
+}
+
+class Persona
+{
+	String nombre;
+	
+	Persona (String nombre)
+	{
+		this.nombre = nombre;
+	}
+}
+
+class Imprimir
+{
+	public void imprimir(Persona p)
+	{
+		System.out.println("Imprimir argumento persona: " + p);
+		System.out.println("Impresión del objeto actual (this) " + this);
+	}
+}
